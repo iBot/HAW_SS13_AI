@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="HibernateHelloWorld" />
+        <module name="HibernateTest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="HibernateHelloWorld" target="1.5" />
+      <module name="HibernateHelloWorld" target="1.7" />
+      <module name="HibernateTest" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
