@@ -1,8 +1,6 @@
 package com.srccodes.example.hibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +12,18 @@ import java.util.List;
 public class Kurs {
     private String id;
     private String title;
+
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "kurs_buch", joinColumns = { @JoinColumn(name = "kurs_id") }, inverseJoinColumns = { @JoinColumn(name = "buch_id") })
+    public List<Buch> getBuchempfehlungen() {
+        return buchempfehlungen;
+    }
+
+    public void setBuchempfehlungen(List<Buch> buchempfehlungen) {
+        this.buchempfehlungen = buchempfehlungen;
+    }
+
     private List<Buch> buchempfehlungen;
 
     public Kurs() {
@@ -23,7 +33,7 @@ public class Kurs {
     public Kurs(String id, String title) {
         this.id = id;
         this.title = title;
-        this.buchempfehlungen = new ArrayList<>();
+        this.buchempfehlungen = new ArrayList<Buch>();
     }
 
     @Override

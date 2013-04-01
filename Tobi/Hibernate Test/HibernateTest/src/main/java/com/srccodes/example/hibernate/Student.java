@@ -1,9 +1,6 @@
 package com.srccodes.example.hibernate;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.*;
 
 /**
@@ -14,7 +11,7 @@ import java.util.*;
 public class Student {
     private String id;
     private String name;
-//    private Notenkonto notenkonto;
+    private Notenkonto notenkonto;
     private Set<Kurs> kurse;
 
     public Student() {
@@ -24,7 +21,21 @@ public class Student {
     public Student(String id, String name) {
         this.id = id;
         this.name = name;
-        this.kurse = new HashSet<>();
+        this.kurse = new HashSet<Kurs>();
+    }
+
+    @OneToMany
+    @JoinTable(name = "student_kurs", joinColumns = { @JoinColumn(name = "stuent_id") }, inverseJoinColumns = { @JoinColumn(name = "kurs_id") })
+    public Set<Kurs> getKurse() {
+        return kurse;
+    }
+
+    public void setKurse(Set<Kurs> kurse) {
+        this.kurse = kurse;
+    }
+
+    public void addKurs(Kurs kurs){
+         this.kurse.add(kurs);
     }
 
     @Override
@@ -61,16 +72,13 @@ public class Student {
         this.name = name;
     }
 
-//    public Notenkonto getNotenkonto() {
-//        return this.notenkonto;
-//    }
-//
-//    public void setNotenkonto(Notenkonto notenkonto) {
-//        this.notenkonto = notenkonto;
-//    }
+    @OneToOne(cascade = CascadeType.ALL)
+    public Notenkonto getNotenkonto() {
+        return this.notenkonto;
+    }
 
-    public void addKurs(Kurs kurs) {
-        this.kurse.add(kurs);
+    public void setNotenkonto(Notenkonto notenkonto) {
+        this.notenkonto = notenkonto;
     }
 
 }

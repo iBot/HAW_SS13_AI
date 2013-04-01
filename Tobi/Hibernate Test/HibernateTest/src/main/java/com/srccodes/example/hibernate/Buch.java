@@ -14,7 +14,6 @@ import java.util.List;
 public class Buch {
     private String id;
     private String title;
-    private List<Kurs> kurse;
 
     public Buch() {
 
@@ -23,7 +22,6 @@ public class Buch {
     public Buch(String id, String title) {
         this.id = id;
         this.title = title;
-        this.kurse = new ArrayList<>();
     }
 
     @Override
@@ -60,7 +58,4 @@ public class Buch {
         this.title = title;
     }
 
-    public void addKurs(Kurs kurs) {
-        this.kurse.add(kurs);
-    }
 }

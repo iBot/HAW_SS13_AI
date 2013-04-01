@@ -1,7 +1,9 @@
 package com.srccodes.example.hibernate;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -57,17 +59,26 @@ public class App {
             Buch buch2 = new Buch("B2", "Programmieren für Einsteiger");
             Buch buch3 = new Buch("B3", "Das kleine 1 mal 1");
 
-//            Notenkonto notenkonto1 = new Notenkonto("N1");
-//            Notenkonto notenkonto2 = new Notenkonto("N2");
-//            Notenkonto notenkonto3 = new Notenkonto("N3");
+            Notenkonto notenkonto1 = new Notenkonto("N1");
+            Notenkonto notenkonto2 = new Notenkonto("N2");
+            Notenkonto notenkonto3 = new Notenkonto("N3");
 
             student1.addKurs(kurs1);
             student2.addKurs(kurs2);
             student3.addKurs(kurs3);
 
-//            student1.setNotenkonto(notenkonto1);
-//            student2.setNotenkonto(notenkonto2);
-//            student3.setNotenkonto(notenkonto3);
+//            Set<Kurs> s1kurse = new HashSet<Kurs>();
+//            s1kurse.add(kurs1);
+//            s1kurse.add(kurs2);
+//
+//            student1.setKurse(s1kurse);
+//
+//            Set<Kurs> s2kurse = new HashSet<Kurs>();
+//            s2kurse.add(kurs3);
+
+            student1.setNotenkonto(notenkonto1);
+            student2.setNotenkonto(notenkonto2);
+            student3.setNotenkonto(notenkonto3);
 
             kurs1.addBuchempfehlung(buch1);
             kurs1.addBuchempfehlung(buch3);
@@ -84,9 +95,9 @@ public class App {
             session.save(buch1);
             session.save(buch2);
             session.save(buch3);
-//            session.save(notenkonto1);
-//            session.save(notenkonto2);
-//            session.save(notenkonto3);
+            session.save(notenkonto1);
+            session.save(notenkonto2);
+            session.save(notenkonto3);
 
 
             // Committing the change in the database.
