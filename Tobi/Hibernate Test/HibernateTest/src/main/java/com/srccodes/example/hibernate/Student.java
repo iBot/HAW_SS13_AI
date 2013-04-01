@@ -7,7 +7,7 @@ import java.util.*;
  * The persistent class for the contact database table.
  */
 @Entity
-@Table(name = "student")
+@Table(name = "student",uniqueConstraints = {@UniqueConstraint(columnNames={"notenkonto_id"})})
 public class Student implements Persistable {
     private String id;
     private String name;
@@ -25,7 +25,7 @@ public class Student implements Persistable {
     }
 
     @OneToMany
-    @JoinTable(name = "student_kurs", joinColumns = {@JoinColumn(name = "stuent_id")}, inverseJoinColumns = {@JoinColumn(name = "kurs_id")})
+    @JoinTable(name = "student_kurs", joinColumns = {@JoinColumn(name = "student_id")}, inverseJoinColumns = {@JoinColumn(name = "kurs_id")}, uniqueConstraints = {@UniqueConstraint(columnNames={"kurs_id"})})
     public Set<Kurs> getKurse() {
         return kurse;
     }
@@ -73,6 +73,7 @@ public class Student implements Persistable {
     }
 
     @OneToOne(cascade = CascadeType.ALL)
+
     public Notenkonto getNotenkonto() {
         return this.notenkonto;
     }

@@ -106,9 +106,26 @@ public class App {
         //Cesar löschen
         delete(cesar);
 
+
+
         //Cesar erneut laden
         Student deletedCesar  = (Student)getOjectFromDatabaseByQuery("from Student where name = 'Cesar'");
         System.out.println(deletedCesar);
+
+
+        //Folgende Test sollten Fehlschlagen!
+//        Student anton  = (Student)getOjectFromDatabaseByQuery("from Student where name = 'Anton'");
+//        System.out.println(anton.getNotenkonto());
+//        Student dora = new Student("S99","Dora");
+//        dora.setNotenkonto(anton.getNotenkonto());
+
+//        Kurs dieserKursWirdMehrerenStudentenZugeordnet = new Kurs("K4711", "mehrfach belegter Kurs");
+//        Student erna = new Student("S19","Erna");
+//        erna.addKurs(dieserKursWirdMehrerenStudentenZugeordnet);
+//        dora.addKurs(dieserKursWirdMehrerenStudentenZugeordnet);
+//        saveOrUpdate(erna);
+//        saveOrUpdate(dora);
+
     }
 
     private static Persistable getOjectFromDatabaseByQuery(String query){
