@@ -169,11 +169,11 @@ public class SQLiteDialect extends Dialect {
         return false;
     }
 
-  /*
-  public String getAddColumnString() {
-    return "add column";
-  }
-  */
+
+//  public String getAddColumnString() {
+//    return "add column";
+//  }
+
 
     public String getForUpdateString() {
         return "";

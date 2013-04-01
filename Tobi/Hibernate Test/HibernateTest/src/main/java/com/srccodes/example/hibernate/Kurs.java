@@ -9,10 +9,18 @@ import java.util.List;
  */
 @Entity
 @Table(name = "kurs")
-public class Kurs {
+public class Kurs implements Persistable{
     private String id;
     private String title;
 
+    @Override
+    public String toString() {
+        return "Kurs{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", buchempfehlungen=" + buchempfehlungen +
+                '}';
+    }
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "kurs_buch", joinColumns = { @JoinColumn(name = "kurs_id") }, inverseJoinColumns = { @JoinColumn(name = "buch_id") })

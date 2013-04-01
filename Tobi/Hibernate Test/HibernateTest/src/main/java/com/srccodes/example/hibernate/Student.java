@@ -8,7 +8,7 @@ import java.util.*;
  */
 @Entity
 @Table(name = "student")
-public class Student {
+public class Student implements Persistable {
     private String id;
     private String name;
     private Notenkonto notenkonto;
@@ -25,7 +25,7 @@ public class Student {
     }
 
     @OneToMany
-    @JoinTable(name = "student_kurs", joinColumns = { @JoinColumn(name = "stuent_id") }, inverseJoinColumns = { @JoinColumn(name = "kurs_id") })
+    @JoinTable(name = "student_kurs", joinColumns = {@JoinColumn(name = "stuent_id")}, inverseJoinColumns = {@JoinColumn(name = "kurs_id")})
     public Set<Kurs> getKurse() {
         return kurse;
     }
@@ -34,8 +34,8 @@ public class Student {
         this.kurse = kurse;
     }
 
-    public void addKurs(Kurs kurs){
-         this.kurse.add(kurs);
+    public void addKurs(Kurs kurs) {
+        this.kurse.add(kurs);
     }
 
     @Override
@@ -79,6 +79,14 @@ public class Student {
 
     public void setNotenkonto(Notenkonto notenkonto) {
         this.notenkonto = notenkonto;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 
 }

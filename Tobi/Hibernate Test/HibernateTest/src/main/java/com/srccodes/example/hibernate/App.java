@@ -1,9 +1,7 @@
 package com.srccodes.example.hibernate;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -32,8 +30,177 @@ public class App {
         return sessionFactory;
     }
 
-
     public static void main(String[] args) {
+        setup();
+        testeCRUDFunktionalitaet();
+    }
+
+    private static void testeCRUDFunktionalitaet() {
+
+        List<Student> studentList = null;
+
+        // Fetching saved data
+        Session session = null;
+        Transaction tx = null;
+
+        try {
+            session = sessionFactory.openSession();
+            tx = session.beginTransaction();
+
+            //Hole alle Studenten aus der Datenbank
+            studentList = session.createQuery("from Student").list();
+
+
+            // Committing the change in the database.
+            session.flush();
+            tx.commit();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+            // Rolling back the changes to make the data consistent in case of any failure
+            // in between multiple database write operations.
+            tx.rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+
+        for (Student student : studentList) {
+
+            // Berta wird umbenannt
+            if (student.getName().equals("Berta")) {
+                student.setName("Berta II");
+            }
+            System.out.println(student);
+            //Stuenten bekommen eine zufällige Note
+            student.getNotenkonto().setGesamtnote(Math.random() * 15);
+            saveOrUpdate(student.getNotenkonto());
+            saveOrUpdate(student);
+        }
+
+        // Neuen Kurs erzeugen
+        Kurs meinKurs = new Kurs("K42", "How do I hibernate");
+        saveOrUpdate(meinKurs);
+
+        //Kurs verändern
+        meinKurs.setTitle("Hibernate für Profis!");
+
+        //Ein neues Buch erstellen
+        Buch meinBuch = new Buch("B65", "Lesen für Analphabeten");
+        Buch meinAnderesBuch = new Buch("B67", "Lesen hilft!");
+
+        //Bücher zum Kurs hinzufügen
+        meinKurs.addBuchempfehlung(meinBuch);
+        meinKurs.addBuchempfehlung(meinAnderesBuch);
+
+        //Kurs speichern, buch wir automatisch mitgespeichert
+        saveOrUpdate(meinKurs);
+
+        //Cesar aus der Datenbank laden
+        Student cesar  = (Student)getOjectFromDatabaseByQuery("from Student where name = 'Cesar'");
+
+        System.out.println(cesar.toString());
+
+        //Cesar löschen
+        delete(cesar);
+
+        //Cesar erneut laden
+        Student deletedCesar  = (Student)getOjectFromDatabaseByQuery("from Student where name = 'Cesar'");
+        System.out.println(deletedCesar);
+    }
+
+    private static Persistable getOjectFromDatabaseByQuery(String query){
+        // Fetching saved data
+        Session session = null;
+        Transaction tx = null;
+
+        Persistable result = null;
+
+        try {
+            session = sessionFactory.openSession();
+            tx = session.beginTransaction();
+
+            //Hole alle Studenten aus der Datenbank
+            result = (Persistable)session.createQuery(query).uniqueResult();
+
+
+            // Committing the change in the database.
+            session.flush();
+            tx.commit();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+            // Rolling back the changes to make the data consistent in case of any failure
+            // in between multiple database write operations.
+            tx.rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+
+        return result;
+    }
+
+
+    private static void saveOrUpdate(Persistable object) {
+        // Fetching saved data
+        Session session = null;
+        Transaction tx = null;
+
+        try {
+            session = sessionFactory.openSession();
+            tx = session.beginTransaction();
+
+            session.saveOrUpdate(object);
+            // Committing the change in the database.
+            session.flush();
+            tx.commit();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+            // Rolling back the changes to make the data consistent in case of any failure
+            // in between multiple database write operations.
+            tx.rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    private static void delete(Persistable object) {
+        // Fetching saved data
+        Session session = null;
+        Transaction tx = null;
+
+        try {
+            session = sessionFactory.openSession();
+            tx = session.beginTransaction();
+
+            session.delete(object);
+            // Committing the change in the database.
+            session.flush();
+            tx.commit();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+            // Rolling back the changes to make the data consistent in case of any failure
+            // in between multiple database write operations.
+            tx.rollback();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+
+    private static void setup() {
         // Configure the session factory
         configureSessionFactory();
 
@@ -51,9 +218,9 @@ public class App {
             Student student2 = new Student("S2", "Berta");
             Student student3 = new Student("S3", "Cesar");
 
-            Kurs kurs1 = new Kurs("K1","Mathe");
-            Kurs kurs2 = new Kurs("K2","Programmieren");
-            Kurs kurs3 = new Kurs("K3","Betriebssysteme");
+            Kurs kurs1 = new Kurs("K1", "Mathe");
+            Kurs kurs2 = new Kurs("K2", "Programmieren");
+            Kurs kurs3 = new Kurs("K3", "Betriebssysteme");
 
             Buch buch1 = new Buch("B1", "Informatik Handbuch");
             Buch buch2 = new Buch("B2", "Programmieren für Einsteiger");

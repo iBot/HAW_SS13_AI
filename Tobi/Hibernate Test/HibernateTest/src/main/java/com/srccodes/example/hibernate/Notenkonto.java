@@ -9,7 +9,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "notenkonto")
-public class Notenkonto {
+public class Notenkonto implements Persistable {
     private String id;
     private Double gesamtnote;
 
@@ -19,6 +19,14 @@ public class Notenkonto {
 
     public Notenkonto(String id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Notenkonto{" +
+                "id='" + id + '\'' +
+                ", gesamtnote=" + gesamtnote +
+                '}';
     }
 
     @Override

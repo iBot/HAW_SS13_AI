@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "buch")
-public class Buch {
+public class Buch implements Persistable {
     private String id;
     private String title;
 
@@ -22,6 +22,14 @@ public class Buch {
     public Buch(String id, String title) {
         this.id = id;
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "Buch{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                '}';
     }
 
     @Override
