@@ -81,7 +81,7 @@ public class App {
         }
 
         // Neuen Kurs erzeugen
-        Kurs meinKurs = new Kurs("K42", "How do I hibernate");
+        Kurs meinKurs = new Kurs("K42", "How do I hibernate?");
         saveOrUpdate(meinKurs);
 
         //Kurs verändern
