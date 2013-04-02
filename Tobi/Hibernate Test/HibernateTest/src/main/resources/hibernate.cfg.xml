@@ -14,9 +14,9 @@
          
         <property name="hibernate.hbm2ddl.auto">create</property>
          
-        <mapping class="com.srccodes.example.hibernate.Student"/>
-        <mapping class="com.srccodes.example.hibernate.Kurs"/>
-        <mapping class="com.srccodes.example.hibernate.Notenkonto"/>
-        <mapping class="com.srccodes.example.hibernate.Buch"/>
+        <mapping class="hibernateExample.Student"/>
+        <mapping class="hibernateExample.Kurs"/>
+        <mapping class="hibernateExample.Notenkonto"/>
+        <mapping class="hibernateExample.Buch"/>
     </session-factory>
 </hibernate-configuration>

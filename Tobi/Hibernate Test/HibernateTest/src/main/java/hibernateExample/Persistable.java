@@ -1,4 +1,4 @@
-package com.srccodes.example.hibernate;
+package hibernateExample;
 
 /**
  * Created with IntelliJ IDEA.

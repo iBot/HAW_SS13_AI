@@ -1,4 +1,4 @@
-package com.srccodes.example.hibernate;
+package hibernateExample;
 
 import javax.persistence.*;
 import java.util.ArrayList;

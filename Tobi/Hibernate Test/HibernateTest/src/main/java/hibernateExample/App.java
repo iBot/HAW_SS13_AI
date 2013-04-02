@@ -1,4 +1,4 @@
-package com.srccodes.example.hibernate;
+package hibernateExample;
 
 import java.util.List;
 import java.util.Properties;

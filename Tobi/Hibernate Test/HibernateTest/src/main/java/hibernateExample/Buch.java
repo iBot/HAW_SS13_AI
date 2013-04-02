@@ -1,4 +1,4 @@
-package com.srccodes.example.hibernate;
+package hibernateExample;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,24 +8,25 @@ import javax.persistence.Table;
  * The persistent class for the contact database table.
  */
 @Entity
-@Table(name = "notenkonto")
-public class Notenkonto implements Persistable {
+@Table(name = "buch")
+public class Buch implements Persistable {
     private String id;
-    private Double gesamtnote;
+    private String title;
 
-    public Notenkonto() {
+    public Buch() {
 
     }
 
-    public Notenkonto(String id) {
+    public Buch(String id, String title) {
         this.id = id;
+        this.title = title;
     }
 
     @Override
     public String toString() {
-        return "Notenkonto{" +
+        return "Buch{" +
                 "id='" + id + '\'' +
-                ", gesamtnote=" + gesamtnote +
+                ", title='" + title + '\'' +
                 '}';
     }
 
@@ -34,9 +35,9 @@ public class Notenkonto implements Persistable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Notenkonto that = (Notenkonto) o;
+        Buch buch = (Buch) o;
 
-        if (!id.equals(that.id)) return false;
+        if (!id.equals(buch.id)) return false;
 
         return true;
     }
@@ -46,14 +47,6 @@ public class Notenkonto implements Persistable {
         return id.hashCode();
     }
 
-    public Double getGesamtnote() {
-        return gesamtnote;
-    }
-
-    public void setGesamtnote(Double gesamtnote) {
-        this.gesamtnote = gesamtnote;
-    }
-
     @Id
     public String getId() {
         return this.id;
@@ -61,6 +54,14 @@ public class Notenkonto implements Persistable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
 }
