@@ -1,0 +1,278 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>DBAllocator Status (Jan 3, 2012 2:28:21 PM)</title>
+<style type='text/css'>
+	body, html {font-family: monospace; font-size: 90%}
+	th, td {text-align: left;}
+</style>
+</head>
+<body>
+<h1>DBAllocator Status (Jan 3, 2012 2:28:21 PM)</h1>
+
+<h2>Known allocations</h2>
+<table>
+<tr>
+	<th width="250" colspan="5">actions</th>
+	<th width="100">database</th>
+	<th width="100">account</th>
+	<th width="200">expires</th>
+	<th>requestee</th>
+</tr>
+
+<tr>
+    <td><a href='?operation=show&amp;uuid=3e8c4c66-b890-49cc-b2ce-58b85ba15ddd' title="Show the properties for connecting to the account.">Show</a></td>
+	<td><a href='?operation=realloc&amp;expiry=60&amp;uuid=3e8c4c66-b890-49cc-b2ce-58b85ba15ddd' title="Prolong the allocation for another hour.">+1h</a></td>
+	<td><a href='?operation=realloc&amp;expiry=1440&amp;uuid=3e8c4c66-b890-49cc-b2ce-58b85ba15ddd' title="Prolong the allocation for another day.">+1d</a></td>
+    <td><a href='?operation=dealloc&amp;uuid=3e8c4c66-b890-49cc-b2ce-58b85ba15ddd' title="De-allocate the account so that others can use it.">Free</a></td>
+    <td><a href='?operation=erase&amp;uuid=3e8c4c66-b890-49cc-b2ce-58b85ba15ddd' title="Erase the contents of the database.">Erase!</a></td>
+	<td>postgresql84</td>
+	<td>dballo01</td>
+	<td>Jan 3, 2012 7:28:20 PM</td>
+	<td>sebersole</td>
+</tr>
+
+</table>
+
+<h2>Broken accounts<sup>[<a href="#whatisbroken">1</a>]</sup></h2>
+<table>
+<tr>
+    <th width="250" colspan="2">actions</th>
+    <th width="100">database</th>
+    <th width="100">account</th>
+    <th>requestee</th>
+</tr>
+
+<tr>
+    <td><a href='?operation=show&amp;uuid=0108d50c-159e-4c67-b579-de58e65d4793' title="Show the properties for connecting to the account.">Show</a></td>
+    <td><a href='?operation=erase&amp;uuid=0108d50c-159e-4c67-b579-de58e65d4793' title="Erase the contents of the database. Must pass without exceptions.">Attempt fix</a></td>
+    <td>mysql51</td>
+    <td>dballo08</td>
+    <td>hibernate</td>
+</tr>
+
+</table>
+
+<h2>Available servers</h2>
+<table>
+<tr>
+	<th width="250" colspan="3">actions</th>
+	<th width="100">database</th>
+	<th width="100">usage</th>
+	<th>labels</th>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=mysql55&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=mysql55&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=mysql55&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>mysql55</td>
+	<td>0 of 20</td>
+	<td>[mysql5516, mysql55, mysql]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=oracle9i&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=oracle9i&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=oracle9i&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>oracle9i</td>
+	<td>0 of 20</td>
+	<td>[soa4x, oracle, oracle9i]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=postgresql91&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=postgresql91&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=postgresql91&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>postgresql91</td>
+	<td>0 of 20</td>
+	<td>[postgresql91, postgresql, postgresql911]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=mssql2008R2&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=mssql2008R2&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=mssql2008R2&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>mssql2008R2</td>
+	<td>0 of 10</td>
+	<td>[mssql2008, brms52, mssql, soa50-notyet, mssql2008R2]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=db2-91&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=db2-91&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=db2-91&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>db2-91</td>
+	<td>0 of 9</td>
+	<td>[db2-91, db2]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=db2-97&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=db2-97&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=db2-97&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>db2-97</td>
+	<td>0 of 9</td>
+	<td>[brms51, brms52, db2-97, soa50-notyet, db2]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=mssql2005&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=mssql2005&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=mssql2005&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>mssql2005</td>
+	<td>0 of 9</td>
+	<td>[soa4x, mssql, mssql2005, soa50-notyet]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=mssql2008R1&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=mssql2008R1&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=mssql2008R1&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>mssql2008R1</td>
+	<td>0 of 9</td>
+	<td>[mssql2008, mssql, soa50-notyet, mssql2008R1]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=mysql50&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=mysql50&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=mysql50&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>mysql50</td>
+	<td>0 of 9</td>
+	<td>[soa51, soa50, mysql50, brms50, brms51, brms52, soa4x, mysql]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=mysql51&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=mysql51&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=mysql51&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>mysql51</td>
+	<td>1 of 9</td>
+	<td>[mysql51, soa51, soa50, brms52, mysql]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=oracle10g&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=oracle10g&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=oracle10g&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>oracle10g</td>
+	<td>0 of 9</td>
+	<td>[oracle10g, soa51, soa50, brms50, brms51, soa4x, oracle]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=oracle11gR2&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=oracle11gR2&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=oracle11gR2&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>oracle11gR2</td>
+	<td>0 of 9</td>
+	<td>[soa51, soa50, oracle11g, brms51, oracle11gR2, brms52, oracle]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=oracle11gR1&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=oracle11gR1&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=oracle11gR1&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>oracle11gR1</td>
+	<td>0 of 9</td>
+	<td>[soa50, oracle11g, oracle11gR1, oracle]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=oracle11gR1RAC&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=oracle11gR1RAC&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=oracle11gR1RAC&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>oracle11gR1RAC</td>
+	<td>0 of 9</td>
+	<td>[oracle11gR1RAC, cluster, oracle11gRAC]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=oracle11gR2RAC&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=oracle11gR2RAC&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=oracle11gR2RAC&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>oracle11gR2RAC</td>
+	<td>0 of 9</td>
+	<td>[oracle11gR2RAC, cluster, oracle11gRAC]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=postgresql82&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=postgresql82&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=postgresql82&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>postgresql82</td>
+	<td>0 of 9</td>
+	<td>[postgresql82, soa51, soa50, brms50, brms51, brms52, soa4x, postgresql]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=postgresql83&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=postgresql83&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=postgresql83&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>postgresql83</td>
+	<td>0 of 9</td>
+	<td>[postgresql83, soa51, soa50, brms51, brms52, postgresql]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=postgresql84&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=postgresql84&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=postgresql84&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>postgresql84</td>
+	<td>1 of 9</td>
+	<td>[postgresql, postgresql84, postgresql847]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=postgresql844&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=postgresql844&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=postgresql844&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>postgresql844</td>
+	<td>0 of 9</td>
+	<td>[brms52, postgresql, postgresql844]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=sybase150&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=sybase150&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=sybase150&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>sybase150</td>
+	<td>0 of 9</td>
+	<td>[sybase150, sybase, soa50-notyet, sybase15]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=sybase155&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=sybase155&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=sybase155&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>sybase155</td>
+	<td>0 of 9</td>
+	<td>[sybase, soa50-notyet, sybase15, sybase155]</td>
+</tr>
+
+<tr>
+	<td><a href='?operation=alloc&amp;label=mysql51-mrg&amp;expiry=60&amp;requestee=GUI'>Take (1h)</a></td>
+	<td><a href='?operation=alloc&amp;label=mysql51-mrg&amp;expiry=1440&amp;requestee=GUI'>Take (1d)</a></td>
+	<td><a href='?operation=alloc&amp;label=mysql51-mrg&amp;expiry=10080&amp;requestee=GUI'>Take (1w)</a></td>
+	<td>mysql51-mrg</td>
+	<td>0 of 1</td>
+	<td>[mysql51-mrg]</td>
+</tr>
+
+</table>
+
+<ol>
+    <li id="whatisbroken">A broken account means that the account is disabled because the "Erase" operation failed on it. It needs to be cleaned manually and then returned back to usual operation by clicking "Fix", which will effectively call the erase operation. This is done to prevent other people's jobs form breaking because people leave the accounts in a bad shape.</li>
+</ol>
+
+<p><a href='https://docspace.corp.redhat.com/clearspace/docs/DOC-29725' title='DBAllocator info page'>What's this?</a></p>
+
+</body>
+</html>
