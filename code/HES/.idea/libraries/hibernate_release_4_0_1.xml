@@ -1,0 +1,45 @@
+<component name="libraryTable">
+  <library name="hibernate-release-4.0.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/lib/required/antlr-2.7.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/lib/required/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/lib/required/hibernate-commons-annotations-4.0.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/lib/required/hibernate-jpa-2.0-api-1.0.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/lib/required/hibernate-core-4.0.1.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/lib/required/javassist-3.15.0-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/lib/required/jboss-logging-3.1.0.CR2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/lib/required/jboss-transaction-api_1.1_spec-1.0.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/lib/required/commons-collections-3.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/documentation/javadocs" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/buildSrc/src/main/groovy" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/documentation/src/main/docbook/manual/en-US/extras" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/documentation/src/main/docbook/devguide/en-US/extras" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/documentation/src/main/docbook/quickstart/tutorials/basic/src/test/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/documentation/src/main/docbook/quickstart/tutorials/envers/src/test/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/documentation/src/main/docbook/quickstart/tutorials/annotations/src/test/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/documentation/src/main/docbook/quickstart/tutorials/entitymanager/src/test/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-c3p0/src/main/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-c3p0/src/test/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-core/src/main/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-core/src/test/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-core/src/matrix/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-envers/src/demo/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-envers/src/main/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-envers/src/matrix/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-ehcache/src/main/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-ehcache/src/test/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-proxool/src/main/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-proxool/src/test/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-testing/src/main/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-infinispan/src/main/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-infinispan/src/test/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-entitymanager/src/main/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-entitymanager/src/test/java" />
+      <root url="file://$PROJECT_DIR$/lib/hibernate-release-4.0.1.Final/project/hibernate-entitymanager/src/matrix/java" />
+    </SOURCES>
+  </library>
+</component>
