@@ -8,7 +8,7 @@ import main.allgemeineTypen.transportTypen.LieferscheinTyp;
  * Date: 19.04.13
  * Time: 13:04
  */
-public interface ILagerRepository {
+public interface ILagerManager {
     public void bucheWareneingang(LieferscheinTyp lieferschein);
 
     public void reserviereProdukteFuerAuftrag(AuftragTyp auftrag);

@@ -1,13 +1,12 @@
 package main.komponenten;
 
 import main.komponenten.buchhaltung.IBuchhaltungEventTest;
-import main.komponenten.buchhaltung.IBuchhaltungRepositoryTest;
-import main.komponenten.einkauf.IEinkaufRepositoryTest;
-import main.komponenten.kunden.IKundenRepositoryTest;
+import main.komponenten.buchhaltung.IBuchhaltungManagerTest;
+import main.komponenten.einkauf.IEinkaufManagerTest;
+import main.komponenten.kunden.IKundenManagerTest;
 import main.komponenten.lager.ILagerEventTest;
-import main.komponenten.lager.ILagerRepositoryTest;
-import main.komponenten.verkauf.IVerkaufRepository;
-import main.komponenten.verkauf.IVerkaufRepositoryTest;
+import main.komponenten.lager.ILagerManagerTest;
+import main.komponenten.verkauf.IVerkaufManagerTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -20,13 +19,13 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         IBuchhaltungEventTest.class,
-        IBuchhaltungRepositoryTest.class,
-        IEinkaufRepositoryTest.class,
-        IKundenRepositoryTest.class,
+        IBuchhaltungManagerTest.class,
+        IEinkaufManagerTest.class,
+        IKundenManagerTest.class,
         ILagerEventTest.class,
-        ILagerRepositoryTest.class,
-        IVerkaufRepositoryTest.class,
-        IVerkaufRepositoryTest.class
+        ILagerManagerTest.class,
+        IVerkaufManagerTest.class,
+        IVerkaufManagerTest.class
 })
 public class KomponentenTestSuite{
 

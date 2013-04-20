@@ -7,7 +7,7 @@ import main.allgemeineTypen.transportTypen.KundenTyp;
  * Date: 19.04.13
  * Time: 13:33
  */
-class KundenRepository implements IKundenRepository {
+class KundenRepository implements IKundenManager {
     @Override
     public void erstelleKunde(KundenTyp kunde) {
         //To change body of implemented methods use File | Settings | File Templates.

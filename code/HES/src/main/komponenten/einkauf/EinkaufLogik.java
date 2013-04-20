@@ -9,7 +9,7 @@ import main.allgemeineTypen.transportTypen.WareneingangsmeldungTyp;
  * Date: 19.04.13
  * Time: 13:28
  */
-class EinkaufLogik implements IEinkaufRepository {
+class EinkaufLogik implements IEinkaufManager {
     @Override
     public BestellungTyp bestelleProdukt(ProduktTyp produkt) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.

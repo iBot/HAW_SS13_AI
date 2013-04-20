@@ -1,5 +1,6 @@
-package main.komponenten.einkauf;
+package main.komponenten.buchhaltung;
 
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,9 +8,9 @@ import org.junit.Test;
 /**
  * User: Tobi
  * Date: 19.04.13
- * Time: 14:27
+ * Time: 14:26
  */
-public class IEinkaufRepositoryTest {
+public class IBuchhaltungManagerTest extends TestCase {
     @Before
     public void setUp() throws Exception {
 
@@ -21,12 +22,12 @@ public class IEinkaufRepositoryTest {
     }
 
     @Test
-    public void testBestelleProdukt() throws Exception {
+    public void testErstelleRechnung() throws Exception {
 
     }
 
     @Test
-    public void testBestaetigeWareneingang() throws Exception {
+    public void testZahlungseingangBuchen() throws Exception {
 
     }
 }

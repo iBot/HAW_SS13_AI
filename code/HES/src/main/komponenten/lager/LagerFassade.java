@@ -8,7 +8,7 @@ import main.allgemeineTypen.transportTypen.LieferscheinTyp;
  * Date: 19.04.13
  * Time: 13:34
  */
-public class LagerFassade implements ILagerEvent, ILagerRepository {
+public class LagerFassade implements ILagerEvent, ILagerManager {
     @Override
     public void schreibeFuerWarenReserviertEventEin(AuftragTyp auftrag, ILagerListener listener) {
         //To change body of implemented methods use File | Settings | File Templates.

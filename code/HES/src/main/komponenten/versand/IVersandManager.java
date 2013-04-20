@@ -7,6 +7,6 @@ import main.allgemeineTypen.transportTypen.AuftragTyp;
  * Date: 19.04.13
  * Time: 13:17
  */
-public interface IVersandRepository {
+public interface IVersandManager {
     public void erstelleLieferung(AuftragTyp auftrag);
 }

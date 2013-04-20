@@ -1,4 +1,4 @@
-package main.komponenten.verkauf;
+package main.komponenten.kunden;
 
 import org.junit.After;
 import org.junit.Before;
@@ -7,9 +7,9 @@ import org.junit.Test;
 /**
  * User: Tobi
  * Date: 19.04.13
- * Time: 14:29
+ * Time: 14:52
  */
-public class IVerkaufRepositoryTest {
+public class IKundenManagerTest {
     @Before
     public void setUp() throws Exception {
 
@@ -21,12 +21,12 @@ public class IVerkaufRepositoryTest {
     }
 
     @Test
-    public void testErstelleAngebot() throws Exception {
+    public void testErstelleKunde() throws Exception {
 
     }
 
     @Test
-    public void testErstelleAuftrag() throws Exception {
+    public void testGetKunde() throws Exception {
 
     }
 }

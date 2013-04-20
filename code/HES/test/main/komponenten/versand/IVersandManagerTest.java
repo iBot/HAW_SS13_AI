@@ -9,7 +9,7 @@ import org.junit.Test;
  * Date: 19.04.13
  * Time: 14:30
  */
-public class IVersandRepositoryTest {
+public class IVersandManagerTest {
     @Before
     public void setUp() throws Exception {
 

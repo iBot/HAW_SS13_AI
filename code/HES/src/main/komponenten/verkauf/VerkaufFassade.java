@@ -13,7 +13,7 @@ import java.util.Map;
  * Date: 19.04.13
  * Time: 13:48
  */
-public class VerkaufFassade implements IVerkaufRepository {
+public class VerkaufFassade implements IVerkaufManager {
     @Override
     public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe, KundenTyp kunde) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.

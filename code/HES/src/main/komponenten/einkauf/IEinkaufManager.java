@@ -9,7 +9,7 @@ import main.allgemeineTypen.transportTypen.WareneingangsmeldungTyp;
  * Date: 19.04.13
  * Time: 12:57
  */
-interface IEinkaufRepository {
+interface IEinkaufManager {
     public BestellungTyp bestelleProdukt(ProduktTyp produkt);
 
     public void bestaetigeWareneingang(BestellungTyp bestellung, WareneingangsmeldungTyp wareneingangsmeldung);

@@ -8,7 +8,7 @@ import main.allgemeineTypen.transportTypen.AuftragTyp;
  * Date: 19.04.13
  * Time: 13:24
  */
-class BuchhaltungLogik implements IBuchhaltungRepository, IBuchhaltungEvent {
+class BuchhaltungLogik implements IBuchhaltungManager, IBuchhaltungEvent {
     @Override
     public void schreibeFuerRechnungBezahltEventEin(AngebotTyp angebot, IBuchhaltungListener listener) {
         //To change body of implemented methods use File | Settings | File Templates.

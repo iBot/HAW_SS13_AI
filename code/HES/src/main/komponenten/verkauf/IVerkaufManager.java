@@ -13,7 +13,7 @@ import java.util.Map;
  * Date: 19.04.13
  * Time: 13:15
  */
-public interface IVerkaufRepository {
+public interface IVerkaufManager {
     public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe, KundenTyp kunde);
 
     public AuftragTyp erstelleAuftrag(AngebotTyp angebot);
