@@ -1,7 +1,5 @@
 package main.komponenten.buchhaltung;
 
-import main.allgemeineTypen.transportTypen.AngebotTyp;
-import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 
 import java.util.List;
@@ -21,7 +19,7 @@ public class BuchhaltungFassade implements IBuchhaltungManager, IBuchhaltungEven
 
     @Override
     public void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener) {
-        buchhaltungLogik.schreibeFuerRechnungBezahltEventEin(rechnungsNr,listener);
+        buchhaltungLogik.schreibeFuerRechnungBezahltEventEin(rechnungsNr, listener);
     }
 
     @Override
@@ -31,7 +29,7 @@ public class BuchhaltungFassade implements IBuchhaltungManager, IBuchhaltungEven
 
     @Override
     public void zahlungseingangBuchen(double betrag, String rechnungsNr) {
-        buchhaltungLogik.zahlungseingangBuchen(betrag,rechnungsNr);
+        buchhaltungLogik.zahlungseingangBuchen(betrag, rechnungsNr);
     }
 
     @Override

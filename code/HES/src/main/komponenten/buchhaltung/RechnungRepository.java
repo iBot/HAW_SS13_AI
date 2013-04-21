@@ -1,7 +1,5 @@
 package main.komponenten.buchhaltung;
 
-import main.allgemeineTypen.transportTypen.AngebotTyp;
-import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 
 import java.util.HashMap;
@@ -16,19 +14,19 @@ import java.util.Map;
  */
 class RechnungRepository {
 
-    Map<String,List<IBuchhaltungListener>> buchhaltungListenerMap;
+    Map<String, List<IBuchhaltungListener>> buchhaltungListenerMap;
 
     RechnungRepository() {
         this.buchhaltungListenerMap = new HashMap<>();
     }
 
     public void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener) {
-        if (buchhaltungListenerMap.containsKey(rechnungsNr)){
-            buchhaltungListenerMap.get(rechnungsNr).add(0,listener);
+        if (buchhaltungListenerMap.containsKey(rechnungsNr)) {
+            buchhaltungListenerMap.get(rechnungsNr).add(0, listener);
         } else {
             List<IBuchhaltungListener> listenerList = new LinkedList<>();
             listenerList.add(listener);
-            buchhaltungListenerMap.put(rechnungsNr,listenerList);
+            buchhaltungListenerMap.put(rechnungsNr, listenerList);
         }
     }
 
@@ -42,9 +40,9 @@ class RechnungRepository {
         Rechnung rechnung = null;
         //TODO: Lese Rechnung aus Datenbank aus.
         rechnung.zahlungseingangHinzufuegen(zahlungseingang);
-        if (rechnung.getIstBezahlt()){
-            if (buchhaltungListenerMap.containsKey(rechnungsNr)){
-                for (IBuchhaltungListener listener : buchhaltungListenerMap.get(rechnungsNr)){
+        if (rechnung.getIstBezahlt()) {
+            if (buchhaltungListenerMap.containsKey(rechnungsNr)) {
+                for (IBuchhaltungListener listener : buchhaltungListenerMap.get(rechnungsNr)) {
                     listener.fuehreAktionAus();
                 }
             }

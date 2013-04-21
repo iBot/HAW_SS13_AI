@@ -1,6 +1,5 @@
 package main.komponenten.buchhaltung;
 
-import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 
 import java.util.List;

@@ -8,5 +8,5 @@ import main.allgemeineTypen.transportTypen.AuftragTyp;
  * Time: 13:06
  */
 public interface ILagerEvent {
-    public void schreibeFuerWarenReserviertEventEin(AuftragTyp auftrag,ILagerListener listener);
+    public void schreibeFuerWarenReserviertEventEin(AuftragTyp auftrag, ILagerListener listener);
 }

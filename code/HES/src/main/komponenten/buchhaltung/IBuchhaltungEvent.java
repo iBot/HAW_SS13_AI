@@ -1,7 +1,5 @@
 package main.komponenten.buchhaltung;
 
-import main.allgemeineTypen.transportTypen.AngebotTyp;
-
 /**
  * User: Tobi
  * Date: 19.04.13

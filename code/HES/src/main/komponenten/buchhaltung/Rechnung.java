@@ -1,11 +1,9 @@
 package main.komponenten.buchhaltung;
 
-import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -79,11 +77,11 @@ class Rechnung {
         this.rechnungsDatum = rechnungsDatum;
     }
 
-    RechnungTyp getRechnungTyp(){
-        return new RechnungTyp(rechnungsNr, istBezahlt,new Date(rechnungsDatum.getTime()));
+    RechnungTyp getRechnungTyp() {
+        return new RechnungTyp(rechnungsNr, istBezahlt, new Date(rechnungsDatum.getTime()));
     }
 
-    void zahlungseingangHinzufuegen(Zahlungseingang zahlungseingang){
+    void zahlungseingangHinzufuegen(Zahlungseingang zahlungseingang) {
         zahlungseingaenge.add(zahlungseingang);
         //TODO: IF (Gesamtpreis des Angebots - (Summe aller ZahlungseingangBeträge) THEN setze istBezahlt = true;
     }

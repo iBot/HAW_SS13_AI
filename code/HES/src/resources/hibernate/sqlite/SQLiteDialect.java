@@ -9,16 +9,11 @@
  */
 package resources.hibernate.sqlite;
 
-import java.sql.Types;
-
 import org.hibernate.dialect.Dialect;
-import org.hibernate.dialect.function.AbstractAnsiTrimEmulationFunction;
-import org.hibernate.dialect.function.NoArgSQLFunction;
-import org.hibernate.dialect.function.SQLFunction;
-import org.hibernate.dialect.function.SQLFunctionTemplate;
-import org.hibernate.dialect.function.StandardSQLFunction;
-import org.hibernate.dialect.function.VarArgsSQLFunction;
+import org.hibernate.dialect.function.*;
 import org.hibernate.type.StandardBasicTypes;
+
+import java.sql.Types;
 
 public class SQLiteDialect extends Dialect {
     public SQLiteDialect() {
