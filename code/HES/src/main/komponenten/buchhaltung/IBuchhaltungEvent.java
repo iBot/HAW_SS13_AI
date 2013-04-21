@@ -8,5 +8,5 @@ import main.allgemeineTypen.transportTypen.AngebotTyp;
  * Time: 12:57
  */
 public interface IBuchhaltungEvent {
-    public void schreibeFuerRechnungBezahltEventEin(AngebotTyp angebot, IBuchhaltungListener listener);
+    public void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener);
 }

@@ -16,6 +16,7 @@ class Kunde {
     }
 
     Kunde(String name, String adresse) {
+        //TODO: eiindeutige KundenNr generieren
         this.name = name;
         this.adresse = adresse;
     }
@@ -63,5 +64,15 @@ class Kunde {
 
     void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Kunde{");
+        sb.append("kundenNr='").append(kundenNr).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", adresse='").append(adresse).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
