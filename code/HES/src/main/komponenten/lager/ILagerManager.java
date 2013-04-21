@@ -1,7 +1,7 @@
 package main.komponenten.lager;
 
 import main.allgemeineTypen.transportTypen.AuftragTyp;
-import main.allgemeineTypen.transportTypen.LieferscheinTyp;
+import main.allgemeineTypen.transportTypen.LieferungTyp;
 
 /**
  * User: Tobi
@@ -9,7 +9,7 @@ import main.allgemeineTypen.transportTypen.LieferscheinTyp;
  * Time: 13:04
  */
 public interface ILagerManager {
-    public void bucheWareneingang(LieferscheinTyp lieferschein);
+    public void bucheWareneingang(LieferungTyp lieferschein);
 
     public void reserviereProdukteFuerAuftrag(AuftragTyp auftrag);
 }

@@ -1,6 +1,7 @@
 package main.komponenten.versand;
 
 import main.allgemeineTypen.transportTypen.AuftragTyp;
+import main.allgemeineTypen.transportTypen.LieferungTyp;
 
 /**
  * User: Tobi
@@ -8,5 +9,7 @@ import main.allgemeineTypen.transportTypen.AuftragTyp;
  * Time: 13:17
  */
 public interface IVersandManager {
-    public void erstelleLieferung(AuftragTyp auftrag);
+    public LieferungTyp erstelleLieferung(AuftragTyp auftrag);
+
+    public LieferungTyp getLieferungZuID(String lieferungNr);
 }

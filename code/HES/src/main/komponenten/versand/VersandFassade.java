@@ -1,6 +1,7 @@
 package main.komponenten.versand;
 
 import main.allgemeineTypen.transportTypen.AuftragTyp;
+import main.allgemeineTypen.transportTypen.LieferungTyp;
 
 /**
  * User: Tobi
@@ -8,8 +9,20 @@ import main.allgemeineTypen.transportTypen.AuftragTyp;
  * Time: 13:53
  */
 public class VersandFassade implements IVersandManager {
+
+    VersandLogik versandLogik;
+
+    public VersandFassade() {
+        this.versandLogik = new VersandLogik();
+    }
+
     @Override
-    public void erstelleLieferung(AuftragTyp auftrag) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public LieferungTyp erstelleLieferung(AuftragTyp auftrag) {
+        return this.versandLogik.erstelleLieferung(auftrag);
+    }
+
+    @Override
+    public LieferungTyp getLieferungZuID(String lieferungNr) {
+        return this.versandLogik.getLieferungZuID(lieferungNr);
     }
 }

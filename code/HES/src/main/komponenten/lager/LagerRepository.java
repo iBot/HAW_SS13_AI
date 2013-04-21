@@ -1,7 +1,7 @@
 package main.komponenten.lager;
 
 import main.allgemeineTypen.transportTypen.AuftragTyp;
-import main.allgemeineTypen.transportTypen.LieferscheinTyp;
+import main.allgemeineTypen.transportTypen.LieferungTyp;
 
 /**
  * User: Tobi
@@ -15,7 +15,7 @@ class LagerRepository implements ILagerManager, ILagerEvent {
     }
 
     @Override
-    public void bucheWareneingang(LieferscheinTyp lieferschein) {
+    public void bucheWareneingang(LieferungTyp lieferschein) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 

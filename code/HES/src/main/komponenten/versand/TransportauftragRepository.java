@@ -6,4 +6,9 @@ package main.komponenten.versand;
  * Time: 13:55
  */
 class TransportauftragRepository {
+    public Transportauftrag erstelleTransportauftrag() {
+        Transportauftrag transportauftrag = new Transportauftrag();
+        //TODO: persistiere Transportauftrag
+        return transportauftrag;
+    }
 }
