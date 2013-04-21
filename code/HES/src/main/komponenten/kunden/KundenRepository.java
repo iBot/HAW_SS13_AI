@@ -15,7 +15,7 @@ class KundenRepository implements IKundenManager {
     }
 
     @Override
-    public KundenTyp getKunde(String kundenID) {
+    public KundenTyp getKundeZuID(String kundenID) {
         Kunde kunde = null;
         //TODO: lese Kunde aus Datenbank
         return kunde.getKundenTyp();

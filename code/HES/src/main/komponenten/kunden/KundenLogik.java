@@ -21,7 +21,7 @@ class KundenLogik implements IKundenManager {
     }
 
     @Override
-    public KundenTyp getKunde(String kundenID) {
-        return this.kundenrepository.getKunde(kundenID);
+    public KundenTyp getKundeZuID(String kundenID) {
+        return this.kundenrepository.getKundeZuID(kundenID);
     }
 }

@@ -10,5 +10,5 @@ import main.allgemeineTypen.transportTypen.KundenTyp;
 interface IKundenManager {
     public void erstelleKunde(KundenTyp kunde);
 
-    public KundenTyp getKunde(String kundenID);
+    public KundenTyp getKundeZuID(String kundenID);
 }

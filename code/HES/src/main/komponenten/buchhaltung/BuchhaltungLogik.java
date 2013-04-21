@@ -39,4 +39,9 @@ class BuchhaltungLogik implements IBuchhaltungManager, IBuchhaltungEvent {
     public List<RechnungTyp> getRechnungenZuKunde(String kundenNr) {
         return rechnungRepository.getRechnungenZuKunde(kundenNr);
     }
+
+    @Override
+    public RechnungTyp getRechnungZuID(String rechnungsNr) {
+        return rechnungRepository.getRechnungZuID(rechnungsNr);
+    }
 }

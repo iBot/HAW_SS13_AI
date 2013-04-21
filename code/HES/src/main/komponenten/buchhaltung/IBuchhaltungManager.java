@@ -15,4 +15,6 @@ public interface IBuchhaltungManager {
     public void zahlungseingangBuchen(double betrag, String rechnungsNr);
 
     public List<RechnungTyp> getRechnungenZuKunde(String kundenNr);
+
+    public RechnungTyp getRechnungZuID(String rechnungsNr);
 }

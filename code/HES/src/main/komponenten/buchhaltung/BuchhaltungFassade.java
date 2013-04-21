@@ -36,4 +36,9 @@ public class BuchhaltungFassade implements IBuchhaltungManager, IBuchhaltungEven
     public List<RechnungTyp> getRechnungenZuKunde(String kundenNr) {
         return buchhaltungLogik.getRechnungenZuKunde(kundenNr);
     }
+
+    @Override
+    public RechnungTyp getRechnungZuID(String rechnungsNr) {
+        return buchhaltungLogik.getRechnungZuID(rechnungsNr);
+    }
 }

@@ -1,13 +1,14 @@
 package main.komponenten.kunden;
 
 import main.allgemeineTypen.transportTypen.KundenTyp;
+import main.technik.persistenzManager.IPersistierbar;
 
 /**
  * User: Tobi
  * Date: 19.04.13
  * Time: 13:33
  */
-class Kunde {
+class Kunde implements IPersistierbar {
     private String kundenNr;
     private String name;
     private String adresse;

@@ -21,7 +21,7 @@ public class KundenFassade implements IKundenManager {
     }
 
     @Override
-    public KundenTyp getKunde(String kundenID) {
-        return kundenLogik.getKunde(kundenID);
+    public KundenTyp getKundeZuID(String kundenID) {
+        return kundenLogik.getKundeZuID(kundenID);
     }
 }

@@ -1,5 +1,7 @@
 package main.komponenten.buchhaltung;
 
+import main.technik.persistenzManager.IPersistierbar;
+
 import java.util.Date;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Date;
  * Date: 19.04.13
  * Time: 13:25
  */
-class Zahlungseingang {
+class Zahlungseingang implements IPersistierbar {
 
     private String zahlungsEingangID;
     private double betrag;

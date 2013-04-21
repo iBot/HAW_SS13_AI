@@ -51,7 +51,13 @@ class RechnungRepository {
 
     public List<RechnungTyp> getRechnungenZuKunde(String kundenNr) {
         List<RechnungTyp> rechnungen = null;
-        //TODO: Lese Rechnungen aus Datenbank aus, getRechnungTypen und füge diese zur liste hinzu
+        //TODO: Lese Rechnungen aus Datenbank aus, iterriere über Rechnungen, getRechnungTyp() und füge diese zur liste hinzu
         return rechnungen;
+    }
+
+    public RechnungTyp getRechnungZuID(String rechnungsNr) {
+        RechnungTyp result = null;
+        //TODO: Lese Rechnung aus Datenbank aus,  getRechnungTyp()
+        return result;
     }
 }

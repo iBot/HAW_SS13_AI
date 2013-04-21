@@ -1,6 +1,7 @@
 package main.komponenten.buchhaltung;
 
 import main.allgemeineTypen.transportTypen.RechnungTyp;
+import main.technik.persistenzManager.IPersistierbar;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.List;
  * Date: 19.04.13
  * Time: 13:25
  */
-class Rechnung {
+class Rechnung implements IPersistierbar {
 
     private List<Zahlungseingang> zahlungseingaenge;
     private String rechnungsNr;
