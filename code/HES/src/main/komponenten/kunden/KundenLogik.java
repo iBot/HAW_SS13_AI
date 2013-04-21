@@ -8,13 +8,20 @@ import main.allgemeineTypen.transportTypen.KundenTyp;
  * Time: 13:32
  */
 class KundenLogik implements IKundenManager {
+
+    KundenRepository kundenrepository;
+
+    KundenLogik(KundenRepository kundenrepository) {
+        this.kundenrepository = kundenrepository;
+    }
+
     @Override
     public void erstelleKunde(KundenTyp kunde) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        this.kundenrepository.erstelleKunde(kunde);
     }
 
     @Override
     public KundenTyp getKunde(String kundenID) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return this.kundenrepository.getKunde(kundenID);
     }
 }

@@ -10,11 +10,14 @@ import main.allgemeineTypen.transportTypen.KundenTyp;
 class KundenRepository implements IKundenManager {
     @Override
     public void erstelleKunde(KundenTyp kunde) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        Kunde result = new Kunde();
+        //TODO: Persisitiere Kunde
     }
 
     @Override
     public KundenTyp getKunde(String kundenID) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        Kunde kunde = null;
+        //TODO: lese Kunde aus Datenbank
+        return kunde.getKundenTyp();
     }
 }
