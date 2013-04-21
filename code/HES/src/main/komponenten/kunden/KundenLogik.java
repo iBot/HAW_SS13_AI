@@ -11,8 +11,8 @@ class KundenLogik implements IKundenManager {
 
     KundenRepository kundenrepository;
 
-    KundenLogik(KundenRepository kundenrepository) {
-        this.kundenrepository = kundenrepository;
+    KundenLogik() {
+        this.kundenrepository = new KundenRepository();
     }
 
     @Override

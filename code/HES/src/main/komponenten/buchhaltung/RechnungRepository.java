@@ -32,9 +32,10 @@ class RechnungRepository {
         }
     }
 
-    public void erstelleRechnung(AuftragTyp auftrag) {
-        Rechnung rechnung = new Rechnung(auftrag);
+    public RechnungTyp erstelleRechnung() {
+        Rechnung rechnung = new Rechnung();
         //TODO: Persistiere Rechnung
+        return rechnung.getRechnungTyp();
     }
 
     public void zahlungseingangBuchen(Zahlungseingang zahlungseingang, String rechnungsNr) {

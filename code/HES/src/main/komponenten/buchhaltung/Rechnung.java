@@ -19,20 +19,15 @@ class Rechnung {
     private String rechnungsNr;
     private boolean istBezahlt;
     private Date rechnungsDatum;
-    private AuftragTyp auftrag;
 
 
-    Rechnung(AuftragTyp auftrag) {
+    Rechnung() {
         this.zahlungseingaenge = new ArrayList<>();
         //TODO: Eindeutige RechnungsNr generieren
         this.istBezahlt = false;
         this.rechnungsDatum = new Date();
-        this.auftrag = auftrag;
     }
 
-    Rechnung() {
-
-    }
 
     List<Zahlungseingang> getZahlungseingaenge() {
         return zahlungseingaenge;

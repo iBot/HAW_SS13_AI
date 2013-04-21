@@ -27,8 +27,8 @@ class BuchhaltungLogik implements IBuchhaltungManager, IBuchhaltungEvent  {
     }
 
     @Override
-    public void erstelleRechnung(AuftragTyp auftrag) {
-        rechnungRepository.erstelleRechnung(auftrag);
+    public RechnungTyp erstelleRechnung() {
+        return rechnungRepository.erstelleRechnung();
     }
 
     @Override

@@ -25,8 +25,8 @@ public class BuchhaltungFassade implements IBuchhaltungManager, IBuchhaltungEven
     }
 
     @Override
-    public void erstelleRechnung(AuftragTyp auftrag) {
-        buchhaltungLogik.erstelleRechnung(auftrag);
+    public RechnungTyp erstelleRechnung() {
+        return buchhaltungLogik.erstelleRechnung();
     }
 
     @Override
