@@ -25,19 +25,30 @@ class Rechnung implements IPersistierbar {
     private boolean istBezahlt;
     private Date rechnungsDatum;
     private String auftragsNr;
+    private int gesamtbetrag;
 
 
-    Rechnung() {
+    Rechnung( int gesamtbetrag) {
         this.rechnungsNr = "RE-"+ UUID.randomUUID();
         this.zahlungseingaenge = new ArrayList<>();
         this.istBezahlt = false;
         this.rechnungsDatum = new Date();
+        this.gesamtbetrag = gesamtbetrag;
+
     }
 
+    private Rechnung() {
+    }
 
     void zahlungseingangHinzufuegen(Zahlungseingang zahlungseingang) {
         zahlungseingaenge.add(zahlungseingang);
-        //TODO: IF (Gesamtpreis des Angebots - (Summe aller ZahlungseingangBeträge) THEN setze istBezahlt = true;
+        int summe = gesamtbetrag;
+        for (Zahlungseingang ze : zahlungseingaenge){
+            summe -= ze.getBetrag();
+        }
+        if (summe<=0){
+            istBezahlt=true;
+        }
     }
 
 

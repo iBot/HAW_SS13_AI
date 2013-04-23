@@ -28,8 +28,8 @@ class RechnungRepository {
         }
     }
 
-    public RechnungTyp erstelleRechnung() {
-        Rechnung rechnung = new Rechnung();
+    public RechnungTyp erstelleRechnung(int gesamtbetrag) {
+        Rechnung rechnung = new Rechnung(gesamtbetrag);
         persistenzManager.create(rechnung);
         return rechnung.getRechnungTyp();
     }
