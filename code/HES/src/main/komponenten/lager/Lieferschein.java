@@ -1,5 +1,7 @@
 package main.komponenten.lager;
 
+import main.technik.persistenzManager.IPersistierbar;
+
 import java.util.UUID;
 
 /**
@@ -9,7 +11,7 @@ import java.util.UUID;
  * Time: 15:43
  * To change this template use File | Settings | File Templates.
  */
-public class Lieferschein {
+public class Lieferschein implements IPersistierbar{
 
     private String lieferscheinNr;
     private int menge;

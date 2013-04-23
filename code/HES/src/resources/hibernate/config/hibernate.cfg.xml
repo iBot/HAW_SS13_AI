@@ -15,7 +15,20 @@
         <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!-- Nachfolgend die zu Mappenden Klassen eintragen, dabei Vollen Namen der klasse, inklusive package eingeben: -->
-        <mapping class="hibernateExample.Student"/>
-
+        <mapping class="main.komponenten.buchhaltung.Rechnung"/>
+        <mapping class="main.komponenten.buchhaltung.Zahlungseingang"/>
+        <mapping class="main.komponenten.einkauf.Bestellung"/>
+        <mapping class="main.komponenten.einkauf.Einkaufsinfosatz"/>
+        <mapping class="main.komponenten.einkauf.Lieferant"/>
+        <mapping class="main.komponenten.einkauf.Orderbuch"/>
+        <mapping class="main.komponenten.einkauf.Orderbuchsatz"/>
+        <mapping class="main.komponenten.kunden.Kunde"/>
+        <mapping class="main.komponenten.lager.Lieferschein"/>
+        <mapping class="main.komponenten.lager.Produkt"/>
+        <mapping class="main.komponenten.lager.Wareneingangsmeldung"/>
+        <mapping class="main.komponenten.verkauf.Angebot"/>
+        <mapping class="main.komponenten.verkauf.Auftrag"/>
+        <mapping class="main.komponenten.versand.Lieferung"/>
+        <mapping class="main.komponenten.versand.Transportauftrag"/>
     </session-factory>
 </hibernate-configuration>
