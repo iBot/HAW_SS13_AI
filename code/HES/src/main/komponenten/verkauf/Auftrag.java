@@ -4,6 +4,7 @@ import main.allgemeineTypen.transportTypen.AngebotTyp;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
@@ -12,13 +13,29 @@ import java.util.UUID;
  * Date: 19.04.13
  * Time: 13:50
  */
+@Entity
+@Table(name = "auftrag")
 class Auftrag implements IPersistierbar {
 
-    private String auftragsNr, angebotsNr;
+    @Id
+    private String auftragsNr;
+
+    @OneToOne
+    @JoinColumn
+    private String angebotsNr;
+
     private boolean istAbgeschlossen;
     private Date beaufragtAm;
 
-    Auftrag() {
+    private Auftrag() {
+    }
+
+    public Auftrag(AngebotTyp angebot) {
+        this.angebotsNr = angebot.getAngebotNr();
+        this.auftragsNr = "AUFT-"+ UUID.randomUUID();
+        this.istAbgeschlossen = false;
+        this.beaufragtAm = new Date();
+
     }
 
     @Override
@@ -80,14 +97,6 @@ class Auftrag implements IPersistierbar {
 
     void setBeaufragtAm(Date beaufragtAm) {
         this.beaufragtAm = beaufragtAm;
-    }
-
-    public Auftrag(AngebotTyp angebot) {
-        this.angebotsNr = angebot.getAngebotNr();
-        this.auftragsNr = "AUFT-"+ UUID.randomUUID();
-        this.istAbgeschlossen = false;
-        this.beaufragtAm = new Date();
-
     }
 
     public AuftragTyp getAuftragTyp() {

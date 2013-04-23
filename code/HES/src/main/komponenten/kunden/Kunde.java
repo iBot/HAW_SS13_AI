@@ -3,26 +3,34 @@ package main.komponenten.kunden;
 import main.allgemeineTypen.transportTypen.KundenTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
+import javax.persistence.*;
+import java.util.UUID;
+
 /**
  * User: Tobi
  * Date: 19.04.13
  * Time: 13:33
  */
+@Entity
+@Table(name = "kunde")
 class Kunde implements IPersistierbar {
+
+    @Id
     private String kundenNr;
+
     private String name;
     private String adresse;
 
-    Kunde() {
+    private Kunde() {
     }
 
-    Kunde(String name, String adresse) {
-        //TODO: eiindeutige KundenNr generieren
+    public Kunde(String name, String adresse) {
+        this.kundenNr = "KUN-"+ UUID.randomUUID();
         this.name = name;
         this.adresse = adresse;
     }
 
-    KundenTyp getKundenTyp() {
+    public KundenTyp getKundenTyp() {
         return new KundenTyp(kundenNr, name, adresse);
     }
 

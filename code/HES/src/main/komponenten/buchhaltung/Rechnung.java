@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * User: Tobi
@@ -20,16 +21,15 @@ class Rechnung implements IPersistierbar {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Zahlungseingang> zahlungseingaenge;
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private String rechnungsNr;  //TODO: Ich bin nicht sicher ob das auto generieren bei einem String funzt
+    private String rechnungsNr;
     private boolean istBezahlt;
     private Date rechnungsDatum;
     private String auftragsNr;
 
 
     Rechnung() {
+        this.rechnungsNr = "RE-"+ UUID.randomUUID();
         this.zahlungseingaenge = new ArrayList<>();
-        //TODO: Eindeutige RechnungsNr generieren
         this.istBezahlt = false;
         this.rechnungsDatum = new Date();
     }

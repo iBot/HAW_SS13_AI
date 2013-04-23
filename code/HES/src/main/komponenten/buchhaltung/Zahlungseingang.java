@@ -4,6 +4,7 @@ import main.technik.persistenzManager.IPersistierbar;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * User: Tobi
@@ -15,13 +16,12 @@ import java.util.Date;
 class Zahlungseingang implements IPersistierbar {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private String zahlungsEingangID;
     private double betrag;
     private Date eingangsdatum;
 
     public Zahlungseingang(double betrag) {
-        //TODO: Autogenerierte zahlungseingangsID
+        this.zahlungsEingangID = "ZAHLEIN-"+ UUID.randomUUID();
         this.betrag = betrag;
         this.eingangsdatum = new Date();
     }

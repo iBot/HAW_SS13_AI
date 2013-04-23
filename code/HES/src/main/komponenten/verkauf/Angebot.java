@@ -4,6 +4,7 @@ import main.allgemeineTypen.transportTypen.AngebotTyp;
 import main.allgemeineTypen.transportTypen.ProduktTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,10 +15,32 @@ import java.util.UUID;
  * Date: 19.04.13
  * Time: 13:50
  */
+@Entity
+@Table(name = "angebot")
 class Angebot implements IPersistierbar {
-    private String angebotNr, kundenNr;
+
+    @Id
+    private String angebotNr;
+
+    @ManyToOne
+    @JoinColumn
+    private String kundenNr; //TODO: weiß nicht ob das geht. :) nen Test ist es wert
+
     private Date gueltigBis, gueltigAb;
     private Map<ProduktTyp, Integer> produktListe;
+
+
+    public Angebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe) {
+        this.angebotNr = "ANG-" + UUID.randomUUID();
+        this.kundenNr = kundenNr;
+        this.gueltigAb = gueltigAb;
+        this.gueltigBis = gueltigBis;
+        this.produktListe = new HashMap<>(produktListe);
+    }
+
+    private Angebot() {
+
+    }
 
     String getAngebotNr() {
         return angebotNr;
@@ -59,10 +82,6 @@ class Angebot implements IPersistierbar {
         this.produktListe = produktListe;
     }
 
-    Angebot() {
-
-    }
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Angebot{");
@@ -92,13 +111,6 @@ class Angebot implements IPersistierbar {
         return angebotNr.hashCode();
     }
 
-    public Angebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe) {
-        this.angebotNr = "ANG-" + UUID.randomUUID();
-        this.kundenNr = kundenNr;
-        this.gueltigAb = gueltigAb;
-        this.gueltigBis = gueltigBis;
-        this.produktListe = new HashMap<>(produktListe);
-    }
 
     public AngebotTyp getAngebotTyp() {
         return new AngebotTyp(angebotNr, kundenNr, new Date(gueltigBis.getTime()), new Date(gueltigAb.getTime()), new HashMap<>(produktListe));
