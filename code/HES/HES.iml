@@ -19,9 +19,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module" module-name="test1" />
-    <orderEntry type="module" module-name="main3" />
-    <orderEntry type="module" module-name="main6" />
   </component>
 </module>
 

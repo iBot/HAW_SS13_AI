@@ -3,8 +3,7 @@ package main.komponenten.buchhaltung;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,13 +14,17 @@ import java.util.List;
  * Time: 13:25
  */
 @Entity
-@Table(name = "buch")
+@Table(name = "rechnung")
 class Rechnung implements IPersistierbar {
 
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Zahlungseingang> zahlungseingaenge;
-    private String rechnungsNr;
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private String rechnungsNr;  //TODO: Ich bin nicht sicher ob das auto generieren bei einem String funzt
     private boolean istBezahlt;
     private Date rechnungsDatum;
+    private String auftragsNr;
 
 
     Rechnung() {
@@ -54,6 +57,14 @@ class Rechnung implements IPersistierbar {
 
     void setIstBezahlt(boolean istBezahlt) {
         this.istBezahlt = istBezahlt;
+    }
+
+    String getAuftragsNr() {
+        return auftragsNr;
+    }
+
+    void setAuftragsNr(String auftragsNr){
+        this.auftragsNr = auftragsNr;
     }
 
     @Override

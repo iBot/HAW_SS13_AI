@@ -2,6 +2,7 @@ package main.komponenten.buchhaltung;
 
 import main.technik.persistenzManager.IPersistierbar;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -9,8 +10,12 @@ import java.util.Date;
  * Date: 19.04.13
  * Time: 13:25
  */
+@Entity
+@Table(name = "zahlungseingang")
 class Zahlungseingang implements IPersistierbar {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private String zahlungsEingangID;
     private double betrag;
     private Date eingangsdatum;
