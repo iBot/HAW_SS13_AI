@@ -2,6 +2,9 @@ package main.komponenten.versand;
 
 import main.technik.persistenzManager.IPersistierbar;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.UUID;
 
@@ -10,14 +13,17 @@ import java.util.UUID;
  * Date: 19.04.13
  * Time: 13:55
  */
+@Entity
+@Table(name = "transportauftrag")
 class Transportauftrag implements IPersistierbar {
 
-    private String transportAuftragNr, transportDienstleister;
+    @Id
+    private String transportAuftragNr;
+    private String transportDienstleister;
     private Date ausgangsDatum, lieferDatum;
 
 
     Transportauftrag() {
-        //TODO: Autogenerate lieferungNr;
         this.transportAuftragNr = "TraAuft-"+ UUID.randomUUID();
         this.ausgangsDatum = new Date();
 

@@ -42,6 +42,12 @@ class Angebot implements IPersistierbar {
 
     }
 
+
+    public AngebotTyp getAngebotTyp() {
+        return new AngebotTyp(angebotNr, kundenNr, new Date(gueltigBis.getTime()), new Date(gueltigAb.getTime()), new HashMap<>(produktListe));
+    }
+
+
     String getAngebotNr() {
         return angebotNr;
     }
@@ -111,8 +117,4 @@ class Angebot implements IPersistierbar {
         return angebotNr.hashCode();
     }
 
-
-    public AngebotTyp getAngebotTyp() {
-        return new AngebotTyp(angebotNr, kundenNr, new Date(gueltigBis.getTime()), new Date(gueltigAb.getTime()), new HashMap<>(produktListe));
-    }
 }
