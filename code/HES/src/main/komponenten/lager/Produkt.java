@@ -90,7 +90,7 @@ class Produkt implements IPersistierbar {
         this.lagerbestand -= menge;
     }
 
-    public ProduktTyp getProduktTyp() {
+    public ProduktTyp holeProduktTyp() {
         return new ProduktTyp(produktNr,name,lagerbestand);
     }
 }

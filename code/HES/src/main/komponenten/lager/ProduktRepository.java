@@ -1,7 +1,6 @@
 package main.komponenten.lager;
 
 import main.allgemeineTypen.transportTypen.*;
-import main.komponenten.buchhaltung.IBuchhaltungListener;
 import main.technik.persistenzManager.PersistenzManager;
 
 import java.util.LinkedList;
@@ -42,9 +41,9 @@ class ProduktRepository {
     }
 
     public void reserviereProdukteFuerAuftrag(AuftragTyp auftrag, AngebotTyp angebot) {
-        Map<ProduktTyp, Integer> produkte = angebot.getProduktListe();
-        for (Map.Entry<ProduktTyp, Integer> entry : produkte.entrySet() ){
-            Produkt p = persistenzManager.access(Produkt.class, entry.getKey().getProduktNr());
+        Map<String, Integer> produkte = angebot.getProduktListe();
+        for (Map.Entry<String, Integer> entry : produkte.entrySet() ){
+            Produkt p = persistenzManager.access(Produkt.class, entry.getKey());
             p.verringereLagerbestand(entry.getValue());
             persistenzManager.update(p);
         }
@@ -54,6 +53,6 @@ class ProduktRepository {
 
     public ProduktTyp getProduktZuID(String produktNr) {
         Produkt produkt = persistenzManager.access(Produkt.class, produktNr);
-        return produkt.getProduktTyp();
+        return produkt.holeProduktTyp();
     }
 }

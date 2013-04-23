@@ -14,7 +14,7 @@ import java.util.Map;
  * Time: 13:15
  */
 public interface IVerkaufManager {
-    public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe);
+    public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe);
 
     public AuftragTyp erstelleAuftrag(AngebotTyp angebot);
 

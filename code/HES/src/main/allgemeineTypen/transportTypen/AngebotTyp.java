@@ -13,7 +13,7 @@ import java.util.UUID;
 public class AngebotTyp {
     private String angebotNr, kundenNr;
     private Date gueltigBis, gueltigAb;
-    private Map<ProduktTyp, Integer> produktListe;
+    private Map<String, Integer> produktListe;
 
     @Override
     public String toString() {
@@ -86,22 +86,22 @@ public class AngebotTyp {
         this.gueltigAb = gueltigAb;
     }
 
-    public Map<ProduktTyp, Integer> getProduktListe() {
+    public Map<String, Integer> getProduktListe() {
         return produktListe;
     }
 
-    public void setProduktListe(Map<ProduktTyp, Integer> produktListe) {
+    public void setProduktListe(Map<String, Integer> produktListe) {
         this.produktListe = produktListe;
     }
 
-    public AngebotTyp(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe) {
+    public AngebotTyp(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe) {
         this.kundenNr = kundenNr;
         this.gueltigAb = gueltigAb;
         this.gueltigBis = gueltigBis;
         this.produktListe = new HashMap<>(produktListe);
     }
 
-    public AngebotTyp(String angebotNr, String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe) {
+    public AngebotTyp(String angebotNr, String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe) {
         this.angebotNr = angebotNr;
         this.kundenNr = kundenNr;
         this.gueltigAb = gueltigAb;

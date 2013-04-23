@@ -19,7 +19,7 @@ class AngebotLogik {
         this.angebotRepository = new AngebotRepository();
     }
 
-    public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp,Integer> produktListe) {
+    public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String,Integer> produktListe) {
         return this.angebotRepository.erstelleAngebot(kundenNr, gueltigBis, gueltigAb, produktListe);
     }
 

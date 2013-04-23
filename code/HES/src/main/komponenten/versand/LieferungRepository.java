@@ -16,16 +16,16 @@ class LieferungRepository {
     public LieferungTyp erstelleLieferung(AuftragTyp auftrag) {
         Lieferung lieferung = new Lieferung(auftrag);
         persistenzManager.create(lieferung);
-        return lieferung.getLieferungTyp();
+        return lieferung.holeLieferungTyp();
     }
     public LieferungTyp erstelleLieferung(AuftragTyp auftrag, Transportauftrag transportauftrag) {
         Lieferung lieferung = new Lieferung(auftrag,transportauftrag);
         persistenzManager.create(lieferung);
-        return lieferung.getLieferungTyp();
+        return lieferung.holeLieferungTyp();
     }
 
     public LieferungTyp getLieferungZuID(String lieferungNr) {
         Lieferung lieferung = persistenzManager.access(Lieferung.class, lieferungNr);
-        return  lieferung.getLieferungTyp();
+        return  lieferung.holeLieferungTyp();
     }
 }

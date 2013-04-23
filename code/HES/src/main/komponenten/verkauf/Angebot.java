@@ -27,12 +27,11 @@ class Angebot implements IPersistierbar {
 
     private Date gueltigBis, gueltigAb;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @MapKey(name = "produkt")
-    private Map<ProduktTyp, Integer> produktListe;
+    @ElementCollection
+    private Map<String, Integer> produktListe;
 
 
-    public Angebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe) {
+    public Angebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe) {
         this.angebotNr = "ANG-" + UUID.randomUUID();
         this.kundenNr = kundenNr;
         this.gueltigAb = gueltigAb;
@@ -83,11 +82,11 @@ class Angebot implements IPersistierbar {
     }
 
 
-    private Map<ProduktTyp, Integer> getProduktListe() {
+    private Map<String, Integer> getProduktListe() {
         return produktListe;
     }
 
-    private void setProduktListe(Map<ProduktTyp, Integer> produktListe) {
+    private void setProduktListe(Map<String, Integer> produktListe) {
         this.produktListe = produktListe;
     }
 

@@ -4,9 +4,7 @@ import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.LieferungTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 /**
@@ -19,7 +17,11 @@ import java.util.UUID;
 class Lieferung implements IPersistierbar {
 
     private String lieferungNr;
+
+    @OneToOne
+    @JoinColumn(name = "transportAuftragNr")
     private Transportauftrag transportauftrag;
+
     private AuftragTyp auftrag;
 
 
@@ -33,7 +35,7 @@ class Lieferung implements IPersistierbar {
     }
 
 
-    public LieferungTyp getLieferungTyp(){
+    public LieferungTyp holeLieferungTyp(){
         String taNr = null;
         if (transportauftrag!=null){
             taNr = transportauftrag.getTransportAuftragNr();
