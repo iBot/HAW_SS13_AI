@@ -14,13 +14,31 @@ import java.util.Map;
  * Time: 13:48
  */
 public class VerkaufFassade implements IVerkaufManager {
+    private AngebotLogik angebotLogik;
+    private AuftragLogik auftragLogik;
+
+    public VerkaufFassade() {
+        this.angebotLogik = new AngebotLogik();
+        this.auftragLogik = new AuftragLogik();
+    }
+
     @Override
-    public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe, KundenTyp kunde) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe) {
+        return angebotLogik.erstelleAngebot(kundenNr, gueltigBis, gueltigAb, produktListe);
     }
 
     @Override
     public AuftragTyp erstelleAuftrag(AngebotTyp angebot) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return auftragLogik.erstelleAuftrag(angebot);
+    }
+
+    @Override
+    public AuftragTyp getAuftragZuID(String auftragsNr) {
+        return auftragLogik.getAuftragZuID(auftragsNr);
+    }
+
+    @Override
+    public AngebotTyp getAngebotZuID(String angebotNr) {
+        return angebotLogik.getAngebotZuID(angebotNr);
     }
 }
