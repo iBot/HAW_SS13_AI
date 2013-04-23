@@ -86,7 +86,7 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
-    public static Query returnQuery(String queryString)
+    public Query returnQuery(String queryString)
     {
         Session session = InitSessionFactory.getInstance().getCurrentSession();
         Transaction tx = session.beginTransaction();
