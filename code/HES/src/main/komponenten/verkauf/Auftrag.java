@@ -1,6 +1,11 @@
 package main.komponenten.verkauf;
 
+import main.allgemeineTypen.transportTypen.AngebotTyp;
+import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.technik.persistenzManager.IPersistierbar;
+
+import java.util.Date;
+import java.util.UUID;
 
 /**
  * User: Tobi
@@ -8,4 +13,84 @@ import main.technik.persistenzManager.IPersistierbar;
  * Time: 13:50
  */
 class Auftrag implements IPersistierbar {
+
+    private String auftragsNr, angebotsNr;
+    private boolean istAbgeschlossen;
+    private Date beaufragtAm;
+
+    Auftrag() {
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Auftrag{");
+        sb.append("auftragsNr='").append(auftragsNr).append('\'');
+        sb.append(", angebotsNr='").append(angebotsNr).append('\'');
+        sb.append(", istAbgeschlossen=").append(istAbgeschlossen);
+        sb.append(", beaufragtAm=").append(beaufragtAm);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Auftrag auftrag = (Auftrag) o;
+
+        if (!auftragsNr.equals(auftrag.auftragsNr)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return auftragsNr.hashCode();
+    }
+
+    String getAuftragsNr() {
+
+        return auftragsNr;
+    }
+
+    void setAuftragsNr(String auftragsNr) {
+        this.auftragsNr = auftragsNr;
+    }
+
+    String getAngebotsNr() {
+        return angebotsNr;
+    }
+
+    void setAngebotsNr(String angebotsNr) {
+        this.angebotsNr = angebotsNr;
+    }
+
+    boolean isIstAbgeschlossen() {
+        return istAbgeschlossen;
+    }
+
+    void setIstAbgeschlossen(boolean istAbgeschlossen) {
+        this.istAbgeschlossen = istAbgeschlossen;
+    }
+
+    Date getBeaufragtAm() {
+        return beaufragtAm;
+    }
+
+    void setBeaufragtAm(Date beaufragtAm) {
+        this.beaufragtAm = beaufragtAm;
+    }
+
+    public Auftrag(AngebotTyp angebot) {
+        this.angebotsNr = angebot.getAngebotNr();
+        this.auftragsNr = "AUFT-"+ UUID.randomUUID();
+        this.istAbgeschlossen = false;
+        this.beaufragtAm = new Date();
+
+    }
+
+    public AuftragTyp getAuftragTyp() {
+        return new AuftragTyp(auftragsNr, angebotsNr, istAbgeschlossen, new Date(beaufragtAm.getTime()));
+    }
 }
