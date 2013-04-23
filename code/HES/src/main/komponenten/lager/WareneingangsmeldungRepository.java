@@ -1,6 +1,7 @@
 package main.komponenten.lager;
 
 import main.allgemeineTypen.transportTypen.WareneingangsmeldungTyp;
+import main.technik.persistenzManager.PersistenzManager;
 
 import java.util.Date;
 
@@ -12,9 +13,11 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 class WareneingangsmeldungRepository {
+
+    PersistenzManager persistenzManager = PersistenzManager.getInstance();
+
     public WareneingangsmeldungTyp getWareneingangsmeldungZuID(String wareneingangsmeldungsNr) {
-       Wareneingangsmeldung wareneingangsmeldung = null;
-       //TODO: Lese Wareneingangsmeldung aus Datenbank
+       Wareneingangsmeldung wareneingangsmeldung = persistenzManager.access(Wareneingangsmeldung.class, wareneingangsmeldungsNr);
        return wareneingangsmeldung.getWareneingangsmeldungTyp();
     }
 

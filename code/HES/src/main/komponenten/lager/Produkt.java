@@ -4,12 +4,16 @@ import main.allgemeineTypen.transportTypen.ProduktTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
 import java.util.UUID;
+import javax.persistence.*;
 
 /**
  * User: Tobi
  * Date: 19.04.13
  * Time: 13:39
  */
+
+@Entity
+@Table(name = "produkt")
 class Produkt implements IPersistierbar {
 
     String produktNr;
@@ -26,6 +30,7 @@ class Produkt implements IPersistierbar {
         return sb.toString();
     }
 
+    @Id
     String getProduktNr() {
         return produktNr;
     }

@@ -2,6 +2,7 @@ package main.komponenten.lager;
 
 import main.allgemeineTypen.transportTypen.*;
 import main.komponenten.buchhaltung.IBuchhaltungListener;
+import main.technik.persistenzManager.PersistenzManager;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.Map;
 class ProduktRepository {
 
     Map<String, List<ILagerListener>> lagerListenerMap;
+    PersistenzManager persistenzManager = PersistenzManager.getInstance();
 
     public void schreibeFuerWarenReserviertEventEin(AuftragTyp auftrag, ILagerListener listener) {
         String auftragsNr = auftrag.getAuftragsNr();
@@ -28,10 +30,9 @@ class ProduktRepository {
     }
 
     public void bucheWareneingang(LieferscheinTyp lieferschein) {
-        Produkt produkt = null;
-        //TODO: Lese Produkt aus Datenbank: lieferschein.getProduktNr()
+        Produkt produkt = persistenzManager.access(Produkt.class, lieferschein.getProduktNr());
         produkt.erhoeheLagerbestand(lieferschein.getMenge());
-        //TODO: Persistiere produkt
+        persistenzManager.update(produkt);
 
         if (lagerListenerMap.containsKey(lieferschein.getProduktNr())){
             for (ILagerListener  listener : lagerListenerMap.get(lieferschein.getProduktNr())){
@@ -43,18 +44,16 @@ class ProduktRepository {
     public void reserviereProdukteFuerAuftrag(AuftragTyp auftrag, AngebotTyp angebot) {
         Map<ProduktTyp, Integer> produkte = angebot.getProduktListe();
         for (Map.Entry<ProduktTyp, Integer> entry : produkte.entrySet() ){
-            Produkt p = null;
-            //TODO: Lese Produkt aus Datenbank: entry.getKey().getProduktNr();
+            Produkt p = persistenzManager.access(Produkt.class, entry.getKey().getProduktNr());
             p.verringereLagerbestand(entry.getValue());
-            //TODO: Persistiere Produkt
+            persistenzManager.update(p);
         }
 
     }
 
 
     public ProduktTyp getProduktZuID(String produktNr) {
-        Produkt produkt = null;
-        //TODO: Lese Produkt aus Datenbank aus.
+        Produkt produkt = persistenzManager.access(Produkt.class, produktNr);
         return produkt.getProduktTyp();
     }
 }

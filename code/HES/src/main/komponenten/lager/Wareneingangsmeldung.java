@@ -3,6 +3,9 @@ package main.komponenten.lager;
 import main.allgemeineTypen.transportTypen.WareneingangsmeldungTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.UUID;
 
@@ -11,6 +14,8 @@ import java.util.UUID;
  * Date: 19.04.13
  * Time: 13:39
  */
+@Entity
+@Table(name = "wareneingangsmeldung")
 class Wareneingangsmeldung implements IPersistierbar {
 
     String wareneingsmeldungNr;
@@ -30,6 +35,7 @@ class Wareneingangsmeldung implements IPersistierbar {
         return new WareneingangsmeldungTyp(wareneingsmeldungNr, lieferscheinNr, new Date(datum.getTime()));
     }
 
+    @Id
     String getWareneingsmeldungNr() {
         return wareneingsmeldungNr;
     }

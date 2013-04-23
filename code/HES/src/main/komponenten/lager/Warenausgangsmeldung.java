@@ -2,6 +2,7 @@ package main.komponenten.lager;
 
 import main.technik.persistenzManager.IPersistierbar;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
@@ -10,6 +11,8 @@ import java.util.UUID;
  * Date: 19.04.13
  * Time: 13:39
  */
+@Entity
+@Table(name = "warenausgangsmeldung")
 class Warenausgangsmeldung implements IPersistierbar {
     String warenausgangsmeldungsNr;
     Date datum;
@@ -24,6 +27,7 @@ class Warenausgangsmeldung implements IPersistierbar {
         this.menge = menge;
     }
 
+    @Id
     public String getWarenausgangsmeldungsNr() {
         return warenausgangsmeldungsNr;
     }
