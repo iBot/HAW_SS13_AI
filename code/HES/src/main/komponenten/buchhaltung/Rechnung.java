@@ -3,6 +3,8 @@ package main.komponenten.buchhaltung;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +14,8 @@ import java.util.List;
  * Date: 19.04.13
  * Time: 13:25
  */
+@Entity
+@Table(name = "buch")
 class Rechnung implements IPersistierbar {
 
     private List<Zahlungseingang> zahlungseingaenge;

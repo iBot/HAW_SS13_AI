@@ -1,11 +1,9 @@
 package main.komponenten.buchhaltung;
 
 import main.allgemeineTypen.transportTypen.RechnungTyp;
+import main.technik.persistenzManager.PersistenzManager;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * User: Tobi
@@ -15,9 +13,9 @@ import java.util.Map;
 class RechnungRepository {
 
     Map<String, List<IBuchhaltungListener>> buchhaltungListenerMap;
-
+    PersistenzManager persistenzManager = PersistenzManager.getInstance();
     RechnungRepository() {
-        this.buchhaltungListenerMap = new HashMap<>();
+        this.buchhaltungListenerMap = new HashMap<String, List<IBuchhaltungListener>>();
     }
 
     public void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener) {
@@ -32,14 +30,15 @@ class RechnungRepository {
 
     public RechnungTyp erstelleRechnung() {
         Rechnung rechnung = new Rechnung();
-        //TODO: Persistiere Rechnung
+        persistenzManager.create(rechnung);
         return rechnung.getRechnungTyp();
     }
 
     public void zahlungseingangBuchen(Zahlungseingang zahlungseingang, String rechnungsNr) {
         Rechnung rechnung = null;
-        //TODO: Lese Rechnung aus Datenbank aus.
         rechnung.zahlungseingangHinzufuegen(zahlungseingang);
+        persistenzManager.update(rechnung);
+
         if (rechnung.getIstBezahlt()) {
             if (buchhaltungListenerMap.containsKey(rechnungsNr)) {
                 for (IBuchhaltungListener listener : buchhaltungListenerMap.get(rechnungsNr)) {
@@ -50,14 +49,17 @@ class RechnungRepository {
     }
 
     public List<RechnungTyp> getRechnungenZuKunde(String kundenNr) {
-        List<RechnungTyp> rechnungen = null;
-        //TODO: Lese Rechnungen aus Datenbank aus, iterriere über Rechnungen, getRechnungTyp() und füge diese zur liste hinzu
-        return rechnungen;
+        List<RechnungTyp> transportRechnungen = null;
+        List<Rechnung> rechnungen = persistenzManager.returnQuery("from Rechnung where Rechnung.KundenNr = "+kundenNr).list();
+        for(Rechnung r : rechnungen)
+        {
+            transportRechnungen.add(r.getRechnungTyp());
+        }
+        return transportRechnungen;
     }
 
     public RechnungTyp getRechnungZuID(String rechnungsNr) {
-        RechnungTyp result = null;
-        //TODO: Lese Rechnung aus Datenbank aus,  getRechnungTyp()
-        return result;
+        Rechnung rechnung = persistenzManager.access(Rechnung.class, rechnungsNr);
+        return rechnung.getRechnungTyp();
     }
 }

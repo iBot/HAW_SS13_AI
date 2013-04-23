@@ -1,9 +1,6 @@
 package main.technik.persistenzManager;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.service.ServiceRegistry;
 
 import java.io.Serializable;
@@ -18,21 +15,25 @@ public class PersistenzManager  implements IPersistenzManager{
 
     private static SessionFactory sessionFactory = null;
     private static ServiceRegistry serviceRegistry = null;
+    private static PersistenzManager persistenzManager = null;
 
-    public PersistenzManager(){
+    private PersistenzManager(){
 
     }
 
     @Override
     public <T> T access(Class<T> cls, Serializable id) {
-
-        Session session = InitSessionFactory.getInstance().getCurrentSession();
-        Transaction tx = session.beginTransaction();
-        T entity = (T)session.load(cls, id);
-        tx.commit();
-
+        T entity = null;
+        try {
+            Session session = InitSessionFactory.getInstance().getCurrentSession();
+            Transaction tx = session.beginTransaction();
+            entity = (T)session.load(cls, id);
+            tx.commit();
+        }
+        catch (RuntimeException e) {
+            exceptionHandling(e);
+        }
         return entity;
-
     }
 
 //    @Override
@@ -47,11 +48,15 @@ public class PersistenzManager  implements IPersistenzManager{
 
     @Override
     public <T> void create(T entity) {
+        try {
             Session session = InitSessionFactory.getInstance().getCurrentSession();
             Transaction tx = session.beginTransaction();
             session.save(entity);
             tx.commit();
-
+        }
+        catch (RuntimeException e) {
+            exceptionHandling(e);
+        }
     }
 
     @Override
@@ -62,9 +67,8 @@ public class PersistenzManager  implements IPersistenzManager{
             session.delete(entity);
             tx.commit();
         }
-        catch(HibernateException e)
-        {
-
+        catch (RuntimeException e) {
+            exceptionHandling(e);
         }
     }
 
@@ -76,10 +80,42 @@ public class PersistenzManager  implements IPersistenzManager{
             session.update(entity);
             tx.commit();
         }
-        catch(HibernateException e)
-        {
+        catch (RuntimeException e) {
+            exceptionHandling(e);
+        }
+    }
+
+    @Override
+    public static Query returnQuery(String queryString)
+    {
+        Session session = InitSessionFactory.getInstance().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        Query query = session.createQuery(queryString);
+        session.flush();
+        session.clear();
+        tx.commit();
+
+        return query;
+    }
+
+    private static void exceptionHandling(Exception e)
+    {
+        try {
+            Session session = InitSessionFactory.getInstance()
+                    .getCurrentSession();
+            if (session.getTransaction().isActive())
+                session.getTransaction().rollback();
+        } catch (HibernateException e1) {
 
         }
     }
+
+    public static PersistenzManager getInstance()
+    {
+        if(persistenzManager == null)
+            persistenzManager = new PersistenzManager();
+        return persistenzManager;
+    }
+
 
 }

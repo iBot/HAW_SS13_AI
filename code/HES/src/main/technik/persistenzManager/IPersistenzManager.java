@@ -1,5 +1,7 @@
 package main.technik.persistenzManager;
 
+import org.hibernate.Query;
+
 import java.io.Serializable;
 
 /**
@@ -22,5 +24,7 @@ public interface IPersistenzManager {
 
         /// Verändert einen Referenztyp in der Persistenz.
         <T> void update(T entity);
+
+    Query returnQuery(String queryString);
 }
 
