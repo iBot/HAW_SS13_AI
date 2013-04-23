@@ -28,6 +28,8 @@ public class PersistenzManager  implements IPersistenzManager{
             Session session = InitSessionFactory.getInstance().getCurrentSession();
             Transaction tx = session.beginTransaction();
             entity = (T)session.get(cls, id);
+
+            session.flush();
             tx.commit();
         }
         catch (RuntimeException e) {
@@ -50,10 +52,11 @@ public class PersistenzManager  implements IPersistenzManager{
     public <T> void create(T entity) {
         try {
             SessionFactory sessionFactory = InitSessionFactory.getInstance();
-            Session session = sessionFactory.getCurrentSession();
-            System.out.print("Session: " +session == null);
+            Session session = sessionFactory.openSession();
+            System.out.print("Session: " + session);
             Transaction tx = session.beginTransaction();
             session.save(entity);
+            session.flush();
             tx.commit();
         }
         catch (RuntimeException e) {
@@ -67,6 +70,8 @@ public class PersistenzManager  implements IPersistenzManager{
             Session session = InitSessionFactory.getInstance().getCurrentSession();
             Transaction tx = session.beginTransaction();
             session.delete(entity);
+
+            session.flush();
             tx.commit();
         }
         catch (RuntimeException e) {
@@ -80,6 +85,8 @@ public class PersistenzManager  implements IPersistenzManager{
             Session session = InitSessionFactory.getInstance().getCurrentSession();
             Transaction tx = session.beginTransaction();
             session.update(entity);
+
+            session.flush();
             tx.commit();
         }
         catch (RuntimeException e) {
@@ -108,7 +115,7 @@ public class PersistenzManager  implements IPersistenzManager{
             if (session.getTransaction().isActive())
                 session.getTransaction().rollback();
         } catch (HibernateException e1) {
-
+            throw e1;
         }
     }
 

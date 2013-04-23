@@ -5,6 +5,7 @@ import main.allgemeineTypen.transportTypen.LieferungTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.UUID;
 
@@ -70,6 +71,7 @@ class Lieferung implements IPersistierbar {
         return lieferungNr.hashCode();
     }
 
+    @Id
     String getLieferungNr() {
 
         return lieferungNr;

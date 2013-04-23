@@ -30,9 +30,10 @@ public class InitSessionFactory {
             if (sessionFactory == null){
                 Configuration cfg = new
                         Configuration();
-                cfg.configure("/data/Studium/AI/HAW_SS13_AI/code/HES/src/resources/hibernate/config/hibernate.cfg.xml");
+                cfg.configure();
                 serviceRegistry = new ServiceRegistryBuilder().applySettings(cfg.getProperties()).buildServiceRegistry();
                 sessionFactory = cfg.buildSessionFactory(serviceRegistry);
+
             }
 
             return sessionFactory;

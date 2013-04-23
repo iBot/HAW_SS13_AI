@@ -22,11 +22,13 @@ class Angebot implements IPersistierbar {
     @Id
     private String angebotNr;
 
-    @ManyToOne
-    @JoinColumn
-    private String kundenNr; //TODO: weiß nicht ob das geht. :) nen Test ist es wert
+
+    private String kundenNr;
 
     private Date gueltigBis, gueltigAb;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @MapKey(name = "produkt")
     private Map<ProduktTyp, Integer> produktListe;
 
 
@@ -79,6 +81,7 @@ class Angebot implements IPersistierbar {
     private void setGueltigAb(Date gueltigAb) {
         this.gueltigAb = gueltigAb;
     }
+
 
     private Map<ProduktTyp, Integer> getProduktListe() {
         return produktListe;
