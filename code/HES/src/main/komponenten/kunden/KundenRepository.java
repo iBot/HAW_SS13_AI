@@ -1,6 +1,7 @@
 package main.komponenten.kunden;
 
 import main.allgemeineTypen.transportTypen.KundenTyp;
+import main.technik.persistenzManager.PersistenzManager;
 
 /**
  * User: Tobi
@@ -8,16 +9,18 @@ import main.allgemeineTypen.transportTypen.KundenTyp;
  * Time: 13:33
  */
 class KundenRepository implements IKundenManager {
+
+    PersistenzManager persistenzManager = PersistenzManager.getInstance();
+
     @Override
     public void erstelleKunde(KundenTyp kunde) {
-        Kunde result = new Kunde();
-        //TODO: Persisitiere Kunde
+        Kunde neuerKunde = new Kunde(kunde.getName(), kunde.getAdresse());
+        persistenzManager.create(neuerKunde);
     }
 
     @Override
     public KundenTyp getKundeZuID(String kundenID) {
-        Kunde kunde = null;
-        //TODO: lese Kunde aus Datenbank
+        Kunde kunde = persistenzManager.access(Kunde.class, kundenID);
         return kunde.getKundenTyp();
     }
 }

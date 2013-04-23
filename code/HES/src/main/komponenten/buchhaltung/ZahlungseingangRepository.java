@@ -1,5 +1,7 @@
 package main.komponenten.buchhaltung;
 
+import main.technik.persistenzManager.PersistenzManager;
+
 /**
  * Created with IntelliJ IDEA.
  * User: tobi
@@ -8,9 +10,12 @@ package main.komponenten.buchhaltung;
  * To change this template use File | Settings | File Templates.
  */
 public class ZahlungseingangRepository {
+
+    PersistenzManager persistenzManager = PersistenzManager.getInstance();
+
     public Zahlungseingang erstelleZahlungseingang(double betrag) {
         Zahlungseingang zahlungseingang = new Zahlungseingang(betrag);
-        //TODO: Persistiere Zahlungseingang
+        persistenzManager.create(zahlungseingang);
         return zahlungseingang;
     }
 }

@@ -38,34 +38,6 @@ class Auftrag implements IPersistierbar {
 
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Auftrag{");
-        sb.append("auftragsNr='").append(auftragsNr).append('\'');
-        sb.append(", angebotsNr='").append(angebotsNr).append('\'');
-        sb.append(", istAbgeschlossen=").append(istAbgeschlossen);
-        sb.append(", beaufragtAm=").append(beaufragtAm);
-        sb.append('}');
-        return sb.toString();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Auftrag auftrag = (Auftrag) o;
-
-        if (!auftragsNr.equals(auftrag.auftragsNr)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return auftragsNr.hashCode();
-    }
-
     String getAuftragsNr() {
 
         return auftragsNr;
@@ -101,5 +73,33 @@ class Auftrag implements IPersistierbar {
 
     public AuftragTyp getAuftragTyp() {
         return new AuftragTyp(auftragsNr, angebotsNr, istAbgeschlossen, new Date(beaufragtAm.getTime()));
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Auftrag{");
+        sb.append("auftragsNr='").append(auftragsNr).append('\'');
+        sb.append(", angebotsNr='").append(angebotsNr).append('\'');
+        sb.append(", istAbgeschlossen=").append(istAbgeschlossen);
+        sb.append(", beaufragtAm=").append(beaufragtAm);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Auftrag auftrag = (Auftrag) o;
+
+        if (!auftragsNr.equals(auftrag.auftragsNr)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return auftragsNr.hashCode();
     }
 }

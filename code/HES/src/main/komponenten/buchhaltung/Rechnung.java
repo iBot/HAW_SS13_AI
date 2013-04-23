@@ -35,6 +35,12 @@ class Rechnung implements IPersistierbar {
     }
 
 
+    void zahlungseingangHinzufuegen(Zahlungseingang zahlungseingang) {
+        zahlungseingaenge.add(zahlungseingang);
+        //TODO: IF (Gesamtpreis des Angebots - (Summe aller ZahlungseingangBeträge) THEN setze istBezahlt = true;
+    }
+
+
     List<Zahlungseingang> getZahlungseingaenge() {
         return zahlungseingaenge;
     }
@@ -79,11 +85,6 @@ class Rechnung implements IPersistierbar {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        return rechnungsNr.hashCode();
-    }
-
     Date getRechnungsDatum() {
 
         return rechnungsDatum;
@@ -97,10 +98,6 @@ class Rechnung implements IPersistierbar {
         return new RechnungTyp(rechnungsNr, istBezahlt, new Date(rechnungsDatum.getTime()));
     }
 
-    void zahlungseingangHinzufuegen(Zahlungseingang zahlungseingang) {
-        zahlungseingaenge.add(zahlungseingang);
-        //TODO: IF (Gesamtpreis des Angebots - (Summe aller ZahlungseingangBeträge) THEN setze istBezahlt = true;
-    }
 
     @Override
     public String toString() {
@@ -111,4 +108,10 @@ class Rechnung implements IPersistierbar {
         sb.append('}');
         return sb.toString();
     }
+
+    @Override
+    public int hashCode() {
+        return rechnungsNr.hashCode();
+    }
+
 }

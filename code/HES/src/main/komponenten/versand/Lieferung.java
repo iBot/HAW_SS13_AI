@@ -4,6 +4,8 @@ import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.LieferungTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.UUID;
 
 /**
@@ -11,6 +13,8 @@ import java.util.UUID;
  * Date: 19.04.13
  * Time: 13:54
  */
+@Entity
+@Table(name = "lieferung")
 class Lieferung implements IPersistierbar {
 
     private String lieferungNr;

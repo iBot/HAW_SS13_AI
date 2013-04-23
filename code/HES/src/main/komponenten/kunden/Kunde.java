@@ -21,6 +21,7 @@ class Kunde implements IPersistierbar {
     private String name;
     private String adresse;
 
+
     private Kunde() {
     }
 
@@ -30,25 +31,9 @@ class Kunde implements IPersistierbar {
         this.adresse = adresse;
     }
 
+
     public KundenTyp getKundenTyp() {
         return new KundenTyp(kundenNr, name, adresse);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Kunde kunde = (Kunde) o;
-
-        if (!kundenNr.equals(kunde.kundenNr)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return kundenNr.hashCode();
     }
 
     String getKundenNr() {
@@ -84,4 +69,22 @@ class Kunde implements IPersistierbar {
         sb.append('}');
         return sb.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Kunde kunde = (Kunde) o;
+
+        if (!kundenNr.equals(kunde.kundenNr)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return kundenNr.hashCode();
+    }
+
 }
