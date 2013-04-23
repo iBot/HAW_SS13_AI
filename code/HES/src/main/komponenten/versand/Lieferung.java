@@ -45,7 +45,6 @@ class Lieferung implements IPersistierbar {
 
     Lieferung(AuftragTyp auftrag) {
         this.auftrag = auftrag;
-        //TODO: Autogenerate lieferungNr;
         lieferungNr = "LIEFERUNG-"+ UUID.randomUUID();
     }
 
