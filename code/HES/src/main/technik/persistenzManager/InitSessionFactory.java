@@ -20,13 +20,21 @@ public class InitSessionFactory {
         private InitSessionFactory() {
         }
         static {
-            final Configuration cfg = new
-                    Configuration();
-            cfg.configure();
-            serviceRegistry = new ServiceRegistryBuilder().applySettings(cfg.getProperties()).buildServiceRegistry();
-            sessionFactory = cfg.buildSessionFactory(serviceRegistry);
+//            Configuration cfg = new
+//                    Configuration();
+//            cfg.configure("/data/Studium/AI/HAW_SS13_AI/code/HES/src/resources/hibernate/config/hibernate.cfg.xml");
+//            serviceRegistry = new ServiceRegistryBuilder().applySettings(cfg.getProperties()).buildServiceRegistry();
+//            sessionFactory = cfg.buildSessionFactory(serviceRegistry);
         }
         public static SessionFactory getInstance() {
+            if (sessionFactory == null){
+                Configuration cfg = new
+                        Configuration();
+                cfg.configure("/data/Studium/AI/HAW_SS13_AI/code/HES/src/resources/hibernate/config/hibernate.cfg.xml");
+                serviceRegistry = new ServiceRegistryBuilder().applySettings(cfg.getProperties()).buildServiceRegistry();
+                sessionFactory = cfg.buildSessionFactory(serviceRegistry);
+            }
+
             return sessionFactory;
         }
 
