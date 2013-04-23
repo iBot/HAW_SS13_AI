@@ -18,7 +18,7 @@ import java.util.UUID;
 @Table(name = "rechnung")
 class Rechnung implements IPersistierbar {
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Zahlungseingang> zahlungseingaenge;
     @Id
     private String rechnungsNr;

@@ -16,13 +16,13 @@ import java.util.UUID;
 @Table(name = "lieferung")
 class Lieferung implements IPersistierbar {
 
+    @Id
     private String lieferungNr;
 
-    @OneToOne
-    @JoinColumn(name = "transportAuftragNr")
+    @OneToOne(cascade = CascadeType.ALL)
     private Transportauftrag transportauftrag;
 
-    private AuftragTyp auftrag;
+    private String auftragsNr;
 
 
 
@@ -47,7 +47,7 @@ class Lieferung implements IPersistierbar {
     }
 
     Lieferung(AuftragTyp auftrag) {
-        this.auftrag = auftrag;
+        this.auftragsNr = auftrag.getAuftragsNr();
         lieferungNr = "LIEFERUNG-"+ UUID.randomUUID();
     }
 
@@ -73,7 +73,6 @@ class Lieferung implements IPersistierbar {
         return lieferungNr.hashCode();
     }
 
-    @Id
     String getLieferungNr() {
 
         return lieferungNr;
