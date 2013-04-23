@@ -2,6 +2,9 @@ package main.komponenten.lager;
 
 import main.technik.persistenzManager.IPersistierbar;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
 
 /**
@@ -11,6 +14,8 @@ import java.util.UUID;
  * Time: 15:43
  * To change this template use File | Settings | File Templates.
  */
+@Entity
+@Table(name = "lieferschein")
 public class Lieferschein implements IPersistierbar{
 
     private String lieferscheinNr;
@@ -65,6 +70,7 @@ public class Lieferschein implements IPersistierbar{
         this.menge = menge;
     }
 
+    @Id
     public String getLieferscheinNr() {
         return lieferscheinNr;
     }
