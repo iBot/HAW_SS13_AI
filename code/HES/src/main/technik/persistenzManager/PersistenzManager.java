@@ -7,14 +7,13 @@ import org.hibernate.Transaction;
 import org.hibernate.service.ServiceRegistry;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
  * User: milena
  *
  */
-public class PersistenzManager <T, I extends Serializable> implements IPersistenzManager{
+public class PersistenzManager  implements IPersistenzManager{
 
 
     private static SessionFactory sessionFactory = null;
@@ -25,45 +24,38 @@ public class PersistenzManager <T, I extends Serializable> implements IPersisten
     }
 
     @Override
-    public T GetById(Class<T> cls, I id) {
-       try {
-           Session session = InitSessionFactory.getInstance().getCurrentSession();
-           return (T)session.load(cls, id);
-       }
-       catch(HibernateException e)
-       {
-           return null;
-       }
+    public <T> T access(Class<T> cls, Serializable id) {
+
+        Session session = InitSessionFactory.getInstance().getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        T entity = (T)session.load(cls, id);
+        tx.commit();
+
+        return entity;
+
     }
 
-    @Override
-    public <T> List<T> GetAll(Class<T> cls) {
-        try {
-            Session session = InitSessionFactory.getInstance().getCurrentSession();
-            return session.createQuery("from "+cls.getName()).list();
-        }
-        catch(HibernateException e)
-        {
-            return null;
-        }
-    }
+//    @Override
+//    public <T> List<T> getAll(Class<T> cls) {
+//        Session session = InitSessionFactory.getInstance().getCurrentSession();
+//        Transaction tx = session.beginTransaction();
+//        List<T> list = session.createQuery("from "+cls.getName()).list();
+//        tx.commit();
+//
+//        return list;
+//    }
 
     @Override
-    public <T> void Save(T entity) {
-        try {
+    public <T> void create(T entity) {
             Session session = InitSessionFactory.getInstance().getCurrentSession();
             Transaction tx = session.beginTransaction();
-            session.saveOrUpdate(entity);
+            session.save(entity);
             tx.commit();
-        }
-        catch(HibernateException e)
-        {
 
-        }
     }
 
     @Override
-    public <T> void Delete(T entity) {
+    public <T> void delete(T entity) {
         try {
             Session session = InitSessionFactory.getInstance().getCurrentSession();
             Transaction tx = session.beginTransaction();
@@ -75,4 +67,19 @@ public class PersistenzManager <T, I extends Serializable> implements IPersisten
 
         }
     }
+
+    @Override
+    public <T> void update(T entity) {
+        try {
+            Session session = InitSessionFactory.getInstance().getCurrentSession();
+            Transaction tx = session.beginTransaction();
+            session.update(entity);
+            tx.commit();
+        }
+        catch(HibernateException e)
+        {
+
+        }
+    }
+
 }
