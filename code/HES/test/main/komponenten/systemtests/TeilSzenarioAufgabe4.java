@@ -46,7 +46,8 @@ public class TeilSzenarioAufgabe4 {
         verkauf = new VerkaufFassade();
         lager = new LagerFassade();
         produktListe = new ArrayList<>();
-        //TODO: Produkte zur Liste hinzufügen
+        produktListe.add(lager.erstelleProdukt("Batmobil"));
+        produktListe.add(lager.erstelleProdukt("BatutilityBag"));
         versand = new VersandFassade();
     }
 
@@ -59,7 +60,7 @@ public class TeilSzenarioAufgabe4 {
         AngebotTyp angebot = verkauf.erstelleAngebot(derKunde.getKundenNr(), new Date(new Date().getTime() + 24l * 60 * 60 * 1000 * 7), new Date(), produkte);
         AuftragTyp auftragTyp = verkauf.erstelleAuftrag(angebot);
         wareVorhande = false;
-        lager.schreibeFuerWarenReserviertEventEin(auftragTyp, new ILagerListener() {
+        lager.schreibeFuerWarenReserviertEventEin(angebot, new ILagerListener() {
             @Override
             public void fuehreAktionAus() {
                 wareVorhande = true;

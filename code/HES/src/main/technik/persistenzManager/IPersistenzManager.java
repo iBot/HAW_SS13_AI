@@ -26,7 +26,7 @@ public interface IPersistenzManager {
         /// Verändert einen Referenztyp in der Persistenz.
         <T> void update(T entity) throws Exception;
 
-        <T> List<T> getAllByQuery(T entity, String query);
+     List getAllByQuery(String query);
 
         Query returnQuery(String queryString);
 }

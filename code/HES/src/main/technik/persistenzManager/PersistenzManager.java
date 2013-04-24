@@ -99,20 +99,20 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
-    public <T> List<T> getAllByQuery(T entity, String query) {
-        List<T> result = null;
-//                try {
-//            Session session = InitSessionFactory.getInstance().openSession();
-//            Transaction tx = session.beginTransaction();
-//            result = session.createQuery(query).list();
-//
-//            session.flush();
-//            tx.commit();
-//            session.close();
-//        }
-//        catch (RuntimeException e) {
-//            exceptionHandling(e);
-//        }
+    public List getAllByQuery(String query) {
+        List result = null;
+                try {
+            Session session = InitSessionFactory.getInstance().openSession();
+            Transaction tx = session.beginTransaction();
+            result = session.createQuery(query).list();
+
+            session.flush();
+            tx.commit();
+            session.close();
+        }
+        catch (RuntimeException e) {
+            exceptionHandling(e);
+        }
         return result;
     }
 

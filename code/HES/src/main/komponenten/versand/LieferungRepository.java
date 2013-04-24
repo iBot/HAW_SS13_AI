@@ -34,7 +34,7 @@ class LieferungRepository {
 
     public List<LieferungTyp> holeAlleLieferungenZuAuftrag(AuftragTyp auftrag) {
         String query = "from Lieferung where auftragsNr = '"+auftrag.getAuftragsNr()+"'";
-        List<Lieferung> lieferungen = persistenzManager.returnQuery(query).list();
+        List<Lieferung> lieferungen = persistenzManager.getAllByQuery(query);
         List<LieferungTyp> result = new ArrayList<>();
         for (Lieferung lieferung :lieferungen ){
             result.add(lieferung.holeLieferungTyp());
