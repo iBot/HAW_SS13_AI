@@ -14,16 +14,16 @@ import java.io.Serializable;
 public interface IPersistenzManager {
 
         /// Liefert eine Instanz des Typs T.
-        <T> T access(Class<T> cls, Serializable id);
+        <T> T access(Class<T> cls, Serializable id) throws Exception;
 
         /// Speichert einen Referenztyp in der Persistenz.
-        <T> void create(T entity);
+        <T> void create(T entity) throws Exception;
 
         /// Löscht eine gegebene Instanz aus der Persistenz.
-        <T> void delete(T entity);
+        <T> void delete(T entity) throws Exception;
 
         /// Verändert einen Referenztyp in der Persistenz.
-        <T> void update(T entity);
+        <T> void update(T entity) throws Exception;
 
     Query returnQuery(String queryString);
 }

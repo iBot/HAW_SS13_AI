@@ -13,9 +13,10 @@ class KundenRepository implements IKundenManager {
     PersistenzManager persistenzManager = PersistenzManager.getInstance();
 
     @Override
-    public void erstelleKunde(KundenTyp kunde) {
+    public KundenTyp erstelleKunde(KundenTyp kunde) {
         Kunde neuerKunde = new Kunde(kunde.getName(), kunde.getAdresse());
         persistenzManager.create(neuerKunde);
+        return neuerKunde.getKundenTyp();
     }
 
     @Override
