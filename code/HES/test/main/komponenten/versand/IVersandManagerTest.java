@@ -44,6 +44,7 @@ public class IVersandManagerTest {
         LieferungTyp lieferung1 = versandManager.erstelleLieferung(auftragTyp);
         LieferungTyp lieferung2 = versandManager.erstelleLieferung(auftragTyp);
         List<LieferungTyp> lieferungen = versandManager.holeAlleLieferungenZuAuftrag(auftragTyp);
+        System.out.print(">>>>>>>>>>>>"+lieferungen);
         assertTrue(lieferungen.size()==2);
     }
 }

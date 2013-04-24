@@ -69,6 +69,7 @@ class Lieferung implements IPersistierbar {
     Lieferung(AuftragTyp auftrag) {
         this.auftragsNr = auftrag.getAuftragsNr();
         lieferungNr = "LIEFERUNG-"+ UUID.randomUUID();
+        lieferungErfolgt = true;
     }
 
     public Lieferung(AuftragTyp auftrag, Transportauftrag transportauftrag) {

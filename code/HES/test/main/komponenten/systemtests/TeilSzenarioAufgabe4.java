@@ -1,10 +1,7 @@
 package main.komponenten.systemtests;
 
 import junit.framework.Assert;
-import main.allgemeineTypen.transportTypen.AngebotTyp;
-import main.allgemeineTypen.transportTypen.AuftragTyp;
-import main.allgemeineTypen.transportTypen.KundenTyp;
-import main.allgemeineTypen.transportTypen.ProduktTyp;
+import main.allgemeineTypen.transportTypen.*;
 import main.komponenten.kunden.IKundenManager;
 import main.komponenten.kunden.IKundenManagerTest;
 import main.komponenten.kunden.KundenFassade;
@@ -19,6 +16,8 @@ import org.junit.Test;
 
 import java.util.*;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -71,6 +70,12 @@ public class TeilSzenarioAufgabe4 {
         }
         assertTrue("Ware vorhanden",wareVorhande);
 
-
+        versand.erstelleLieferung(auftragTyp);
+        List<LieferungTyp> lieferungen = versand.holeAlleLieferungenZuAuftrag(auftragTyp);
+        System.out.print(lieferungen);
+        for (LieferungTyp lieferung : lieferungen){
+            System.out.println("Lieferung erfolgt? " + lieferung.getLieferungErfolgt());
+            assertTrue("Lieferung erfolgt", lieferung.getLieferungErfolgt());
+        }
     }
 }

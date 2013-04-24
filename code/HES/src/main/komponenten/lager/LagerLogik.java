@@ -16,6 +16,12 @@ class LagerLogik {
     private WarenausgangsmeldungRepository warenausgangsmeldungRepository;
     private WareneingangsmeldungRepository wareneingangsmeldungRepository;
 
+    LagerLogik() {
+        this.produktRepository = new ProduktRepository();
+        this.warenausgangsmeldungRepository = new WarenausgangsmeldungRepository();
+        this.wareneingangsmeldungRepository = new WareneingangsmeldungRepository();
+    }
+
     public void schreibeFuerWarenReserviertEventEin(AngebotTyp angebot, ILagerListener listener) {
         boolean wareDa = true;
         Map<String, Integer> produktListe = angebot.getProduktListe();
@@ -32,6 +38,7 @@ class LagerLogik {
     }
 
     public ProduktTyp erstelleProdukt(String produktName) {
+        System.out.println(">>>>>>>>>>>>>>>"+produktRepository);
         return produktRepository.erstelleProdukt(produktName);
     }
 
