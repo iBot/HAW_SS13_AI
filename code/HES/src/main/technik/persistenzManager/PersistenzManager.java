@@ -1,7 +1,6 @@
 package main.technik.persistenzManager;
 
 import org.hibernate.*;
-import org.hibernate.service.ServiceRegistry;
 
 import java.io.Serializable;
 
@@ -22,7 +21,7 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
-    public <T> T access(Class<T> cls, Serializable id) {
+    public <T> T access(Class<T> cls, Serializable id){
         T entity = null;
         try {
             Session session = InitSessionFactory.getInstance().openSession();
@@ -50,7 +49,7 @@ public class PersistenzManager  implements IPersistenzManager{
 //    }
 
     @Override
-    public <T> void create(T entity) {
+    public <T> void create(T entity){
         try {
             SessionFactory sessionFactory = InitSessionFactory.getInstance();
             Session session = sessionFactory.openSession();
@@ -67,7 +66,7 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
-    public <T> void delete(T entity) {
+    public <T> void delete(T entity){
         try {
             Session session = InitSessionFactory.getInstance().openSession();
             Transaction tx = session.beginTransaction();
@@ -83,7 +82,7 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
-    public <T> void update(T entity) {
+    public <T> void update(T entity){
         try {
             Session session = InitSessionFactory.getInstance().openSession();
             Transaction tx = session.beginTransaction();
@@ -111,8 +110,7 @@ public class PersistenzManager  implements IPersistenzManager{
         return query;
     }
 
-    private static void exceptionHandling(Exception e)
-    {
+    private static void exceptionHandling(Exception e) {
         try {
             Session session = InitSessionFactory.getInstance().getCurrentSession();
             if (session.getTransaction().isActive())

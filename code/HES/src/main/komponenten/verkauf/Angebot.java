@@ -27,7 +27,7 @@ class Angebot implements IPersistierbar {
 
     private Date gueltigBis, gueltigAb;
 
-    @ElementCollection
+    @ElementCollection( fetch = FetchType.EAGER)
     private Map<String, Integer> produktListe;
 
 

@@ -16,8 +16,8 @@ class KundenLogik implements IKundenManager {
     }
 
     @Override
-    public void erstelleKunde(KundenTyp kunde) {
-        this.kundenrepository.erstelleKunde(kunde);
+    public KundenTyp erstelleKunde(KundenTyp kunde) {
+        return this.kundenrepository.erstelleKunde(kunde);
     }
 
     @Override
