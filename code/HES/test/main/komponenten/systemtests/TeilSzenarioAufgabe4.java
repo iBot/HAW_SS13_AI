@@ -84,5 +84,7 @@ public class TeilSzenarioAufgabe4 {
         RechnungTyp rechnung = buchhaltung.erstelleRechnung(100, auftragTyp);
         RechnungTyp ausgeleseneRechnung = buchhaltung.getRechnungZuID(rechnung.getRechnungsNr());
         assertEquals("Rechnung gehört zu Auftrag: ", auftragTyp.getAuftragsNr(), ausgeleseneRechnung.getAuftragsNr());
+
+        AuftragTyp abgeschlossenerAuftrag = verkauf.getAuftragZuID(auftragTyp.getAuftragsNr());
     }
 }

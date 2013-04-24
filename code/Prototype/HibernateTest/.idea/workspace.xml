@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d827305-bcd6-4f5f-9d98-df9a01adff20" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/technik/persistenzManager/IPersistenzManager.java" afterPath="$PROJECT_DIR$/../../HES/src/main/technik/persistenzManager/IPersistenzManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/test/main/technik/persistenzManager/IPersistenzManagerTest.java" afterPath="$PROJECT_DIR$/../../HES/test/main/technik/persistenzManager/IPersistenzManagerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/LieferungRepository.java" afterPath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/LieferungRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/technik/persistenzManager/PersistenzManager.java" afterPath="$PROJECT_DIR$/../../HES/src/main/technik/persistenzManager/PersistenzManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/test/main/komponenten/systemtests/TeilSzenarioAufgabe4.java" afterPath="$PROJECT_DIR$/../../HES/test/main/komponenten/systemtests/TeilSzenarioAufgabe4.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HibernateHelloWorld.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/fragment.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366793291071" ignored="false" />
-    <file path="/Dummy.txt" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366795291038" ignored="false" />
+    <file path="/Dummy.txt" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798416605" ignored="false" />
     <file path="/Contact.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364746439600" ignored="false" />
     <file path="/Notenkonto.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364751968385" ignored="false" />
     <file path="/Student.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364752585740" ignored="false" />
@@ -23,7 +19,7 @@
     <file path="/hibernate.cfg.xml" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366786411077" ignored="false" />
     <file path="/PersistenzManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366793111367" ignored="false" />
     <file path="/InitSessionFactory.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366745593813" ignored="false" />
-    <file path="/Lieferung.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792422833" ignored="false" />
+    <file path="/Lieferung.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366797169049" ignored="false" />
     <file path="/Wareneingangsmeldung.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366746611862" ignored="false" />
     <file path="/Angebot.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366748603013" ignored="false" />
     <file path="/AngebotTyp.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366748550092" ignored="false" />
@@ -33,12 +29,12 @@
     <file path="/VerkaufFassade.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366748699909" ignored="false" />
     <file path="/IVerkaufManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366748724484" ignored="false" />
     <file path="/Produkt.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366748797866" ignored="false" />
-    <file path="/Rechnung.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366786643449" ignored="false" />
+    <file path="/Rechnung.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798113730" ignored="false" />
     <file path="/IPersistenzManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366787132656" ignored="false" />
-    <file path="/RechnungDummy.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366787082856" ignored="false" />
-    <file path="/IBuchhaltungManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366788257861" ignored="false" />
+    <file path="/RechnungDummy.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798268470" ignored="false" />
+    <file path="/IBuchhaltungManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798367501" ignored="false" />
     <file path="/IVerkaufManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366789304031" ignored="false" />
-    <file path="/TeilSzenarioAufgabe4.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366795939162" ignored="false" />
+    <file path="/TeilSzenarioAufgabe4.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798551741" ignored="false" />
     <file path="/IKundenManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366790332323" ignored="false" />
     <file path="/LieferungTyp.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792329599" ignored="false" />
     <file path="/IVersandManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792583422" ignored="false" />
@@ -46,8 +42,13 @@
     <file path="/VersandLogik.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792628806" ignored="false" />
     <file path="/LieferungRepository.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366795650322" ignored="false" />
     <file path="/IPersistenzManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792930729" ignored="false" />
-    <file path="/IVersandManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366794216566" ignored="false" />
-    <file path="$PROJECT_DIR$/../../HES/test/main/komponenten/versand/IVersandManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366796020234" ignored="false" />
+    <file path="/IVersandManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366796861215" ignored="false" />
+    <file path="/LagerLogik.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366796615127" ignored="false" />
+    <file path="/RechnungRepository.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366797625719" ignored="false" />
+    <file path="/BuchhaltungLogik.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366797685887" ignored="false" />
+    <file path="/BuchhaltungFassade.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366797710623" ignored="false" />
+    <file path="/RechnungTyp.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798000818" ignored="false" />
+    <file path="/IBuchhaltungEventTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798224971" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -527,7 +528,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="743" extended-state="0" />
+    <frame x="0" y="0" width="1366" height="743" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.49557522" order="7" side_tool="false" content_ui="tabs" />
