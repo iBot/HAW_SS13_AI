@@ -3,6 +3,7 @@ package main.technik.persistenzManager;
 import org.hibernate.Query;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,6 +26,8 @@ public interface IPersistenzManager {
         /// Verändert einen Referenztyp in der Persistenz.
         <T> void update(T entity) throws Exception;
 
-    Query returnQuery(String queryString);
+        <T> List<T> getAllByQuery(T entity, String query);
+
+        Query returnQuery(String queryString);
 }
 

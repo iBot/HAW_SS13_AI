@@ -3,6 +3,7 @@ package main.technik.persistenzManager;
 import org.hibernate.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -95,6 +96,24 @@ public class PersistenzManager  implements IPersistenzManager{
         catch (RuntimeException e) {
             exceptionHandling(e);
         }
+    }
+
+    @Override
+    public <T> List<T> getAllByQuery(T entity, String query) {
+        List<T> result = null;
+//                try {
+//            Session session = InitSessionFactory.getInstance().openSession();
+//            Transaction tx = session.beginTransaction();
+//            result = session.createQuery(query).list();
+//
+//            session.flush();
+//            tx.commit();
+//            session.close();
+//        }
+//        catch (RuntimeException e) {
+//            exceptionHandling(e);
+//        }
+        return result;
     }
 
     @Override

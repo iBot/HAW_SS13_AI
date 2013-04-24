@@ -24,12 +24,32 @@ class Lieferung implements IPersistierbar {
 
     private String auftragsNr;
 
+    boolean getLieferungErfolgt() {
+        return lieferungErfolgt;
+    }
+
+    void setLieferungErfolgt(boolean lieferungErfolgt) {
+        this.lieferungErfolgt = lieferungErfolgt;
+    }
+
+    String getAuftragsNr() {
+        return auftragsNr;
+    }
+
+    void setAuftragsNr(String auftragsNr) {
+        this.auftragsNr = auftragsNr;
+    }
+
+    boolean lieferungErfolgt;
 
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Lieferung{");
         sb.append("lieferungNr='").append(lieferungNr).append('\'');
+        sb.append(", transportauftrag=").append(transportauftrag);
+        sb.append(", auftragsNr='").append(auftragsNr).append('\'');
+        sb.append(", lieferungErfolgt=").append(lieferungErfolgt);
         sb.append('}');
         return sb.toString();
     }
@@ -40,7 +60,7 @@ class Lieferung implements IPersistierbar {
         if (transportauftrag!=null){
             taNr = transportauftrag.getTransportAuftragNr();
         }
-        return new LieferungTyp(lieferungNr,taNr);
+        return new LieferungTyp(lieferungNr,taNr,lieferungErfolgt);
     }
 
     Lieferung() {

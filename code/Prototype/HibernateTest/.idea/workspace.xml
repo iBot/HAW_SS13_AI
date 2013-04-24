@@ -2,12 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d827305-bcd6-4f5f-9d98-df9a01adff20" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../HES/test/main/komponenten/systemtests/TeilSzenarioAufgabe4.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/komponenten/kunden/IKundenManager.java" afterPath="$PROJECT_DIR$/../../HES/src/main/komponenten/kunden/IKundenManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/technik/persistenzManager/IPersistenzManager.java" afterPath="$PROJECT_DIR$/../../HES/src/main/technik/persistenzManager/IPersistenzManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/IVersandManager.java" afterPath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/IVersandManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/test/main/komponenten/versand/IVersandManagerTest.java" afterPath="$PROJECT_DIR$/../../HES/test/main/komponenten/versand/IVersandManagerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/Lieferung.java" afterPath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/Lieferung.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/LieferungRepository.java" afterPath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/LieferungRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/allgemeineTypen/transportTypen/LieferungTyp.java" afterPath="$PROJECT_DIR$/../../HES/src/main/allgemeineTypen/transportTypen/LieferungTyp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/technik/persistenzManager/PersistenzManager.java" afterPath="$PROJECT_DIR$/../../HES/src/main/technik/persistenzManager/PersistenzManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/VersandFassade.java" afterPath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/VersandFassade.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/VersandLogik.java" afterPath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/VersandLogik.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HibernateHelloWorld.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/fragment.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366785634724" ignored="false" />
-    <file path="/Dummy.txt" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366789539811" ignored="false" />
+    <file path="/fragment.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366793291071" ignored="false" />
+    <file path="/Dummy.txt" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366795285864" ignored="false" />
     <file path="/Contact.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364746439600" ignored="false" />
     <file path="/Notenkonto.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364751968385" ignored="false" />
     <file path="/Student.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364752585740" ignored="false" />
@@ -16,9 +27,9 @@
     <file path="/App.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364752315389" ignored="false" />
     <file path="/a.dummy" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364751247357" ignored="false" />
     <file path="/hibernate.cfg.xml" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366786411077" ignored="false" />
-    <file path="/PersistenzManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366750546849" ignored="false" />
+    <file path="/PersistenzManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366793111367" ignored="false" />
     <file path="/InitSessionFactory.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366745593813" ignored="false" />
-    <file path="/Lieferung.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366750329794" ignored="false" />
+    <file path="/Lieferung.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792422833" ignored="false" />
     <file path="/Wareneingangsmeldung.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366746611862" ignored="false" />
     <file path="/Angebot.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366748603013" ignored="false" />
     <file path="/AngebotTyp.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366748550092" ignored="false" />
@@ -33,6 +44,15 @@
     <file path="/RechnungDummy.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366787082856" ignored="false" />
     <file path="/IBuchhaltungManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366788257861" ignored="false" />
     <file path="/IVerkaufManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366789304031" ignored="false" />
+    <file path="/TeilSzenarioAufgabe4.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792024042" ignored="false" />
+    <file path="/IKundenManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366790332323" ignored="false" />
+    <file path="/LieferungTyp.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792329599" ignored="false" />
+    <file path="/IVersandManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792583422" ignored="false" />
+    <file path="/VersandFassade.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366793508734" ignored="false" />
+    <file path="/VersandLogik.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792628806" ignored="false" />
+    <file path="/LieferungRepository.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366793958853" ignored="false" />
+    <file path="/IPersistenzManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792930729" ignored="false" />
+    <file path="/IVersandManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366794216566" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +67,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -84,6 +103,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -102,10 +122,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Kurs.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Kurs.java">
+      <file leaf-file-name="App.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0">
+            <state line="142" column="55" selection-start="4561" selection-end="4561" vertical-scroll-proportion="0.02640845">
               <folding />
             </state>
           </provider>
@@ -120,10 +140,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Student.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Student.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Student.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="5" selection-start="1754" selection-end="1754" vertical-scroll-proportion="0.46306306">
+            <state line="78" column="5" selection-start="1754" selection-end="1754" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -138,10 +158,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/App.java">
+      <file leaf-file-name="Kurs.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Kurs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="13" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
+            <state line="11" column="13" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -188,9 +208,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-3" />
-    <option name="width" value="1372" />
-    <option name="height" value="745" />
+    <option name="width" value="1366" />
+    <option name="height" value="743" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -218,6 +237,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -316,7 +336,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -513,8 +532,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3" y="0" width="1372" height="745" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="0" width="1366" height="743" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.49557522" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="SQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5651214" sideWeight="0.49786553" order="7" side_tool="false" content_ui="tabs" />
@@ -530,7 +549,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17575757" sideWeight="0.6732892" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17503805" sideWeight="0.6732892" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32671082" sideWeight="0.6622198" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="100" width="756" height="855" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -668,23 +687,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HibernateTest.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="1625" selection-end="1625" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Persistable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="17" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -712,7 +717,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Student.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="5" selection-start="1754" selection-end="1754" vertical-scroll-proportion="0.46306306">
+        <state line="78" column="5" selection-start="1754" selection-end="1754" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HibernateTest.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="1625" selection-end="1625" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="142" column="55" selection-start="4561" selection-end="4561" vertical-scroll-proportion="0.02640845">
           <folding />
         </state>
       </provider>

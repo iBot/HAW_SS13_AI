@@ -4,6 +4,9 @@ import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.LieferungTyp;
 import main.technik.persistenzManager.PersistenzManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * User: Tobi
  * Date: 19.04.13
@@ -27,5 +30,15 @@ class LieferungRepository {
     public LieferungTyp getLieferungZuID(String lieferungNr) {
         Lieferung lieferung = persistenzManager.access(Lieferung.class, lieferungNr);
         return  lieferung.holeLieferungTyp();
+    }
+
+    public List<LieferungTyp> holeAlleLieferungenZuAuftrag(AuftragTyp auftrag) {
+        String query = "from Lieferung where auftragsNr = '"+auftrag.getAuftragsNr()+"'";
+        List<Lieferung> lieferungen = persistenzManager.returnQuery(query).list();
+        List<LieferungTyp> result = new ArrayList<>();
+        for (Lieferung lieferung :lieferungen ){
+            result.add(lieferung.holeLieferungTyp());
+        }
+        return result;
     }
 }

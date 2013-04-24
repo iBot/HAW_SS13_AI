@@ -9,9 +9,20 @@ public class LieferungTyp {
 
    String lieferungNr, transportauftragNr;
 
-    public LieferungTyp(String lieferungNr, String transportauftragNr) {
+    public boolean getLieferungErfolgt() {
+        return lieferungErfolgt;
+    }
+
+    public void setLieferungErfolgt(boolean lieferungErfolgt) {
+        this.lieferungErfolgt = lieferungErfolgt;
+    }
+
+    boolean lieferungErfolgt;
+
+    public LieferungTyp(String lieferungNr, String transportauftragNr, boolean lieferungErfolgt) {
         this.lieferungNr = lieferungNr;
         this.transportauftragNr = transportauftragNr;
+        this.lieferungErfolgt = lieferungErfolgt;
     }
 
     public String getLieferungNr() {
@@ -31,12 +42,23 @@ public class LieferungTyp {
     }
 
     @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("LieferungTyp{");
+        sb.append("lieferungNr='").append(lieferungNr).append('\'');
+        sb.append(", transportauftragNr='").append(transportauftragNr).append('\'');
+        sb.append(", lieferungErfolgt=").append(lieferungErfolgt);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         LieferungTyp that = (LieferungTyp) o;
 
+        if (lieferungErfolgt != that.lieferungErfolgt) return false;
         if (lieferungNr != null ? !lieferungNr.equals(that.lieferungNr) : that.lieferungNr != null) return false;
         if (transportauftragNr != null ? !transportauftragNr.equals(that.transportauftragNr) : that.transportauftragNr != null)
             return false;
@@ -48,15 +70,7 @@ public class LieferungTyp {
     public int hashCode() {
         int result = lieferungNr != null ? lieferungNr.hashCode() : 0;
         result = 31 * result + (transportauftragNr != null ? transportauftragNr.hashCode() : 0);
+        result = 31 * result + (lieferungErfolgt ? 1 : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("LieferungTyp{");
-        sb.append("lieferungNr='").append(lieferungNr).append('\'');
-        sb.append(", transportauftragNr='").append(transportauftragNr).append('\'');
-        sb.append('}');
-        return sb.toString();
     }
 }

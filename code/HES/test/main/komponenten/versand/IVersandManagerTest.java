@@ -8,6 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * User: Tobi
@@ -32,5 +35,15 @@ public class IVersandManagerTest {
         LieferungTyp restoredLieferung = versandManager.getLieferungZuID(lieferung.getLieferungNr());
         Assert.assertNotNull("Lieferung wurde erstellt", restoredLieferung);
 
+    }
+
+    @Test
+    public void testHoleAlleLieferungenZuAuftrag() throws Exception {
+       AuftragTyp auftragTyp =  new AuftragTyp("AUF-1","ANG-XY", false, new Date());
+        System.out.print(">>>>>>>>>>>>"+auftragTyp.getAuftragsNr());
+        LieferungTyp lieferung1 = versandManager.erstelleLieferung(auftragTyp);
+        LieferungTyp lieferung2 = versandManager.erstelleLieferung(auftragTyp);
+        List<LieferungTyp> lieferungen = versandManager.holeAlleLieferungenZuAuftrag(auftragTyp);
+        assertTrue(lieferungen.size()==2);
     }
 }

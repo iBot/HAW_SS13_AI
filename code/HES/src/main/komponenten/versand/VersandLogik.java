@@ -3,6 +3,8 @@ package main.komponenten.versand;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.LieferungTyp;
 
+import java.util.List;
+
 /**
  * User: Tobi
  * Date: 19.04.13
@@ -28,5 +30,9 @@ class VersandLogik {
 
     public LieferungTyp getLieferungZuID(String lieferungNr) {
         return this.lieferungRepository.getLieferungZuID(lieferungNr);
+    }
+
+    public List<LieferungTyp> holeAlleLieferungenZuAuftrag(AuftragTyp auftrag) {
+        return this.lieferungRepository.holeAlleLieferungenZuAuftrag(auftrag);
     }
 }
