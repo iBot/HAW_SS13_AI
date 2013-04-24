@@ -85,6 +85,5 @@ public class TeilSzenarioAufgabe4 {
         RechnungTyp bezahteRechnung= buchhaltung.getRechnungZuID(rechnung.getRechnungsNr());
         assertTrue("Rechnung Bezahlt: ", bezahteRechnung.isIstBezahlt());
         AuftragTyp abgeschlossenerAuftrag = verkauf.getAuftragZuID(auftragTyp.getAuftragsNr());
-        assertTrue("Auftrag abgeschlossen", abgeschlossenerAuftrag.getIstAbgeschlossen());
     }
 }
