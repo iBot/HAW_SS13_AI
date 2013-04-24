@@ -54,7 +54,7 @@ class RechnungRepository {
     public List<RechnungTyp> getRechnungenZuKunde(String kundenNr) {
         List<RechnungTyp> transportRechnungen = null;
         //TODO: Neue Methode verwenden
-        String queryString = "from Rechnung where Rechnung.KundenNr = '"+kundenNr+"'";
+        String queryString= "from Rechnung where Rechnung.KundenNr = '"+kundenNr+"'";
         List<Rechnung> rechnungen = persistenzManager.getAllByQuery(queryString);
         for(Rechnung r : rechnungen)
         {
