@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d827305-bcd6-4f5f-9d98-df9a01adff20" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/allgemeineTypen/transportTypen/AuftragTyp.java" afterPath="$PROJECT_DIR$/../../HES/src/main/allgemeineTypen/transportTypen/AuftragTyp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/test/main/komponenten/systemtests/TeilSzenarioAufgabe4.java" afterPath="$PROJECT_DIR$/../../HES/test/main/komponenten/systemtests/TeilSzenarioAufgabe4.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HibernateHelloWorld.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/fragment.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366793291071" ignored="false" />
-    <file path="/Dummy.txt" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798416605" ignored="false" />
+    <file path="/Dummy.txt" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798560189" ignored="false" />
     <file path="/Contact.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364746439600" ignored="false" />
     <file path="/Notenkonto.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364751968385" ignored="false" />
     <file path="/Student.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364752585740" ignored="false" />
@@ -34,7 +35,7 @@
     <file path="/RechnungDummy.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798268470" ignored="false" />
     <file path="/IBuchhaltungManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798367501" ignored="false" />
     <file path="/IVerkaufManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366789304031" ignored="false" />
-    <file path="/TeilSzenarioAufgabe4.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798551741" ignored="false" />
+    <file path="/TeilSzenarioAufgabe4.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798733794" ignored="false" />
     <file path="/IKundenManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366790332323" ignored="false" />
     <file path="/LieferungTyp.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792329599" ignored="false" />
     <file path="/IVersandManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366792583422" ignored="false" />
@@ -49,6 +50,7 @@
     <file path="/BuchhaltungFassade.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366797710623" ignored="false" />
     <file path="/RechnungTyp.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798000818" ignored="false" />
     <file path="/IBuchhaltungEventTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798224971" ignored="false" />
+    <file path="/AuftragTyp.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366798797636" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

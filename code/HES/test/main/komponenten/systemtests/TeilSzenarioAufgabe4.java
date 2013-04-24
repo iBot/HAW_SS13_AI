@@ -1,17 +1,14 @@
 package main.komponenten.systemtests;
 
-import junit.framework.Assert;
 import main.allgemeineTypen.transportTypen.*;
 import main.komponenten.buchhaltung.BuchhaltungFassade;
 import main.komponenten.kunden.IKundenManager;
-import main.komponenten.kunden.IKundenManagerTest;
 import main.komponenten.kunden.KundenFassade;
 import main.komponenten.lager.ILagerListener;
 import main.komponenten.lager.LagerFassade;
 import main.komponenten.verkauf.VerkaufFassade;
 import main.komponenten.versand.IVersandManager;
 import main.komponenten.versand.VersandFassade;
-import main.technik.persistenzManager.PersistenzManager;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -84,7 +81,10 @@ public class TeilSzenarioAufgabe4 {
         RechnungTyp rechnung = buchhaltung.erstelleRechnung(100, auftragTyp);
         RechnungTyp ausgeleseneRechnung = buchhaltung.getRechnungZuID(rechnung.getRechnungsNr());
         assertEquals("Rechnung gehört zu Auftrag: ", auftragTyp.getAuftragsNr(), ausgeleseneRechnung.getAuftragsNr());
-
+        buchhaltung.zahlungseingangBuchen(100, rechnung.getRechnungsNr());
+        RechnungTyp bezahteRechnung= buchhaltung.getRechnungZuID(rechnung.getRechnungsNr());
+        assertTrue("Rechnung Bezahlt: ", bezahteRechnung.isIstBezahlt());
         AuftragTyp abgeschlossenerAuftrag = verkauf.getAuftragZuID(auftragTyp.getAuftragsNr());
+        assertTrue("Auftrag abgeschlossen", abgeschlossenerAuftrag.getIstAbgeschlossen());
     }
 }
