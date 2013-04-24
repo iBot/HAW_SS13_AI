@@ -2,6 +2,7 @@ package main.komponenten.systemtests;
 
 import junit.framework.Assert;
 import main.allgemeineTypen.transportTypen.*;
+import main.komponenten.buchhaltung.BuchhaltungFassade;
 import main.komponenten.kunden.IKundenManager;
 import main.komponenten.kunden.IKundenManagerTest;
 import main.komponenten.kunden.KundenFassade;
@@ -32,6 +33,7 @@ public class TeilSzenarioAufgabe4 {
     private VerkaufFassade verkauf;
     private LagerFassade lager;
     private IVersandManager versand;
+    private BuchhaltungFassade buchhaltung;
 
     private KundenTyp derKunde;
     private List<ProduktTyp> produktListe;
@@ -48,6 +50,7 @@ public class TeilSzenarioAufgabe4 {
         produktListe.add(lager.erstelleProdukt("Batmobil"));
         produktListe.add(lager.erstelleProdukt("BatutilityBag"));
         versand = new VersandFassade();
+        buchhaltung = new BuchhaltungFassade();
     }
 
     @Test
@@ -68,7 +71,7 @@ public class TeilSzenarioAufgabe4 {
         while (!wareVorhande){
             //warte bis event ausgelöst wurde
         }
-        assertTrue("Ware vorhanden",wareVorhande);
+        assertTrue("Ware vorhanden", wareVorhande);
 
         versand.erstelleLieferung(auftragTyp);
         List<LieferungTyp> lieferungen = versand.holeAlleLieferungenZuAuftrag(auftragTyp);
@@ -77,5 +80,9 @@ public class TeilSzenarioAufgabe4 {
             System.out.println("Lieferung erfolgt? " + lieferung.getLieferungErfolgt());
             assertTrue("Lieferung erfolgt", lieferung.getLieferungErfolgt());
         }
+
+        RechnungTyp rechnung = buchhaltung.erstelleRechnung(100, auftragTyp);
+        RechnungTyp ausgeleseneRechnung = buchhaltung.getRechnungZuID(rechnung.getRechnungsNr());
+        assertEquals("Rechnung gehört zu Auftrag: ", auftragTyp.getAuftragsNr(), ausgeleseneRechnung.getAuftragsNr);
     }
 }

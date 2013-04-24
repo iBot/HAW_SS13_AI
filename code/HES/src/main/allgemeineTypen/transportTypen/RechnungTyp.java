@@ -13,18 +13,29 @@ public class RechnungTyp {
     private String rechnungsNr;
     private boolean istBezahlt;
     private Date rechnungsDatum;
+    private String auftragsNr;
 
-    public RechnungTyp(boolean istBezahlt, Date rechnungsDatum) {
+    public String getAuftragsNr() {
+        return auftragsNr;
+    }
+
+    public void setAuftragsNr(String auftragsNr) {
+        this.auftragsNr = auftragsNr;
+    }
+
+    public RechnungTyp(boolean istBezahlt, Date rechnungsDatum, String auftragsNr) {
 
         this.istBezahlt = istBezahlt;
         this.rechnungsDatum = rechnungsDatum;
+        this.auftragsNr = auftragsNr;
     }
 
-    public RechnungTyp(String rechnungsNr, boolean istBezahlt, Date rechnungsDatum) {
+    public RechnungTyp(String rechnungsNr, boolean istBezahlt, Date rechnungsDatum, String auftragsNr) {
 
         this.rechnungsNr = rechnungsNr;
         this.istBezahlt = istBezahlt;
         this.rechnungsDatum = rechnungsDatum;
+        this.auftragsNr = auftragsNr;
     }
 
     @Override
@@ -33,6 +44,7 @@ public class RechnungTyp {
         sb.append("rechnungsNr='").append(rechnungsNr).append('\'');
         sb.append(", istBezahlt=").append(istBezahlt);
         sb.append(", rechnungsDatum=").append(rechnungsDatum);
+        sb.append(", auftragsNr='").append(auftragsNr).append('\'');
         sb.append('}');
         return sb.toString();
     }
@@ -45,6 +57,7 @@ public class RechnungTyp {
         RechnungTyp that = (RechnungTyp) o;
 
         if (istBezahlt != that.istBezahlt) return false;
+        if (auftragsNr != null ? !auftragsNr.equals(that.auftragsNr) : that.auftragsNr != null) return false;
         if (rechnungsDatum != null ? !rechnungsDatum.equals(that.rechnungsDatum) : that.rechnungsDatum != null)
             return false;
         if (rechnungsNr != null ? !rechnungsNr.equals(that.rechnungsNr) : that.rechnungsNr != null) return false;
@@ -57,6 +70,7 @@ public class RechnungTyp {
         int result = rechnungsNr != null ? rechnungsNr.hashCode() : 0;
         result = 31 * result + (istBezahlt ? 1 : 0);
         result = 31 * result + (rechnungsDatum != null ? rechnungsDatum.hashCode() : 0);
+        result = 31 * result + (auftragsNr != null ? auftragsNr.hashCode() : 0);
         return result;
     }
 

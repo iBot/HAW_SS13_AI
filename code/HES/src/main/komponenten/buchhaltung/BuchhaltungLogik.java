@@ -1,5 +1,6 @@
 package main.komponenten.buchhaltung;
 
+import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 
 import java.util.List;
@@ -26,8 +27,8 @@ class BuchhaltungLogik {
         //rechnungRepository.schreibeFuerRechnungBezahltEventEin(rechnungsNr, listener);
     }
 
-    public RechnungTyp erstelleRechnung(int gesamtbetrag) {
-        return rechnungRepository.erstelleRechnung(gesamtbetrag);
+    public RechnungTyp erstelleRechnung(int gesamtbetrag, AuftragTyp auftrag) {
+        return rechnungRepository.erstelleRechnung(gesamtbetrag, auftrag);
     }
 
     public void zahlungseingangBuchen(double betrag, String rechnungsNr) {

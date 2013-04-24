@@ -1,5 +1,6 @@
 package main.komponenten.buchhaltung;
 
+import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
@@ -37,12 +38,13 @@ class Rechnung implements IPersistierbar {
     private int gesamtbetrag;
 
 
-    Rechnung( int gesamtbetrag) {
+    Rechnung( int gesamtbetrag, AuftragTyp auftrag) {
         this.rechnungsNr = "RE-"+ UUID.randomUUID();
         this.zahlungseingaenge = new ArrayList<>();
         this.istBezahlt = false;
         this.rechnungsDatum = new Date();
         this.gesamtbetrag = gesamtbetrag;
+        this.auftragsNr = auftrag.getAuftragsNr();
 
     }
 
@@ -114,8 +116,8 @@ class Rechnung implements IPersistierbar {
         this.rechnungsDatum = rechnungsDatum;
     }
 
-    RechnungTyp getRechnungTyp() {
-        return new RechnungTyp(rechnungsNr, istBezahlt, new Date(rechnungsDatum.getTime()));
+    RechnungTyp holeRechnungTyp() {
+        return new RechnungTyp(rechnungsNr, istBezahlt, new Date(rechnungsDatum.getTime()),auftragsNr);
     }
 
 

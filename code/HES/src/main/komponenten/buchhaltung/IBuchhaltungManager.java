@@ -1,5 +1,6 @@
 package main.komponenten.buchhaltung;
 
+import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * Time: 12:54
  */
 public interface IBuchhaltungManager {
-    public RechnungTyp erstelleRechnung(int gesamtbetrag);
+    public RechnungTyp erstelleRechnung(int gesamtbetrag, AuftragTyp auftrag);
 
     public void zahlungseingangBuchen(double betrag, String rechnungsNr);
 

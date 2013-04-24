@@ -1,5 +1,6 @@
 package main.komponenten.buchhaltung;
 
+import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 import main.technik.persistenzManager.PersistenzManager;
 
@@ -28,10 +29,10 @@ class RechnungRepository {
         }
     }
 
-    public RechnungTyp erstelleRechnung(int gesamtbetrag) {
-        Rechnung rechnung = new Rechnung(gesamtbetrag);
+    public RechnungTyp erstelleRechnung(int gesamtbetrag, AuftragTyp auftrag) {
+        Rechnung rechnung = new Rechnung(gesamtbetrag, auftrag);
         persistenzManager.create(rechnung);
-        return rechnung.getRechnungTyp();
+        return rechnung.holeRechnungTyp();
     }
 
     public void zahlungseingangBuchen(Zahlungseingang zahlungseingang, String rechnungsNr) {
@@ -52,16 +53,17 @@ class RechnungRepository {
 
     public List<RechnungTyp> getRechnungenZuKunde(String kundenNr) {
         List<RechnungTyp> transportRechnungen = null;
-        List<Rechnung> rechnungen = persistenzManager.returnQuery("from Rechnung where Rechnung.KundenNr = "+kundenNr).list();
-        for(Rechnung r : rechnungen)
-        {
-            transportRechnungen.add(r.getRechnungTyp());
-        }
+        //TODO: Neue Methode verwenden
+//        List<Rechnung> rechnungen = persistenzManager.returnQuery("from Rechnung where Rechnung.KundenNr = "+kundenNr).list();
+//        for(Rechnung r : rechnungen)
+//        {
+//            transportRechnungen.add(r.holeRechnungTyp());
+//        }
         return transportRechnungen;
     }
 
     public RechnungTyp getRechnungZuID(String rechnungsNr) {
         Rechnung rechnung = persistenzManager.access(Rechnung.class, rechnungsNr);
-        return rechnung.getRechnungTyp();
+        return rechnung.holeRechnungTyp();
     }
 }

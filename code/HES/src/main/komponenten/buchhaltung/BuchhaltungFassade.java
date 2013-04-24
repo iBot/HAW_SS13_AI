@@ -1,5 +1,6 @@
 package main.komponenten.buchhaltung;
 
+import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 
 import java.util.List;
@@ -23,8 +24,8 @@ public class BuchhaltungFassade implements IBuchhaltungManager, IBuchhaltungEven
     }
 
     @Override
-    public RechnungTyp erstelleRechnung(int gesamtbetrag) {
-        return buchhaltungLogik.erstelleRechnung(gesamtbetrag);
+    public RechnungTyp erstelleRechnung(int gesamtbetrag, AuftragTyp auftrag) {
+        return buchhaltungLogik.erstelleRechnung(gesamtbetrag, auftrag);
     }
 
     @Override
