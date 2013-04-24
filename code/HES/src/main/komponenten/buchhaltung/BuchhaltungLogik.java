@@ -9,7 +9,7 @@ import java.util.List;
  * Date: 19.04.13
  * Time: 13:24
  */
-class BuchhaltungLogik implements IBuchhaltungManager, IBuchhaltungEvent {
+class BuchhaltungLogik {
 
     RechnungRepository rechnungRepository;
     ZahlungseingangRepository zahlungseingangRepository;
@@ -19,29 +19,27 @@ class BuchhaltungLogik implements IBuchhaltungManager, IBuchhaltungEvent {
         this.zahlungseingangRepository = new ZahlungseingangRepository();
     }
 
-    @Override
     public void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener) {
-        rechnungRepository.schreibeFuerRechnungBezahltEventEin(rechnungsNr, listener);
+        //TODO funktionalität checken
+
+        listener.fuehreAktionAus();
+        //rechnungRepository.schreibeFuerRechnungBezahltEventEin(rechnungsNr, listener);
     }
 
-    @Override
     public RechnungTyp erstelleRechnung(int gesamtbetrag) {
         return rechnungRepository.erstelleRechnung(gesamtbetrag);
     }
 
-    @Override
     public void zahlungseingangBuchen(double betrag, String rechnungsNr) {
         Zahlungseingang zahlungseingang = zahlungseingangRepository.erstelleZahlungseingang(betrag);
         rechnungRepository.zahlungseingangBuchen(zahlungseingang, rechnungsNr);
 
     }
 
-    @Override
     public List<RechnungTyp> getRechnungenZuKunde(String kundenNr) {
         return rechnungRepository.getRechnungenZuKunde(kundenNr);
     }
 
-    @Override
     public RechnungTyp getRechnungZuID(String rechnungsNr) {
         return rechnungRepository.getRechnungZuID(rechnungsNr);
     }

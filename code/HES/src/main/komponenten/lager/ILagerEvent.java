@@ -1,6 +1,6 @@
 package main.komponenten.lager;
 
-import main.allgemeineTypen.transportTypen.AuftragTyp;
+import main.allgemeineTypen.transportTypen.AngebotTyp;
 
 /**
  * User: Tobi
@@ -8,5 +8,5 @@ import main.allgemeineTypen.transportTypen.AuftragTyp;
  * Time: 13:06
  */
 public interface ILagerEvent {
-    public void schreibeFuerWarenReserviertEventEin(AuftragTyp auftrag, ILagerListener listener);
+    public void schreibeFuerWarenReserviertEventEin(AngebotTyp angebot, ILagerListener listener);
 }

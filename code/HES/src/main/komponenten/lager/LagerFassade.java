@@ -16,8 +16,13 @@ public class LagerFassade implements ILagerEvent, ILagerManager {
     }
 
     @Override
-    public void schreibeFuerWarenReserviertEventEin(AuftragTyp auftrag, ILagerListener listener) {
-        lagerlogik.schreibeFuerWarenReserviertEventEin(auftrag,listener);
+    public void schreibeFuerWarenReserviertEventEin(AngebotTyp angebot, ILagerListener listener) {
+        lagerlogik.schreibeFuerWarenReserviertEventEin(angebot,listener);
+    }
+
+    @Override
+    public ProduktTyp erstelleProdukt(String produktName) {
+        return lagerlogik.erstelleProdukt(produktName);
     }
 
     @Override

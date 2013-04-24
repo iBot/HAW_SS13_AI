@@ -8,6 +8,9 @@ import main.allgemeineTypen.transportTypen.*;
  * Time: 13:04
  */
 public interface ILagerManager {
+
+    public ProduktTyp erstelleProdukt(String produktName);
+
     public void bucheWareneingang(LieferscheinTyp lieferschein);
 
     public void reserviereProdukteFuerAuftrag(AuftragTyp auftrag, AngebotTyp angebot);

@@ -17,14 +17,17 @@ class ProduktRepository {
     Map<String, List<ILagerListener>> lagerListenerMap;
     PersistenzManager persistenzManager = PersistenzManager.getInstance();
 
-    public void schreibeFuerWarenReserviertEventEin(AuftragTyp auftrag, ILagerListener listener) {
-        String auftragsNr = auftrag.getAuftragsNr();
-        if (lagerListenerMap.containsKey(auftragsNr)) {
-            lagerListenerMap.get(auftragsNr).add(0, listener);
+
+
+    public void schreibeFuerWarenReserviertEventEin(AngebotTyp angebot, ILagerListener listener) {
+        String angebotsNr = angebot.getAngebotNr();
+
+        if (lagerListenerMap.containsKey(angebotsNr)) {
+            lagerListenerMap.get(angebotsNr).add(0, listener);
         } else {
             List<ILagerListener> listenerList = new LinkedList<>();
             listenerList.add(listener);
-            lagerListenerMap.put(auftragsNr, listenerList);
+            lagerListenerMap.put(angebotsNr, listenerList);
         }
     }
 
@@ -53,6 +56,12 @@ class ProduktRepository {
 
     public ProduktTyp getProduktZuID(String produktNr) {
         Produkt produkt = persistenzManager.access(Produkt.class, produktNr);
+        return produkt.holeProduktTyp();
+    }
+
+    public ProduktTyp erstelleProdukt(String produktName) {
+        Produkt produkt = new Produkt(produktName);
+        persistenzManager.create(produkt);
         return produkt.holeProduktTyp();
     }
 }

@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
-import static junit.framework.Assert.assertTrue;
-import static org.junit.Assert.assertNotNull;
 
 /**
  * Created with IntelliJ IDEA.
@@ -47,5 +45,8 @@ public class IPersistenzManagerTest {
         restoredRD = pm.access(RechnungDummy.class,rn);
         assertNull("Deleted: ", restoredRD);
     }
+
+    @Test
+    public void
 
 }
