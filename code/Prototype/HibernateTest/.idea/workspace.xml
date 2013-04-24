@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d827305-bcd6-4f5f-9d98-df9a01adff20" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/Lieferung.java" afterPath="$PROJECT_DIR$/../../HES/src/main/komponenten/versand/Lieferung.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/technik/persistenzManager/PersistenzManager.java" afterPath="$PROJECT_DIR$/../../HES/src/main/technik/persistenzManager/PersistenzManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../HES/test/main/technik/persistenzManager/RechnungDummy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/test/main/komponenten/buchhaltung/IBuchhaltungManagerTest.java" afterPath="$PROJECT_DIR$/../../HES/test/main/komponenten/buchhaltung/IBuchhaltungManagerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/test/main/technik/persistenzManager/IPersistenzManagerTest.java" afterPath="$PROJECT_DIR$/../../HES/test/main/technik/persistenzManager/IPersistenzManagerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/main/komponenten/buchhaltung/Rechnung.java" afterPath="$PROJECT_DIR$/../../HES/src/main/komponenten/buchhaltung/Rechnung.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../HES/src/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/../../HES/src/hibernate.cfg.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HibernateHelloWorld.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/fragment.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366744972629" ignored="false" />
-    <file path="/Dummy.txt" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366749732326" ignored="false" />
+    <file path="/fragment.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366785634724" ignored="false" />
+    <file path="/Dummy.txt" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366785281566" ignored="false" />
     <file path="/Contact.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364746439600" ignored="false" />
     <file path="/Notenkonto.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364751968385" ignored="false" />
     <file path="/Student.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364752585740" ignored="false" />
@@ -18,7 +20,7 @@
     <file path="/Buch.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364749749392" ignored="false" />
     <file path="/App.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364752315389" ignored="false" />
     <file path="/a.dummy" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1364751247357" ignored="false" />
-    <file path="/hibernate.cfg.xml" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366747403611" ignored="false" />
+    <file path="/hibernate.cfg.xml" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366786411077" ignored="false" />
     <file path="/PersistenzManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366750546849" ignored="false" />
     <file path="/InitSessionFactory.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366745593813" ignored="false" />
     <file path="/Lieferung.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366750329794" ignored="false" />
@@ -31,7 +33,10 @@
     <file path="/VerkaufFassade.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366748699909" ignored="false" />
     <file path="/IVerkaufManager.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366748724484" ignored="false" />
     <file path="/Produkt.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366748797866" ignored="false" />
-    <file path="/Rechnung.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366750840817" ignored="false" />
+    <file path="/Rechnung.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366786643449" ignored="false" />
+    <file path="/IPersistenzManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366787132656" ignored="false" />
+    <file path="/RechnungDummy.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366787082856" ignored="false" />
+    <file path="/IBuchhaltungManagerTest.java" changelist="2d827305-bcd6-4f5f-9d98-df9a01adff20" time="1366788257861" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,10 +106,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="App.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/App.java">
+      <file leaf-file-name="Kurs.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Kurs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="13" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
+            <state line="11" column="13" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Persistable.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Persistable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="17" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Student.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Student.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="78" column="5" selection-start="1754" selection-end="1754" vertical-scroll-proportion="0.46306306">
               <folding />
             </state>
           </provider>
@@ -119,28 +142,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Kurs.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Kurs.java">
+      <file leaf-file-name="App.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="214" selection-end="214" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Student.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Student.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="13" selection-start="1648" selection-end="1675" vertical-scroll-proportion="0.38356164">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Persistable.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Persistable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="17" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
+            <state line="16" column="13" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -188,8 +193,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-3" />
-    <option name="width" value="1926" />
-    <option name="height" value="1057" />
+    <option name="width" value="1372" />
+    <option name="height" value="745" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -315,8 +320,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,9 +339,9 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -356,19 +361,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -396,6 +388,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -512,7 +517,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3" y="0" width="1926" height="1057" extended-state="7" />
+    <frame x="-3" y="0" width="1372" height="745" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.49557522" order="7" side_tool="false" content_ui="tabs" />
@@ -525,17 +530,17 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32781458" sideWeight="0.3340448" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.49557522" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32781458" sideWeight="0.460177" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32964602" sideWeight="0.5011013" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17609392" sideWeight="0.6732892" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32671082" sideWeight="0.6622198" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17575757" sideWeight="0.6732892" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32671082" sideWeight="0.6622198" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="100" width="756" height="855" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32781458" sideWeight="0.49557522" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32781458" sideWeight="0.460177" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -606,6 +611,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Persistable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="17" selection-start="195" selection-end="195" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HibernateTest.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="0" selection-start="1932" selection-end="1932" vertical-scroll-proportion="0.0">
@@ -704,7 +716,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hibernateExample/Student.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="13" selection-start="1648" selection-end="1675" vertical-scroll-proportion="0.38356164">
+        <state line="78" column="5" selection-start="1754" selection-end="1754" vertical-scroll-proportion="0.46306306">
           <folding />
         </state>
       </provider>
