@@ -22,15 +22,16 @@ class Angebot implements IPersistierbar {
     @Id
     private String angebotNr;
 
-    @ManyToOne
-    @JoinColumn
-    private String kundenNr; //TODO: weiß nicht ob das geht. :) nen Test ist es wert
+
+    private String kundenNr;
 
     private Date gueltigBis, gueltigAb;
-    private Map<ProduktTyp, Integer> produktListe;
+
+    @ElementCollection
+    private Map<String, Integer> produktListe;
 
 
-    public Angebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe) {
+    public Angebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe) {
         this.angebotNr = "ANG-" + UUID.randomUUID();
         this.kundenNr = kundenNr;
         this.gueltigAb = gueltigAb;
@@ -80,11 +81,12 @@ class Angebot implements IPersistierbar {
         this.gueltigAb = gueltigAb;
     }
 
-    private Map<ProduktTyp, Integer> getProduktListe() {
+
+    private Map<String, Integer> getProduktListe() {
         return produktListe;
     }
 
-    private void setProduktListe(Map<ProduktTyp, Integer> produktListe) {
+    private void setProduktListe(Map<String, Integer> produktListe) {
         this.produktListe = produktListe;
     }
 

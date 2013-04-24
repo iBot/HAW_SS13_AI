@@ -20,8 +20,6 @@ class Auftrag implements IPersistierbar {
     @Id
     private String auftragsNr;
 
-    @OneToOne
-    @JoinColumn
     private String angebotsNr;
 
     private boolean istAbgeschlossen;

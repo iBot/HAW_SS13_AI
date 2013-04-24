@@ -30,5 +30,9 @@
         <mapping class="main.komponenten.verkauf.Auftrag"/>
         <mapping class="main.komponenten.versand.Lieferung"/>
         <mapping class="main.komponenten.versand.Transportauftrag"/>
+
+        <mapping class="main.technik.persistenzManager.RechnungDummy"/>
+
+
     </session-factory>
 </hibernate-configuration>

@@ -2,6 +2,7 @@ package main.komponenten.verkauf;
 
 import main.allgemeineTypen.transportTypen.AngebotTyp;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
+import main.technik.persistenzManager.PersistenzManager;
 
 /**
  * User: Tobi
@@ -9,15 +10,17 @@ import main.allgemeineTypen.transportTypen.AuftragTyp;
  * Time: 13:51
  */
 public class AuftragRepository {
+
+    PersistenzManager persistenzManager = PersistenzManager.getInstance();
+
     public AuftragTyp erstelleAuftrag(AngebotTyp angebot) {
         Auftrag auftrag = new Auftrag(angebot);
-        //TODO: Persistiere auftrag
+        persistenzManager.create(auftrag);
         return auftrag.getAuftragTyp();
     }
 
     public AuftragTyp getAuftragZuID(String auftragsNr) {
-        Auftrag auftrag = null;
-        //TODO: Lese auftrag aus Datenbank;
+        Auftrag auftrag = persistenzManager.access(Auftrag.class, auftragsNr);
         return auftrag.getAuftragTyp();
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
  * Time: 12:54
  */
 public interface IBuchhaltungManager {
-    public RechnungTyp erstelleRechnung();
+    public RechnungTyp erstelleRechnung(int gesamtbetrag);
 
     public void zahlungseingangBuchen(double betrag, String rechnungsNr);
 

@@ -23,8 +23,8 @@ public class BuchhaltungFassade implements IBuchhaltungManager, IBuchhaltungEven
     }
 
     @Override
-    public RechnungTyp erstelleRechnung() {
-        return buchhaltungLogik.erstelleRechnung();
+    public RechnungTyp erstelleRechnung(int gesamtbetrag) {
+        return buchhaltungLogik.erstelleRechnung(gesamtbetrag);
     }
 
     @Override

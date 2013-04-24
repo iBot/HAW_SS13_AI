@@ -31,7 +31,7 @@ class Wareneingangsmeldung implements IPersistierbar {
     Wareneingangsmeldung() {
     }
 
-    WareneingangsmeldungTyp getWareneingangsmeldungTyp(){
+    WareneingangsmeldungTyp holeWareneingangsmeldungTyp(){
         return new WareneingangsmeldungTyp(wareneingsmeldungNr, lieferscheinNr, new Date(datum.getTime()));
     }
 

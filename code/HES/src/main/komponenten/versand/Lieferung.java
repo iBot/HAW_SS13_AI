@@ -4,8 +4,7 @@ import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.LieferungTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 /**
@@ -17,9 +16,13 @@ import java.util.UUID;
 @Table(name = "lieferung")
 class Lieferung implements IPersistierbar {
 
+    @Id
     private String lieferungNr;
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Transportauftrag transportauftrag;
-    private AuftragTyp auftrag;
+
+    private String auftragsNr;
 
 
 
@@ -32,7 +35,7 @@ class Lieferung implements IPersistierbar {
     }
 
 
-    public LieferungTyp getLieferungTyp(){
+    public LieferungTyp holeLieferungTyp(){
         String taNr = null;
         if (transportauftrag!=null){
             taNr = transportauftrag.getTransportAuftragNr();
@@ -44,8 +47,7 @@ class Lieferung implements IPersistierbar {
     }
 
     Lieferung(AuftragTyp auftrag) {
-        this.auftrag = auftrag;
-        //TODO: Autogenerate lieferungNr;
+        this.auftragsNr = auftrag.getAuftragsNr();
         lieferungNr = "LIEFERUNG-"+ UUID.randomUUID();
     }
 

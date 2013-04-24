@@ -25,14 +25,15 @@ class BuchhaltungLogik implements IBuchhaltungManager, IBuchhaltungEvent {
     }
 
     @Override
-    public RechnungTyp erstelleRechnung() {
-        return rechnungRepository.erstelleRechnung();
+    public RechnungTyp erstelleRechnung(int gesamtbetrag) {
+        return rechnungRepository.erstelleRechnung(gesamtbetrag);
     }
 
     @Override
     public void zahlungseingangBuchen(double betrag, String rechnungsNr) {
         Zahlungseingang zahlungseingang = zahlungseingangRepository.erstelleZahlungseingang(betrag);
         rechnungRepository.zahlungseingangBuchen(zahlungseingang, rechnungsNr);
+
     }
 
     @Override

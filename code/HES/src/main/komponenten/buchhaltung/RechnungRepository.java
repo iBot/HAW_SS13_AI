@@ -28,14 +28,16 @@ class RechnungRepository {
         }
     }
 
-    public RechnungTyp erstelleRechnung() {
-        Rechnung rechnung = new Rechnung();
+    public RechnungTyp erstelleRechnung(int gesamtbetrag) {
+        Rechnung rechnung = new Rechnung(gesamtbetrag);
         persistenzManager.create(rechnung);
         return rechnung.getRechnungTyp();
     }
 
     public void zahlungseingangBuchen(Zahlungseingang zahlungseingang, String rechnungsNr) {
-        Rechnung rechnung = null;
+        Rechnung rechnung = persistenzManager.access(Rechnung.class, rechnungsNr);
+//        System.out.print(zahlungseingang);
+        System.out.print(rechnung);
         rechnung.zahlungseingangHinzufuegen(zahlungseingang);
         persistenzManager.update(rechnung);
 

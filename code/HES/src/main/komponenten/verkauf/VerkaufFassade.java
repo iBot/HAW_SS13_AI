@@ -23,7 +23,7 @@ public class VerkaufFassade implements IVerkaufManager {
     }
 
     @Override
-    public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe) {
+    public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe) {
         return angebotLogik.erstelleAngebot(kundenNr, gueltigBis, gueltigAb, produktListe);
     }
 
