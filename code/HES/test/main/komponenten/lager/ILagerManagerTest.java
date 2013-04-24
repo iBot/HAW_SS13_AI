@@ -10,9 +10,10 @@ import org.junit.Test;
  * Time: 14:29
  */
 public class ILagerManagerTest {
+    ILagerManager lagerManager;
     @Before
     public void setUp() throws Exception {
-
+        lagerManager = new LagerFassade();
     }
 
     @After
@@ -22,7 +23,7 @@ public class ILagerManagerTest {
 
     @Test
     public void testBucheWareneingang() throws Exception {
-
+         //noch nicht Teil dieser Aufgabe
     }
 
     @Test

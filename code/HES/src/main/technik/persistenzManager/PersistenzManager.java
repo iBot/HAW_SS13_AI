@@ -99,12 +99,12 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
-    public List getAllByQuery(String query) {
-        List result = null;
+    public <T> List<T> getAllByQuery(String query) {
+        List<T> result = null;
                 try {
             Session session = InitSessionFactory.getInstance().openSession();
             Transaction tx = session.beginTransaction();
-            result = session.createQuery(query).list();
+            result = (List<T>) session.createQuery(query).list();
 
             session.flush();
             tx.commit();
@@ -117,17 +117,23 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
-    public Query returnQuery(String queryString)
-    {
-        Session session = InitSessionFactory.getInstance().openSession();
-        Transaction tx = session.beginTransaction();
-        Query query = session.createQuery(queryString);
-        session.flush();
-        session.clear();
-        tx.commit();
-        session.close();
-        return query;
+    public <T> T getUniqueResultByQuery(String query){
+        T result = null;
+        try {
+            Session session = InitSessionFactory.getInstance().openSession();
+            Transaction tx = session.beginTransaction();
+            result = (T) session.createQuery(query).uniqueResult();
+
+            session.flush();
+            tx.commit();
+            session.close();
+        }
+        catch (RuntimeException e) {
+            exceptionHandling(e);
+        }
+        return result;
     }
+
 
     private static void exceptionHandling(Exception e) {
         try {

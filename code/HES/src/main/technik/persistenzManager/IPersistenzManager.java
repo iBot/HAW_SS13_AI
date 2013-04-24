@@ -1,7 +1,5 @@
 package main.technik.persistenzManager;
 
-import org.hibernate.Query;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -26,8 +24,9 @@ public interface IPersistenzManager {
         /// Verändert einen Referenztyp in der Persistenz.
         <T> void update(T entity) throws Exception;
 
-     List getAllByQuery(String query);
 
-        Query returnQuery(String queryString);
+    <T> T getUniqueResultByQuery(String query);
+
+    <T> List<T> getAllByQuery(String query);
 }
 
