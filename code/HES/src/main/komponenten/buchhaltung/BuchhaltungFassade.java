@@ -3,8 +3,6 @@ package main.komponenten.buchhaltung;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 
-import java.util.List;
-
 /**
  * User: Tobi
  * Date: 19.04.13
@@ -30,8 +28,8 @@ public class BuchhaltungFassade implements IBuchhaltungManager {
     }
 
     @Override
-    public List<RechnungTyp> getRechnungenZuKunde(String kundenNr) {
-        return buchhaltungLogik.getRechnungenZuKunde(kundenNr);
+    public RechnungTyp getRechnungZuAuftrag(String auftragsNr) {
+        return buchhaltungLogik.getRechnungZuAuftrag(auftragsNr);
     }
 
     @Override

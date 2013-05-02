@@ -3,8 +3,6 @@ package main.komponenten.buchhaltung;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 
-import java.util.List;
-
 /**
  * User: Tobi
  * Date: 19.04.13
@@ -15,7 +13,7 @@ public interface IBuchhaltungManager {
 
     public void zahlungseingangBuchen(double betrag, String rechnungsNr);
 
-    public List<RechnungTyp> getRechnungenZuKunde(String kundenNr);
+    public RechnungTyp getRechnungZuAuftrag(String auftragsNr);
 
     public RechnungTyp getRechnungZuID(String rechnungsNr);
 }

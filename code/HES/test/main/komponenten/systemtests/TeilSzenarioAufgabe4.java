@@ -4,7 +4,6 @@ import main.allgemeineTypen.transportTypen.*;
 import main.komponenten.buchhaltung.BuchhaltungFassade;
 import main.komponenten.kunden.IKundenManager;
 import main.komponenten.kunden.KundenFassade;
-import main.komponenten.lager.ILagerListener;
 import main.komponenten.lager.LagerFassade;
 import main.komponenten.verkauf.VerkaufFassade;
 import main.komponenten.versand.IVersandManager;
@@ -14,7 +13,6 @@ import org.junit.Test;
 
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -39,39 +37,43 @@ public class TeilSzenarioAufgabe4 {
     @Before
     public void setUp() throws Exception {
         kundenManager = new KundenFassade();
-        derKunde = kundenManager.erstelleKunde(new KundenTyp("Batman","Gotham City"));
+        derKunde = kundenManager.erstelleKunde(new KundenTyp("Batman", "Gotham City"));
         buchhaltung = new BuchhaltungFassade();
         lager = new LagerFassade();
-        verkauf = new VerkaufFassade(buchhaltung,lager,lager, versand);
+        versand = new VersandFassade();
+        verkauf = new VerkaufFassade(buchhaltung, lager, versand);
         produktListe = new ArrayList<>();
         produktListe.add(lager.erstelleProdukt("Batmobil"));
         produktListe.add(lager.erstelleProdukt("BatutilityBag"));
-        versand = new VersandFassade();
         buchhaltung = new BuchhaltungFassade();
     }
 
     @Test
     public void szenario() throws Exception {
         Map<String, Integer> produkte = new HashMap<>();
-        for (ProduktTyp produkt : produktListe){
-            produkte.put(produkt.getProduktNr(),10);
+        for (ProduktTyp produkt : produktListe) {
+            produkte.put(produkt.getProduktNr(), 10);
         }
         AngebotTyp angebot = verkauf.erstelleAngebot(derKunde.getKundenNr(), new Date(new Date().getTime() + 24l * 60 * 60 * 1000 * 7), new Date(), produkte);
-        AuftragTyp auftragTyp = verkauf.erstelleAuftrag(angebot);
+        AuftragTyp auftragTyp = verkauf.erstelleAuftrag(angebot, new Date());
         List<LieferungTyp> lieferungen = versand.holeAlleLieferungenZuAuftrag(auftragTyp);
         System.out.print(lieferungen);
-        for (LieferungTyp lieferung : lieferungen){
+        for (LieferungTyp lieferung : lieferungen) {
             System.out.println("Lieferung erfolgt? " + lieferung.getLieferungErfolgt());
             assertTrue("Lieferung erfolgt", lieferung.getLieferungErfolgt());
         }
-        for (RechnungTyp rechnungTyp : buchhaltung.getRechnungenZuKunde(derKunde.getKundenNr())) {
-            if (rechnungTyp.getAuftragsNr().equals(auftragTyp.getAuftragsNr())){
-                buchhaltung.zahlungseingangBuchen(rechnungTyp.getGesamtPreis(), rechnungTyp.getRechnungsNr());
-                RechnungTyp bezahteRechnung= buchhaltung.getRechnungZuID(rechnungTyp.getRechnungsNr());
-                assertTrue("Rechnung Bezahlt: ", bezahteRechnung.isIstBezahlt());
-            }
-        }
-        AuftragTyp abgeschlossenerAuftrag = verkauf.getAuftragZuID(auftragTyp.getAuftragsNr());
+        RechnungTyp rechnungTyp = buchhaltung.getRechnungZuAuftrag(auftragTyp.getAuftragsNr());
+        buchhaltung.zahlungseingangBuchen(rechnungTyp.getGesamtPreis(), rechnungTyp.getRechnungsNr());
+        RechnungTyp bezahteRechnung = buchhaltung.getRechnungZuID(rechnungTyp.getRechnungsNr());
+        //TODO: abfragen zu boolean mit "is" oder mit "get" für hibernate??
+        assertTrue("Rechnung Bezahlt: ", bezahteRechnung.isIstBezahlt());
 
+        AuftragTyp abgeschlossenerAuftrag = verkauf.getAuftragZuID(auftragTyp.getAuftragsNr());
+        System.out.println("Auftrag abgeschlossen: "+abgeschlossenerAuftrag.getIstAbgeschlossen());
+        //assertTrue("Auftrag abgeschlossen: ", abgeschlossenerAuftrag.getIstAbgeschlossen());
     }
+
+
+
 }
+

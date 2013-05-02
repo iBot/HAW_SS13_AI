@@ -3,8 +3,8 @@ package main.komponenten.buchhaltung;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * User: Tobi
@@ -15,14 +15,16 @@ class BuchhaltungLogik {
 
     RechnungRepository rechnungRepository;
     ZahlungseingangRepository zahlungseingangRepository;
+    Map<String, IBuchhaltungListener> buchhaltungListenerMap;
 
     BuchhaltungLogik() {
+        this.buchhaltungListenerMap = new HashMap<>();
         this.rechnungRepository = new RechnungRepository();
         this.zahlungseingangRepository = new ZahlungseingangRepository();
     }
 
     private void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener) {
-        rechnungRepository.schreibeFuerRechnungBezahltEventEin(rechnungsNr, listener);
+       buchhaltungListenerMap.put(rechnungsNr, listener);
     }
 
     public RechnungTyp erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag, IBuchhaltungListener listener) {
@@ -41,22 +43,16 @@ class BuchhaltungLogik {
 
         if (rechnung.getIstBezahlt()) {
             //TODO: wohin soll die Map?
-//            if (buchhaltungListenerMap.containsKey(rechnungsNr)) {
-//                for (IBuchhaltungListener listener : buchhaltungListenerMap.get(rechnungsNr)) {
-//                    listener.fuehreAktionAus();
-//                }
-//            }
+            if (buchhaltungListenerMap.containsKey(rechnungsNr)) {
+                buchhaltungListenerMap.get(rechnungsNr).fuehreAktionAus();
+                }
+            }
         }
 
-    }
 
-    public List<RechnungTyp> getRechnungenZuKunde(String kundenNr) {
-        List<RechnungTyp> transportRechnungen = new ArrayList<>();
-        for(Rechnung r : rechnungRepository.getRechnungenZuKunde(kundenNr))
-        {
-            transportRechnungen.add(r.holeRechnungTyp());
-        }
-        return transportRechnungen;
+
+    public RechnungTyp getRechnungZuAuftrag(String auftragsNr) {
+       return rechnungRepository.getRechnungZuAuftrag(auftragsNr).holeRechnungTyp();
     }
 
     public RechnungTyp getRechnungZuID(String rechnungsNr) {

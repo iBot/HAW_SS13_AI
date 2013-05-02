@@ -47,6 +47,8 @@ class AuftragLogik {
 
     private void warenSindVorhanden(final Auftrag auftrag, AngebotTyp angebot){
         // lieferung erstellen
+        System.out.println("Auftrag:>>>>>>>>>>>>>>>>>>>>>>>>  "+auftrag);
+        System.out.println("AuftragTyp:>>>>>>>>>>>>>>>>>>>>>>>>  "+auftrag.holeAuftragTyp());
         versandManager.erstelleLieferung(auftrag.holeAuftragTyp());
         // rechnung erstellen und einschreiben
         IBuchhaltungListener listener = new IBuchhaltungListener() {

@@ -3,11 +3,6 @@ package main.komponenten.buchhaltung;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.technik.persistenzManager.PersistenzManager;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
 /**
  * User: Tobi
  * Date: 19.04.13
@@ -15,21 +10,21 @@ import java.util.Map;
  */
 class RechnungRepository {
 
-    Map<String, List<IBuchhaltungListener>> buchhaltungListenerMap;
+    //Map<String, List<IBuchhaltungListener>> buchhaltungListenerMap;
     PersistenzManager persistenzManager = PersistenzManager.getInstance();
-    RechnungRepository() {
-        this.buchhaltungListenerMap = new HashMap<String, List<IBuchhaltungListener>>();
-    }
+    //RechnungRepository() {
+    //    this.buchhaltungListenerMap = new HashMap<String, List<IBuchhaltungListener>>();
+    //}
 
-    public void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener) {
-        if (buchhaltungListenerMap.containsKey(rechnungsNr)) {
-            buchhaltungListenerMap.get(rechnungsNr).add(0, listener);
-        } else {
-            List<IBuchhaltungListener> listenerList = new LinkedList<>();
-            listenerList.add(listener);
-            buchhaltungListenerMap.put(rechnungsNr, listenerList);
-        }
-    }
+//    public void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener) {
+//        if (buchhaltungListenerMap.containsKey(rechnungsNr)) {
+//            buchhaltungListenerMap.get(rechnungsNr).add(0, listener);
+//        } else {
+//            List<IBuchhaltungListener> listenerList = new LinkedList<>();
+//            listenerList.add(listener);
+//            buchhaltungListenerMap.put(rechnungsNr, listenerList);
+//        }
+//    }
 
     public Rechnung erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag) {
         Rechnung rechnung = new Rechnung(gesamtbetrag, auftrag);
@@ -41,10 +36,10 @@ class RechnungRepository {
 
     }
 
-    public List<Rechnung> getRechnungenZuKunde(String kundenNr) {
-        String queryString= "from Rechnung where Rechnung.KundenNr = '"+kundenNr+"'";
-        List<Rechnung> rechnungen = persistenzManager.getAllByQuery(queryString);
-        return rechnungen;
+    public Rechnung getRechnungZuAuftrag(String auftragsNr) {
+        String queryString= "from Rechnung where AuftragsNr = '"+auftragsNr+"'";
+        Rechnung rechnung = persistenzManager.getUniqueResultByQuery(queryString);
+        return rechnung;
     }
 
     public Rechnung getRechnungZuID(String rechnungsNr) {

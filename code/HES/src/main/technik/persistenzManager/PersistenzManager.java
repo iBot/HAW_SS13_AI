@@ -104,7 +104,7 @@ public class PersistenzManager  implements IPersistenzManager{
                 try {
             Session session = InitSessionFactory.getInstance().openSession();
             Transaction tx = session.beginTransaction();
-            result = (List<T>) session.createQuery(query).list();
+            result =  session.createQuery(query).list();
 
             session.flush();
             tx.commit();

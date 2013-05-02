@@ -25,7 +25,7 @@ public class IBuchhaltungManagerTest extends TestCase {
 
     @Test
     public void testErstelleRechnung() throws Exception {
-          //TODO
+          //
 //        RechnungTyp rechnungTyp = buchhaltung.erstelleRechnung(50,new AuftragTyp("A1","A1",false,new Date()));
 //        RechnungTyp restoredRechnungTyp = buchhaltung.getRechnungZuID(rechnungTyp.getRechnungsNr());
 //        assertNotNull("Rechnung wurde erstellt: ",restoredRechnungTyp);
