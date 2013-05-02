@@ -19,6 +19,15 @@ class Produkt implements IPersistierbar {
     String produktNr;
     String name;
     int lagerbestand;
+    double preis;
+
+    double getPreis() {
+        return preis;
+    }
+
+    void setPreis(double preis) {
+        this.preis = preis;
+    }
 
     @Override
     public String toString() {
@@ -26,6 +35,7 @@ class Produkt implements IPersistierbar {
         sb.append("produktNr='").append(produktNr).append('\'');
         sb.append(", name='").append(name).append('\'');
         sb.append(", lagerbestand=").append(lagerbestand);
+        sb.append(", preis=").append(preis);
         sb.append('}');
         return sb.toString();
     }
@@ -91,6 +101,6 @@ class Produkt implements IPersistierbar {
     }
 
     public ProduktTyp holeProduktTyp() {
-        return new ProduktTyp(produktNr,name,lagerbestand);
+        return new ProduktTyp(produktNr,name,lagerbestand,preis);
     }
 }

@@ -3,6 +3,8 @@ package main.komponenten.verkauf;
 import junit.framework.Assert;
 import main.allgemeineTypen.transportTypen.AngebotTyp;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
+import main.komponenten.buchhaltung.BuchhaltungFassade;
+import main.komponenten.lager.LagerFassade;
 import main.technik.persistenzManager.IPersistenzManager;
 import main.technik.persistenzManager.PersistenzManager;
 import org.junit.After;
@@ -25,7 +27,9 @@ public class IVerkaufManagerTest {
     @Before
     public void setUp() throws Exception {
         persistenzManager = PersistenzManager.getInstance();
-        verkaufManager = new VerkaufFassade();
+        BuchhaltungFassade buchhaltungFassade = new BuchhaltungFassade();
+        LagerFassade  lager = new LagerFassade();
+        verkaufManager = new VerkaufFassade(buchhaltungFassade,buchhaltungFassade,lager,lager);
     }
 
     @After

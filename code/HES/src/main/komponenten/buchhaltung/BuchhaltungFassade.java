@@ -10,7 +10,7 @@ import java.util.List;
  * Date: 19.04.13
  * Time: 13:21
  */
-public class BuchhaltungFassade implements IBuchhaltungManager, IBuchhaltungEvent {
+public class BuchhaltungFassade implements IBuchhaltungManager {
 
     private BuchhaltungLogik buchhaltungLogik;
 
@@ -18,14 +18,10 @@ public class BuchhaltungFassade implements IBuchhaltungManager, IBuchhaltungEven
         this.buchhaltungLogik = new BuchhaltungLogik();
     }
 
-    @Override
-    public void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener) {
-        buchhaltungLogik.schreibeFuerRechnungBezahltEventEin(rechnungsNr, listener);
-    }
 
     @Override
-    public RechnungTyp erstelleRechnung(int gesamtbetrag, AuftragTyp auftrag) {
-        return buchhaltungLogik.erstelleRechnung(gesamtbetrag, auftrag);
+    public RechnungTyp erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag, IBuchhaltungListener listener) {
+        return buchhaltungLogik.erstelleRechnung(gesamtbetrag, auftrag, listener);
     }
 
     @Override

@@ -4,6 +4,10 @@ import main.allgemeineTypen.transportTypen.AngebotTyp;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.KundenTyp;
 import main.allgemeineTypen.transportTypen.ProduktTyp;
+import main.komponenten.buchhaltung.IBuchhaltungManager;
+import main.komponenten.lager.ILagerEvent;
+import main.komponenten.lager.ILagerManager;
+import main.komponenten.versand.IVersandManager;
 
 import java.util.Date;
 import java.util.Map;
@@ -16,11 +20,20 @@ import java.util.Map;
 public class VerkaufFassade implements IVerkaufManager {
     private AngebotLogik angebotLogik;
     private AuftragLogik auftragLogik;
+    private IBuchhaltungManager buchhaltungManager;
+    private ILagerEvent lagerEvent;
+    private ILagerManager lagerManager;
+    private IVersandManager versandManager;
 
-    public VerkaufFassade() {
-        this.angebotLogik = new AngebotLogik();
-        this.auftragLogik = new AuftragLogik();
+    public VerkaufFassade(IBuchhaltungManager buchhaltungManager, ILagerEvent lagerEvent, ILagerManager lagerManager, IVersandManager versandManager) {
+
+        this.buchhaltungManager = buchhaltungManager;
+        this.lagerEvent = lagerEvent;
+        this.lagerManager = lagerManager;
+        this.angebotLogik = new AngebotLogik(lagerManager);
+        this.auftragLogik = new AuftragLogik(buchhaltungManager,lagerEvent,lagerManager, versandManager);
     }
+
 
     @Override
     public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe) {
@@ -29,7 +42,8 @@ public class VerkaufFassade implements IVerkaufManager {
 
     @Override
     public AuftragTyp erstelleAuftrag(AngebotTyp angebot) {
-        return auftragLogik.erstelleAuftrag(angebot);
+        AuftragTyp auftrag = auftragLogik.erstelleAuftrag(angebot);
+        return auftrag;
     }
 
     @Override

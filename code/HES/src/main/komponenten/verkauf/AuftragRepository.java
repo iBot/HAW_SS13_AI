@@ -13,14 +13,18 @@ public class AuftragRepository {
 
     PersistenzManager persistenzManager = PersistenzManager.getInstance();
 
-    public AuftragTyp erstelleAuftrag(AngebotTyp angebot) {
+    public Auftrag erstelleAuftrag(AngebotTyp angebot) {
         Auftrag auftrag = new Auftrag(angebot);
         persistenzManager.create(auftrag);
-        return auftrag.getAuftragTyp();
+        return auftrag;
     }
 
     public AuftragTyp getAuftragZuID(String auftragsNr) {
         Auftrag auftrag = persistenzManager.access(Auftrag.class, auftragsNr);
-        return auftrag.getAuftragTyp();
+        return auftrag.holeAuftragTyp();
+    }
+
+    public void speicherAuftrag(Auftrag auftrag) {
+        persistenzManager.update(auftrag);
     }
 }

@@ -41,8 +41,9 @@ public class TeilSzenarioAufgabe4 {
     public void setUp() throws Exception {
         kundenManager = new KundenFassade();
         derKunde = kundenManager.erstelleKunde(new KundenTyp("Batman","Gotham City"));
-        verkauf = new VerkaufFassade();
+        buchhaltung = new BuchhaltungFassade();
         lager = new LagerFassade();
+        verkauf = new VerkaufFassade(buchhaltung,lager,lager, versand);
         produktListe = new ArrayList<>();
         produktListe.add(lager.erstelleProdukt("Batmobil"));
         produktListe.add(lager.erstelleProdukt("BatutilityBag"));
@@ -58,32 +59,19 @@ public class TeilSzenarioAufgabe4 {
         }
         AngebotTyp angebot = verkauf.erstelleAngebot(derKunde.getKundenNr(), new Date(new Date().getTime() + 24l * 60 * 60 * 1000 * 7), new Date(), produkte);
         AuftragTyp auftragTyp = verkauf.erstelleAuftrag(angebot);
-        wareVorhande = false;
-        lager.schreibeFuerWarenReserviertEventEin(angebot, new ILagerListener() {
-            @Override
-            public void fuehreAktionAus() {
-                wareVorhande = true;
-            }
-        });
-        while (!wareVorhande){
-            //warte bis event ausgelöst wurde
-        }
-        assertTrue("Ware vorhanden", wareVorhande);
-
-        versand.erstelleLieferung(auftragTyp);
         List<LieferungTyp> lieferungen = versand.holeAlleLieferungenZuAuftrag(auftragTyp);
         System.out.print(lieferungen);
         for (LieferungTyp lieferung : lieferungen){
             System.out.println("Lieferung erfolgt? " + lieferung.getLieferungErfolgt());
             assertTrue("Lieferung erfolgt", lieferung.getLieferungErfolgt());
         }
-
-        RechnungTyp rechnung = buchhaltung.erstelleRechnung(100, auftragTyp);
-        RechnungTyp ausgeleseneRechnung = buchhaltung.getRechnungZuID(rechnung.getRechnungsNr());
-        assertEquals("Rechnung gehört zu Auftrag: ", auftragTyp.getAuftragsNr(), ausgeleseneRechnung.getAuftragsNr());
-        buchhaltung.zahlungseingangBuchen(100, rechnung.getRechnungsNr());
-        RechnungTyp bezahteRechnung= buchhaltung.getRechnungZuID(rechnung.getRechnungsNr());
-        assertTrue("Rechnung Bezahlt: ", bezahteRechnung.isIstBezahlt());
+        for (RechnungTyp rechnungTyp : buchhaltung.getRechnungenZuKunde(derKunde.getKundenNr())) {
+            if (rechnungTyp.getAuftragsNr().equals(auftragTyp.getAuftragsNr())){
+                buchhaltung.zahlungseingangBuchen(rechnungTyp.getGesamtPreis(), rechnungTyp.getRechnungsNr());
+                RechnungTyp bezahteRechnung= buchhaltung.getRechnungZuID(rechnungTyp.getRechnungsNr());
+                assertTrue("Rechnung Bezahlt: ", bezahteRechnung.isIstBezahlt());
+            }
+        }
         AuftragTyp abgeschlossenerAuftrag = verkauf.getAuftragZuID(auftragTyp.getAuftragsNr());
 
     }

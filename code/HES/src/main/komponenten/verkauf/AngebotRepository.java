@@ -16,8 +16,8 @@ class AngebotRepository {
 
     PersistenzManager persistenzManager = PersistenzManager.getInstance();
 
-    public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe) {
-        Angebot angebot = new Angebot(kundenNr, gueltigBis, gueltigAb, produktListe);
+    public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe, double gesamtpreis) {
+        Angebot angebot = new Angebot(kundenNr, gueltigBis, gueltigAb, produktListe, gesamtpreis);
         persistenzManager.create(angebot);
         return angebot.getAngebotTyp();
     }

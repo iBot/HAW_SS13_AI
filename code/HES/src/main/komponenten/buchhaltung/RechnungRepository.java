@@ -29,10 +29,10 @@ class RechnungRepository {
         }
     }
 
-    public RechnungTyp erstelleRechnung(int gesamtbetrag, AuftragTyp auftrag) {
+    public Rechnung erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag) {
         Rechnung rechnung = new Rechnung(gesamtbetrag, auftrag);
         persistenzManager.create(rechnung);
-        return rechnung.holeRechnungTyp();
+        return rechnung;
     }
 
     public void zahlungseingangBuchen(Zahlungseingang zahlungseingang, String rechnungsNr) {
