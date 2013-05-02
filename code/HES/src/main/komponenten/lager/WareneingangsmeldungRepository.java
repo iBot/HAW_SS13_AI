@@ -1,7 +1,10 @@
 package main.komponenten.lager;
 
+import main.allgemeineTypen.transportTypen.LieferscheinTyp;
 import main.allgemeineTypen.transportTypen.WareneingangsmeldungTyp;
 import main.technik.persistenzManager.PersistenzManager;
+
+import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,4 +22,7 @@ class WareneingangsmeldungRepository {
        return wareneingangsmeldung.holeWareneingangsmeldungTyp();
     }
 
+    public void erstelleWareneingangsmeldung(LieferscheinTyp lieferschein) {
+        Wareneingangsmeldung wareneingangsmeldung = new Wareneingangsmeldung(lieferschein.getLieferscheinNr(), new Date());
+    }
 }

@@ -1,6 +1,7 @@
 package main.komponenten.lager;
 
 import main.technik.persistenzManager.IPersistierbar;
+import main.allgemeineTypen.transportTypen.WarenausgangsmeldungTyp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -27,12 +28,13 @@ class Warenausgangsmeldung implements IPersistierbar {
         this.menge = menge;
     }
 
+    //Getter und Setter
     @Id
     public String getWarenausgangsmeldungsNr() {
         return warenausgangsmeldungsNr;
     }
 
-    public void setWarenausgangsmeldungsNr(String warenausgangsmeldungsNr) {
+    private void setWarenausgangsmeldungsNr(String warenausgangsmeldungsNr) {
         this.warenausgangsmeldungsNr = warenausgangsmeldungsNr;
     }
 
@@ -40,7 +42,7 @@ class Warenausgangsmeldung implements IPersistierbar {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    private void setDatum(Date datum) {
         this.datum = datum;
     }
 
@@ -48,10 +50,14 @@ class Warenausgangsmeldung implements IPersistierbar {
         return menge;
     }
 
-    public void setMenge(int menge) {
+    private void setMenge(int menge) {
         this.menge = menge;
     }
 
+    public WarenausgangsmeldungTyp holeWarenausgangsmeldungTyp()
+    {
+        return new WarenausgangsmeldungTyp(warenausgangsmeldungsNr, datum, menge);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

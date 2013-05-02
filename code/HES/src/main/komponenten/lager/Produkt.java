@@ -3,8 +3,10 @@ package main.komponenten.lager;
 import main.allgemeineTypen.transportTypen.ProduktTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
-import javax.persistence.*;
 
 /**
  * User: Tobi
@@ -21,32 +23,34 @@ class Produkt implements IPersistierbar {
     int lagerbestand;
     double preis;
 
+
+    Produkt() {
+
+    }
+
+    Produkt(String name) {
+        this.produktNr = "PROD-"+ UUID.randomUUID();
+        this.name = name;
+        this.lagerbestand = 1000000;
+    }
+
+
+    //Getter und Setter
+    @Id
+    String getProduktNr() {
+        return produktNr;
+    }
+
+    private void setProduktNr(String produktNr) {
+        this.produktNr = produktNr;
+    }
+
     double getPreis() {
         return preis;
     }
 
     void setPreis(double preis) {
         this.preis = preis;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Produkt{");
-        sb.append("produktNr='").append(produktNr).append('\'');
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", lagerbestand=").append(lagerbestand);
-        sb.append(", preis=").append(preis);
-        sb.append('}');
-        return sb.toString();
-    }
-
-    @Id
-    String getProduktNr() {
-        return produktNr;
-    }
-
-    void setProduktNr(String produktNr) {
-        this.produktNr = produktNr;
     }
 
     String getName() {
@@ -65,6 +69,20 @@ class Produkt implements IPersistierbar {
         this.lagerbestand = lagerbestand;
     }
 
+
+    public void erhoeheLagerbestand(int menge) {
+        this.lagerbestand += menge;
+    }
+
+    public void verringereLagerbestand(int menge) {
+        this.lagerbestand -= menge;
+    }
+
+    public ProduktTyp holeProduktTyp() {
+        return new ProduktTyp(produktNr,name,lagerbestand,preis);
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -82,25 +100,15 @@ class Produkt implements IPersistierbar {
         return produktNr.hashCode();
     }
 
-    Produkt() {
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Produkt{");
+        sb.append("produktNr='").append(produktNr).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", lagerbestand=").append(lagerbestand);
+        sb.append(", preis=").append(preis);
+        sb.append('}');
+        return sb.toString();
     }
 
-    Produkt(String name) {
-        this.produktNr = "PROD-"+ UUID.randomUUID();
-        this.name = name;
-        this.lagerbestand = 1000000;
-    }
-
-    public void erhoeheLagerbestand(int menge) {
-        this.lagerbestand += menge;
-    }
-
-    public void verringereLagerbestand(int menge) {
-        this.lagerbestand -= menge;
-    }
-
-    public ProduktTyp holeProduktTyp() {
-        return new ProduktTyp(produktNr,name,lagerbestand,preis);
-    }
 }

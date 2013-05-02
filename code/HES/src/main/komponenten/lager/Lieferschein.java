@@ -22,15 +22,13 @@ public class Lieferschein implements IPersistierbar{
     private int menge;
     String produktNr;
 
-    public String getProduktNr() {
-        return produktNr;
-    }
-
-    public void setProduktNr(String produktNr) {
-        this.produktNr = produktNr;
-    }
-
     public Lieferschein() {
+    }
+
+    public Lieferschein(String lieferscheinNr, int menge, String produktNr) {
+        this.lieferscheinNr = lieferscheinNr;
+        this.menge = menge;
+        this.produktNr = produktNr;
     }
 
     public Lieferschein(int menge, String produktNr) {
@@ -38,6 +36,35 @@ public class Lieferschein implements IPersistierbar{
         this.menge = menge;
         this.produktNr = produktNr;
     }
+
+
+    @Id
+    public String getLieferscheinNr() {
+        return lieferscheinNr;
+    }
+
+    private void setLieferscheinNr(String lieferscheinNr) {
+        this.lieferscheinNr = lieferscheinNr;
+    }
+
+    public int getMenge() {
+
+        return menge;
+    }
+
+    private void setMenge(int menge) {
+        this.menge = menge;
+    }
+
+    public String getProduktNr() {
+        return produktNr;
+    }
+
+    private void setProduktNr(String produktNr) {
+        this.produktNr = produktNr;
+    }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -61,26 +88,5 @@ public class Lieferschein implements IPersistierbar{
         return result;
     }
 
-    public int getMenge() {
 
-        return menge;
-    }
-
-    public void setMenge(int menge) {
-        this.menge = menge;
-    }
-
-    @Id
-    public String getLieferscheinNr() {
-        return lieferscheinNr;
-    }
-
-    public void setLieferscheinNr(String lieferscheinNr) {
-        this.lieferscheinNr = lieferscheinNr;
-    }
-
-    public Lieferschein(String lieferscheinNr, int menge) {
-        this.lieferscheinNr = lieferscheinNr;
-        this.menge = menge;
-    }
 }

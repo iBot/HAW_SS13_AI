@@ -11,9 +11,9 @@ public interface ILagerManager {
 
     public ProduktTyp erstelleProdukt(String produktName);
 
-    public void bucheWareneingang(LieferscheinTyp lieferschein);
+    public void bucheWareneingang(LieferscheinTyp lieferschein, String bestellNr);
 
-    public void reserviereProdukteFuerAuftrag(AuftragTyp auftrag, AngebotTyp angebot);
+    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, IReserviertListener reserviertListener);
 
     public ProduktTyp getProduktZuID(String produktNr);
 
