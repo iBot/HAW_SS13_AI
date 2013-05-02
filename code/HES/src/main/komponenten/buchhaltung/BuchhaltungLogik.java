@@ -20,15 +20,15 @@ class BuchhaltungLogik {
         this.zahlungseingangRepository = new ZahlungseingangRepository();
     }
 
-    public void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener) {
-        //TODO funktionalität checken
-
-        listener.fuehreAktionAus();
-        //rechnungRepository.schreibeFuerRechnungBezahltEventEin(rechnungsNr, listener);
+    private void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener) {
+        rechnungRepository.schreibeFuerRechnungBezahltEventEin(rechnungsNr, listener);
     }
 
-    public RechnungTyp erstelleRechnung(int gesamtbetrag, AuftragTyp auftrag) {
-        return rechnungRepository.erstelleRechnung(gesamtbetrag, auftrag);
+    public RechnungTyp erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag, IBuchhaltungListener listener) {
+        Rechnung rechnung = rechnungRepository.erstelleRechnung(gesamtbetrag, auftrag);
+        schreibeFuerRechnungBezahltEventEin(rechnung.getRechnungsNr(), listener);
+        //sende Rechnung an Kunde
+        return rechnung.holeRechnungTyp();
     }
 
     public void zahlungseingangBuchen(double betrag, String rechnungsNr) {

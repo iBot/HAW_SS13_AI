@@ -27,18 +27,18 @@ class Rechnung implements IPersistierbar {
     private Date rechnungsDatum;
     private String auftragsNr;
 
-    int getGesamtbetrag() {
+    double getGesamtbetrag() {
         return gesamtbetrag;
     }
 
-    void setGesamtbetrag(int gesamtbetrag) {
+    void setGesamtbetrag(double gesamtbetrag) {
         this.gesamtbetrag = gesamtbetrag;
     }
 
-    private int gesamtbetrag;
+    private double gesamtbetrag;
 
 
-    Rechnung( int gesamtbetrag, AuftragTyp auftrag) {
+    Rechnung(double gesamtbetrag, AuftragTyp auftrag) {
         this.rechnungsNr = "RE-"+ UUID.randomUUID();
         this.zahlungseingaenge = new ArrayList<>();
         this.istBezahlt = false;
@@ -53,7 +53,7 @@ class Rechnung implements IPersistierbar {
 
     void zahlungseingangHinzufuegen(Zahlungseingang zahlungseingang) {
         zahlungseingaenge.add(zahlungseingang);
-        int summe = gesamtbetrag;
+        double summe = gesamtbetrag;
         for (Zahlungseingang ze : zahlungseingaenge){
             summe -= ze.getBetrag();
         }
@@ -117,7 +117,7 @@ class Rechnung implements IPersistierbar {
     }
 
     RechnungTyp holeRechnungTyp() {
-        return new RechnungTyp(rechnungsNr, istBezahlt, new Date(rechnungsDatum.getTime()),auftragsNr);
+        return new RechnungTyp(rechnungsNr, istBezahlt, new Date(rechnungsDatum.getTime()),auftragsNr,gesamtbetrag);
     }
 
 

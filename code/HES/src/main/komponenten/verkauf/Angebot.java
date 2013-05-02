@@ -27,16 +27,27 @@ class Angebot implements IPersistierbar {
 
     private Date gueltigBis, gueltigAb;
 
+    double getGesamtpreis() {
+        return gesamtpreis;
+    }
+
+    void setGesamtpreis(double gesamtpreis) {
+        this.gesamtpreis = gesamtpreis;
+    }
+
+    private double gesamtpreis;
+
     @ElementCollection( fetch = FetchType.EAGER)
     private Map<String, Integer> produktListe;
 
 
-    public Angebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe) {
+    public Angebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe, double gesamtpreis) {
         this.angebotNr = "ANG-" + UUID.randomUUID();
         this.kundenNr = kundenNr;
         this.gueltigAb = gueltigAb;
         this.gueltigBis = gueltigBis;
         this.produktListe = new HashMap<>(produktListe);
+        this.gesamtpreis = gesamtpreis;
     }
 
     private Angebot() {
@@ -45,7 +56,7 @@ class Angebot implements IPersistierbar {
 
 
     public AngebotTyp getAngebotTyp() {
-        return new AngebotTyp(angebotNr, kundenNr, new Date(gueltigBis.getTime()), new Date(gueltigAb.getTime()), new HashMap<>(produktListe));
+        return new AngebotTyp(angebotNr, kundenNr, new Date(gueltigBis.getTime()), new Date(gueltigAb.getTime()), new HashMap<>(produktListe),gesamtpreis);
     }
 
 
@@ -97,6 +108,7 @@ class Angebot implements IPersistierbar {
         sb.append(", kundenNr='").append(kundenNr).append('\'');
         sb.append(", gueltigBis=").append(gueltigBis);
         sb.append(", gueltigAb=").append(gueltigAb);
+        sb.append(", gesamtpreis=").append(gesamtpreis);
         sb.append(", produktListe=").append(produktListe);
         sb.append('}');
         return sb.toString();

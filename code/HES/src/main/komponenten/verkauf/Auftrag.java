@@ -69,7 +69,7 @@ class Auftrag implements IPersistierbar {
         this.beaufragtAm = beaufragtAm;
     }
 
-    public AuftragTyp getAuftragTyp() {
+    public AuftragTyp holeAuftragTyp() {
         return new AuftragTyp(auftragsNr, angebotsNr, istAbgeschlossen, new Date(beaufragtAm.getTime()));
     }
 

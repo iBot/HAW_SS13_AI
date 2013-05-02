@@ -89,7 +89,10 @@ class RechnungDummy implements IPersistierbar {
     }
 
     RechnungTyp holeRechnungTyp() {
-        return new RechnungTyp(rechnungsNr, istBezahlt, new Date(rechnungsDatum.getTime()), auftragsNr);
+
+        //TODO:
+//        return new RechnungTyp(rechnungsNr, istBezahlt, new Date(rechnungsDatum.getTime()), auftragsNr);
+        return null;
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.util.List;
  * Time: 12:54
  */
 public interface IBuchhaltungManager {
-    public RechnungTyp erstelleRechnung(int gesamtbetrag, AuftragTyp auftrag);
+    public RechnungTyp erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag, IBuchhaltungListener listener);
 
     public void zahlungseingangBuchen(double betrag, String rechnungsNr);
 
