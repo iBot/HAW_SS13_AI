@@ -3,6 +3,7 @@ package main.komponenten.buchhaltung;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,15 +34,32 @@ class BuchhaltungLogik {
 
     public void zahlungseingangBuchen(double betrag, String rechnungsNr) {
         Zahlungseingang zahlungseingang = zahlungseingangRepository.erstelleZahlungseingang(betrag);
-        rechnungRepository.zahlungseingangBuchen(zahlungseingang, rechnungsNr);
+        Rechnung rechnung = rechnungRepository.getRechnungZuID(rechnungsNr);
+
+        rechnung.zahlungseingangHinzufuegen(zahlungseingang);
+        rechnungRepository.speicherRechnung(rechnung);
+
+        if (rechnung.getIstBezahlt()) {
+            //TODO: wohin soll die Map?
+//            if (buchhaltungListenerMap.containsKey(rechnungsNr)) {
+//                for (IBuchhaltungListener listener : buchhaltungListenerMap.get(rechnungsNr)) {
+//                    listener.fuehreAktionAus();
+//                }
+//            }
+        }
 
     }
 
     public List<RechnungTyp> getRechnungenZuKunde(String kundenNr) {
-        return rechnungRepository.getRechnungenZuKunde(kundenNr);
+        List<RechnungTyp> transportRechnungen = new ArrayList<>();
+        for(Rechnung r : rechnungRepository.getRechnungenZuKunde(kundenNr))
+        {
+            transportRechnungen.add(r.holeRechnungTyp());
+        }
+        return transportRechnungen;
     }
 
     public RechnungTyp getRechnungZuID(String rechnungsNr) {
-        return rechnungRepository.getRechnungZuID(rechnungsNr);
+        return rechnungRepository.getRechnungZuID(rechnungsNr).holeRechnungTyp();
     }
 }

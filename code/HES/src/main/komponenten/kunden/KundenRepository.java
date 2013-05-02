@@ -8,20 +8,18 @@ import main.technik.persistenzManager.PersistenzManager;
  * Date: 19.04.13
  * Time: 13:33
  */
-class KundenRepository implements IKundenManager {
+class KundenRepository {
 
     PersistenzManager persistenzManager = PersistenzManager.getInstance();
 
-    @Override
-    public KundenTyp erstelleKunde(KundenTyp kunde) {
+    public Kunde erstelleKunde(KundenTyp kunde) {
         Kunde neuerKunde = new Kunde(kunde.getName(), kunde.getAdresse());
         persistenzManager.create(neuerKunde);
-        return neuerKunde.getKundenTyp();
+        return neuerKunde;
     }
 
-    @Override
-    public KundenTyp getKundeZuID(String kundenID) {
+    public Kunde getKundeZuID(String kundenID) {
         Kunde kunde = persistenzManager.access(Kunde.class, kundenID);
-        return kunde.getKundenTyp();
+        return kunde;
     }
 }

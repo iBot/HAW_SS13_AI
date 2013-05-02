@@ -2,7 +2,9 @@ package main.komponenten.versand;
 
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.LieferungTyp;
+import main.allgemeineTypen.transportTypen.TransportauftragTyp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,18 +23,23 @@ class VersandLogik {
     }
 
     LieferungTyp erstelleLieferung(AuftragTyp auftrag) {
-        return lieferungRepository. erstelleLieferung(auftrag, erstelleTransportauftrag());
+        return lieferungRepository.erstelleLieferung(auftrag, transportauftragRepository.erstelleTransportauftrag()).holeLieferungTyp();
     }
 
-    Transportauftrag erstelleTransportauftrag(){
-        return this.transportauftragRepository.erstelleTransportauftrag();
+    TransportauftragTyp erstelleTransportauftrag(){
+        return this.transportauftragRepository.erstelleTransportauftrag().holeTransportauftragTyp();
     }
 
     public LieferungTyp getLieferungZuID(String lieferungNr) {
-        return this.lieferungRepository.getLieferungZuID(lieferungNr);
+        return this.lieferungRepository.getLieferungZuID(lieferungNr).holeLieferungTyp();
     }
 
     public List<LieferungTyp> holeAlleLieferungenZuAuftrag(AuftragTyp auftrag) {
-        return this.lieferungRepository.holeAlleLieferungenZuAuftrag(auftrag);
+        List<Lieferung> lieferungen = this.lieferungRepository.holeAlleLieferungenZuAuftrag(auftrag);
+        List<LieferungTyp> result = new ArrayList<>();
+        for (Lieferung lieferung :lieferungen ){
+            result.add(lieferung.holeLieferungTyp());
+        }
+        return result;
     }
 }

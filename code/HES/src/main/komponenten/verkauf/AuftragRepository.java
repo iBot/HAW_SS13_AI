@@ -1,8 +1,9 @@
 package main.komponenten.verkauf;
 
 import main.allgemeineTypen.transportTypen.AngebotTyp;
-import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.technik.persistenzManager.PersistenzManager;
+
+import java.util.Date;
 
 /**
  * User: Tobi
@@ -13,18 +14,19 @@ public class AuftragRepository {
 
     PersistenzManager persistenzManager = PersistenzManager.getInstance();
 
-    public Auftrag erstelleAuftrag(AngebotTyp angebot) {
-        Auftrag auftrag = new Auftrag(angebot);
+    public Auftrag erstelleAuftrag(AngebotTyp angebot, Date beauftragtAm) {
+        Auftrag auftrag = new Auftrag(angebot, beauftragtAm);
         persistenzManager.create(auftrag);
         return auftrag;
     }
 
-    public AuftragTyp getAuftragZuID(String auftragsNr) {
+    public Auftrag getAuftragZuID(String auftragsNr) {
         Auftrag auftrag = persistenzManager.access(Auftrag.class, auftragsNr);
-        return auftrag.holeAuftragTyp();
+        return auftrag;
     }
 
     public void speicherAuftrag(Auftrag auftrag) {
         persistenzManager.update(auftrag);
     }
+
 }

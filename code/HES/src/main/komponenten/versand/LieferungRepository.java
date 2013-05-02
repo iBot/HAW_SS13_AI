@@ -1,10 +1,8 @@
 package main.komponenten.versand;
 
 import main.allgemeineTypen.transportTypen.AuftragTyp;
-import main.allgemeineTypen.transportTypen.LieferungTyp;
 import main.technik.persistenzManager.PersistenzManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,29 +14,26 @@ class LieferungRepository {
 
     PersistenzManager persistenzManager = PersistenzManager.getInstance();
 
-    public LieferungTyp erstelleLieferung(AuftragTyp auftrag) {
+    public Lieferung erstelleLieferung(AuftragTyp auftrag) {
         Lieferung lieferung = new Lieferung(auftrag);
         persistenzManager.create(lieferung);
-        return lieferung.holeLieferungTyp();
+        return lieferung;
     }
-    public LieferungTyp erstelleLieferung(AuftragTyp auftrag, Transportauftrag transportauftrag) {
+    public Lieferung erstelleLieferung(AuftragTyp auftrag, Transportauftrag transportauftrag) {
         Lieferung lieferung = new Lieferung(auftrag,transportauftrag);
         persistenzManager.create(lieferung);
-        return lieferung.holeLieferungTyp();
+        return lieferung;
     }
 
-    public LieferungTyp getLieferungZuID(String lieferungNr) {
+    public Lieferung getLieferungZuID(String lieferungNr) {
         Lieferung lieferung = persistenzManager.access(Lieferung.class, lieferungNr);
-        return  lieferung.holeLieferungTyp();
+        return  lieferung;
     }
 
-    public List<LieferungTyp> holeAlleLieferungenZuAuftrag(AuftragTyp auftrag) {
+    public List<Lieferung> holeAlleLieferungenZuAuftrag(AuftragTyp auftrag) {
         String query = "from Lieferung where auftragsNr = '"+auftrag.getAuftragsNr()+"'";
         List<Lieferung> lieferungen = persistenzManager.getAllByQuery(query);
-        List<LieferungTyp> result = new ArrayList<>();
-        for (Lieferung lieferung :lieferungen ){
-            result.add(lieferung.holeLieferungTyp());
-        }
-        return result;
+
+        return lieferungen;
     }
 }

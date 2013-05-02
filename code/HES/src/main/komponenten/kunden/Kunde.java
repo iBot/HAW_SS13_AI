@@ -31,16 +31,18 @@ class Kunde implements IPersistierbar {
         this.adresse = adresse;
     }
 
-
-    public KundenTyp getKundenTyp() {
+    //Transporttyp
+    public KundenTyp holeKundenTyp() {
         return new KundenTyp(kundenNr, name, adresse);
     }
 
+
+    //Getter und Setter
     String getKundenNr() {
         return kundenNr;
     }
 
-    void setKundenNr(String kundenNr) {
+    private void setKundenNr(String kundenNr) {
         this.kundenNr = kundenNr;
     }
 
@@ -59,6 +61,7 @@ class Kunde implements IPersistierbar {
     void setAdresse(String adresse) {
         this.adresse = adresse;
     }
+
 
     @Override
     public String toString() {

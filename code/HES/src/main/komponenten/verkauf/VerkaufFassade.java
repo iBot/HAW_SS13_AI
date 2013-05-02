@@ -2,10 +2,7 @@ package main.komponenten.verkauf;
 
 import main.allgemeineTypen.transportTypen.AngebotTyp;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
-import main.allgemeineTypen.transportTypen.KundenTyp;
-import main.allgemeineTypen.transportTypen.ProduktTyp;
 import main.komponenten.buchhaltung.IBuchhaltungManager;
-import main.komponenten.lager.ILagerEvent;
 import main.komponenten.lager.ILagerManager;
 import main.komponenten.versand.IVersandManager;
 
@@ -21,17 +18,15 @@ public class VerkaufFassade implements IVerkaufManager {
     private AngebotLogik angebotLogik;
     private AuftragLogik auftragLogik;
     private IBuchhaltungManager buchhaltungManager;
-    private ILagerEvent lagerEvent;
     private ILagerManager lagerManager;
     private IVersandManager versandManager;
 
-    public VerkaufFassade(IBuchhaltungManager buchhaltungManager, ILagerEvent lagerEvent, ILagerManager lagerManager, IVersandManager versandManager) {
+    public VerkaufFassade(IBuchhaltungManager buchhaltungManager, ILagerManager lagerManager, IVersandManager versandManager) {
 
         this.buchhaltungManager = buchhaltungManager;
-        this.lagerEvent = lagerEvent;
         this.lagerManager = lagerManager;
         this.angebotLogik = new AngebotLogik(lagerManager);
-        this.auftragLogik = new AuftragLogik(buchhaltungManager,lagerEvent,lagerManager, versandManager);
+        this.auftragLogik = new AuftragLogik(buchhaltungManager,lagerManager, versandManager);
     }
 
 
@@ -41,8 +36,8 @@ public class VerkaufFassade implements IVerkaufManager {
     }
 
     @Override
-    public AuftragTyp erstelleAuftrag(AngebotTyp angebot) {
-        AuftragTyp auftrag = auftragLogik.erstelleAuftrag(angebot);
+    public AuftragTyp erstelleAuftrag(AngebotTyp angebot, Date beauftragtAm) {
+        AuftragTyp auftrag = auftragLogik.erstelleAuftrag(angebot, beauftragtAm);
         return auftrag;
     }
 

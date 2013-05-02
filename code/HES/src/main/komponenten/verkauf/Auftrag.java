@@ -21,27 +21,26 @@ class Auftrag implements IPersistierbar {
     private String auftragsNr;
 
     private String angebotsNr;
-
     private boolean istAbgeschlossen;
     private Date beaufragtAm;
 
     private Auftrag() {
     }
 
-    public Auftrag(AngebotTyp angebot) {
+    public Auftrag(AngebotTyp angebot, Date beaufragtAm) {
         this.angebotsNr = angebot.getAngebotNr();
         this.auftragsNr = "AUFT-"+ UUID.randomUUID();
         this.istAbgeschlossen = false;
-        this.beaufragtAm = new Date();
+        this.beaufragtAm = beaufragtAm;
 
     }
 
+    //Getter und Setter
     String getAuftragsNr() {
-
         return auftragsNr;
     }
 
-    void setAuftragsNr(String auftragsNr) {
+    private void setAuftragsNr(String auftragsNr) {
         this.auftragsNr = auftragsNr;
     }
 
@@ -49,11 +48,11 @@ class Auftrag implements IPersistierbar {
         return angebotsNr;
     }
 
-    void setAngebotsNr(String angebotsNr) {
+    private void setAngebotsNr(String angebotsNr) {
         this.angebotsNr = angebotsNr;
     }
 
-    boolean isIstAbgeschlossen() {
+    boolean GetIstAbgeschlossen() {
         return istAbgeschlossen;
     }
 
@@ -65,7 +64,7 @@ class Auftrag implements IPersistierbar {
         return beaufragtAm;
     }
 
-    void setBeaufragtAm(Date beaufragtAm) {
+    private void setBeaufragtAm(Date beaufragtAm) {
         this.beaufragtAm = beaufragtAm;
     }
 

@@ -1,7 +1,6 @@
 package main.komponenten.verkauf;
 
 import main.allgemeineTypen.transportTypen.AngebotTyp;
-import main.allgemeineTypen.transportTypen.ProduktTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
 import javax.persistence.*;
@@ -22,19 +21,8 @@ class Angebot implements IPersistierbar {
     @Id
     private String angebotNr;
 
-
     private String kundenNr;
-
     private Date gueltigBis, gueltigAb;
-
-    double getGesamtpreis() {
-        return gesamtpreis;
-    }
-
-    void setGesamtpreis(double gesamtpreis) {
-        this.gesamtpreis = gesamtpreis;
-    }
-
     private double gesamtpreis;
 
     @ElementCollection( fetch = FetchType.EAGER)
@@ -55,20 +43,20 @@ class Angebot implements IPersistierbar {
     }
 
 
-    public AngebotTyp getAngebotTyp() {
+    public AngebotTyp holeAngebotTyp() {
         return new AngebotTyp(angebotNr, kundenNr, new Date(gueltigBis.getTime()), new Date(gueltigAb.getTime()), new HashMap<>(produktListe),gesamtpreis);
     }
 
-
+    //Getter und Setter
     String getAngebotNr() {
         return angebotNr;
     }
 
-    void setAngebotNr(String angebotNr) {
+    private void setAngebotNr(String angebotNr) {
         this.angebotNr = angebotNr;
     }
 
-    private String getKundenNr() {
+    String getKundenNr() {
         return kundenNr;
     }
 
@@ -76,7 +64,7 @@ class Angebot implements IPersistierbar {
         this.kundenNr = kundenNr;
     }
 
-    private Date getGueltigBis() {
+    Date getGueltigBis() {
         return gueltigBis;
     }
 
@@ -84,7 +72,7 @@ class Angebot implements IPersistierbar {
         this.gueltigBis = gueltigBis;
     }
 
-    private Date getGueltigAb() {
+    Date getGueltigAb() {
         return gueltigAb;
     }
 
@@ -92,14 +80,22 @@ class Angebot implements IPersistierbar {
         this.gueltigAb = gueltigAb;
     }
 
-
-    private Map<String, Integer> getProduktListe() {
+    Map<String, Integer> getProduktListe() {
         return produktListe;
     }
 
     private void setProduktListe(Map<String, Integer> produktListe) {
         this.produktListe = produktListe;
     }
+
+    double getGesamtpreis() {
+        return gesamtpreis;
+    }
+
+    private void setGesamtpreis(double gesamtpreis) {
+        this.gesamtpreis = gesamtpreis;
+    }
+
 
     @Override
     public String toString() {

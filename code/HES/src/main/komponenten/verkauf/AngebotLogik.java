@@ -1,7 +1,6 @@
 package main.komponenten.verkauf;
 
 import main.allgemeineTypen.transportTypen.AngebotTyp;
-import main.allgemeineTypen.transportTypen.KundenTyp;
 import main.allgemeineTypen.transportTypen.ProduktTyp;
 import main.komponenten.lager.ILagerManager;
 
@@ -28,10 +27,10 @@ class AngebotLogik {
             ProduktTyp produkt = lager.getProduktZuID(entry.getKey());
             gesamtpreis += produkt.getPreis() * entry.getValue();
         }
-        return this.angebotRepository.erstelleAngebot(kundenNr, gueltigBis, gueltigAb, produktListe,gesamtpreis);
+        return this.angebotRepository.erstelleAngebot(kundenNr, gueltigBis, gueltigAb, produktListe,gesamtpreis).holeAngebotTyp();
     }
 
     public AngebotTyp getAngebotZuID(String angebotNr) {
-        return this.angebotRepository.getAngebotZuID(angebotNr);
+        return this.angebotRepository.getAngebotZuID(angebotNr).holeAngebotTyp();
     }
 }

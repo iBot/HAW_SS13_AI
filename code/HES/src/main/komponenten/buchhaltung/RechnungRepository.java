@@ -1,10 +1,12 @@
 package main.komponenten.buchhaltung;
 
 import main.allgemeineTypen.transportTypen.AuftragTyp;
-import main.allgemeineTypen.transportTypen.RechnungTyp;
 import main.technik.persistenzManager.PersistenzManager;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * User: Tobi
@@ -36,35 +38,21 @@ class RechnungRepository {
     }
 
     public void zahlungseingangBuchen(Zahlungseingang zahlungseingang, String rechnungsNr) {
-        Rechnung rechnung = persistenzManager.access(Rechnung.class, rechnungsNr);
-//        System.out.print(zahlungseingang);
-        System.out.print(rechnung);
-        rechnung.zahlungseingangHinzufuegen(zahlungseingang);
-        persistenzManager.update(rechnung);
 
-        if (rechnung.getIstBezahlt()) {
-            if (buchhaltungListenerMap.containsKey(rechnungsNr)) {
-                for (IBuchhaltungListener listener : buchhaltungListenerMap.get(rechnungsNr)) {
-                    listener.fuehreAktionAus();
-                }
-            }
-        }
     }
 
-    public List<RechnungTyp> getRechnungenZuKunde(String kundenNr) {
-        List<RechnungTyp> transportRechnungen = null;
-        //TODO: Neue Methode verwenden
+    public List<Rechnung> getRechnungenZuKunde(String kundenNr) {
         String queryString= "from Rechnung where Rechnung.KundenNr = '"+kundenNr+"'";
         List<Rechnung> rechnungen = persistenzManager.getAllByQuery(queryString);
-        for(Rechnung r : rechnungen)
-        {
-            transportRechnungen.add(r.holeRechnungTyp());
-        }
-        return transportRechnungen;
+        return rechnungen;
     }
 
-    public RechnungTyp getRechnungZuID(String rechnungsNr) {
+    public Rechnung getRechnungZuID(String rechnungsNr) {
         Rechnung rechnung = persistenzManager.access(Rechnung.class, rechnungsNr);
-        return rechnung.holeRechnungTyp();
+        return rechnung;
+    }
+
+    public void speicherRechnung(Rechnung rechnung) {
+        persistenzManager.update(rechnung);
     }
 }

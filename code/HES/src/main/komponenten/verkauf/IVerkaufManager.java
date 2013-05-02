@@ -2,8 +2,6 @@ package main.komponenten.verkauf;
 
 import main.allgemeineTypen.transportTypen.AngebotTyp;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
-import main.allgemeineTypen.transportTypen.KundenTyp;
-import main.allgemeineTypen.transportTypen.ProduktTyp;
 
 import java.util.Date;
 import java.util.Map;
@@ -16,7 +14,7 @@ import java.util.Map;
 public interface IVerkaufManager {
     public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe);
 
-    public AuftragTyp erstelleAuftrag(AngebotTyp angebot);
+    public AuftragTyp erstelleAuftrag(AngebotTyp angebot, Date beauftragtAm);
 
     public AuftragTyp getAuftragZuID(String auftragsNr);
 

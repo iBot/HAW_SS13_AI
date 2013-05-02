@@ -16,10 +16,10 @@ class KundenLogik{
     }
 
     public KundenTyp erstelleKunde(KundenTyp kunde) {
-        return this.kundenrepository.erstelleKunde(kunde);
+        return this.kundenrepository.erstelleKunde(kunde).holeKundenTyp();
     }
 
     public KundenTyp getKundeZuID(String kundenID) {
-        return this.kundenrepository.getKundeZuID(kundenID);
+        return this.kundenrepository.getKundeZuID(kundenID).holeKundenTyp();
     }
 }

@@ -21,24 +21,17 @@ class Rechnung implements IPersistierbar {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Zahlungseingang> zahlungseingaenge;
+
     @Id
     private String rechnungsNr;
+
     private boolean istBezahlt;
     private Date rechnungsDatum;
     private String auftragsNr;
-
-    double getGesamtbetrag() {
-        return gesamtbetrag;
-    }
-
-    void setGesamtbetrag(double gesamtbetrag) {
-        this.gesamtbetrag = gesamtbetrag;
-    }
-
     private double gesamtbetrag;
 
 
-    Rechnung(double gesamtbetrag, AuftragTyp auftrag) {
+    public Rechnung(double gesamtbetrag, AuftragTyp auftrag) {
         this.rechnungsNr = "RE-"+ UUID.randomUUID();
         this.zahlungseingaenge = new ArrayList<>();
         this.istBezahlt = false;
@@ -50,6 +43,7 @@ class Rechnung implements IPersistierbar {
 
     private Rechnung() {
     }
+
 
     void zahlungseingangHinzufuegen(Zahlungseingang zahlungseingang) {
         zahlungseingaenge.add(zahlungseingang);
@@ -63,20 +57,21 @@ class Rechnung implements IPersistierbar {
     }
 
 
-    List<Zahlungseingang> getZahlungseingaenge() {
-        return zahlungseingaenge;
-    }
-
-    void setZahlungseingaenge(List<Zahlungseingang> zahlungseingaenge) {
-        this.zahlungseingaenge = zahlungseingaenge;
-    }
-
+    //Getter und Setter
     String getRechnungsNr() {
         return rechnungsNr;
     }
 
-    void setRechnungsNr(String rechnungsNr) {
+    private void setRechnungsNr(String rechnungsNr) {
         this.rechnungsNr = rechnungsNr;
+    }
+
+    List<Zahlungseingang> getZahlungseingaenge() {
+        return zahlungseingaenge;
+    }
+
+    private void setZahlungseingaenge(List<Zahlungseingang> zahlungseingaenge) {
+        this.zahlungseingaenge = zahlungseingaenge;
     }
 
     boolean getIstBezahlt() {
@@ -91,9 +86,33 @@ class Rechnung implements IPersistierbar {
         return auftragsNr;
     }
 
-    void setAuftragsNr(String auftragsNr){
+    private void setAuftragsNr(String auftragsNr){
         this.auftragsNr = auftragsNr;
     }
+
+
+    double getGesamtbetrag() {
+        return gesamtbetrag;
+    }
+
+    private void setGesamtbetrag(double gesamtbetrag) {
+        this.gesamtbetrag = gesamtbetrag;
+    }
+
+    Date getRechnungsDatum() {
+        return rechnungsDatum;
+    }
+
+    void setRechnungsDatum(Date rechnungsDatum) {
+        this.rechnungsDatum = rechnungsDatum;
+    }
+
+
+    //Transporttyp zur Weitergabe an andere Komponenten (keine get-Methode um Hibernate nicht zu verwirren ;) )
+    RechnungTyp holeRechnungTyp() {
+        return new RechnungTyp(rechnungsNr, istBezahlt, new Date(rechnungsDatum.getTime()),auftragsNr,gesamtbetrag);
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -106,20 +125,6 @@ class Rechnung implements IPersistierbar {
 
         return true;
     }
-
-    Date getRechnungsDatum() {
-
-        return rechnungsDatum;
-    }
-
-    void setRechnungsDatum(Date rechnungsDatum) {
-        this.rechnungsDatum = rechnungsDatum;
-    }
-
-    RechnungTyp holeRechnungTyp() {
-        return new RechnungTyp(rechnungsNr, istBezahlt, new Date(rechnungsDatum.getTime()),auftragsNr,gesamtbetrag);
-    }
-
 
     @Override
     public String toString() {
