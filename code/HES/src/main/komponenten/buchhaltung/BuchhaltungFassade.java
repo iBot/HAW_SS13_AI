@@ -13,7 +13,7 @@ public class BuchhaltungFassade implements IBuchhaltungManager {
     private BuchhaltungLogik buchhaltungLogik;
 
     public BuchhaltungFassade() {
-        this.buchhaltungLogik = new BuchhaltungLogik();
+        this.buchhaltungLogik = BuchhaltungLogik.getInstance();
     }
 
 

@@ -70,7 +70,7 @@ public class TeilSzenarioAufgabe4 {
 
         AuftragTyp abgeschlossenerAuftrag = verkauf.getAuftragZuID(auftragTyp.getAuftragsNr());
         System.out.println("Auftrag abgeschlossen: "+abgeschlossenerAuftrag.getIstAbgeschlossen());
-        //assertTrue("Auftrag abgeschlossen: ", abgeschlossenerAuftrag.getIstAbgeschlossen());
+        assertTrue("Auftrag abgeschlossen: ", abgeschlossenerAuftrag.getIstAbgeschlossen());
     }
 
 

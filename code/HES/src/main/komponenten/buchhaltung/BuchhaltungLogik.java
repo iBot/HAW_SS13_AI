@@ -17,7 +17,16 @@ class BuchhaltungLogik {
     ZahlungseingangRepository zahlungseingangRepository;
     Map<String, IBuchhaltungListener> buchhaltungListenerMap;
 
-    BuchhaltungLogik() {
+    private static BuchhaltungLogik instanz;
+
+    public static BuchhaltungLogik getInstance(){
+        if (instanz==null){
+            instanz = new BuchhaltungLogik();
+        }
+        return instanz;
+    }
+
+    private BuchhaltungLogik() {
         this.buchhaltungListenerMap = new HashMap<>();
         this.rechnungRepository = new RechnungRepository();
         this.zahlungseingangRepository = new ZahlungseingangRepository();
