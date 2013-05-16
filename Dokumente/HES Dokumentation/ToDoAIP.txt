@@ -1,0 +1,71 @@
+1. Problem Asynchron rückmeldung -> Listener persistieren
+2. Festlegung kommunikation zwischen Dispatcher und Systeminstanzen (Vorschlag RMI)
+3. i am alive reicht nicht aus mit Ping zu realisieren da die System instanzen sich authentifizieren müssen
+	daher -> RMI oder Simples UDP
+4. Diagramme zum Scenario
+5. Architektur entwurd (Dispatcher+Client+Dashboard+Monitor+[Namensdienst RMI geschichte]) = Clientinstanz
+	5.1 Dispatcher Anforderungen:
+		- wechseln von online Prozesses nach round robin (zeitscheiben verfahren)
+		- Zeitscheiben dauer konfigurierbar 
+		- listener (für Montior) bereitstellen zum aktualisieren der verfügbaren SystemInstanzen
+		- Delegieren von funktionsaufrufen (Hier wäre RMI warscheinlich wieder am start)
+		- Informiert Dashboard GUI über verarbeitete Funktionsaufrufe (Anfragen) der jeweiligen SystemInstanz
+
+
+	5.2 Client Anforderungen:
+		- Erstellen von Kunden
+		- erstellen von angeboten
+		- erstellen von aufträgen
+		- wareneingang verbuchen
+		- (GUI nicht erforderlich)
+
+	5.3 Dashboard GUI - Anforderung:
+		- Anzeige von Status (siehe Notizen)
+		- Online und Offline schalten (Aufruf an den Montior status auf Offline bzw online der jeweiligen System instanz zu stellen)
+
+	5.4 Montior Anforderung: 
+		- Online offline schalten realisieren (Status manuell ändern)
+		- Verwalten vom Status der einzelnen Instanzen 
+			- Timer zurücksetzten beim empfang von Alive MSGS
+				-Timer muss konfigurierbar sein
+			- Beim ablauf vom Timer Status auf DEAD
+			- Beim initialen aufnehmen von Systeminstanzen Timer initialisieren.
+		- Bei Statusänderung egal wie -> Dispatcher informieren Dashboard Gui informieren (Listener callen)
+		- Uptime / DownTime Messen
+			Uptime : Zeitspanne zwischen Online und Offline/DEAD
+			DownTime : Restzeit -> 
+					Montior_Startzeit bis Jetzt = MonDuration
+					Downtime = MonDuration - Uptime	
+
+		
+			
+6. KommunikationsKonnektorKomponente - Anforderungen:
+	- I am Alive signal funktionalität 
+		- interval muss konfigurierbar sein
+		- sendet alive message an konfigurierbarer IP (Monitor)
+		- (Alive message muss spezifiziert werden [RMI?])
+
+	- Für jeden Anfrage (Systemaufruf) beim Client wird eine Rückmeldung an den Dispatcher gegeben
+		das diese erfolgreich abgeschlossen wurde
+		- (Rückmeldung muss spezifiziert werden)
+	
+	- entgegennehmen von Anfrage (systemaufrufen) und weiterleiten an den AWK (RMI kommt etwa hier zum einsatz)
+
+7. RMI vielleicht mal angucken
+8. Datenbanken übers Netzwerk ?
+
+
+Notizen
+Die Dashboard gui schaltet online/offline das bedeutet:
+	-online  prozess ist da, steht zur verwendung bereit
+	-Offline prozess ist noch da, aber wird nicht verwendet
+	-DEAD 	 prozess meldet sich nicht mehr
+
+Testscenarios der verteilung laufen manuell ab.
+
+Ausgrenzung
+
+Wir gehen davon aus das ein Toten Prozess manuell neugestartet wird d.h.
+die Dashboard gui übernimmt nicht das entfernte starten
+
+Bei absturz wird auf system konsistens nicht geachtet
