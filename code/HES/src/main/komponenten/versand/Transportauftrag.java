@@ -1,5 +1,6 @@
 package main.komponenten.versand;
 
+import main.allgemeineTypen.transportTypen.TransportauftragTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
 import javax.persistence.Entity;
@@ -59,6 +60,11 @@ class Transportauftrag implements IPersistierbar {
 
     void setLieferDatum(Date lieferDatum) {
         this.lieferDatum = lieferDatum;
+    }
+
+    public TransportauftragTyp holeTransportauftragTyp()
+    {
+        return new TransportauftragTyp(transportAuftragNr, ausgangsDatum);
     }
 
     @Override

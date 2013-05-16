@@ -13,7 +13,17 @@ import java.util.UUID;
 public class AngebotTyp {
     private String angebotNr, kundenNr;
     private Date gueltigBis, gueltigAb;
-    private Map<ProduktTyp, Integer> produktListe;
+    private Map<String, Integer> produktListe;
+
+    public double getGesamtpreis() {
+        return gesamtpreis;
+    }
+
+    public void setGesamtpreis(double gesamtpreis) {
+        this.gesamtpreis = gesamtpreis;
+    }
+
+    private double gesamtpreis;
 
     @Override
     public String toString() {
@@ -23,6 +33,7 @@ public class AngebotTyp {
         sb.append(", gueltigBis=").append(gueltigBis);
         sb.append(", gueltigAb=").append(gueltigAb);
         sb.append(", produktListe=").append(produktListe);
+        sb.append(", gesamtpreis=").append(gesamtpreis);
         sb.append('}');
         return sb.toString();
     }
@@ -34,6 +45,7 @@ public class AngebotTyp {
 
         AngebotTyp that = (AngebotTyp) o;
 
+        if (Double.compare(that.gesamtpreis, gesamtpreis) != 0) return false;
         if (angebotNr != null ? !angebotNr.equals(that.angebotNr) : that.angebotNr != null) return false;
         if (gueltigAb != null ? !gueltigAb.equals(that.gueltigAb) : that.gueltigAb != null) return false;
         if (gueltigBis != null ? !gueltigBis.equals(that.gueltigBis) : that.gueltigBis != null) return false;
@@ -45,11 +57,15 @@ public class AngebotTyp {
 
     @Override
     public int hashCode() {
-        int result = angebotNr != null ? angebotNr.hashCode() : 0;
+        int result;
+        long temp;
+        result = angebotNr != null ? angebotNr.hashCode() : 0;
         result = 31 * result + (kundenNr != null ? kundenNr.hashCode() : 0);
         result = 31 * result + (gueltigBis != null ? gueltigBis.hashCode() : 0);
         result = 31 * result + (gueltigAb != null ? gueltigAb.hashCode() : 0);
         result = 31 * result + (produktListe != null ? produktListe.hashCode() : 0);
+        temp = Double.doubleToLongBits(gesamtpreis);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
@@ -86,27 +102,29 @@ public class AngebotTyp {
         this.gueltigAb = gueltigAb;
     }
 
-    public Map<ProduktTyp, Integer> getProduktListe() {
+    public Map<String, Integer> getProduktListe() {
         return produktListe;
     }
 
-    public void setProduktListe(Map<ProduktTyp, Integer> produktListe) {
+    public void setProduktListe(Map<String, Integer> produktListe) {
         this.produktListe = produktListe;
     }
 
-    public AngebotTyp(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe) {
+    public AngebotTyp(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe, double gesamtpreis) {
         this.kundenNr = kundenNr;
         this.gueltigAb = gueltigAb;
         this.gueltigBis = gueltigBis;
         this.produktListe = new HashMap<>(produktListe);
+        this.gesamtpreis = gesamtpreis;
     }
 
-    public AngebotTyp(String angebotNr, String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe) {
+    public AngebotTyp(String angebotNr, String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe, double gesamtpreis) {
         this.angebotNr = angebotNr;
         this.kundenNr = kundenNr;
         this.gueltigAb = gueltigAb;
         this.gueltigBis = gueltigBis;
         this.produktListe = new HashMap<>(produktListe);
+        this.gesamtpreis = gesamtpreis;
     }
 
 }

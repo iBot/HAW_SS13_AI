@@ -3,6 +3,8 @@ package main.komponenten.versand;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.LieferungTyp;
 
+import java.util.List;
+
 /**
  * User: Tobi
  * Date: 19.04.13
@@ -24,5 +26,10 @@ public class VersandFassade implements IVersandManager {
     @Override
     public LieferungTyp getLieferungZuID(String lieferungNr) {
         return this.versandLogik.getLieferungZuID(lieferungNr);
+    }
+
+    @Override
+    public List<LieferungTyp> holeAlleLieferungenZuAuftrag(AuftragTyp auftrag) {
+        return this.versandLogik.holeAlleLieferungenZuAuftrag(auftrag);
     }
 }

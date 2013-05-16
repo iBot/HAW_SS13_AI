@@ -1,6 +1,5 @@
 package main.komponenten;
 
-import main.komponenten.buchhaltung.IBuchhaltungEventTest;
 import main.komponenten.buchhaltung.IBuchhaltungManagerTest;
 import main.komponenten.einkauf.IEinkaufManagerTest;
 import main.komponenten.kunden.IKundenManagerTest;
@@ -18,7 +17,6 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        IBuchhaltungEventTest.class,
         IBuchhaltungManagerTest.class,
         IEinkaufManagerTest.class,
         IKundenManagerTest.class,

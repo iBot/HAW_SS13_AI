@@ -7,7 +7,7 @@ import main.allgemeineTypen.transportTypen.KundenTyp;
  * Date: 19.04.13
  * Time: 13:32
  */
-class KundenLogik implements IKundenManager {
+class KundenLogik{
 
     KundenRepository kundenrepository;
 
@@ -15,13 +15,11 @@ class KundenLogik implements IKundenManager {
         this.kundenrepository = new KundenRepository();
     }
 
-    @Override
-    public void erstelleKunde(KundenTyp kunde) {
-        this.kundenrepository.erstelleKunde(kunde);
+    public KundenTyp erstelleKunde(KundenTyp kunde) {
+        return this.kundenrepository.erstelleKunde(kunde).holeKundenTyp();
     }
 
-    @Override
     public KundenTyp getKundeZuID(String kundenID) {
-        return this.kundenrepository.getKundeZuID(kundenID);
+        return this.kundenrepository.getKundeZuID(kundenID).holeKundenTyp();
     }
 }

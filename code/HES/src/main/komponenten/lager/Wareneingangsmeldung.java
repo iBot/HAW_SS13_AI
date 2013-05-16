@@ -31,16 +31,13 @@ class Wareneingangsmeldung implements IPersistierbar {
     Wareneingangsmeldung() {
     }
 
-    WareneingangsmeldungTyp getWareneingangsmeldungTyp(){
-        return new WareneingangsmeldungTyp(wareneingsmeldungNr, lieferscheinNr, new Date(datum.getTime()));
-    }
 
     @Id
     String getWareneingsmeldungNr() {
         return wareneingsmeldungNr;
     }
 
-    void setWareneingsmeldungNr(String wareneingsmeldungNr) {
+    private void setWareneingsmeldungNr(String wareneingsmeldungNr) {
         this.wareneingsmeldungNr = wareneingsmeldungNr;
     }
 
@@ -48,7 +45,7 @@ class Wareneingangsmeldung implements IPersistierbar {
         return lieferscheinNr;
     }
 
-    void setLieferscheinNr(String lieferscheinNr) {
+    private void setLieferscheinNr(String lieferscheinNr) {
         this.lieferscheinNr = lieferscheinNr;
     }
 
@@ -56,9 +53,15 @@ class Wareneingangsmeldung implements IPersistierbar {
         return datum;
     }
 
-    void setDatum(Date datum) {
+    private void setDatum(Date datum) {
         this.datum = datum;
     }
+
+
+    WareneingangsmeldungTyp holeWareneingangsmeldungTyp(){
+        return new WareneingangsmeldungTyp(wareneingsmeldungNr, lieferscheinNr, new Date(datum.getTime()));
+    }
+
 
     @Override
     public boolean equals(Object o) {

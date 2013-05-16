@@ -1,5 +1,6 @@
 package main.komponenten.lager;
 
+import main.allgemeineTypen.transportTypen.LieferscheinTyp;
 import main.allgemeineTypen.transportTypen.WareneingangsmeldungTyp;
 import main.technik.persistenzManager.PersistenzManager;
 
@@ -18,7 +19,10 @@ class WareneingangsmeldungRepository {
 
     public WareneingangsmeldungTyp getWareneingangsmeldungZuID(String wareneingangsmeldungsNr) {
        Wareneingangsmeldung wareneingangsmeldung = persistenzManager.access(Wareneingangsmeldung.class, wareneingangsmeldungsNr);
-       return wareneingangsmeldung.getWareneingangsmeldungTyp();
+       return wareneingangsmeldung.holeWareneingangsmeldungTyp();
     }
 
+    public void erstelleWareneingangsmeldung(LieferscheinTyp lieferschein) {
+        Wareneingangsmeldung wareneingangsmeldung = new Wareneingangsmeldung(lieferschein.getLieferscheinNr(), new Date());
+    }
 }

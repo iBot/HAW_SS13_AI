@@ -16,8 +16,8 @@ public class KundenFassade implements IKundenManager {
     }
 
     @Override
-    public void erstelleKunde(KundenTyp kunde) {
-        kundenLogik.erstelleKunde(kunde);
+    public KundenTyp erstelleKunde(KundenTyp kunde) {
+        return kundenLogik.erstelleKunde(kunde);
     }
 
     @Override

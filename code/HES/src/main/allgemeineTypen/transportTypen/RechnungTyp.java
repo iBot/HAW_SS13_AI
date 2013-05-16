@@ -13,18 +13,41 @@ public class RechnungTyp {
     private String rechnungsNr;
     private boolean istBezahlt;
     private Date rechnungsDatum;
+    private String auftragsNr;
+    private double gesamtPreis;
 
-    public RechnungTyp(boolean istBezahlt, Date rechnungsDatum) {
+    public String getAuftragsNr() {
+        return auftragsNr;
+    }
+
+    public void setAuftragsNr(String auftragsNr) {
+        this.auftragsNr = auftragsNr;
+    }
+
+    public RechnungTyp(boolean istBezahlt, Date rechnungsDatum, String auftragsNr, double gesamtPreis)  {
 
         this.istBezahlt = istBezahlt;
         this.rechnungsDatum = rechnungsDatum;
+        this.auftragsNr = auftragsNr;
+        this.gesamtPreis = gesamtPreis;
     }
 
-    public RechnungTyp(String rechnungsNr, boolean istBezahlt, Date rechnungsDatum) {
+    public RechnungTyp(String rechnungsNr, boolean istBezahlt, Date rechnungsDatum, String auftragsNr, double gesamtPreis) {
 
         this.rechnungsNr = rechnungsNr;
         this.istBezahlt = istBezahlt;
         this.rechnungsDatum = rechnungsDatum;
+        this.auftragsNr = auftragsNr;
+
+        this.gesamtPreis = gesamtPreis;
+    }
+
+    public double getGesamtPreis() {
+        return gesamtPreis;
+    }
+
+    public void setGesamtPreis(double gesamtPreis) {
+        this.gesamtPreis = gesamtPreis;
     }
 
     @Override
@@ -33,6 +56,8 @@ public class RechnungTyp {
         sb.append("rechnungsNr='").append(rechnungsNr).append('\'');
         sb.append(", istBezahlt=").append(istBezahlt);
         sb.append(", rechnungsDatum=").append(rechnungsDatum);
+        sb.append(", auftragsNr='").append(auftragsNr).append('\'');
+        sb.append(", gesamtPreis=").append(gesamtPreis);
         sb.append('}');
         return sb.toString();
     }
@@ -44,7 +69,9 @@ public class RechnungTyp {
 
         RechnungTyp that = (RechnungTyp) o;
 
+        if (Double.compare(that.gesamtPreis, gesamtPreis) != 0) return false;
         if (istBezahlt != that.istBezahlt) return false;
+        if (auftragsNr != null ? !auftragsNr.equals(that.auftragsNr) : that.auftragsNr != null) return false;
         if (rechnungsDatum != null ? !rechnungsDatum.equals(that.rechnungsDatum) : that.rechnungsDatum != null)
             return false;
         if (rechnungsNr != null ? !rechnungsNr.equals(that.rechnungsNr) : that.rechnungsNr != null) return false;
@@ -54,9 +81,14 @@ public class RechnungTyp {
 
     @Override
     public int hashCode() {
-        int result = rechnungsNr != null ? rechnungsNr.hashCode() : 0;
+        int result;
+        long temp;
+        result = rechnungsNr != null ? rechnungsNr.hashCode() : 0;
         result = 31 * result + (istBezahlt ? 1 : 0);
         result = 31 * result + (rechnungsDatum != null ? rechnungsDatum.hashCode() : 0);
+        result = 31 * result + (auftragsNr != null ? auftragsNr.hashCode() : 0);
+        temp = Double.doubleToLongBits(gesamtPreis);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 

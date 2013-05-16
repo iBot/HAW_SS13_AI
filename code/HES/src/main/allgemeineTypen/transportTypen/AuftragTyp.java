@@ -29,7 +29,7 @@ public class AuftragTyp {
         this.angebotsNr = angebotsNr;
     }
 
-    public boolean isIstAbgeschlossen() {
+    public boolean getIstAbgeschlossen() {
         return istAbgeschlossen;
     }
 

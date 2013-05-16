@@ -7,7 +7,7 @@ import main.allgemeineTypen.transportTypen.*;
  * Date: 19.04.13
  * Time: 13:34
  */
-public class LagerFassade implements ILagerEvent, ILagerManager {
+public class LagerFassade implements ILagerManager {
 
     private LagerLogik lagerlogik;
 
@@ -16,18 +16,18 @@ public class LagerFassade implements ILagerEvent, ILagerManager {
     }
 
     @Override
-    public void schreibeFuerWarenReserviertEventEin(AuftragTyp auftrag, ILagerListener listener) {
-        lagerlogik.schreibeFuerWarenReserviertEventEin(auftrag,listener);
+    public ProduktTyp erstelleProdukt(String produktName) {
+        return lagerlogik.erstelleProdukt(produktName);
     }
 
     @Override
-    public void bucheWareneingang(LieferscheinTyp lieferschein) {
-        lagerlogik.bucheWareneingang(lieferschein);
+    public void bucheWareneingang(LieferscheinTyp lieferschein, String bestellNr) {
+        lagerlogik.bucheWareneingang(lieferschein, bestellNr);
     }
 
     @Override
-    public void reserviereProdukteFuerAuftrag(AuftragTyp auftrag, AngebotTyp angebot) {
-        lagerlogik.reserviereProdukteFuerAuftrag(auftrag, angebot);
+    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, IReserviertListener reserviertListener) {
+        lagerlogik.reserviereProdukteFuerAuftrag(angebot, reserviertListener);
     }
 
     @Override

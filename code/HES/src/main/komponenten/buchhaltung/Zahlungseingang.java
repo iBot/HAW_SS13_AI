@@ -17,8 +17,10 @@ class Zahlungseingang implements IPersistierbar {
 
     @Id
     private String zahlungsEingangID;
+
     private double betrag;
     private Date eingangsdatum;
+
 
     public Zahlungseingang(double betrag) {
         this.zahlungsEingangID = "ZAHLEIN-"+ UUID.randomUUID();
@@ -29,11 +31,12 @@ class Zahlungseingang implements IPersistierbar {
     Zahlungseingang() {
     }
 
+    //Getter und Setter
     String getZahlungsEingangID() {
         return zahlungsEingangID;
     }
 
-    void setZahlungsEingangID(String zahlungsEingangID) {
+    private void setZahlungsEingangID(String zahlungsEingangID) {
         this.zahlungsEingangID = zahlungsEingangID;
     }
 
@@ -41,7 +44,7 @@ class Zahlungseingang implements IPersistierbar {
         return betrag;
     }
 
-    void setBetrag(double betrag) {
+    private void setBetrag(double betrag) {
         this.betrag = betrag;
     }
 
@@ -52,6 +55,7 @@ class Zahlungseingang implements IPersistierbar {
     void setEingangsdatum(Date eingangsdatum) {
         this.eingangsdatum = eingangsdatum;
     }
+
 
     @Override
     public boolean equals(Object o) {

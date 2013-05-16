@@ -1,7 +1,6 @@
 package main.komponenten.verkauf;
 
 import main.allgemeineTypen.transportTypen.AngebotTyp;
-import main.allgemeineTypen.transportTypen.ProduktTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
 import javax.persistence.*;
@@ -22,20 +21,21 @@ class Angebot implements IPersistierbar {
     @Id
     private String angebotNr;
 
-    @ManyToOne
-    @JoinColumn
-    private String kundenNr; //TODO: weiß nicht ob das geht. :) nen Test ist es wert
-
+    private String kundenNr;
     private Date gueltigBis, gueltigAb;
-    private Map<ProduktTyp, Integer> produktListe;
+    private double gesamtpreis;
+
+    @ElementCollection( fetch = FetchType.EAGER)
+    private Map<String, Integer> produktListe;
 
 
-    public Angebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<ProduktTyp, Integer> produktListe) {
+    public Angebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe, double gesamtpreis) {
         this.angebotNr = "ANG-" + UUID.randomUUID();
         this.kundenNr = kundenNr;
         this.gueltigAb = gueltigAb;
         this.gueltigBis = gueltigBis;
         this.produktListe = new HashMap<>(produktListe);
+        this.gesamtpreis = gesamtpreis;
     }
 
     private Angebot() {
@@ -43,20 +43,20 @@ class Angebot implements IPersistierbar {
     }
 
 
-    public AngebotTyp getAngebotTyp() {
-        return new AngebotTyp(angebotNr, kundenNr, new Date(gueltigBis.getTime()), new Date(gueltigAb.getTime()), new HashMap<>(produktListe));
+    public AngebotTyp holeAngebotTyp() {
+        return new AngebotTyp(angebotNr, kundenNr, new Date(gueltigBis.getTime()), new Date(gueltigAb.getTime()), new HashMap<>(produktListe),gesamtpreis);
     }
 
-
+    //Getter und Setter
     String getAngebotNr() {
         return angebotNr;
     }
 
-    void setAngebotNr(String angebotNr) {
+    private void setAngebotNr(String angebotNr) {
         this.angebotNr = angebotNr;
     }
 
-    private String getKundenNr() {
+    String getKundenNr() {
         return kundenNr;
     }
 
@@ -64,7 +64,7 @@ class Angebot implements IPersistierbar {
         this.kundenNr = kundenNr;
     }
 
-    private Date getGueltigBis() {
+    Date getGueltigBis() {
         return gueltigBis;
     }
 
@@ -72,7 +72,7 @@ class Angebot implements IPersistierbar {
         this.gueltigBis = gueltigBis;
     }
 
-    private Date getGueltigAb() {
+    Date getGueltigAb() {
         return gueltigAb;
     }
 
@@ -80,13 +80,22 @@ class Angebot implements IPersistierbar {
         this.gueltigAb = gueltigAb;
     }
 
-    private Map<ProduktTyp, Integer> getProduktListe() {
+    Map<String, Integer> getProduktListe() {
         return produktListe;
     }
 
-    private void setProduktListe(Map<ProduktTyp, Integer> produktListe) {
+    private void setProduktListe(Map<String, Integer> produktListe) {
         this.produktListe = produktListe;
     }
+
+    double getGesamtpreis() {
+        return gesamtpreis;
+    }
+
+    private void setGesamtpreis(double gesamtpreis) {
+        this.gesamtpreis = gesamtpreis;
+    }
+
 
     @Override
     public String toString() {
@@ -95,6 +104,7 @@ class Angebot implements IPersistierbar {
         sb.append(", kundenNr='").append(kundenNr).append('\'');
         sb.append(", gueltigBis=").append(gueltigBis);
         sb.append(", gueltigAb=").append(gueltigAb);
+        sb.append(", gesamtpreis=").append(gesamtpreis);
         sb.append(", produktListe=").append(produktListe);
         sb.append('}');
         return sb.toString();

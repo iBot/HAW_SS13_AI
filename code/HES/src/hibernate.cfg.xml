@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="show_sql">true</property>
+        <property name="format_sql">false</property>
+        <property name="dialect">resources.hibernate.sqlite.SQLiteDialect</property>
+        <property name="connection.driver_class">org.sqlite.JDBC</property>
+        <property name="connection.url">jdbc:sqlite:HES_Database.db</property>
+        <property name="connection.username"></property>
+        <property name="connection.password"></property>
+
+        <property name="hibernate.hbm2ddl.auto">create</property>
+
+        <!-- Nachfolgend die zu Mappenden Klassen eintragen, dabei Vollen Namen der klasse, inklusive package eingeben: -->
+        <mapping class="main.komponenten.buchhaltung.Rechnung"/>
+        <mapping class="main.komponenten.buchhaltung.Zahlungseingang"/>
+        <mapping class="main.komponenten.einkauf.Bestellung"/>
+        <mapping class="main.komponenten.einkauf.Einkaufsinfosatz"/>
+        <mapping class="main.komponenten.einkauf.Lieferant"/>
+        <mapping class="main.komponenten.einkauf.Orderbuch"/>
+        <mapping class="main.komponenten.einkauf.Orderbuchsatz"/>
+        <mapping class="main.komponenten.kunden.Kunde"/>
+        <mapping class="main.komponenten.lager.Lieferschein"/>
+        <mapping class="main.komponenten.lager.Produkt"/>
+        <mapping class="main.komponenten.lager.Wareneingangsmeldung"/>
+        <mapping class="main.komponenten.verkauf.Angebot"/>
+        <mapping class="main.komponenten.verkauf.Auftrag"/>
+        <mapping class="main.komponenten.versand.Lieferung"/>
+        <mapping class="main.komponenten.versand.Transportauftrag"/>
+
+        <mapping class="main.technik.persistenzManager.RechnungDummy"/>
+
+
+    </session-factory>
+</hibernate-configuration>

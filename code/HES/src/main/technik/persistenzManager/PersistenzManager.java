@@ -1,9 +1,9 @@
 package main.technik.persistenzManager;
 
 import org.hibernate.*;
-import org.hibernate.service.ServiceRegistry;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -22,13 +22,16 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
-    public <T> T access(Class<T> cls, Serializable id) {
+    public <T> T access(Class<T> cls, Serializable id){
         T entity = null;
         try {
-            Session session = InitSessionFactory.getInstance().getCurrentSession();
+            Session session = InitSessionFactory.getInstance().openSession();
             Transaction tx = session.beginTransaction();
             entity = (T)session.get(cls, id);
+
+            session.flush();
             tx.commit();
+            session.close();
         }
         catch (RuntimeException e) {
             exceptionHandling(e);
@@ -47,14 +50,16 @@ public class PersistenzManager  implements IPersistenzManager{
 //    }
 
     @Override
-    public <T> void create(T entity) {
+    public <T> void create(T entity){
         try {
             SessionFactory sessionFactory = InitSessionFactory.getInstance();
-            Session session = sessionFactory.getCurrentSession();
-            System.out.print("Session: " +session == null);
+            Session session = sessionFactory.openSession();
+            System.out.print("Session: " + session);
             Transaction tx = session.beginTransaction();
             session.save(entity);
+            session.flush();
             tx.commit();
+            session.close();
         }
         catch (RuntimeException e) {
             exceptionHandling(e);
@@ -62,12 +67,15 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
-    public <T> void delete(T entity) {
+    public <T> void delete(T entity){
         try {
-            Session session = InitSessionFactory.getInstance().getCurrentSession();
+            Session session = InitSessionFactory.getInstance().openSession();
             Transaction tx = session.beginTransaction();
             session.delete(entity);
+
+            session.flush();
             tx.commit();
+            session.close();
         }
         catch (RuntimeException e) {
             exceptionHandling(e);
@@ -75,12 +83,15 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
-    public <T> void update(T entity) {
+    public <T> void update(T entity){
         try {
-            Session session = InitSessionFactory.getInstance().getCurrentSession();
+            Session session = InitSessionFactory.getInstance().openSession();
             Transaction tx = session.beginTransaction();
             session.update(entity);
+
+            session.flush();
             tx.commit();
+            session.close();
         }
         catch (RuntimeException e) {
             exceptionHandling(e);
@@ -88,27 +99,49 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
-    public Query returnQuery(String queryString)
-    {
-        Session session = InitSessionFactory.getInstance().getCurrentSession();
-        Transaction tx = session.beginTransaction();
-        Query query = session.createQuery(queryString);
-        session.flush();
-        session.clear();
-        tx.commit();
+    public <T> List<T> getAllByQuery(String query) {
+        List<T> result = null;
+                try {
+            Session session = InitSessionFactory.getInstance().openSession();
+            Transaction tx = session.beginTransaction();
+            result =  session.createQuery(query).list();
 
-        return query;
+            session.flush();
+            tx.commit();
+            session.close();
+        }
+        catch (RuntimeException e) {
+            exceptionHandling(e);
+        }
+        return result;
     }
 
-    private static void exceptionHandling(Exception e)
-    {
+    @Override
+    public <T> T getUniqueResultByQuery(String query){
+        T result = null;
         try {
-            Session session = InitSessionFactory.getInstance()
-                    .getCurrentSession();
+            Session session = InitSessionFactory.getInstance().openSession();
+            Transaction tx = session.beginTransaction();
+            result = (T) session.createQuery(query).uniqueResult();
+
+            session.flush();
+            tx.commit();
+            session.close();
+        }
+        catch (RuntimeException e) {
+            exceptionHandling(e);
+        }
+        return result;
+    }
+
+
+    private static void exceptionHandling(Exception e) {
+        try {
+            Session session = InitSessionFactory.getInstance().getCurrentSession();
             if (session.getTransaction().isActive())
                 session.getTransaction().rollback();
         } catch (HibernateException e1) {
-
+            throw e1;
         }
     }
 

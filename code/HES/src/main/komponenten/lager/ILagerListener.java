@@ -6,5 +6,5 @@ package main.komponenten.lager;
  * Time: 13:13
  */
 public interface ILagerListener {
-    public void fuehreAktionAus();
+    public void fuehreAktionAus(Produkt produkt);
 }
