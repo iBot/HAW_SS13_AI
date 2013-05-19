@@ -1,6 +1,6 @@
 package main.komponenten.lager;
 
-import main.allgemeineTypen.allgemeineTypen.*;
+import main.allgemeineTypen.transportTypen.*;
 
 /**
  * User: Tobi

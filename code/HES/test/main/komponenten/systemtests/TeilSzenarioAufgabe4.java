@@ -1,6 +1,6 @@
 package main.komponenten.systemtests;
 
-import main.allgemeineTypen.allgemeineTypen.*;
+import main.allgemeineTypen.transportTypen.*;
 import main.komponenten.buchhaltung.BuchhaltungFassade;
 import main.komponenten.kunden.IKundenManager;
 import main.komponenten.kunden.KundenFassade;
