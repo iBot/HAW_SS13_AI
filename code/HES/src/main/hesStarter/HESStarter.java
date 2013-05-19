@@ -1,9 +1,5 @@
 package main.hesStarter;
 
-import main.allgemeineTypen.transportTypen.RechnungTyp;
-import main.komponenten.buchhaltung.BuchhaltungFassade;
-import main.komponenten.buchhaltung.IBuchhaltungListener;
-
 /**
  * User: Tobi
  * Date: 19.04.13

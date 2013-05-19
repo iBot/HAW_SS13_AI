@@ -1,8 +1,5 @@
 package main.komponenten.lager;
 
-import junit.framework.Assert;
-import main.allgemeineTypen.transportTypen.AngebotTyp;
-import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.ProduktTyp;
 import org.junit.After;
 import org.junit.Before;

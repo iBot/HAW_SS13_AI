@@ -2,11 +2,7 @@ package main.komponenten.verkauf;
 
 import junit.framework.Assert;
 import main.allgemeineTypen.transportTypen.AngebotTyp;
-import main.allgemeineTypen.transportTypen.AuftragTyp;
-import main.komponenten.buchhaltung.BuchhaltungFassade;
-import main.komponenten.lager.LagerFassade;
 import main.technik.persistenzManager.IPersistenzManager;
-import main.technik.persistenzManager.PersistenzManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

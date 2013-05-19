@@ -1,6 +1,6 @@
 package main.komponenten.lager;
 
-import main.allgemeineTypen.transportTypen.*;
+import main.allgemeineTypen.allgemeineTypen.*;
 
 import java.util.Map;
 import java.util.UUID;
