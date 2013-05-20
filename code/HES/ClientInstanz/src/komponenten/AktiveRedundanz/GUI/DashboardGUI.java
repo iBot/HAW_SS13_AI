@@ -1,10 +1,12 @@
-package main.GUI;
+package komponenten.AktiveRedundanz.GUI;
 
-import main.allgemeineTypen.enums.StatusEnum;
-import main.komponenten.monitor.IMonitorEvent;
-import main.komponenten.monitor.IMonitorListener;
-import main.komponenten.monitor.IMonitorManager;
-import main.komponenten.monitor.IStatusMonitorListener;
+
+
+import enums.StatusEnum;
+import komponenten.AktiveRedundanz.monitor.IMonitorEvent;
+import komponenten.AktiveRedundanz.monitor.IMonitorListener;
+import komponenten.AktiveRedundanz.monitor.IMonitorManager;
+import komponenten.AktiveRedundanz.monitor.IStatusMonitorListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -98,7 +100,7 @@ public class DashboardGUI {
     private void buttonSetStatusInstanz1MouseClicked(MouseEvent evt) {
         if(buttonSetStatusInstanz1.getText().equals("online"))
         {
-            monitorManager.setInstanceStatus(Online, 1);
+            monitorManager.setInstanceStatus(StatusEnum.ONLINE, 1);
             buttonSetStatusInstanz1.setText("offline");
         }
         else if(buttonSetStatusInstanz1.getText().equals("offline"))

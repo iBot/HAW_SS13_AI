@@ -1,6 +1,7 @@
-package main.komponenten.monitor;
+package komponenten.AktiveRedundanz.monitor;
 
-import main.allgemeineTypen.enums.StatusEnum;
+
+import enums.StatusEnum;
 
 /**
  * Created with IntelliJ IDEA.

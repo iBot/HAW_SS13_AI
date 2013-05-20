@@ -1,6 +1,6 @@
-package main.komponenten.dispatcher;
+package komponenten.AktiveRedundanz.dispatcher;
 
-import main.komponenten.monitor.IMonitorListener;
+import komponenten.AktiveRedundanz.monitor.IMonitorListener;
 
 import java.util.UUID;
 

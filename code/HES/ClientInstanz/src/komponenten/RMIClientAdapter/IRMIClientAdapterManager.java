@@ -1,4 +1,4 @@
-package main.komponenten.dispatcher;
+package komponenten.RMIClientAdapter;
 
 import main.komponenten.kunden.IKundenManager;
 import main.komponenten.lager.ILagerManager;
@@ -6,11 +6,10 @@ import main.komponenten.verkauf.IVerkaufManager;
 
 /**
  * Created with IntelliJ IDEA.
- * User: milena
- * Date: 19.05.13
- * Time: 13:53
+ * User: TwiG
+ * Date: 20.05.13
+ * Time: 16:52
  * To change this template use File | Settings | File Templates.
  */
-public interface IDispatcherManager extends IVerkaufManager, IKundenManager, ILagerManager {
-
+public interface IRMIClientAdapterManager extends IVerkaufManager, IKundenManager, ILagerManager {
 }

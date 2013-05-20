@@ -1,4 +1,4 @@
-package main.allgemeineTypen.enums;
+package enums;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,4 +8,7 @@ package main.allgemeineTypen.enums;
  * To change this template use File | Settings | File Templates.
  */
 public enum StatusEnum{
+    ONLINE,
+    OFFLINE,
+    DEAD;
 }
