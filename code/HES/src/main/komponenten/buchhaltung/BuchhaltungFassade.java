@@ -18,8 +18,8 @@ public class BuchhaltungFassade implements IBuchhaltungManager {
 
 
     @Override
-    public RechnungTyp erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag, IBuchhaltungListener listener) {
-        return buchhaltungLogik.erstelleRechnung(gesamtbetrag, auftrag, listener);
+    public RechnungTyp erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag, String buchhaltungsListenerID) {
+        return buchhaltungLogik.erstelleRechnung(gesamtbetrag, auftrag, buchhaltungsListenerID);
     }
 
     @Override

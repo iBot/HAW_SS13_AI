@@ -7,4 +7,5 @@ package main.komponenten.buchhaltung;
  */
 public interface IBuchhaltungListener {
     public void fuehreAktionAus();
+//    public String getBuchhaltungslistenerNr();
 }

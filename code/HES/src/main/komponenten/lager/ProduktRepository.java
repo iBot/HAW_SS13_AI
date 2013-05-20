@@ -13,14 +13,30 @@ import java.util.Map;
 class ProduktRepository {
 
     //Map<String, ILagerListener> bestellListenerMap;
-    PersistenzManager persistenzManager = PersistenzManager.getInstance();
+    private PersistenzManager persistenzManager = PersistenzManager.getInstance();
 
+    private static ProduktRepository instance;
 
-    public void reserviereProduktFuerAuftrag(Produkt produkt, AngebotTyp angebot) {
-        Map<String, Integer> produkte = angebot.getProduktListe();
+    static ProduktRepository getInstance(){
+        if (instance== null){
+            instance = new ProduktRepository();
+        }
+        return instance;
+    }
+
+    private ProduktRepository(){
+
+    }
+
+    void reserviereProduktFuerAuftrag(Produkt produkt, Map<String, Integer> produkte){
         int menge = produkte.get(produkt.getProduktNr());
         produkt.verringereLagerbestand(menge);
         persistenzManager.update(produkt);
+    }
+
+    public void reserviereProduktFuerAuftrag(Produkt produkt, AngebotTyp angebot) {
+        Map<String, Integer> produkte = angebot.getProduktListe();
+        reserviereProduktFuerAuftrag(produkt,produkte);
 
     }
 

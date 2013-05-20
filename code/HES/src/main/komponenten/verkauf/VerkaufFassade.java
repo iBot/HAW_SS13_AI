@@ -25,8 +25,8 @@ public class VerkaufFassade implements IVerkaufManager {
 
         this.buchhaltungManager = buchhaltungManager;
         this.lagerManager = lagerManager;
-        this.angebotLogik = new AngebotLogik(lagerManager);
-        this.auftragLogik = new AuftragLogik(buchhaltungManager,lagerManager, versandManager);
+        this.angebotLogik = AngebotLogik.getInstance(lagerManager);
+        this.auftragLogik = AuftragLogik.getInstance(buchhaltungManager,lagerManager, versandManager);
     }
 
 
@@ -43,7 +43,7 @@ public class VerkaufFassade implements IVerkaufManager {
 
     @Override
     public AuftragTyp getAuftragZuID(String auftragsNr) {
-        return auftragLogik.getAuftragZuID(auftragsNr);
+        return auftragLogik.getAuftragTypZuID(auftragsNr);
     }
 
     @Override

@@ -22,6 +22,7 @@
         <property name="connection.url">jdbc:mysql://localhost:3306/HESDB</property>
         <property name="connection.username">root</property>
         <property name="connection.password">password123</property>
+        <!--<property name="current_session_context_class">org.hibernate.context.internal.JTASessionContext</property>-->
 
 
         <!--Die folgende Zeile einkommentieren, wenn die Datenbank angelegt werden soll. Falls auf der vorhandenen weitergearbeitet werden soll, auskommentieren, sonst werden alle Tabellen neu erstellt!!!-->
@@ -43,6 +44,11 @@
         <mapping class="main.komponenten.verkauf.Auftrag"/>
         <mapping class="main.komponenten.versand.Lieferung"/>
         <mapping class="main.komponenten.versand.Transportauftrag"/>
+        <mapping class="main.komponenten.verkauf.BuchhaltungListener"/>
+        <mapping class="main.komponenten.verkauf.ReserviertListener"/>
+        <mapping class="main.komponenten.lager.LagerListener"/>
+
+
 
         <!--<mapping class="main.technik.persistenzManager.RechnungDummy"/>-->
 

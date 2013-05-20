@@ -12,7 +12,7 @@ public class LagerFassade implements ILagerManager {
     private LagerLogik lagerlogik;
 
     public LagerFassade() {
-        lagerlogik=new LagerLogik();
+        lagerlogik= LagerLogik.getInstance();
     }
 
     @Override
@@ -26,8 +26,8 @@ public class LagerFassade implements ILagerManager {
     }
 
     @Override
-    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, IReserviertListener reserviertListener) {
-        lagerlogik.reserviereProdukteFuerAuftrag(angebot, reserviertListener);
+    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, String reserviertListenerNr) {
+        lagerlogik.reserviereProdukteFuerAuftrag(angebot, reserviertListenerNr);
     }
 
     @Override
