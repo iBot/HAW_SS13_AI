@@ -52,7 +52,7 @@ public class RemoteAWKImpl extends UnicastRemoteObject implements IRemoteAWK {
     }
 
     @Override
-    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, IReserviertListener reserviertListener) throws RemoteException {
+    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, String reserviertListener) throws RemoteException {
         lagerManager.reserviereProdukteFuerAuftrag(angebot,reserviertListener);
     }
 

@@ -59,7 +59,7 @@ public class RMIClientAdapterLogik {
         getAwk().bucheWareneingang(lieferschein,bestellNr);
     }
 
-    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, IReserviertListener reserviertListener) throws RemoteException {
+    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, String reserviertListener) throws RemoteException {
         getAwk().reserviereProdukteFuerAuftrag(angebot,reserviertListener);
     }
 
