@@ -1,4 +1,4 @@
-package main.komponenten.monitor;
+package komponenten.AktiveRedundanz.monitor;
 
 /**
  * Created with IntelliJ IDEA.
