@@ -32,9 +32,9 @@ class RechnungRepository {
         return rechnung;
     }
 
-    public void zahlungseingangBuchen(Zahlungseingang zahlungseingang, String rechnungsNr) {
-
-    }
+//    public void zahlungseingangBuchen(Zahlungseingang zahlungseingang, String rechnungsNr) {
+//
+//    }
 
     public Rechnung getRechnungZuAuftrag(String auftragsNr) {
         String queryString= "from Rechnung where AuftragsNr = '"+auftragsNr+"'";

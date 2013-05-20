@@ -60,6 +60,8 @@ public class PersistenzManager  implements IPersistenzManager{
             session.flush();
             tx.commit();
             session.close();
+        } catch (UnsupportedOperationException e){
+            System.err.println("Unsuported SQL-Operation!");
         }
         catch (RuntimeException e) {
             exceptionHandling(e);
