@@ -6,13 +6,26 @@
     <session-factory>
         <property name="show_sql">true</property>
         <property name="format_sql">false</property>
-        <property name="dialect">resources.hibernate.sqlite.SQLiteDialect</property>
-        <property name="connection.driver_class">org.sqlite.JDBC</property>
-        <property name="connection.url">jdbc:sqlite:HES_Database.db</property>
-        <property name="connection.username"></property>
-        <property name="connection.password"></property>
 
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <!--SQLite-->
+        <!--ZUGRIFF MIT MEHREREN INSTANZEN FUNKTIONIERT MIT SQLLITE NICHT!!!!!-->
+        <!--<property name="dialect">resources.hibernate.sqlite.SQLiteDialect</property>-->
+        <!--<property name="connection.driver_class">org.sqlite.JDBC</property>-->
+        <!--<property name="connection.url">jdbc:sqlite:HES_Database.db</property>-->
+        <!--<property name="connection.username"></property>-->
+        <!--<property name="connection.password"></property>-->
+
+        <!--MySQL-->
+        <!--Konfiguration für Tobis PC. Wenn ihr das bei euch testen wollt, müsst ihr einen MySQL-Server einrichten!!!-->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/HESDB</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">password123</property>
+
+
+        <!--Die folgende Zeile einkommentieren, wenn die Datenbank angelegt werden soll. Falls auf der vorhandenen weitergearbeitet werden soll, auskommentieren, sonst werden alle Tabellen neu erstellt!!!-->
+        <!--<property name="hibernate.hbm2ddl.auto">create</property>-->
 
         <!-- Nachfolgend die zu Mappenden Klassen eintragen, dabei Vollen Namen der klasse, inklusive package eingeben: -->
         <mapping class="main.komponenten.buchhaltung.Rechnung"/>
@@ -31,7 +44,7 @@
         <mapping class="main.komponenten.versand.Lieferung"/>
         <mapping class="main.komponenten.versand.Transportauftrag"/>
 
-        <mapping class="main.technik.persistenzManager.RechnungDummy"/>
+        <!--<mapping class="main.technik.persistenzManager.RechnungDummy"/>-->
 
 
     </session-factory>
