@@ -7,5 +7,5 @@ package main.allgemeineTypen.enums;
  * Time: 14:24
  * To change this template use File | Settings | File Templates.
  */
-public enum StatusEnum {
+public enum StatusEnum{
 }
