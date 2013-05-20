@@ -18,7 +18,7 @@ public class DispatcherFassade implements IDispatcherManager, IDispatcherEvent {
     }
 
     @Override
-    public String getZuVerwendendeSystemInstanzID() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public int getZuVerwendendeSystemInstanzID() {
+        return 0;  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

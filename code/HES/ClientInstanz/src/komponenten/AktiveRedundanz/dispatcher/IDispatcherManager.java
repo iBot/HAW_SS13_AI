@@ -10,5 +10,5 @@ package komponenten.AktiveRedundanz.dispatcher;
  * To change this template use File | Settings | File Templates.
  */
 public interface IDispatcherManager {
-    public String getZuVerwendendeSystemInstanzID();
+    public int getZuVerwendendeSystemInstanzID();
 }

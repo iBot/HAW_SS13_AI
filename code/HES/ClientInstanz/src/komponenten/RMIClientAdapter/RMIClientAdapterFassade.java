@@ -3,6 +3,7 @@ package komponenten.RMIClientAdapter;
 import main.allgemeineTypen.transportTypen.*;
 import main.komponenten.lager.IReserviertListener;
 
+import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.Map;
 
@@ -14,58 +15,117 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 public class RMIClientAdapterFassade implements  IRMIClientAdapterManager {
+    private RMIClientAdapterLogik logik;
+
+    public RMIClientAdapterFassade(RMIClientAdapterLogik logik) {
+        this.logik = logik;
+    }
+
     @Override
     public KundenTyp erstelleKunde(KundenTyp kunde) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        try {
+            return logik.erstelleKunde(kunde);
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return null;
     }
 
     @Override
     public KundenTyp getKundeZuID(String kundenID) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        try {
+            return logik.getKundeZuID(kundenID);
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return null;
     }
 
     @Override
     public ProduktTyp erstelleProdukt(String produktName) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        try {
+            return logik.erstelleProdukt(produktName);
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return null;
     }
 
     @Override
     public void bucheWareneingang(LieferscheinTyp lieferschein, String bestellNr) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        try {
+            logik.bucheWareneingang(lieferschein, bestellNr);
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
     }
 
     @Override
     public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, IReserviertListener reserviertListener) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        try {
+            logik.reserviereProdukteFuerAuftrag(angebot, reserviertListener);
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
     }
 
     @Override
     public ProduktTyp getProduktZuID(String produktNr) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        try {
+            return logik.getProduktZuID(produktNr);
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return null;
     }
 
     @Override
     public WareneingangsmeldungTyp getWareneingangsmeldungZuID(String wareneingangsmeldungsNr) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        try {
+            return logik.getWareneingangsmeldungZuID(wareneingangsmeldungsNr);
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return null;
     }
 
     @Override
     public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        try {
+            return logik.erstelleAngebot(kundenNr, gueltigBis, gueltigAb, produktListe);
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return null;
     }
 
     @Override
     public AuftragTyp erstelleAuftrag(AngebotTyp angebot, Date beauftragtAm) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        try {
+            return logik.erstelleAuftrag(angebot, beauftragtAm);
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return null;
     }
 
     @Override
     public AuftragTyp getAuftragZuID(String auftragsNr) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        try {
+            return logik.getAuftragZuID((auftragsNr));
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return null;
     }
 
     @Override
     public AngebotTyp getAngebotZuID(String angebotNr) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        try {
+            return logik.getAngebotZuID(angebotNr);
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return null;
     }
 }
