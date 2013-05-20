@@ -2,8 +2,6 @@ package komponenten.AktiveRedundanz.dispatcher;
 
 import komponenten.AktiveRedundanz.monitor.IMonitorListener;
 
-import java.util.UUID;
-
 /**
  * Created with IntelliJ IDEA.
  * User: TwiG
@@ -12,13 +10,16 @@ import java.util.UUID;
  * To change this template use File | Settings | File Templates.
  */
 public class DispatcherFassade implements IDispatcherManager, IDispatcherEvent {
+
+    private DispatcherLogik dispatcherLogik;
+
     @Override
-    public void schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(IMonitorListener listener, UUID systemInstanzID) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public void schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(IMonitorListener listener, int systemInstanzID) {
+             dispatcherLogik.schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(listener, systemInstanzID);
     }
 
     @Override
     public int getZuVerwendendeSystemInstanzID() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return dispatcherLogik.getZuVerwendendeSystemInstanzID();
     }
 }

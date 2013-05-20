@@ -2,9 +2,6 @@ package komponenten.AktiveRedundanz.monitor;
 
 import enums.StatusEnum;
 
-
-import java.util.UUID;
-
 /**
  * Created with IntelliJ IDEA.
  * User: milena
@@ -14,6 +11,6 @@ import java.util.UUID;
  */
 public interface IMonitorManager {
 
-    void setInstanceStatus(StatusEnum status,UUID systemInstanzID);
+    void setInstanceStatus(StatusEnum status,int systemInstanzID);
 
 }
