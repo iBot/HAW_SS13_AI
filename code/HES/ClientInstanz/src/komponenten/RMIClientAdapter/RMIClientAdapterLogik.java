@@ -11,6 +11,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,12 +28,26 @@ public class RMIClientAdapterLogik {
 
 
 
-    public RMIClientAdapterLogik(IDispatcherManager dispatcherManager) throws MalformedURLException, NotBoundException, RemoteException {
+    public RMIClientAdapterLogik(IDispatcherManager dispatcherManager)  {
         this.dispatcherManager = dispatcherManager;
-        String url1 = "remoteAWK_1";
-        String url2 = "remoteAWK_2";
-        remoteAWK1 = (IRemoteAWK) Naming.lookup(url1);
-        remoteAWK2 = (IRemoteAWK) Naming.lookup(url2);
+        TimerTask tt = new BinderTask(this);
+        Timer timer = new Timer();
+        timer.schedule(tt,5000,5000);
+        if ((remoteAWK1!=null)&&(remoteAWK2!=null)){
+            timer.cancel();
+        }
+    }
+
+
+    public void bind() throws RemoteException, NotBoundException, MalformedURLException {
+        final String url1 = "remoteAWK_1";
+        final String url2 = "remoteAWK_2";
+        if (remoteAWK1 == null){
+            remoteAWK1 = (IRemoteAWK) Naming.lookup(url1);
+        }
+        if (remoteAWK2 == null){
+            remoteAWK2 = (IRemoteAWK) Naming.lookup(url2);
+        }
     }
 
     private IRemoteAWK getAwk(){

@@ -22,15 +22,9 @@ public class RMIClientAdapterFassade implements  IRMIClientAdapterManager {
     private RMIClientAdapterLogik logik;
 
     public RMIClientAdapterFassade(IDispatcherManager dispatcher) {
-        try {
+
             this.logik = new RMIClientAdapterLogik(dispatcher);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (NotBoundException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (RemoteException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+
     }
 
     @Override
