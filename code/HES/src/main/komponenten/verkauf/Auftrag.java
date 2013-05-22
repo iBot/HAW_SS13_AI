@@ -4,7 +4,9 @@ import main.allgemeineTypen.transportTypen.AngebotTyp;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.technik.persistenzManager.IPersistierbar;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.UUID;
 
@@ -19,7 +21,6 @@ class Auftrag implements IPersistierbar {
 
     @Id
     private String auftragsNr;
-
     private String angebotsNr;
     private boolean istAbgeschlossen;
     private Date beaufragtAm;
@@ -29,7 +30,7 @@ class Auftrag implements IPersistierbar {
 
     public Auftrag(AngebotTyp angebot, Date beaufragtAm) {
         this.angebotsNr = angebot.getAngebotNr();
-        this.auftragsNr = "AUFT-"+ UUID.randomUUID();
+        this.auftragsNr = "AUFT-" + UUID.randomUUID();
         this.istAbgeschlossen = false;
         this.beaufragtAm = beaufragtAm;
 

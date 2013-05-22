@@ -9,7 +9,7 @@ import main.allgemeineTypen.transportTypen.RechnungTyp;
  * Time: 12:54
  */
 public interface IBuchhaltungManager {
-    public RechnungTyp erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag, IBuchhaltungListener listener);
+    public RechnungTyp erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag, String buchhaltungslistenerID);
 
     public void zahlungseingangBuchen(double betrag, String rechnungsNr);
 

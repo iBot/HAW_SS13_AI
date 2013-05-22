@@ -54,7 +54,7 @@ public class IVerkaufManagerTest {
 //
 //        AuftragTyp erstellterAuftrag = verkaufManager.erstelleAuftrag(angebot);
 //
-//        AuftragTyp gelesenerAuftrag = verkaufManager.getAuftragZuID(erstellterAuftrag.getAuftragsNr());
+//        AuftragTyp gelesenerAuftrag = verkaufManager.getAuftragTypZuID(erstellterAuftrag.getAuftragsNr());
 //        Assert.assertEquals("Auftrag identisch: ",erstellterAuftrag,gelesenerAuftrag);
     }
 }

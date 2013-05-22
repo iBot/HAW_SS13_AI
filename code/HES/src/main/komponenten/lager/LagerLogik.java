@@ -1,6 +1,9 @@
 package main.komponenten.lager;
 
 import main.allgemeineTypen.transportTypen.*;
+import main.komponenten.verkauf.BuchhaltungListener;
+import main.komponenten.verkauf.ReserviertListener;
+import main.technik.persistenzManager.PersistenzManager;
 
 import java.util.Map;
 import java.util.UUID;
@@ -18,8 +21,17 @@ class LagerLogik {
     private WareneingangsmeldungRepository wareneingangsmeldungRepository;
     private Map<String, ILagerListener> bestellListenerMap;
 
-    LagerLogik() {
-        this.produktRepository = new ProduktRepository();
+    private static LagerLogik instance;
+
+    public static LagerLogik getInstance(){
+        if (instance== null){
+            instance = new LagerLogik();
+        }
+        return instance;
+    }
+
+    private LagerLogik() {
+        this.produktRepository = ProduktRepository.getInstance();
         this.warenausgangsmeldungRepository = new WarenausgangsmeldungRepository();
         this.wareneingangsmeldungRepository = new WareneingangsmeldungRepository();
     }
@@ -40,35 +52,41 @@ class LagerLogik {
 
         wareneingangsmeldungRepository.erstelleWareneingangsmeldung(lieferschein);
 
-        if (bestellListenerMap.containsKey(bestellNr)){
-            bestellListenerMap.get(bestellNr).fuehreAktionAus(produkt);
-        }
+//        if (bestellListenerMap.containsKey(bestellNr)){
+//            bestellListenerMap.get(bestellNr).fuehreAktionAus(produkt);
+//        }
+        //TODO: Wie ersetze ich die opere M;ap durch das auslesen aus der DB?
+//        ILagerListener lagerListener = PersistenzManager.getInstance().access(LagerListener.class, );
+//        lagerListener.fuehreAktionAus(produkt);
     }
 
     //Um euren Fehler, dessen Namen ich nicht weiß :P, hier zu vermeiden habe ich jetzt zwei Listener benutzt. Der eine kommt vom
     //Auftrag und wartet darauf dass die Ware reservier ist. Der andere wird im Lager selbst angelegt und wartet darauf dass die
     //Ware da ist um sie anschließend zu reservieren. So schließen wir aus, das nachdem die Ware da ist jemand anders sie benutzt
     //bevor wir sie reservieren können. ODER??????
-    public void reserviereProdukteFuerAuftrag(final AngebotTyp angebot, final IReserviertListener reserviertListener) {
+    public void reserviereProdukteFuerAuftrag(final AngebotTyp angebot, final String reserviertListenerNr) {
         boolean warenDa = true;
         //listener  --->>>>>> richtig kack lösung!!!!
-        ILagerListener listener = new ILagerListener() {
-            @Override
-            public void fuehreAktionAus(Produkt produkt) {
-                produktRepository.reserviereProduktFuerAuftrag(produkt, angebot);
+        LagerListener lagerListener = new LagerListener(angebot, reserviertListenerNr);
+//        ILagerListener listener = new ILagerListener() {
+//            @Override
+//            public void fuehreAktionAus(Produkt produkt) {
+//                produktRepository.reserviereProduktFuerAuftrag(produkt, angebot);
+//
+//                boolean wareDa = true;
+//                Map<String, Integer> produktListe = angebot.getProduktListe();
+//                for(String key : produktListe.keySet())
+//                {
+//                    if(!istLagerBestandAusreichend(key, produktListe.get(key)))
+//                    {
+//                        wareDa =  false;
+//                    }
+//                }
+//                if(wareDa) PersistenzManager.getInstance().access(ReserviertListener.class, reserviertListenerNr).fuehreAktionAus();
+//            }
+//        };
 
-                boolean wareDa = true;
-                Map<String, Integer> produktListe = angebot.getProduktListe();
-                for(String key : produktListe.keySet())
-                {
-                    if(!istLagerBestandAusreichend(key, produktListe.get(key)))
-                    {
-                        wareDa =  false;
-                    }
-                }
-                if(wareDa) reserviertListener.fuehreAktionAus();
-            }
-        };
+        PersistenzManager.getInstance().create(lagerListener);
 
         Map<String, Integer> produktListe = angebot.getProduktListe();
         for(String key : produktListe.keySet())
@@ -79,10 +97,10 @@ class LagerLogik {
                 //Einkauf muss Ware bestellen und bestellnummer zurückgeben
                 String bestellNr = "BEST-"+ UUID.randomUUID();
                 //produktRepository.schreibeFuerWareGeliefertEventEin(bestellnummer, listener);
-                bestellListenerMap.put(bestellNr, listener);
+                bestellListenerMap.put(bestellNr, lagerListener);
             }
         }
-        if(warenDa) reserviertListener.fuehreAktionAus();
+        if(warenDa) PersistenzManager.getInstance().access(ReserviertListener.class, reserviertListenerNr).fuehreAktionAus();
 
     }
 

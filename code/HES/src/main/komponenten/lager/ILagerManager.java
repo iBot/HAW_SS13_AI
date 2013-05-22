@@ -13,7 +13,7 @@ public interface ILagerManager {
 
     public void bucheWareneingang(LieferscheinTyp lieferschein, String bestellNr);
 
-    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, IReserviertListener reserviertListener);
+    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, String reserviertListenerNr);
 
     public ProduktTyp getProduktZuID(String produktNr);
 

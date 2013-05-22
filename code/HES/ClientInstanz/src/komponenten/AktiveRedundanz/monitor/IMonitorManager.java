@@ -2,9 +2,6 @@ package komponenten.AktiveRedundanz.monitor;
 
 import enums.StatusEnum;
 
-
-import java.util.UUID;
-
 /**
  * Created with IntelliJ IDEA.
  * User: milena

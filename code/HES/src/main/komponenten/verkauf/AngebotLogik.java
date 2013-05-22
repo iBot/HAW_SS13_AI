@@ -15,8 +15,19 @@ import java.util.Map;
 class AngebotLogik {
      private  AngebotRepository angebotRepository;
     private ILagerManager lager;
+    private static AngebotLogik instance;
 
-    AngebotLogik(ILagerManager lager) {
+   public static AngebotLogik getInstance(ILagerManager lager){
+       if (instance==null){
+           instance = new AngebotLogik(lager);
+       }
+       return instance;
+   }
+
+    public static AngebotLogik getInstance(){
+        return instance;
+    }
+   private  AngebotLogik(ILagerManager lager) {
         this.lager=lager;
         this.angebotRepository = new AngebotRepository();
     }
@@ -33,4 +44,6 @@ class AngebotLogik {
     public AngebotTyp getAngebotZuID(String angebotNr) {
         return this.angebotRepository.getAngebotZuID(angebotNr).holeAngebotTyp();
     }
+
+
 }

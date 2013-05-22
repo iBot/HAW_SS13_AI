@@ -2,8 +2,6 @@ package komponenten.AktiveRedundanz.dispatcher;
 
 import komponenten.AktiveRedundanz.monitor.IMonitorListener;
 
-import java.util.UUID;
-
 /**
  * Created with IntelliJ IDEA.
  * User: milena
@@ -14,5 +12,5 @@ import java.util.UUID;
 public interface IDispatcherEvent {
 
 
-    void schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin (IMonitorListener listener, UUID systemInstanzID);
+    void schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin (IMonitorListener listener, int systemInstanzID);
 }

@@ -2,6 +2,8 @@ package main.komponenten.buchhaltung;
 
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
+import main.komponenten.verkauf.BuchhaltungListener;
+import main.technik.persistenzManager.PersistenzManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,34 +15,33 @@ import java.util.Map;
  */
 class BuchhaltungLogik {
 
+    private static BuchhaltungLogik instanz;
     RechnungRepository rechnungRepository;
     ZahlungseingangRepository zahlungseingangRepository;
-    Map<String, IBuchhaltungListener> buchhaltungListenerMap;
-
-    private static BuchhaltungLogik instanz;
-
-    public static BuchhaltungLogik getInstance(){
-        if (instanz==null){
-            instanz = new BuchhaltungLogik();
-        }
-        return instanz;
-    }
+//    Map<String, IBuchhaltungListener> buchhaltungListenerMap;
 
     private BuchhaltungLogik() {
-        this.buchhaltungListenerMap = new HashMap<>();
+//        this.buchhaltungListenerMap = new HashMap<>();
         this.rechnungRepository = new RechnungRepository();
         this.zahlungseingangRepository = new ZahlungseingangRepository();
 
 
     }
 
-    private void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener) {
-       buchhaltungListenerMap.put(rechnungsNr, listener);
+    public static BuchhaltungLogik getInstance() {
+        if (instanz == null) {
+            instanz = new BuchhaltungLogik();
+        }
+        return instanz;
     }
 
-    public RechnungTyp erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag, IBuchhaltungListener listener) {
-        Rechnung rechnung = rechnungRepository.erstelleRechnung(gesamtbetrag, auftrag);
-        schreibeFuerRechnungBezahltEventEin(rechnung.getRechnungsNr(), listener);
+//    private void schreibeFuerRechnungBezahltEventEin(String rechnungsNr, IBuchhaltungListener listener) {
+//        buchhaltungListenerMap.put(rechnungsNr, listener);
+//    }
+
+    public RechnungTyp erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag, String buchhaltungsListenerID) {
+        Rechnung rechnung = rechnungRepository.erstelleRechnung(gesamtbetrag, auftrag, buchhaltungsListenerID);
+//        schreibeFuerRechnungBezahltEventEin(rechnung.getRechnungsNr(), listener);
         //sende Rechnung an Kunde
         return rechnung.holeRechnungTyp();
     }
@@ -54,16 +55,18 @@ class BuchhaltungLogik {
 
         if (rechnung.getIstBezahlt()) {
             //TODO: wohin soll die Map?
-            if (buchhaltungListenerMap.containsKey(rechnungsNr)) {
-                buchhaltungListenerMap.get(rechnungsNr).fuehreAktionAus();
-                }
-            }
+//            if (buchhaltungListenerMap.containsKey(rechnungsNr)) {
+//                buchhaltungListenerMap.get(rechnungsNr).fuehreAktionAus();
+//            }
+            IBuchhaltungListener bhl = PersistenzManager.getInstance().access(BuchhaltungListener.class, rechnung.getBuchhaltungsListenerNr());
+            bhl.fuehreAktionAus();
         }
 
 
+    }
 
     public RechnungTyp getRechnungZuAuftrag(String auftragsNr) {
-       return rechnungRepository.getRechnungZuAuftrag(auftragsNr).holeRechnungTyp();
+        return rechnungRepository.getRechnungZuAuftrag(auftragsNr).holeRechnungTyp();
     }
 
     public RechnungTyp getRechnungZuID(String rechnungsNr) {

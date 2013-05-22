@@ -26,8 +26,8 @@ class RechnungRepository {
 //        }
 //    }
 
-    public Rechnung erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag) {
-        Rechnung rechnung = new Rechnung(gesamtbetrag, auftrag);
+    public Rechnung erstelleRechnung(double gesamtbetrag, AuftragTyp auftrag, String buchhaltungsListenerID) {
+        Rechnung rechnung = new Rechnung(gesamtbetrag, auftrag, buchhaltungsListenerID);
         persistenzManager.create(rechnung);
         return rechnung;
     }

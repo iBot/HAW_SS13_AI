@@ -26,7 +26,7 @@ public interface IRemoteAWK extends Remote{
 
     public void bucheWareneingang(LieferscheinTyp lieferschein, String bestellNr) throws RemoteException;
 
-    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, IReserviertListener reserviertListener) throws RemoteException;
+    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, String reserviertListener) throws RemoteException;
 
     public ProduktTyp getProduktZuID(String produktNr) throws RemoteException;
 

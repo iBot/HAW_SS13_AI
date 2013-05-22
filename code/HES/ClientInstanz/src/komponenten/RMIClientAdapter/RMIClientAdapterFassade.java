@@ -61,7 +61,7 @@ public class RMIClientAdapterFassade implements  IRMIClientAdapterManager {
     }
 
     @Override
-    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, IReserviertListener reserviertListener) {
+    public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, String reserviertListener) {
         try {
             logik.reserviereProdukteFuerAuftrag(angebot, reserviertListener);
         } catch (RemoteException e) {

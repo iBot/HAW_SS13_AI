@@ -21,41 +21,38 @@ class Rechnung implements IPersistierbar {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Zahlungseingang> zahlungseingaenge;
-
     @Id
     private String rechnungsNr;
-
     private boolean istBezahlt;
     private Date rechnungsDatum;
     private String auftragsNr;
     private double gesamtbetrag;
+    private String buchhaltungsListenerNr;
 
 
-    public Rechnung(double gesamtbetrag, AuftragTyp auftrag) {
-        this.rechnungsNr = "RE-"+ UUID.randomUUID();
+    public Rechnung(double gesamtbetrag, AuftragTyp auftrag, String buchhaltungsListenerNr) {
+        this.rechnungsNr = "RE-" + UUID.randomUUID();
         this.zahlungseingaenge = new ArrayList<>();
         this.istBezahlt = false;
         this.rechnungsDatum = new Date();
         this.gesamtbetrag = gesamtbetrag;
         this.auftragsNr = auftrag.getAuftragsNr();
-
+        this.buchhaltungsListenerNr = buchhaltungsListenerNr;
     }
 
     private Rechnung() {
     }
 
-
     void zahlungseingangHinzufuegen(Zahlungseingang zahlungseingang) {
         zahlungseingaenge.add(zahlungseingang);
         double summe = gesamtbetrag;
-        for (Zahlungseingang ze : zahlungseingaenge){
+        for (Zahlungseingang ze : zahlungseingaenge) {
             summe -= ze.getBetrag();
         }
-        if (summe<=0){
-            istBezahlt=true;
+        if (summe <= 0) {
+            istBezahlt = true;
         }
     }
-
 
     //Getter und Setter
     String getRechnungsNr() {
@@ -86,10 +83,9 @@ class Rechnung implements IPersistierbar {
         return auftragsNr;
     }
 
-    private void setAuftragsNr(String auftragsNr){
+    private void setAuftragsNr(String auftragsNr) {
         this.auftragsNr = auftragsNr;
     }
-
 
     double getGesamtbetrag() {
         return gesamtbetrag;
@@ -107,12 +103,18 @@ class Rechnung implements IPersistierbar {
         this.rechnungsDatum = rechnungsDatum;
     }
 
+    String getBuchhaltungsListenerNr() {
+        return buchhaltungsListenerNr;
+    }
+
+    void setBuchhaltungsListenerNr(String buchhaltungsListenerNr) {
+        this.buchhaltungsListenerNr = buchhaltungsListenerNr;
+    }
 
     //Transporttyp zur Weitergabe an andere Komponenten (keine get-Methode um Hibernate nicht zu verwirren ;) )
     RechnungTyp holeRechnungTyp() {
-        return new RechnungTyp(rechnungsNr, istBezahlt, new Date(rechnungsDatum.getTime()),auftragsNr,gesamtbetrag);
+        return new RechnungTyp(rechnungsNr, istBezahlt, new Date(rechnungsDatum.getTime()), auftragsNr, gesamtbetrag);
     }
-
 
     @Override
     public boolean equals(Object o) {
