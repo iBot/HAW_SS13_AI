@@ -14,6 +14,6 @@ import java.util.UUID;
  */
 public interface IMonitorManager {
 
-    void setInstanceStatus(StatusEnum status,UUID systemInstanzID);
+    void setInstanceStatus(StatusEnum status,int systemInstanzID);
 
 }

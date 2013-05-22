@@ -11,9 +11,10 @@ import java.util.UUID;
  */
 public interface IMonitorEvent {
 
-    void schreibeFürInstanzStatusListenerEin(IStatusMonitorListener listener, UUID systemInstanzID);
+    void schreibeFürInstanzStatusListenerEin(IStatusMonitorListener listener, int systemInstanzID);
 
-    void schreibeFürUptimeÄnderungEin(IMonitorListener listener, UUID systemInstanzID);
 
-    void schreibeFürDowntimeÄnderungEin(IMonitorListener listener, UUID systemInstanzID);
+    void schreibeFürUptimeÄnderungEin(IMonitorListener listener, int systemInstanzID);
+
+    void schreibeFürDowntimeÄnderungEin(IMonitorListener listener, int systemInstanzID);
 }
