@@ -1,7 +1,11 @@
 package komponenten.AktiveRedundanz.dispatcher;
 
-import komponenten.AktiveRedundanz.monitor.IMonitorListener;
+import enums.StatusEnum;
+import komponenten.AktiveRedundanz.monitor.IMonitorEvent;
+import komponenten.AktiveRedundanz.monitor.IStatusMonitorListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 
@@ -14,44 +18,97 @@ import java.util.Timer;
  */
 public class DispatcherLogik {
 
-    Map<Integer, IMonitorListener> monitorListenerMap;
+    Map<Integer, List<IDispatcherListener>> monitorListenerMap;
     int anzahlAufrufeInstanz1, anzahlAufrufeInstanz2;
     Timer timer = new Timer();
     RRTimerTask timerTask1 = new RRTimerTask(this);
     int instanz;
+    StatusEnum statusInstanz1, statusInstanz2;
 
-    public DispatcherLogik() {
+    public DispatcherLogik(IMonitorEvent monitorEvent) {
+        statusInstanz1 = StatusEnum.DEAD;
+        statusInstanz2 = StatusEnum.DEAD;
+        monitorEvent.schreibeFürInstanzStatusListenerEin(new IStatusMonitorListener() {
+            @Override
+            public void fuehreAktionAus(StatusEnum status) {
+                statusInstanz1 = status;
+            }
+        }, 1);
+
+        monitorEvent.schreibeFürInstanzStatusListenerEin(new IStatusMonitorListener() {
+            @Override
+            public void fuehreAktionAus(StatusEnum status) {
+                statusInstanz2 = status;
+            }
+        }, 2);
+
         anzahlAufrufeInstanz1 = 0;
         anzahlAufrufeInstanz2 = 0;
         instanz = 1;
         timer.schedule(timerTask1, 0, 1000);
 
 
+
+
     }
 
-    public void schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(IMonitorListener listener, int systemInstanzID) {
-         monitorListenerMap.put(systemInstanzID, listener);
+    public void schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(IDispatcherListener listener, int systemInstanzID) {
+        if(!monitorListenerMap.containsKey(systemInstanzID)) {
+        monitorListenerMap.put(systemInstanzID, new ArrayList<IDispatcherListener>());
+        }
+        monitorListenerMap.get(systemInstanzID).add(listener);
     }
 
-    public int getZuVerwendendeSystemInstanzID() {
+    public int getZuVerwendendeSystemInstanzID() throws noServerAvailableException {
         int aktiv = instanz;
+
         if(aktiv == 1)  {
+            if(statusInstanz1.equals(StatusEnum.ONLINE))
+            {
             anzahlAufrufeInstanz1++;
-            wirfMonitorEvent(1);
+            wirfEvent(1);
+            }
+            else
+            {
+                aktiv = 2;
+            }
         }
-        else if(aktiv == 2)  {
+        if(aktiv == 2 )  {
+            if (statusInstanz2.equals(StatusEnum.ONLINE)) {
             anzahlAufrufeInstanz2++;
-            wirfMonitorEvent(2);
+            wirfEvent(2);
+            }
+            else {
+                aktiv = 1;
+                if(statusInstanz1.equals(StatusEnum.ONLINE))
+                {
+                    anzahlAufrufeInstanz1++;
+                    wirfEvent(1);
+                }
+                else
+                {
+                    throw new noServerAvailableException();
+                }
+            }
         }
+
 
          return aktiv;
     }
 
-    private void wirfMonitorEvent(int id) {
-        if(id == 1)
-        monitorListenerMap.get(id).führeAktionAus(anzahlAufrufeInstanz1);
-        else if (id == 2)
-        monitorListenerMap.get(id).führeAktionAus(anzahlAufrufeInstanz2);
+    private void wirfEvent(int id) {
+        if(id == 1)  {
+            for(IDispatcherListener listener : monitorListenerMap.get(id))
+            {
+                listener.führeAktionAus(anzahlAufrufeInstanz1);
+            }
+        }
+        else if (id == 2){
+            for(IDispatcherListener listener : monitorListenerMap.get(id))
+            {
+                listener.führeAktionAus(anzahlAufrufeInstanz2);
+            }
+        }
     }
 
     public void roundRobin()
