@@ -74,10 +74,10 @@ public class MonitorLogik {
 
     public void iAmAlive(int systemInstanzID) {
         if (systemInstanzID == 1) {
-            timer1.cancel();
+//            timer1.cancel();
             timer1.schedule(timeOutTask1, timeOut);
         } else {
-            timer2.cancel();
+//            timer2.cancel();
             timer2.schedule(timeOutTask2, timeOut);
         }
     }
