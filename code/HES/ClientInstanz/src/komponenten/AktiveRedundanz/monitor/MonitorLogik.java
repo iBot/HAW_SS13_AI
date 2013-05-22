@@ -95,10 +95,10 @@ public class MonitorLogik {
     void timeListenerausführen(){
         upTimeAktuallisieren();
         calcDownTime();
-        listenerRepository.getMonitorListenerUptime1().führeAktionAus(systemInstanz1Uptime);
-        listenerRepository.getMonitorListenerUptime2().führeAktionAus(systemInstanz2Uptime);
-        listenerRepository.getMonitorListenerDowntime1().führeAktionAus(systemInstanz1Downtime);
-        listenerRepository.getMonitorListenerDowntime2().führeAktionAus(systemInstanz2Downtime);
+        if (listenerRepository.isMonitorListenerUptime1Initalized()) listenerRepository.getMonitorListenerUptime1().führeAktionAus(systemInstanz1Uptime);
+        if (listenerRepository.isMonitorListenerUptime2Initalized()) listenerRepository.getMonitorListenerUptime2().führeAktionAus(systemInstanz2Uptime);
+        if (listenerRepository.isMonitorListenerDowntime1Initalized()) listenerRepository.getMonitorListenerDowntime1().führeAktionAus(systemInstanz1Downtime);
+        if (listenerRepository.isMonitorListenerDowntime2Initalized()) listenerRepository.getMonitorListenerDowntime2().führeAktionAus(systemInstanz2Downtime);
     }
 
     // vorher sollte man systemInstanzUptime updaten

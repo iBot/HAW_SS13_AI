@@ -4,10 +4,7 @@ import enums.StatusEnum;
 import komponenten.AktiveRedundanz.monitor.IMonitorEvent;
 import komponenten.AktiveRedundanz.monitor.IStatusMonitorListener;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,7 +15,7 @@ import java.util.Timer;
  */
 public class DispatcherLogik {
 
-    Map<Integer, List<IDispatcherListener>> monitorListenerMap;
+    Map<Integer, List<IDispatcherListener>> monitorListenerMap = new HashMap<>();
     int anzahlAufrufeInstanz1, anzahlAufrufeInstanz2;
     Timer timer = new Timer();
     RRTimerTask timerTask1 = new RRTimerTask(this);

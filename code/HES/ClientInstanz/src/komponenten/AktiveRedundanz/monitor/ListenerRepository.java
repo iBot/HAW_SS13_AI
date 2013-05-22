@@ -15,6 +15,25 @@ class ListenerRepository {
     IStatusMonitorListener statusMonitorListener1;
     IStatusMonitorListener statusMonitorListener2;
 
+    public boolean isMonitorListenerUptime1Initalized(){
+        return (monitorListenerUptime1!=null) ? true : false;
+    }
+    public boolean isMonitorListenerUptime2Initalized(){
+        return (monitorListenerUptime2!=null) ? true : false;
+    }
+    public boolean isMonitorListenerDowntime1Initalized(){
+        return (monitorListenerDowntime1!=null) ? true : false;
+    }
+    public boolean isMonitorListenerDowntime2Initalized(){
+        return (monitorListenerDowntime2!=null) ? true : false;
+    }
+    public boolean isStatusMonitorListener1Initalized(){
+        return (statusMonitorListener1!=null) ? true : false;
+    }
+    public boolean isStatusMonitorListener2Initalized(){
+        return (statusMonitorListener2!=null) ? true : false;
+    }
+
     public IMonitorListener getMonitorListenerUptime1() {
         return monitorListenerUptime1;
     }

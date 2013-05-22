@@ -8,6 +8,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="HES" />
+    <orderEntry type="module" module-name="ClientInstanz" />
+    <orderEntry type="module" module-name="NameServer" />
   </component>
 </module>
 

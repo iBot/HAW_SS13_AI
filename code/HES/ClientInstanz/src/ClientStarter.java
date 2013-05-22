@@ -17,9 +17,9 @@ public class ClientStarter {
 
 
     public static void main(String[] args){
-        DispatcherFassade dispatcher = new DispatcherFassade();
-        IRMIClientAdapterManager manager = new RMIClientAdapterFassade(dispatcher);
         MonitorFassade monitor = new MonitorFassade(2000);
+        DispatcherFassade dispatcher = new DispatcherFassade(monitor);
+        IRMIClientAdapterManager manager = new RMIClientAdapterFassade(dispatcher);
         DashboardGUI gui = new DashboardGUI(monitor,monitor,dispatcher);
     }
 }

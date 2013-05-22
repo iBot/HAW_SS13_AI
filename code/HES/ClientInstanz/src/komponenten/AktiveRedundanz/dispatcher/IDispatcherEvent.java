@@ -12,5 +12,5 @@ import komponenten.AktiveRedundanz.monitor.IMonitorListener;
 public interface IDispatcherEvent {
 
 
-    void schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin (IMonitorListener listener, int systemInstanzID);
+    void schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin (IDispatcherListener listener, int systemInstanzID);
 }

@@ -2,6 +2,7 @@ package komponenten;
 
 import komponenten.AktiveRedundanz.dispatcher.DispatcherFassade;
 import komponenten.AktiveRedundanz.dispatcher.IDispatcherManager;
+import komponenten.AktiveRedundanz.monitor.MonitorFassade;
 import komponenten.RMIClientAdapter.IRMIClientAdapterManager;
 import komponenten.RMIClientAdapter.RMIClientAdapterFassade;
 import komponenten.RMIClientAdapter.RMIClientAdapterLogik;
@@ -27,7 +28,7 @@ public class Client {
 
 
     public Client() {
-        dispatcherManager = new DispatcherFassade();
+        dispatcherManager = new DispatcherFassade(new MonitorFassade(2000));
 
         clientAdapterManager = new RMIClientAdapterFassade(dispatcherManager);
 
