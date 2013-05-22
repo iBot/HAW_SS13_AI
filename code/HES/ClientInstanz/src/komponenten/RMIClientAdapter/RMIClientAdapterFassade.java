@@ -1,8 +1,12 @@
 package komponenten.RMIClientAdapter;
 
+import komponenten.AktiveRedundanz.dispatcher.DispatcherFassade;
+import komponenten.AktiveRedundanz.dispatcher.IDispatcherManager;
 import main.allgemeineTypen.transportTypen.*;
 import main.komponenten.lager.IReserviertListener;
 
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.Map;
@@ -17,8 +21,16 @@ import java.util.Map;
 public class RMIClientAdapterFassade implements  IRMIClientAdapterManager {
     private RMIClientAdapterLogik logik;
 
-    public RMIClientAdapterFassade(RMIClientAdapterLogik logik) {
-        this.logik = logik;
+    public RMIClientAdapterFassade(IDispatcherManager dispatcher) {
+        try {
+            this.logik = new RMIClientAdapterLogik(dispatcher);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (NotBoundException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (RemoteException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
     }
 
     @Override

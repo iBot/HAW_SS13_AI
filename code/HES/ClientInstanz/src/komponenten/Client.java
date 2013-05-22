@@ -31,9 +31,9 @@ public class Client {
 
         clientAdapterManager = new RMIClientAdapterFassade(dispatcherManager);
 
-        produktListe = new ArrayList<>();
-        produktListe.add(clientAdapterManager.erstelleProdukt("Batmobil"));
-        produktListe.add(clientAdapterManager.erstelleProdukt("BatutilityBag"));
+//        produktListe = new ArrayList<>();
+//        produktListe.add(clientAdapterManager.erstelleProdukt("Batmobil"));
+//        produktListe.add(clientAdapterManager.erstelleProdukt("BatutilityBag"));
         i = 0;
     }
 
