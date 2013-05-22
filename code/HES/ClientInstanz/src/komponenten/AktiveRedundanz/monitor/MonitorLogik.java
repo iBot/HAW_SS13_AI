@@ -16,15 +16,25 @@ public class MonitorLogik {
     Timer timer = new Timer();
     TimeOutTask timeOutTask1 = new TimeOutTask(this,1);
     TimeOutTask timeOutTask2 = new TimeOutTask(this,2);
+    long startTime = 0;
+    long systemInstanz1Uptime = 0;
+    long systemInstanz2Uptime = 0;
+    long systemInstanz1Downtime = 0;
+    long systemInstanz2Downtime = 0;
+    long lastTimeSwitch1 = 0;
+    long lastTimeSwitch2 = 0;
 
     public MonitorLogik(int timeOut) throws RemoteException, MalformedURLException {
         this.listenerRepository = new ListenerRepository();
         this.timeOut = timeOut;
-        timer.schedule(timeOutTask1,timeOut);
-        timer.schedule(timeOutTask2,timeOut);
+        timer.schedule(timeOutTask1, timeOut);
+        timer.schedule(timeOutTask2, timeOut);
+        timer.schedule(new TimeUpdateTask(this),0,1000);
         IRemoteIAmALive remoteIAmALive = new RemoteIAmLiveImpl(this);
         Naming.rebind("remoteIamAlive",remoteIAmALive);
-
+        startTime=System.currentTimeMillis();
+        lastTimeSwitch1 = startTime;
+        lastTimeSwitch2 = startTime;
     }
 
 
@@ -53,6 +63,7 @@ public class MonitorLogik {
     }
 
     public void setInstanceStatus(StatusEnum status, int systemInstanzID) {
+        upTimeAktuallisieren();
         if(systemInstanzID == 1){
             instanzStatus1 = status;
         }
@@ -67,10 +78,33 @@ public class MonitorLogik {
     public void iAmAlive(int systemInstanzID) {
         if(systemInstanzID == 1){
             timeOutTask1.cancel();
-            timer.schedule(timeOutTask1,timeOut);
+            timer.schedule(timeOutTask1, timeOut);
         }
         else
             timeOutTask1.cancel();
-            timer.schedule(timeOutTask2,timeOut);
+            timer.schedule(timeOutTask2, timeOut);
+    }
+
+
+    private void upTimeAktuallisieren(){
+        if(instanzStatus1 == StatusEnum.ONLINE)
+            systemInstanz1Uptime+=System.currentTimeMillis()-lastTimeSwitch1;
+        if(instanzStatus2 == StatusEnum.ONLINE)
+            systemInstanz2Uptime+=System.currentTimeMillis()-lastTimeSwitch2;
+    }
+    void timeListenerausführen(){
+        upTimeAktuallisieren();
+        calcDownTime();
+        listenerRepository.getMonitorListenerUptime1().führeAktionAus(systemInstanz1Uptime);
+        listenerRepository.getMonitorListenerUptime2().führeAktionAus(systemInstanz2Uptime);
+        listenerRepository.getMonitorListenerDowntime1().führeAktionAus(systemInstanz1Downtime);
+        listenerRepository.getMonitorListenerDowntime2().führeAktionAus(systemInstanz2Downtime);
+    }
+
+    // vorher sollte man systemInstanzUptime updaten
+    private void calcDownTime(){
+        systemInstanz1Downtime = startTime-systemInstanz1Uptime;
+
+        systemInstanz2Downtime = startTime-systemInstanz2Uptime;
     }
 }
