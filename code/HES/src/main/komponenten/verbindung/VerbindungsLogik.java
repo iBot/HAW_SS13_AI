@@ -1,5 +1,7 @@
 package main.komponenten.verbindung;
 
+import komponenten.AktiveRedundanz.monitor.IRemoteIAmALive;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;

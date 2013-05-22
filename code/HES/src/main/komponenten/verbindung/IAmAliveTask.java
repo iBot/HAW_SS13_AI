@@ -1,5 +1,7 @@
 package main.komponenten.verbindung;
 
+import komponenten.AktiveRedundanz.monitor.IRemoteIAmALive;
+
 import java.rmi.RemoteException;
 import java.util.TimerTask;
 
