@@ -3,6 +3,7 @@ package komponenten.AktiveRedundanz.dispatcher;
 import komponenten.AktiveRedundanz.monitor.IMonitorListener;
 
 import java.util.Map;
+import java.util.Timer;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,10 +16,15 @@ public class DispatcherLogik {
 
     Map<Integer, IMonitorListener> monitorListenerMap;
     int anzahlAufrufeInstanz1, anzahlAufrufeInstanz2;
+    Timer timer = new Timer();
+    RRTimerTask timerTask1 = new RRTimerTask(this);
+    int instanz;
 
     public DispatcherLogik() {
         anzahlAufrufeInstanz1 = 0;
         anzahlAufrufeInstanz2 = 0;
+        instanz = 1;
+        timer.schedule(timerTask1, 0, 1000);
 
 
     }
@@ -28,10 +34,7 @@ public class DispatcherLogik {
     }
 
     public int getZuVerwendendeSystemInstanzID() {
-        int aktiv = 0;
-
-        //RoundRobin
-
+        int aktiv = instanz;
         if(aktiv == 1)  {
             anzahlAufrufeInstanz1++;
             wirfMonitorEvent(1);
@@ -49,6 +52,12 @@ public class DispatcherLogik {
         monitorListenerMap.get(id).führeAktionAus(anzahlAufrufeInstanz1);
         else if (id == 2)
         monitorListenerMap.get(id).führeAktionAus(anzahlAufrufeInstanz2);
+    }
+
+    public void roundRobin()
+    {
+        instanz++;
+        instanz = (instanz%2)+1;
     }
 
 

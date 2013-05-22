@@ -5,11 +5,11 @@ import komponenten.AktiveRedundanz.dispatcher.IDispatcherManager;
 import komponenten.RMIClientAdapter.IRMIClientAdapterManager;
 import komponenten.RMIClientAdapter.RMIClientAdapterFassade;
 import komponenten.RMIClientAdapter.RMIClientAdapterLogik;
-import main.allgemeineTypen.transportTypen.AngebotTyp;
 import main.allgemeineTypen.transportTypen.KundenTyp;
 import main.allgemeineTypen.transportTypen.ProduktTyp;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -19,55 +19,49 @@ import java.util.*;
  * Time: 20:27
  * To change this template use File | Settings | File Templates.
  */
-public class Client
-{
-        private IRMIClientAdapterManager clientAdapterManager;
-    private RMIClientAdapterLogik logik;
+public class Client {
+    private IRMIClientAdapterManager clientAdapterManager;
     private IDispatcherManager dispatcherManager;
     private List<ProduktTyp> produktListe;
+    private int i;
 
 
-        public Client() {
-            dispatcherManager = new DispatcherFassade();
-            try{
-            logik = new RMIClientAdapterLogik(dispatcherManager);
-            }
-            catch(Exception e){
-            }
-            clientAdapterManager = new RMIClientAdapterFassade(logik);
+    public Client() {
+        dispatcherManager = new DispatcherFassade();
 
-            produktListe = new ArrayList<>();
-            produktListe.add(clientAdapterManager.erstelleProdukt("Batmobil"));
-            produktListe.add(clientAdapterManager.erstelleProdukt("BatutilityBag"));
+        clientAdapterManager = new RMIClientAdapterFassade(dispatcherManager);
+
+        produktListe = new ArrayList<>();
+        produktListe.add(clientAdapterManager.erstelleProdukt("Batmobil"));
+        produktListe.add(clientAdapterManager.erstelleProdukt("BatutilityBag"));
+        i = 0;
     }
 
 
-        public void szenario() {
+    public void szenario() {
 
-            KundenTyp kunde = new KundenTyp("Kunde1", "Hamburg");
+        while (true) {
+            KundenTyp kunde = new KundenTyp("Kunde" + i, "Hamburg");
             kunde = clientAdapterManager.erstelleKunde(kunde);
-
-            Map<String, Integer> produkte = new HashMap<>();
-            for (ProduktTyp produkt : produktListe) {
-                produkte.put(produkt.getProduktNr(), 10);
-            }
-
+            i++;
             try {
-                Thread.sleep(1000);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
-
+                break;
             }
-            AngebotTyp angebot = clientAdapterManager.erstelleAngebot(kunde.getKundenNr(), new Date(new Date().getTime() + 24l * 60 * 60 * 1000 * 7), new Date(), produkte);
-
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-
-            }
-
-            clientAdapterManager.erstelleAuftrag(angebot, new Date());
-
-
+        }
+//            Map<String, Integer> produkte = new HashMap<>();
+//            for (ProduktTyp produkt : produktListe) {
+//                produkte.put(produkt.getProduktNr(), 10);
+//            }
+//
+//            Thread.sleep(1000);
+//
+//            AngebotTyp angebot = clientAdapterManager.erstelleAngebot(kunde.getKundenNr(), new Date(new Date().getTime() + 24l * 60 * 60 * 1000 * 7), new Date(), produkte);
+//
+//            Thread.sleep(1000);
+//
+//            clientAdapterManager.erstelleAuftrag(angebot, new Date());
 
     }
 
