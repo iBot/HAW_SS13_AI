@@ -28,8 +28,8 @@ public class RMIClientAdapterLogik {
 
     public RMIClientAdapterLogik(IDispatcherManager dispatcherManager) throws MalformedURLException, NotBoundException, RemoteException {
         this.dispatcherManager = dispatcherManager;
-        String url1 = "remoteAWK1";
-        String url2 = "remoteAWK2";
+        String url1 = "remoteAWK_1";
+        String url2 = "remoteAWK_2";
         remoteAWK1 = (IRemoteAWK) Naming.lookup(url1);
         remoteAWK2 = (IRemoteAWK) Naming.lookup(url2);
     }

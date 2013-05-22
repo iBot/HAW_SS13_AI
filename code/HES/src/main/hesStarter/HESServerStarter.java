@@ -2,10 +2,12 @@ package main.hesStarter;
 
 import main.allgemeineTypen.transportTypen.KundenTyp;
 import main.allgemeineTypen.transportTypen.ProduktTyp;
+import main.komponenten.RMIServerAdapter.RMIServerAdapterFassade;
 import main.komponenten.buchhaltung.BuchhaltungFassade;
 import main.komponenten.kunden.IKundenManager;
 import main.komponenten.kunden.KundenFassade;
 import main.komponenten.lager.LagerFassade;
+import main.komponenten.verbindung.VerbindungsFassade;
 import main.komponenten.verkauf.VerkaufFassade;
 import main.komponenten.versand.IVersandManager;
 import main.komponenten.versand.VersandFassade;
@@ -21,18 +23,50 @@ import static java.lang.Thread.sleep;
  * Date: 19.04.13
  * Time: 12:14
  */
-public class HESStarter {
+public class HESServerStarter {
 
     private static IKundenManager kundenManager;
     private static VerkaufFassade verkauf;
     private static LagerFassade lager;
     private static IVersandManager versand;
     private static BuchhaltungFassade buchhaltung;
+    private static RMIServerAdapterFassade rmiServerAdapterFassade;
+    private static VerbindungsFassade verbindungsFassade;
+
     private static KundenTyp derKunde;
     private static List<ProduktTyp> produktListe;
     private static boolean bezahlt;
+    private static int serverInstanceID = -100;
 
     public static void main(String[] args)  {
+        startServer(args);
+    }
+
+    private static void startServer(String[] args){
+        if (args.length != 1){
+            throw new Error("Missing argument for server instance ID. Add 1 or 2 as argument.");
+        }
+        try {
+            serverInstanceID = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            throw new Error("Wrong Format for server instance ID argument. Add 1 or 2 as argument.",e);
+        }
+        if ((serverInstanceID != 1)&&(serverInstanceID != 2)){
+            throw new Error("Unvalid serverInstanceId argument. Valid values are 1 and 2");
+        }
+
+        buchhaltung = new BuchhaltungFassade();
+        kundenManager = new KundenFassade();
+        lager = new LagerFassade();
+
+        versand = new VersandFassade();
+        verkauf = new VerkaufFassade(buchhaltung, lager, versand);
+
+        rmiServerAdapterFassade = new RMIServerAdapterFassade(kundenManager,lager,verkauf,serverInstanceID);
+        verbindungsFassade = new VerbindungsFassade(serverInstanceID,400);
+    }
+
+    private static void tesstMethodeForDistributedDatabaseAccess() {
         //TODO: Implement method body!
 //        BuchhaltungFassade bf = new BuchhaltungFassade();
 //        RechnungTyp rt = bf.erstelleRechnung(100, );
@@ -70,18 +104,6 @@ public class HESStarter {
                 System.out.println("Thread woke up...");
             }
         }
-//        buchhaltung = new BuchhaltungFassade();
-//        lager = new LagerFassade();
-//        versand = new VersandFassade();
-//        verkauf = new VerkaufFassade(buchhaltung, lager, versand);
-//        produktListe = new ArrayList<>();
-//        produktListe.add(lager.erstelleProdukt("Batmobil"));
-//        produktListe.add(lager.erstelleProdukt("BatutilityBag"));
-//        buchhaltung = new BuchhaltungFassade();
-
-    }
-
-    private static void tesstMethodeForDistributedDatabaseAccess() {
 
     }
 }

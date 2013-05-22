@@ -22,9 +22,9 @@ import java.util.Map;
  */
 public class RMIServerAdapterLogik {
 
-    public RMIServerAdapterLogik(IKundenManager kundenManager, IVerkaufManager verkaufManager, ILagerManager lagerManager) throws RemoteException, MalformedURLException {
+    public RMIServerAdapterLogik(IKundenManager kundenManager, IVerkaufManager verkaufManager, ILagerManager lagerManager, int  serverInstanceID) throws RemoteException, MalformedURLException {
         IRemoteAWK remoteAWK = new RemoteAWKImpl(kundenManager,verkaufManager,lagerManager);
         //Brauch noch nen identifier
-        Naming.rebind("remoteAWK",remoteAWK);
+        Naming.rebind("remoteAWK_"+serverInstanceID,remoteAWK);
     }
 }
