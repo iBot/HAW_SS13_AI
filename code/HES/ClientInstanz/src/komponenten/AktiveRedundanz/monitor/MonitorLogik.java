@@ -13,7 +13,9 @@ public class MonitorLogik {
     ListenerRepository listenerRepository;
     StatusEnum instanzStatus1 = StatusEnum.DEAD;
     StatusEnum instanzStatus2 = StatusEnum.DEAD;
-    Timer timer = new Timer();
+    Timer timer1 = new Timer();
+    Timer timer2 = new Timer();
+    Timer timer3 = new Timer();
     TimeOutTask timeOutTask1 = new TimeOutTask(this, 1);
     TimeOutTask timeOutTask2 = new TimeOutTask(this, 2);
     long startTime = 0;
@@ -27,9 +29,9 @@ public class MonitorLogik {
     public MonitorLogik(int timeOut) throws RemoteException, MalformedURLException {
         this.listenerRepository = new ListenerRepository();
         this.timeOut = timeOut;
-        timer.schedule(timeOutTask1, timeOut);
-        timer.schedule(timeOutTask2, timeOut);
-        timer.schedule(new TimeUpdateTask(this), 0, 1000);
+        timer1.schedule(timeOutTask1, timeOut);
+        timer2.schedule(timeOutTask2, timeOut);
+        timer3.schedule(new TimeUpdateTask(this), 0, 1000);
         IRemoteIAmALive remoteIAmALive = new RemoteIAmLiveImpl(this);
         Naming.rebind("remoteIamAlive", remoteIAmALive);
         startTime = System.currentTimeMillis();
@@ -72,11 +74,11 @@ public class MonitorLogik {
 
     public void iAmAlive(int systemInstanzID) {
         if (systemInstanzID == 1) {
-            timeOutTask1.cancel();
-            timer.schedule(timeOutTask1, timeOut);
+            timer1.cancel();
+            timer1.schedule(timeOutTask1, timeOut);
         } else {
-            timeOutTask2.cancel();
-            timer.schedule(timeOutTask2, timeOut);
+            timer2.cancel();
+            timer2.schedule(timeOutTask2, timeOut);
         }
     }
 
