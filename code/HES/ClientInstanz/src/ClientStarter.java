@@ -24,14 +24,14 @@ public class ClientStarter {
         DispatcherFassade dispatcher = new DispatcherFassade(monitor);
         IRMIClientAdapterManager manager = new RMIClientAdapterFassade(dispatcher);
         DashboardGUI gui = new DashboardGUI(monitor,monitor,dispatcher);
-
-        JFrame frame = new JFrame("Gui");
-//            frame.setContentPane(gui.panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+//
+//        JFrame frame = new JFrame("Gui");
+////            frame.setContentPane(gui.panel);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.pack();
+//        frame.setVisible(true);
+        gui.setVisible(true);
 
         Client client = new Client();
-        client.szenario();
     }
 }

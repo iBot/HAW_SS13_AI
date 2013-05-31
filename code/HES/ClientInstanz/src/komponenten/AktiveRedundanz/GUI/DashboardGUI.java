@@ -102,17 +102,6 @@ public class DashboardGUI extends JFrame{
                 buttonSetStatusInstanz2MouseClicked(evt);
             }
         });
-        panels.add(redInstanz1);
-        panels.add(redInstanz2);
-        panels.add(greenInstanz2);
-        panels.add(greenInstanz1);
-        panels.add(ampelInstanz1);
-        panels.add(ampelInstanz2);
-        panels.add(panelInstanz2);
-        panels.add(panelInstanz1);
-        panels.add(activeInstanz1);
-        panels.add(yellowInstanz1);
-        panels.add(yellowInstanz2);
     }
 
     private void statusAenderungInstanz1(StatusEnum status) {
@@ -201,7 +190,6 @@ public class DashboardGUI extends JFrame{
     private JPanel greenInstanz1;
     private JPanel yellowInstanz2;
 
-    public List<JPanel> panels = new ArrayList<>();
 
 
 }
