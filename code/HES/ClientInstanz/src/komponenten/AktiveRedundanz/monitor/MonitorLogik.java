@@ -40,60 +40,69 @@ public class MonitorLogik {
 
     public void schreibeFürInstanzStatusListenerEin(IStatusMonitorListener listener, int systemInstanzID) {
         if (systemInstanzID == 1) {
-            listenerRepository.setStatusMonitorListener1(listener);
-        } else
-            listenerRepository.setStatusMonitorListener2(listener);
+            listenerRepository.addStatusMonitorListener1(listener);
+        } else if (systemInstanzID == 2) {
+            listenerRepository.addStatusMonitorListener2(listener);
+        }
+
     }
 
     public void schreibeFürUptimeÄnderungEin(IMonitorListener listener, int systemInstanzID) {
         if (systemInstanzID == 1) {
-            listenerRepository.setMonitorListenerUptime1(listener);
+            listenerRepository.addMonitorListenerUptime1(listener);
         } else
-            listenerRepository.setMonitorListenerUptime2(listener);
+            listenerRepository.addMonitorListenerUptime2(listener);
     }
 
     public void schreibeFürDowntimeÄnderungEin(IMonitorListener listener, int systemInstanzID) {
         if (systemInstanzID == 1) {
-            listenerRepository.setMonitorListenerDowntime1(listener);
+            listenerRepository.addMonitorListenerDowntime1(listener);
         } else
-            listenerRepository.setMonitorListenerDowntime2(listener);
+            listenerRepository.addMonitorListenerDowntime2(listener);
     }
 
     public void setInstanceStatus(StatusEnum status, int systemInstanzID) {
         upTimeAktuallisieren();
         if (systemInstanzID == 1) {
             instanzStatus1 = status;
-        } else
-            instanzStatus2 = status;
 
-        //Alle Status Listener Feuern
-        listenerRepository.getStatusMonitorListener1().fuehreAktionAus(status);
-        listenerRepository.getStatusMonitorListener2().fuehreAktionAus(status);
+            for (IStatusMonitorListener listener : listenerRepository.getStatusMonitorListener1List()){
+                listener.fuehreAktionAus(status);
+            }
+        } else if (systemInstanzID == 2) {
+            instanzStatus2 = status;
+            for (IStatusMonitorListener listener : listenerRepository.getStatusMonitorListener2List()){
+                listener.fuehreAktionAus(status);
+            }
+        }
     }
 
     //called by TimeOuttaks every <timeout> msec
-    public void setDeadIfdead(){
-        if(!alive1){
-            setInstanceStatus(StatusEnum.DEAD,1);
+    public void setDeadIfdead() {
+        if (!alive1) {
+            setInstanceStatus(StatusEnum.DEAD, 1);
 
         }
-        if(!alive2){
-            setInstanceStatus(StatusEnum.DEAD,2);
+        if (!alive2) {
+            setInstanceStatus(StatusEnum.DEAD, 2);
         }
-        alive1=false;
-        alive2=false;
+        alive1 = false;
+        alive2 = false;
     }
 
     //called by Serverinstanz
     public void iAmAlive(int systemInstanzID) {
+        System.out.println("I'm alive! " + systemInstanzID);
         if (systemInstanzID == 1) {
-            alive1=true;
-            if(instanzStatus1==StatusEnum.DEAD)
-                setInstanceStatus(StatusEnum.ONLINE,1);
-        } else {
-            alive2=true;
-            if(instanzStatus2==StatusEnum.DEAD)
-                setInstanceStatus(StatusEnum.ONLINE,2);
+            alive1 = true;
+            if (instanzStatus1 == StatusEnum.DEAD) {
+                setInstanceStatus(StatusEnum.ONLINE, 1);
+            }
+        } else if (systemInstanzID == 2) {
+            alive2 = true;
+            if (instanzStatus2 == StatusEnum.DEAD) {
+                setInstanceStatus(StatusEnum.ONLINE, 2);
+            }
         }
     }
 
@@ -107,14 +116,19 @@ public class MonitorLogik {
     void timeListenerausführen() {
         upTimeAktuallisieren();
         calcDownTime();
-        if (listenerRepository.isMonitorListenerUptime1Initalized())
-            listenerRepository.getMonitorListenerUptime1().führeAktionAus(systemInstanz1Uptime);
-        if (listenerRepository.isMonitorListenerUptime2Initalized())
-            listenerRepository.getMonitorListenerUptime2().führeAktionAus(systemInstanz2Uptime);
-        if (listenerRepository.isMonitorListenerDowntime1Initalized())
-            listenerRepository.getMonitorListenerDowntime1().führeAktionAus(systemInstanz1Downtime);
-        if (listenerRepository.isMonitorListenerDowntime2Initalized())
-            listenerRepository.getMonitorListenerDowntime2().führeAktionAus(systemInstanz2Downtime);
+        for (IMonitorListener listener : listenerRepository.getMonitorListenerUptime1List()){
+            listener.führeAktionAus(systemInstanz1Uptime);
+        }
+        for (IMonitorListener listener : listenerRepository.getMonitorListenerUptime2List()){
+            listener.führeAktionAus(systemInstanz2Uptime);
+        }
+        for (IMonitorListener listener : listenerRepository.getMonitorListenerDowntime1List()){
+            listener.führeAktionAus(systemInstanz1Downtime);
+        }
+        for (IMonitorListener listener : listenerRepository.getMonitorListenerDowntime2List()){
+            listener.führeAktionAus(systemInstanz2Downtime);
+        }
+
     }
 
     // vorher sollte man systemInstanzUptime updaten

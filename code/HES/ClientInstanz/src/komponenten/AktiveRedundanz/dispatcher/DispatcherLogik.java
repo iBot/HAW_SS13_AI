@@ -24,7 +24,6 @@ public class DispatcherLogik {
     StatusEnum statusInstanz1, statusInstanz2;
 
 
-
     public DispatcherLogik(IMonitorEvent monitorEvent) {
         statusInstanz1 = StatusEnum.DEAD;
         statusInstanz2 = StatusEnum.DEAD;
@@ -32,13 +31,16 @@ public class DispatcherLogik {
             @Override
             public void fuehreAktionAus(StatusEnum status) {
                 statusInstanz1 = status;
+                System.out.println("Instanz1 -> "+status);
             }
         }, 1);
+
 
         monitorEvent.schreibeFürInstanzStatusListenerEin(new IStatusMonitorListener() {
             @Override
             public void fuehreAktionAus(StatusEnum status) {
                 statusInstanz2 = status;
+                System.out.println("Instanz2 -> "+status);
             }
         }, 2);
 
@@ -54,20 +56,20 @@ public class DispatcherLogik {
     }
 
     public void schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(IDispatcherListener listener, int systemInstanzID) {
-        if(!monitorListenerMap.containsKey(systemInstanzID)) {
-            monitorListenerMap.put(systemInstanzID, new ArrayList<IDispatcherListener>());
-        }
+//        if(!monitorListenerMap.containsKey(systemInstanzID)) {
+//            monitorListenerMap.put(systemInstanzID, new ArrayList<IDispatcherListener>());
+//        }
         monitorListenerMap.get(systemInstanzID).add(listener);
     }
 
     public int getZuVerwendendeSystemInstanzID() throws noServerAvailableException {
         switchSystemInstanz();
-        if (aktuelleInstanz==-1){
+        if (aktuelleInstanz == -1) {
             throw new noServerAvailableException();
-        } else if (aktuelleInstanz ==1){
+        } else if (aktuelleInstanz == 1) {
             anzahlAufrufeInstanz1++;
             wirfAnzahlFunktionsaufrufeEvent(1);
-        } else if (aktuelleInstanz ==2){
+        } else if (aktuelleInstanz == 2) {
             anzahlAufrufeInstanz2++;
             wirfAnzahlFunktionsaufrufeEvent(2);
         }
@@ -75,27 +77,40 @@ public class DispatcherLogik {
     }
 
     private int switchSystemInstanz() {
-        if (aktuelleInstanz != 1 && statusInstanz1 == StatusEnum.ONLINE){
-            aktuelleInstanz = 1;
-        } else if (aktuelleInstanz != 2 && statusInstanz2 == StatusEnum.ONLINE){
-            aktuelleInstanz = 2;
-        } else {
-            aktuelleInstanz = -1;
+        if (aktuelleInstanz == 1) {
+            if (statusInstanz2 == StatusEnum.ONLINE) {
+                aktuelleInstanz = 2;
+            } else if (statusInstanz1 == StatusEnum.ONLINE) {
+                aktuelleInstanz = 1;
+            } else {
+                aktuelleInstanz = -1;
+            }
+        } else if (aktuelleInstanz == 2) {
+            if (statusInstanz1 == StatusEnum.ONLINE) {
+                aktuelleInstanz = 1;
+            } else if (statusInstanz2 == StatusEnum.ONLINE) {
+                aktuelleInstanz = 2;
+            } else {
+                aktuelleInstanz = -1;
+            }
+        } else if (aktuelleInstanz == -1 ){
+            if (statusInstanz1 == StatusEnum.ONLINE){
+                aktuelleInstanz = 1;
+            } if (statusInstanz2 == StatusEnum.ONLINE){
+                aktuelleInstanz = 2;
+            }
         }
+        System.out.println("Instanz " + aktuelleInstanz + " ist verfügbar!");
         return aktuelleInstanz;
     }
 
-
     private void wirfAnzahlFunktionsaufrufeEvent(int id) {
-        if(id == 1)  {
-            for(IDispatcherListener listener : monitorListenerMap.get(id))
-            {
+        if (id == 1) {
+            for (IDispatcherListener listener : monitorListenerMap.get(id)) {
                 listener.führeAktionAus(anzahlAufrufeInstanz1);
             }
-        }
-        else if (id == 2){
-            for(IDispatcherListener listener : monitorListenerMap.get(id))
-            {
+        } else if (id == 2) {
+            for (IDispatcherListener listener : monitorListenerMap.get(id)) {
                 listener.führeAktionAus(anzahlAufrufeInstanz2);
             }
         }

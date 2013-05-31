@@ -6,79 +6,61 @@ import java.util.List;
 
 class ListenerRepository {
 
-    // Alles ganz Quick and dirty
-    IMonitorListener monitorListenerUptime1;
-    IMonitorListener monitorListenerUptime2;
-    IMonitorListener monitorListenerDowntime1;
-    IMonitorListener monitorListenerDowntime2;
 
-    IStatusMonitorListener statusMonitorListener1;
-    IStatusMonitorListener statusMonitorListener2;
+    List<IMonitorListener> monitorListenerUptime1List = new ArrayList<>();
+    List<IMonitorListener> monitorListenerUptime2List = new ArrayList<>();
+    List<IMonitorListener> monitorListenerDowntime1List = new ArrayList<>();
+    List<IMonitorListener> monitorListenerDowntime2List = new ArrayList<>();
+    List<IStatusMonitorListener> statusMonitorListener1List = new ArrayList<>();
+    List<IStatusMonitorListener> statusMonitorListener2List = new ArrayList<>();
 
-    public boolean isMonitorListenerUptime1Initalized(){
-        return (monitorListenerUptime1!=null) ? true : false;
-    }
-    public boolean isMonitorListenerUptime2Initalized(){
-        return (monitorListenerUptime2!=null) ? true : false;
-    }
-    public boolean isMonitorListenerDowntime1Initalized(){
-        return (monitorListenerDowntime1!=null) ? true : false;
-    }
-    public boolean isMonitorListenerDowntime2Initalized(){
-        return (monitorListenerDowntime2!=null) ? true : false;
-    }
-    public boolean isStatusMonitorListener1Initalized(){
-        return (statusMonitorListener1!=null) ? true : false;
-    }
-    public boolean isStatusMonitorListener2Initalized(){
-        return (statusMonitorListener2!=null) ? true : false;
+    public List<IMonitorListener> getMonitorListenerUptime1List() {
+        return new ArrayList<>(monitorListenerUptime1List);
     }
 
-    public IMonitorListener getMonitorListenerUptime1() {
-        return monitorListenerUptime1;
+    public void addMonitorListenerUptime1(IMonitorListener monitorListenerUptime1) {
+        this.monitorListenerUptime1List.add(monitorListenerUptime1);
     }
 
-    public void setMonitorListenerUptime1(IMonitorListener monitorListenerUptime1) {
-        this.monitorListenerUptime1 = monitorListenerUptime1;
+    public List<IMonitorListener> getMonitorListenerUptime2List() {
+        return new ArrayList<>(monitorListenerUptime2List);
     }
 
-    public IMonitorListener getMonitorListenerUptime2() {
-        return monitorListenerUptime2;
+    public void addMonitorListenerUptime2(IMonitorListener monitorListenerUptime2) {
+        this.monitorListenerUptime2List.add(monitorListenerUptime2);
     }
 
-    public void setMonitorListenerUptime2(IMonitorListener monitorListenerUptime2) {
-        this.monitorListenerUptime2 = monitorListenerUptime2;
+    public List<IMonitorListener> getMonitorListenerDowntime1List() {
+        return new ArrayList<>(monitorListenerDowntime1List);
     }
 
-    public IMonitorListener getMonitorListenerDowntime1() {
-        return monitorListenerDowntime1;
+    public void addMonitorListenerDowntime1(IMonitorListener monitorListenerDowntime1) {
+        this.monitorListenerDowntime1List.add(monitorListenerDowntime1);
     }
 
-    public void setMonitorListenerDowntime1(IMonitorListener monitorListenerDowntime1) {
-        this.monitorListenerDowntime1 = monitorListenerDowntime1;
+    public List<IMonitorListener> getMonitorListenerDowntime2List() {
+        return new ArrayList<>(monitorListenerDowntime2List);
     }
 
-    public IMonitorListener getMonitorListenerDowntime2() {
-        return monitorListenerDowntime2;
+    public void addMonitorListenerDowntime2(IMonitorListener monitorListenerDowntime2) {
+        this.monitorListenerDowntime2List.add(monitorListenerDowntime2);
     }
 
-    public void setMonitorListenerDowntime2(IMonitorListener monitorListenerDowntime2) {
-        this.monitorListenerDowntime2 = monitorListenerDowntime2;
+    public List<IStatusMonitorListener> getStatusMonitorListener1List() {
+        return new ArrayList<>(statusMonitorListener1List);
     }
 
-    public IStatusMonitorListener getStatusMonitorListener1() {
-        return statusMonitorListener1;
+    public void addStatusMonitorListener1(IStatusMonitorListener statusMonitorListener1) {
+        System.out.println("setStatusMonitorListerner1 wurde aufgerufen");
+        this.statusMonitorListener1List.add(statusMonitorListener1);
     }
 
-    public void setStatusMonitorListener1(IStatusMonitorListener statusMonitorListener1) {
-        this.statusMonitorListener1 = statusMonitorListener1;
+    public List<IStatusMonitorListener> getStatusMonitorListener2List() {
+        return new ArrayList<>(statusMonitorListener2List);
     }
 
-    public IStatusMonitorListener getStatusMonitorListener2() {
-        return statusMonitorListener2;
-    }
-
-    public void setStatusMonitorListener2(IStatusMonitorListener statusMonitorListener2) {
-        this.statusMonitorListener2 = statusMonitorListener2;
+    public void addStatusMonitorListener2(IStatusMonitorListener statusMonitorListener2) {
+        System.out.println("setStatusMonitorListerner2 wurde aufgerufen");
+        this.statusMonitorListener2List.add(statusMonitorListener2);
     }
 }

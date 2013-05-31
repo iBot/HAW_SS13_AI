@@ -42,7 +42,7 @@ public class Client {
     public void szenario() {
 
         while (true) {
-            KundenTyp kunde = new KundenTyp("Kunde" + i, "München");
+            KundenTyp kunde = new KundenTyp("Kunde" + i, "Köln");
             kunde = clientAdapterManager.erstelleKunde(kunde);
             i++;
             try {

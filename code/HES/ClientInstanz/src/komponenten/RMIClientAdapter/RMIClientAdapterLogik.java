@@ -3,7 +3,6 @@ package komponenten.RMIClientAdapter;
 import komponenten.AktiveRedundanz.dispatcher.IDispatcherManager;
 import main.allgemeineTypen.transportTypen.*;
 import main.komponenten.RMIServerAdapter.IRemoteAWK;
-import main.komponenten.lager.IReserviertListener;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
@@ -27,56 +26,57 @@ public class RMIClientAdapterLogik {
     IDispatcherManager dispatcherManager;
 
 
-
-    public RMIClientAdapterLogik(IDispatcherManager dispatcherManager)  {
+    public RMIClientAdapterLogik(IDispatcherManager dispatcherManager) {
         this.dispatcherManager = dispatcherManager;
         TimerTask tt = new BinderTask(this);
         Timer timer = new Timer();
-        timer.schedule(tt,5000,5000);
-        if ((remoteAWK1!=null)&&(remoteAWK2!=null)){
+        timer.schedule(tt, 5000, 5000);
+        if ((remoteAWK1 != null) && (remoteAWK2 != null)) {
             timer.cancel();
         }
     }
 
-
     public void bind() throws RemoteException, NotBoundException, MalformedURLException {
         final String url1 = "remoteAWK_1";
         final String url2 = "remoteAWK_2";
-        if (remoteAWK1 == null){
+        if (remoteAWK1 == null) {
             remoteAWK1 = (IRemoteAWK) Naming.lookup(url1);
         }
-        if (remoteAWK2 == null){
+        if (remoteAWK2 == null) {
             remoteAWK2 = (IRemoteAWK) Naming.lookup(url2);
         }
     }
 
-    private IRemoteAWK getAwk(){
-        if(dispatcherManager.getZuVerwendendeSystemInstanzID()==1){
+    private IRemoteAWK getAwk() {
+        int systemInstanzID = dispatcherManager.getZuVerwendendeSystemInstanzID();
+        if (systemInstanzID == 1) {
             return remoteAWK1;
-        }
-        else{
+        } else if (systemInstanzID == 2) {
             return remoteAWK2;
+        } else {
+            return null;
         }
     }
 
     public KundenTyp erstelleKunde(KundenTyp kunde) throws RemoteException {
-        return getAwk().erstelleKunde(kunde);
+        IRemoteAWK awk = getAwk();
+        return awk.erstelleKunde(kunde);
     }
 
     public KundenTyp getKundeZuID(String kundenID) throws RemoteException {
         return getAwk().getKundeZuID(kundenID);
     }
 
-    public ProduktTyp erstelleProdukt(String produktName) throws RemoteException  {
+    public ProduktTyp erstelleProdukt(String produktName) throws RemoteException {
         return getAwk().erstelleProdukt(produktName);
     }
 
     public void bucheWareneingang(LieferscheinTyp lieferschein, String bestellNr) throws RemoteException {
-        getAwk().bucheWareneingang(lieferschein,bestellNr);
+        getAwk().bucheWareneingang(lieferschein, bestellNr);
     }
 
     public void reserviereProdukteFuerAuftrag(AngebotTyp angebot, String reserviertListener) throws RemoteException {
-        getAwk().reserviereProdukteFuerAuftrag(angebot,reserviertListener);
+        getAwk().reserviereProdukteFuerAuftrag(angebot, reserviertListener);
     }
 
     public ProduktTyp getProduktZuID(String produktNr) throws RemoteException {
@@ -88,11 +88,11 @@ public class RMIClientAdapterLogik {
     }
 
     public AngebotTyp erstelleAngebot(String kundenNr, Date gueltigBis, Date gueltigAb, Map<String, Integer> produktListe) throws RemoteException {
-        return getAwk().erstelleAngebot(kundenNr,gueltigBis,gueltigAb,produktListe);
+        return getAwk().erstelleAngebot(kundenNr, gueltigBis, gueltigAb, produktListe);
     }
 
     public AuftragTyp erstelleAuftrag(AngebotTyp angebot, Date beauftragtAm) throws RemoteException {
-        return getAwk().erstelleAuftrag(angebot,beauftragtAm);
+        return getAwk().erstelleAuftrag(angebot, beauftragtAm);
     }
 
     public AuftragTyp getAuftragZuID(String auftragsNr) throws RemoteException {
