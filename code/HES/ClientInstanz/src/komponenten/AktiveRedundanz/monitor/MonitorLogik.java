@@ -10,6 +10,10 @@ import java.util.Timer;
 
 
 public class MonitorLogik {
+    private final Stopwatch instance1DownStopWatch;
+    private final Stopwatch instance1UpStopWatch;
+    private final Stopwatch instance2DownStopWatch;
+    private final Stopwatch instance2UpStopWatch;
     int timeOut;
     ListenerRepository listenerRepository;
     StatusEnum instanzStatus1 = StatusEnum.DEAD;
@@ -26,7 +30,7 @@ public class MonitorLogik {
     long lastTimeChecked2 = 0;
     boolean alive1 = false;
     boolean alive2 = false;
-    private Stopwatch instance1UpStopWatch, instance1DownStopWatch, instance2UpStopWatch, instance2DownStopWatch;
+//    private  Stopwatch instance1UpStopWatch, instance1DownStopWatch, instance2UpStopWatch, instance2DownStopWatch;
 
     public MonitorLogik(int timeOut) throws RemoteException, MalformedURLException {
         this.listenerRepository = new ListenerRepository();
