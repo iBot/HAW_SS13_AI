@@ -1,5 +1,6 @@
 package komponenten.AktiveRedundanz.monitor;
 
+import com.google.common.base.Stopwatch;
 import enums.StatusEnum;
 
 import java.net.MalformedURLException;
@@ -25,8 +26,7 @@ public class MonitorLogik {
     long lastTimeChecked2 = 0;
     boolean alive1 = false;
     boolean alive2 = false;
-
-    private StopWatch instance1UpStopWatch, instance1DownStopWatch, instance2UpStopWatch, instance2DownStopWatch;
+    private Stopwatch instance1UpStopWatch, instance1DownStopWatch, instance2UpStopWatch, instance2DownStopWatch;
 
     public MonitorLogik(int timeOut) throws RemoteException, MalformedURLException {
         this.listenerRepository = new ListenerRepository();
@@ -38,13 +38,13 @@ public class MonitorLogik {
         startTime = System.currentTimeMillis();
         lastTimeChecked1 = startTime;
         lastTimeChecked2 = startTime;
-        instance1DownStopWatch = new StopWatch();
-        instance1UpStopWatch = new StopWatch();
-        instance2DownStopWatch = new StopWatch();
-        instance2UpStopWatch = new StopWatch();
+        instance1DownStopWatch = new Stopwatch();
+        instance1UpStopWatch = new Stopwatch();
+        instance2DownStopWatch = new Stopwatch();
+        instance2UpStopWatch = new Stopwatch();
 
-        instance2DownStopWatch.stop();
-        instance1DownStopWatch.stop();
+        instance2DownStopWatch.start();
+        instance1DownStopWatch.start();
     }
 
     public void schreibeFürInstanzStatusListenerEin(IStatusMonitorListener listener, int systemInstanzID) {
@@ -87,21 +87,21 @@ public class MonitorLogik {
         setStopwatches();
     }
 
-    private void setStopwatches(){
-        if (instanzStatus1 == StatusEnum.ONLINE){
-            instance1UpStopWatch.start();
-            instance1DownStopWatch.stop();
+    private void setStopwatches() {
+        if (instanzStatus1 == StatusEnum.ONLINE) {
+            if (!instance1UpStopWatch.isRunning()) instance1UpStopWatch.start();
+            if (instance1DownStopWatch.isRunning()) instance1DownStopWatch.stop();
         } else {
-            instance1UpStopWatch.stop();
-            instance1DownStopWatch.start();
+            if (instance1UpStopWatch.isRunning()) instance1UpStopWatch.stop();
+            if (!instance1DownStopWatch.isRunning()) instance1DownStopWatch.start();
         }
 
-        if (instanzStatus2 == StatusEnum.ONLINE){
-            instance2UpStopWatch.start();
-            instance2DownStopWatch.stop();
+        if (instanzStatus2 == StatusEnum.ONLINE) {
+            if (!instance2UpStopWatch.isRunning()) instance2UpStopWatch.start();
+            if (instance2DownStopWatch.isRunning()) instance2DownStopWatch.stop();
         } else {
-            instance2UpStopWatch.stop();
-            instance2DownStopWatch.start();
+            if (instance2UpStopWatch.isRunning()) instance2UpStopWatch.stop();
+            if (!instance2DownStopWatch.isRunning()) instance2DownStopWatch.start();
         }
     }
 
@@ -134,21 +134,19 @@ public class MonitorLogik {
         }
     }
 
-
-
     void timeListenerausführen() {
 
         for (IMonitorListener listener : listenerRepository.getMonitorListenerUptime1List()) {
-            listener.führeAktionAus(instance1UpStopWatch.getTotalElapsedTimeSecs());
+            listener.führeAktionAus(instance1UpStopWatch.elapsedMillis());
         }
         for (IMonitorListener listener : listenerRepository.getMonitorListenerUptime2List()) {
-            listener.führeAktionAus(instance2UpStopWatch.getTotalElapsedTimeSecs());
+            listener.führeAktionAus(instance2UpStopWatch.elapsedMillis());
         }
         for (IMonitorListener listener : listenerRepository.getMonitorListenerDowntime1List()) {
-            listener.führeAktionAus(instance1DownStopWatch.getTotalElapsedTimeSecs());
+            listener.führeAktionAus(instance1DownStopWatch.elapsedMillis());
         }
         for (IMonitorListener listener : listenerRepository.getMonitorListenerDowntime2List()) {
-            listener.führeAktionAus(instance2DownStopWatch.getTotalElapsedTimeSecs());
+            listener.führeAktionAus(instance2DownStopWatch.elapsedMillis());
         }
 
     }
