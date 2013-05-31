@@ -29,6 +29,31 @@ public class DashboardGUI extends JFrame{
     IMonitorEvent monitorEvent;
     IDispatcherEvent dispatcherEvent;
 
+
+    private JPanel redInstanz1;
+    private JPanel redInstanz2;
+    private JPanel greenInstanz2;
+    private JPanel ampelInstanz1;
+    private JPanel ampelInstanz2;
+    private JButton buttonSetStatusInstanz2;
+    private JButton buttonSetStatusInstanz1;
+    private JPanel panelInstanz2;
+    private JPanel panelInstanz1;
+    private JTextField textFieldUptime1;
+    private JLabel labelDowntimeInstanz1;
+    private JTextField textFieldAnzahl2;
+    private JTextField textFieldUptime2;
+    private JPanel activeInstanz1;
+    private JTextField textFieldAnzahlInstanz1;
+    private JTextField textFieldDowntime1;
+    private JTextField textFieldDowntime2;
+    private JPanel yellowInstanz1;
+    private JPanel greenInstanz1;
+    private JPanel yellowInstanz2;
+    public JPanel mainPanel;
+
+
+
     public DashboardGUI(IMonitorManager monitorManager, IMonitorEvent monitorEvent, IDispatcherEvent dispatcherEvent) {
         //DashboardGUI gui = new DashboardGUI();
 
@@ -167,29 +192,6 @@ public class DashboardGUI extends JFrame{
             buttonSetStatusInstanz2.setText("online");
         }
     }
-
-
-    private JPanel redInstanz1;
-    private JPanel redInstanz2;
-    private JPanel greenInstanz2;
-    private JPanel ampelInstanz1;
-    private JPanel ampelInstanz2;
-    private JButton buttonSetStatusInstanz2;
-    private JButton buttonSetStatusInstanz1;
-    private JPanel panelInstanz2;
-    private JPanel panelInstanz1;
-    private JTextField textFieldUptime1;
-    private JLabel labelDowntimeInstanz1;
-    private JTextField textFieldAnzahl2;
-    private JTextField textFieldUptime2;
-    private JPanel activeInstanz1;
-    private JTextField textFieldAnzahlInstanz1;
-    private JTextField textFieldDowntime1;
-    private JTextField textFieldDowntime2;
-    private JPanel yellowInstanz1;
-    private JPanel greenInstanz1;
-    private JPanel yellowInstanz2;
-    public JPanel mainPanel;
 
 
 }
