@@ -25,12 +25,11 @@ public class ClientStarter {
         IRMIClientAdapterManager manager = new RMIClientAdapterFassade(dispatcher);
         DashboardGUI gui = new DashboardGUI(monitor,monitor,dispatcher);
 //
-//        JFrame frame = new JFrame("Gui");
-////            frame.setContentPane(gui.panel);
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.pack();
-//        frame.setVisible(true);
-        gui.setVisible(true);
+        JFrame frame = new JFrame("Gui");
+            frame.setContentPane(gui.mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
 
         Client client = new Client();
     }

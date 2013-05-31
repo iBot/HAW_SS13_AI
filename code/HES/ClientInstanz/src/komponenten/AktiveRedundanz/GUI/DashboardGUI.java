@@ -189,7 +189,7 @@ public class DashboardGUI extends JFrame{
     private JPanel yellowInstanz1;
     private JPanel greenInstanz1;
     private JPanel yellowInstanz2;
-
+    public JPanel mainPanel;
 
 
 }
