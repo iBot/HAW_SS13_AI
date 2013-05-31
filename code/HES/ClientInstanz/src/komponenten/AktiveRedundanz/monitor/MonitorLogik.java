@@ -14,10 +14,8 @@ public class MonitorLogik {
     StatusEnum instanzStatus1 = StatusEnum.DEAD;
     StatusEnum instanzStatus2 = StatusEnum.DEAD;
     Timer timer1 = new Timer();
-    Timer timer2 = new Timer();
     Timer timer3 = new Timer();
-    TimeOutTask timeOutTask1 = new TimeOutTask(this, 1);
-    TimeOutTask timeOutTask2 = new TimeOutTask(this, 2);
+    TimeOutTask timeOutTask = new TimeOutTask(this);
     long startTime = 0;
     long systemInstanz1Uptime = 0;
     long systemInstanz2Uptime = 0;
@@ -25,12 +23,13 @@ public class MonitorLogik {
     long systemInstanz2Downtime = 0;
     long lastTimeSwitch1 = 0;
     long lastTimeSwitch2 = 0;
+    boolean alive1 = false;
+    boolean alive2 = false;
 
     public MonitorLogik(int timeOut) throws RemoteException, MalformedURLException {
         this.listenerRepository = new ListenerRepository();
         this.timeOut = timeOut;
-        timer1.schedule(timeOutTask1, timeOut);
-        timer2.schedule(timeOutTask2, timeOut);
+        timer1.schedule(timeOutTask, 1000, timeOut);
         timer3.schedule(new TimeUpdateTask(this), 0, 1000);
         IRemoteIAmALive remoteIAmALive = new RemoteIAmLiveImpl(this);
         Naming.rebind("remoteIamAlive", remoteIAmALive);
@@ -72,13 +71,29 @@ public class MonitorLogik {
         listenerRepository.getStatusMonitorListener2().fuehreAktionAus(status);
     }
 
+    //called by TimeOuttaks every <timeout> msec
+    public void setDeadIfdead(){
+        if(!alive1){
+            setInstanceStatus(StatusEnum.DEAD,1);
+
+        }
+        if(!alive2){
+            setInstanceStatus(StatusEnum.DEAD,2);
+        }
+        alive1=false;
+        alive2=false;
+    }
+
+    //called by Serverinstanz
     public void iAmAlive(int systemInstanzID) {
         if (systemInstanzID == 1) {
-//            timer1.cancel();
-            timer1.schedule(timeOutTask1, timeOut);
+            alive1=true;
+            if(instanzStatus1==StatusEnum.DEAD)
+                setInstanceStatus(StatusEnum.ONLINE,1);
         } else {
-//            timer2.cancel();
-            timer2.schedule(timeOutTask2, timeOut);
+            alive2=true;
+            if(instanzStatus2==StatusEnum.DEAD)
+                setInstanceStatus(StatusEnum.ONLINE,2);
         }
     }
 
