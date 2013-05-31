@@ -13,6 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,7 +23,7 @@ import java.awt.event.MouseEvent;
  * Time: 15:52
  * To change this template use File | Settings | File Templates.
  */
-public class DashboardGUI {
+public class DashboardGUI extends JFrame{
 
     IMonitorManager monitorManager;
     IMonitorEvent monitorEvent;
@@ -100,6 +102,17 @@ public class DashboardGUI {
                 buttonSetStatusInstanz2MouseClicked(evt);
             }
         });
+        panels.add(redInstanz1);
+        panels.add(redInstanz2);
+        panels.add(greenInstanz2);
+        panels.add(greenInstanz1);
+        panels.add(ampelInstanz1);
+        panels.add(ampelInstanz2);
+        panels.add(panelInstanz2);
+        panels.add(panelInstanz1);
+        panels.add(activeInstanz1);
+        panels.add(yellowInstanz1);
+        panels.add(yellowInstanz2);
     }
 
     private void statusAenderungInstanz1(StatusEnum status) {
@@ -187,6 +200,8 @@ public class DashboardGUI {
     private JPanel yellowInstanz1;
     private JPanel greenInstanz1;
     private JPanel yellowInstanz2;
+
+    public List<JPanel> panels = new ArrayList<>();
 
 
 }

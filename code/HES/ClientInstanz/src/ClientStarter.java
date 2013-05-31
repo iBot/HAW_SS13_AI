@@ -3,8 +3,11 @@ import komponenten.AktiveRedundanz.dispatcher.DispatcherFassade;
 import komponenten.AktiveRedundanz.dispatcher.IDispatcherManager;
 import komponenten.AktiveRedundanz.monitor.IMonitorManager;
 import komponenten.AktiveRedundanz.monitor.MonitorFassade;
+import komponenten.Client;
 import komponenten.RMIClientAdapter.IRMIClientAdapterManager;
 import komponenten.RMIClientAdapter.RMIClientAdapterFassade;
+
+import javax.swing.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,5 +24,14 @@ public class ClientStarter {
         DispatcherFassade dispatcher = new DispatcherFassade(monitor);
         IRMIClientAdapterManager manager = new RMIClientAdapterFassade(dispatcher);
         DashboardGUI gui = new DashboardGUI(monitor,monitor,dispatcher);
+
+        JFrame frame = new JFrame("Gui");
+//            frame.setContentPane(gui.panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+
+        Client client = new Client();
+        client.szenario();
     }
 }

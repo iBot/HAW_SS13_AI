@@ -24,11 +24,11 @@ public class BinderTask  extends TimerTask{
         try {
             adapterLogik.bind();
         } catch (RemoteException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (NotBoundException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (MalformedURLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+//            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
 }
