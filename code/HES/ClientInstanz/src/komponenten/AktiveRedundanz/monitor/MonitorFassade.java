@@ -4,7 +4,6 @@ import enums.StatusEnum;
 
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
-import java.util.UUID;
 
 /**
  * Created with IntelliJ IDEA.

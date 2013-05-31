@@ -3,6 +3,7 @@ package komponenten.AktiveRedundanz.GUI;
 
 import enums.StatusEnum;
 import komponenten.AktiveRedundanz.dispatcher.IDispatcherEvent;
+import komponenten.AktiveRedundanz.dispatcher.IDispatcherListener;
 import komponenten.AktiveRedundanz.monitor.IMonitorEvent;
 import komponenten.AktiveRedundanz.monitor.IMonitorListener;
 import komponenten.AktiveRedundanz.monitor.IMonitorManager;
@@ -75,17 +76,17 @@ public class DashboardGUI {
             }
         }, 2);
 
-        dispatcherEvent.schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(new IMonitorListener() {
+        dispatcherEvent.schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(new IDispatcherListener() {
             @Override
-            public void führeAktionAus(long millisec) {
-                textFieldAnzahlInstanz1.setText("" + millisec);
+            public void führeAktionAus(int anzahl) {
+                textFieldAnzahlInstanz1.setText("" + anzahl);
             }
         }, 1);
 
-        dispatcherEvent.schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(new IMonitorListener() {
+        dispatcherEvent.schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(new IDispatcherListener() {
             @Override
-            public void führeAktionAus(long millisec) {
-                textFieldAnzahl2.setText("" + millisec);
+            public void führeAktionAus(int anzahl) {
+                textFieldAnzahl2.setText("" + anzahl);
             }
         }, 2);
 

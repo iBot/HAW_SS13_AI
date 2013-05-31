@@ -21,9 +21,9 @@ import java.util.Map;
 public class RMIServerAdapterFassade{
     RMIServerAdapterLogik logik;
 
-    public RMIServerAdapterFassade(IKundenManager kundenManager, ILagerManager lagerManager, IVerkaufManager verkaufManager) {
+    public RMIServerAdapterFassade(IKundenManager kundenManager, ILagerManager lagerManager, IVerkaufManager verkaufManager, int serverInstanceID) {
         try {
-            this.logik = new RMIServerAdapterLogik(kundenManager,verkaufManager,lagerManager);
+            this.logik = new RMIServerAdapterLogik(kundenManager,verkaufManager,lagerManager, serverInstanceID);
         } catch (RemoteException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (MalformedURLException e) {

@@ -1,5 +1,6 @@
 package komponenten.AktiveRedundanz.dispatcher;
 
+import komponenten.AktiveRedundanz.monitor.IMonitorEvent;
 import komponenten.AktiveRedundanz.monitor.IMonitorListener;
 
 /**
@@ -13,13 +14,22 @@ public class DispatcherFassade implements IDispatcherManager, IDispatcherEvent {
 
     private DispatcherLogik dispatcherLogik;
 
+    public DispatcherFassade(IMonitorEvent monitorEvent){
+        dispatcherLogik = new DispatcherLogik(monitorEvent);
+    }
+
     @Override
-    public void schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(IMonitorListener listener, int systemInstanzID) {
+    public void schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(IDispatcherListener listener, int systemInstanzID) {
              dispatcherLogik.schreibeFürAnzahlDerFunktionsaufrufeDerSystemInstanzEin(listener, systemInstanzID);
     }
 
     @Override
     public int getZuVerwendendeSystemInstanzID() {
-        return dispatcherLogik.getZuVerwendendeSystemInstanzID();
+        try {
+            return dispatcherLogik.getZuVerwendendeSystemInstanzID();
+        } catch (noServerAvailableException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return -1;
     }
 }
