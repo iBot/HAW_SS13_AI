@@ -1,11 +1,13 @@
 package main.allgemeineTypen.transportTypen;
 
+import java.io.Serializable;
+
 /**
  * User: Tobi
  * Date: 19.04.13
  * Time: 13:03
  */
-public class KundenTyp {
+public class KundenTyp  implements Serializable {
     private String kundenNr;
     private String name;
     private String adresse;

@@ -1,5 +1,6 @@
 package main.allgemeineTypen.transportTypen;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Date;
  * Date: 19.04.13
  * Time: 13:00
  */
-public class WareneingangsmeldungTyp {
+public class WareneingangsmeldungTyp  implements Serializable {
     String wareneingsmeldungNr;
     String lieferscheinNr;
     Date datum;

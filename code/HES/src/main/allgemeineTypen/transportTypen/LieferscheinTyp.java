@@ -1,5 +1,7 @@
 package main.allgemeineTypen.transportTypen;
 
+import java.io.Serializable;
+
 /**
  * Created with IntelliJ IDEA.
  * User: tobi
@@ -7,7 +9,7 @@ package main.allgemeineTypen.transportTypen;
  * Time: 15:43
  * To change this template use File | Settings | File Templates.
  */
-public class LieferscheinTyp {
+public class LieferscheinTyp  implements Serializable {
 
     private String lieferscheinNr;
     private String produktNr;

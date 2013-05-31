@@ -1,5 +1,6 @@
 package main.allgemeineTypen.transportTypen;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  * Time: 15:44
  * To change this template use File | Settings | File Templates.
  */
-public class WarenausgangsmeldungTyp {
+public class WarenausgangsmeldungTyp  implements Serializable {
     String warenausgangsmeldungsNr;
     Date datum;
     int menge;

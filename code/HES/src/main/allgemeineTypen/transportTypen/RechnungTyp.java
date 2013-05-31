@@ -1,5 +1,6 @@
 package main.allgemeineTypen.transportTypen;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  * Time: 15:44
  * To change this template use File | Settings | File Templates.
  */
-public class RechnungTyp {
+public class RechnungTyp  implements Serializable {
     private String rechnungsNr;
     private boolean istBezahlt;
     private Date rechnungsDatum;

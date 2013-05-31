@@ -1,5 +1,6 @@
 package main.allgemeineTypen.transportTypen;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  * Time: 16:17
  * To change this template use File | Settings | File Templates.
  */
-public class TransportauftragTyp {
+public class TransportauftragTyp  implements Serializable {
     String transportauftragNr;
     Date ausgangsDatum;
 

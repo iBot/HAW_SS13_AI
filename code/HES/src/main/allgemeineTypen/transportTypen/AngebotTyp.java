@@ -1,5 +1,6 @@
 package main.allgemeineTypen.transportTypen;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +10,7 @@ import java.util.Map;
  * Date: 19.04.13
  * Time: 13:02
  */
-public class AngebotTyp {
+public class AngebotTyp implements Serializable{
     private String angebotNr, kundenNr;
     private Date gueltigBis, gueltigAb;
     private Map<String, Integer> produktListe;

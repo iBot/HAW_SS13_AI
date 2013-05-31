@@ -46,6 +46,9 @@ public class DispatcherLogik {
 
         aktuelleInstanz = -1;
 
+        monitorListenerMap.put(1, new ArrayList<IDispatcherListener>());
+        monitorListenerMap.put(2, new ArrayList<IDispatcherListener>());
+
 
     }
 

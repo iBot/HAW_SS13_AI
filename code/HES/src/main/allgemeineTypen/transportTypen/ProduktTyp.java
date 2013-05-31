@@ -1,11 +1,13 @@
 package main.allgemeineTypen.transportTypen;
 
+import java.io.Serializable;
+
 /**
  * User: Tobi
  * Date: 19.04.13
  * Time: 13:00
  */
-public class ProduktTyp {
+public class ProduktTyp  implements Serializable {
     String produktNr;
     String name;
     int lagerbestand;

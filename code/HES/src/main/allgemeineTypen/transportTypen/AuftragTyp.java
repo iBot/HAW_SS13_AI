@@ -1,5 +1,6 @@
 package main.allgemeineTypen.transportTypen;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Date;
  * Date: 19.04.13
  * Time: 12:56
  */
-public class AuftragTyp {
+public class AuftragTyp implements Serializable {
 
     private String auftragsNr, angebotsNr;
     private boolean istAbgeschlossen;
