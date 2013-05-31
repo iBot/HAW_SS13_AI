@@ -13,7 +13,6 @@ public interface IMonitorEvent {
 
     void schreibeFürInstanzStatusListenerEin(IStatusMonitorListener listener, int systemInstanzID);
 
-
     void schreibeFürUptimeÄnderungEin(IMonitorListener listener, int systemInstanzID);
 
     void schreibeFürDowntimeÄnderungEin(IMonitorListener listener, int systemInstanzID);
