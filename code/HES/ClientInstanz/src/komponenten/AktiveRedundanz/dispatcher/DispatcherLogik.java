@@ -24,6 +24,7 @@ public class DispatcherLogik {
     StatusEnum statusInstanz1, statusInstanz2;
 
 
+
     public DispatcherLogik(IMonitorEvent monitorEvent) {
         statusInstanz1 = StatusEnum.DEAD;
         statusInstanz2 = StatusEnum.DEAD;

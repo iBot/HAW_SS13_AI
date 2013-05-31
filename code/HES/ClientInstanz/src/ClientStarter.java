@@ -30,7 +30,7 @@ public class ClientStarter {
         frame.pack();
         frame.setVisible(true);
 
-        Client client = new Client();
+        Client client = new Client(dispatcher);
         Scanner sc = new Scanner(System.in);
         int eingabe = sc.nextInt();
         if (eingabe == 1) {

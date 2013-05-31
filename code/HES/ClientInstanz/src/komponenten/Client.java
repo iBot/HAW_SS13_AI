@@ -27,8 +27,8 @@ public class Client {
     private int i;
 
 
-    public Client() {
-        dispatcherManager = new DispatcherFassade(new MonitorFassade(2000));
+    public Client(IDispatcherManager dispatcherManager) {
+        dispatcherManager = dispatcherManager;
 
         clientAdapterManager = new RMIClientAdapterFassade(dispatcherManager);
 
