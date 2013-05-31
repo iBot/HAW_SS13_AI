@@ -21,8 +21,8 @@ public class MonitorLogik {
     long systemInstanz2Uptime = 0;
     long systemInstanz1Downtime = 0;
     long systemInstanz2Downtime = 0;
-    long lastTimeSwitch1 = 0;
-    long lastTimeSwitch2 = 0;
+    long lastTimeChecked1 = 0;
+    long lastTimeChecked2 = 0;
     boolean alive1 = false;
     boolean alive2 = false;
 
@@ -34,8 +34,8 @@ public class MonitorLogik {
         IRemoteIAmALive remoteIAmALive = new RemoteIAmLiveImpl(this);
         Naming.rebind("remoteIamAlive", remoteIAmALive);
         startTime = System.currentTimeMillis();
-        lastTimeSwitch1 = startTime;
-        lastTimeSwitch2 = startTime;
+        lastTimeChecked1 = startTime;
+        lastTimeChecked2 = startTime;
     }
 
     public void schreibeFürInstanzStatusListenerEin(IStatusMonitorListener listener, int systemInstanzID) {
@@ -66,12 +66,12 @@ public class MonitorLogik {
         if (systemInstanzID == 1) {
             instanzStatus1 = status;
 
-            for (IStatusMonitorListener listener : listenerRepository.getStatusMonitorListener1List()){
+            for (IStatusMonitorListener listener : listenerRepository.getStatusMonitorListener1List()) {
                 listener.fuehreAktionAus(status);
             }
         } else if (systemInstanzID == 2) {
             instanzStatus2 = status;
-            for (IStatusMonitorListener listener : listenerRepository.getStatusMonitorListener2List()){
+            for (IStatusMonitorListener listener : listenerRepository.getStatusMonitorListener2List()) {
                 listener.fuehreAktionAus(status);
             }
         }
@@ -107,25 +107,33 @@ public class MonitorLogik {
     }
 
     private void upTimeAktuallisieren() {
-        if (instanzStatus1 == StatusEnum.ONLINE)
-            systemInstanz1Uptime += System.currentTimeMillis() - lastTimeSwitch1;
-        if (instanzStatus2 == StatusEnum.ONLINE)
-            systemInstanz2Uptime += System.currentTimeMillis() - lastTimeSwitch2;
+        if (instanzStatus1 != StatusEnum.ONLINE) {
+            systemInstanz1Uptime += System.currentTimeMillis() - lastTimeChecked1;
+            lastTimeChecked1 = System.currentTimeMillis();
+        } else {
+
+        }
+        if (instanzStatus2 != StatusEnum.ONLINE) {
+            systemInstanz2Uptime += System.currentTimeMillis() - lastTimeChecked2;
+            lastTimeChecked2 = System.currentTimeMillis();
+        } else{
+
+        }
     }
 
     void timeListenerausführen() {
         upTimeAktuallisieren();
         calcDownTime();
-        for (IMonitorListener listener : listenerRepository.getMonitorListenerUptime1List()){
+        for (IMonitorListener listener : listenerRepository.getMonitorListenerUptime1List()) {
             listener.führeAktionAus(systemInstanz1Uptime);
         }
-        for (IMonitorListener listener : listenerRepository.getMonitorListenerUptime2List()){
+        for (IMonitorListener listener : listenerRepository.getMonitorListenerUptime2List()) {
             listener.führeAktionAus(systemInstanz2Uptime);
         }
-        for (IMonitorListener listener : listenerRepository.getMonitorListenerDowntime1List()){
+        for (IMonitorListener listener : listenerRepository.getMonitorListenerDowntime1List()) {
             listener.führeAktionAus(systemInstanz1Downtime);
         }
-        for (IMonitorListener listener : listenerRepository.getMonitorListenerDowntime2List()){
+        for (IMonitorListener listener : listenerRepository.getMonitorListenerDowntime2List()) {
             listener.führeAktionAus(systemInstanz2Downtime);
         }
 
@@ -133,8 +141,8 @@ public class MonitorLogik {
 
     // vorher sollte man systemInstanzUptime updaten
     private void calcDownTime() {
-        systemInstanz1Downtime = startTime - systemInstanz1Uptime;
+        systemInstanz1Downtime = System.currentTimeMillis() - startTime - systemInstanz1Uptime;
 
-        systemInstanz2Downtime = startTime - systemInstanz2Uptime;
+        systemInstanz2Downtime = System.currentTimeMillis() - startTime - systemInstanz2Uptime;
     }
 }

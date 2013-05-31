@@ -143,6 +143,12 @@ public class DashboardGUI extends JFrame{
             redInstanz1.setBackground(Color.black);
             greenInstanz1.setBackground(Color.green);
             yellowInstanz1.setBackground(Color.black);
+        }else if (status.equals(StatusEnum.DEAD)) {
+            buttonSetStatusInstanz1.setText("DEAD");
+            buttonSetStatusInstanz1.setEnabled(false);
+            redInstanz1.setBackground(Color.red);
+            greenInstanz1.setBackground(Color.black);
+            yellowInstanz1.setBackground(Color.black);
         }
     }
 
@@ -162,11 +168,11 @@ public class DashboardGUI extends JFrame{
             yellowInstanz2.setBackground(Color.black);
 
         } else if (status.equals(StatusEnum.DEAD)) {
-            buttonSetStatusInstanz2.setText("online");
+            buttonSetStatusInstanz2.setText("DEAD");
             buttonSetStatusInstanz2.setEnabled(false);
-            redInstanz2.setBackground(Color.black);
+            redInstanz2.setBackground(Color.red);
             greenInstanz2.setBackground(Color.black);
-            yellowInstanz2.setBackground(Color.yellow);
+            yellowInstanz2.setBackground(Color.black);
         }
 
     }
