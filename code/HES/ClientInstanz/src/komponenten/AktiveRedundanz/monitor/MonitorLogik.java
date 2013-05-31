@@ -26,6 +26,8 @@ public class MonitorLogik {
     boolean alive1 = false;
     boolean alive2 = false;
 
+    private StopWatch instance1UpStopWatch, instance1DownStopWatch, instance2UpStopWatch, instance2DownStopWatch;
+
     public MonitorLogik(int timeOut) throws RemoteException, MalformedURLException {
         this.listenerRepository = new ListenerRepository();
         this.timeOut = timeOut;
@@ -36,6 +38,13 @@ public class MonitorLogik {
         startTime = System.currentTimeMillis();
         lastTimeChecked1 = startTime;
         lastTimeChecked2 = startTime;
+        instance1DownStopWatch = new StopWatch();
+        instance1UpStopWatch = new StopWatch();
+        instance2DownStopWatch = new StopWatch();
+        instance2UpStopWatch = new StopWatch();
+
+        instance2DownStopWatch.stop();
+        instance1DownStopWatch.stop();
     }
 
     public void schreibeFürInstanzStatusListenerEin(IStatusMonitorListener listener, int systemInstanzID) {
@@ -62,7 +71,6 @@ public class MonitorLogik {
     }
 
     public void setInstanceStatus(StatusEnum status, int systemInstanzID) {
-        upTimeAktuallisieren();
         if (systemInstanzID == 1) {
             instanzStatus1 = status;
 
@@ -74,6 +82,26 @@ public class MonitorLogik {
             for (IStatusMonitorListener listener : listenerRepository.getStatusMonitorListener2List()) {
                 listener.fuehreAktionAus(status);
             }
+        }
+
+        setStopwatches();
+    }
+
+    private void setStopwatches(){
+        if (instanzStatus1 == StatusEnum.ONLINE){
+            instance1UpStopWatch.start();
+            instance1DownStopWatch.stop();
+        } else {
+            instance1UpStopWatch.stop();
+            instance1DownStopWatch.start();
+        }
+
+        if (instanzStatus2 == StatusEnum.ONLINE){
+            instance2UpStopWatch.start();
+            instance2DownStopWatch.stop();
+        } else {
+            instance2UpStopWatch.stop();
+            instance2DownStopWatch.start();
         }
     }
 
@@ -106,43 +134,24 @@ public class MonitorLogik {
         }
     }
 
-    private void upTimeAktuallisieren() {
-        if (instanzStatus1 != StatusEnum.ONLINE) {
-            systemInstanz1Uptime += System.currentTimeMillis() - lastTimeChecked1;
-            lastTimeChecked1 = System.currentTimeMillis();
-        } else {
 
-        }
-        if (instanzStatus2 != StatusEnum.ONLINE) {
-            systemInstanz2Uptime += System.currentTimeMillis() - lastTimeChecked2;
-            lastTimeChecked2 = System.currentTimeMillis();
-        } else{
-
-        }
-    }
 
     void timeListenerausführen() {
-        upTimeAktuallisieren();
-        calcDownTime();
+
         for (IMonitorListener listener : listenerRepository.getMonitorListenerUptime1List()) {
-            listener.führeAktionAus(systemInstanz1Uptime);
+            listener.führeAktionAus(instance1UpStopWatch.getTotalElapsedTimeSecs());
         }
         for (IMonitorListener listener : listenerRepository.getMonitorListenerUptime2List()) {
-            listener.führeAktionAus(systemInstanz2Uptime);
+            listener.führeAktionAus(instance2UpStopWatch.getTotalElapsedTimeSecs());
         }
         for (IMonitorListener listener : listenerRepository.getMonitorListenerDowntime1List()) {
-            listener.führeAktionAus(systemInstanz1Downtime);
+            listener.führeAktionAus(instance1DownStopWatch.getTotalElapsedTimeSecs());
         }
         for (IMonitorListener listener : listenerRepository.getMonitorListenerDowntime2List()) {
-            listener.führeAktionAus(systemInstanz2Downtime);
+            listener.führeAktionAus(instance2DownStopWatch.getTotalElapsedTimeSecs());
         }
 
     }
 
-    // vorher sollte man systemInstanzUptime updaten
-    private void calcDownTime() {
-        systemInstanz1Downtime = System.currentTimeMillis() - startTime - systemInstanz1Uptime;
 
-        systemInstanz2Downtime = System.currentTimeMillis() - startTime - systemInstanz2Uptime;
-    }
 }
