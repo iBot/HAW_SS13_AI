@@ -22,10 +22,6 @@ public class MonitorLogik {
     Timer timer3 = new Timer();
     TimeOutTask timeOutTask = new TimeOutTask(this);
     long startTime = 0;
-    long systemInstanz1Uptime = 0;
-    long systemInstanz2Uptime = 0;
-    long systemInstanz1Downtime = 0;
-    long systemInstanz2Downtime = 0;
     long lastTimeChecked1 = 0;
     long lastTimeChecked2 = 0;
     boolean alive1 = false;
@@ -137,7 +133,7 @@ public class MonitorLogik {
             }
         }
     }
-
+    @SuppressWarnings("deprecation")
     void timeListenerausführen() {
 
         for (IMonitorListener listener : listenerRepository.getMonitorListenerUptime1List()) {

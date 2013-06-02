@@ -1,6 +1,7 @@
 package komponenten.RMIClientAdapter;
 
 import komponenten.AktiveRedundanz.dispatcher.IDispatcherManager;
+import komponenten.AktiveRedundanz.dispatcher.noServerAvailableException;
 import main.allgemeineTypen.transportTypen.*;
 import main.komponenten.RMIServerAdapter.IRemoteAWK;
 
@@ -18,7 +19,6 @@ import java.util.TimerTask;
  * User: TwiG
  * Date: 20.05.13
  * Time: 17:46
- * To change this template use File | Settings | File Templates.
  */
 public class RMIClientAdapterLogik {
     IRemoteAWK remoteAWK1;
@@ -47,15 +47,21 @@ public class RMIClientAdapterLogik {
         }
     }
 
-    private IRemoteAWK getAwk() {
-        int systemInstanzID = dispatcherManager.getZuVerwendendeSystemInstanzID();
-        if (systemInstanzID == 1) {
-            return remoteAWK1;
-        } else if (systemInstanzID == 2) {
-            return remoteAWK2;
-        } else {
-            return null;
+    private IRemoteAWK getAwk() throws NoRemoteAWKAvailableException {
+        IRemoteAWK result = null;
+        int systemInstanzID;
+        try {
+            systemInstanzID = dispatcherManager.getZuVerwendendeSystemInstanzID();
+            if (systemInstanzID == 1) {
+                result =  remoteAWK1;
+            } else if (systemInstanzID == 2) {
+                result = remoteAWK2;
+            }
+        } catch (noServerAvailableException e) {
+            System.out.println("Kein Remote AWK verfügbar. Bitte wiederholen Sie den Vorgang.");
+            throw new NoRemoteAWKAvailableException();
         }
+        return result;
     }
 
     public KundenTyp erstelleKunde(KundenTyp kunde) throws RemoteException {
