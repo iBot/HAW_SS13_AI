@@ -22,6 +22,7 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T> T access(Class<T> cls, Serializable id){
         T entity = null;
         try {
@@ -101,6 +102,7 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T> List<T> getAllByQuery(String query) {
         List<T> result = null;
                 try {
@@ -119,6 +121,7 @@ public class PersistenzManager  implements IPersistenzManager{
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public <T> T getUniqueResultByQuery(String query){
         T result = null;
         try {
