@@ -9,5 +9,6 @@ package main.technik.messageQueueReceiver;
  */
 public interface IZahlungseingangMessage {
     String getRechnungsNummer();
+
     double getBetrag();
 }

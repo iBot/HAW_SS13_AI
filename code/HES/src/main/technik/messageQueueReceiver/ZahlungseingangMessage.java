@@ -11,7 +11,8 @@ public class ZahlungseingangMessage implements IZahlungseingangMessage {
 
     private final String rechnungsnummer;
     private final double betrag;
-    ZahlungseingangMessage(String message){
+
+    ZahlungseingangMessage(String message) {
         String[] messageParts = message.split(";;");
         rechnungsnummer = messageParts[0];
         betrag = Double.parseDouble(messageParts[1]);

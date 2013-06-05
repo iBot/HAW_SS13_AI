@@ -17,23 +17,18 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * Time: 14:38
  * To change this template use File | Settings | File Templates.
  */
-public class MQManager implements IMQManager{
+public class MQManager implements IMQManager {
     private final static String QUEUE_NAME = "HAPSAR";
+    private final ConcurrentLinkedQueue<IZahlungseingangMessage> messages;
     private ConnectionFactory factory;
     private Connection connection;
     private Channel channel;
     private QueueingConsumer consumer;
-
-
-
-
-
     private boolean receive;
     private Runnable receiverThread;
-    private final ConcurrentLinkedQueue<IZahlungseingangMessage> messages;
     private List<INewMessageListener> messageListener = new ArrayList<>();
 
-    public MQManager(){
+    public MQManager() {
         this.messages = new ConcurrentLinkedQueue<>();
         try {
             factory = new ConnectionFactory();
@@ -44,7 +39,7 @@ public class MQManager implements IMQManager{
             receive = false;
         } catch (IOException e) {
 //            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            System.out.println("MessageQueueReader konnte nicht erstellt werden. "+e);
+            System.out.println("MessageQueueReader konnte nicht erstellt werden. " + e);
         }
     }
 
@@ -98,7 +93,7 @@ public class MQManager implements IMQManager{
 
     @Override
     public void subscribeForMessages(INewMessageListener listener) {
-        if (!messageListener.contains(listener)){
+        if (!messageListener.contains(listener)) {
             messageListener.add(listener);
         }
     }
