@@ -23,7 +23,16 @@
     <orderEntry type="module" module-name="NameServer" />
     <orderEntry type="module" module-name="ServerInstanz" />
     <orderEntry type="module" module-name="ClientInstanz" />
-    <orderEntry type="library" name="RabbitMQ" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib/guava" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/lib/guava" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
 
