@@ -33,6 +33,7 @@
         <jarDirectory url="file://$MODULE_DIR$/lib/guava" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="RabbitMQ" level="project" />
   </component>
 </module>
 
