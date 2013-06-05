@@ -1,11 +1,15 @@
 <component name="libraryTable">
-  <library name="commons-cli-1.1">
+  <library name="RabbitMQ">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/rabbitmq-java-client-bin-3.1.1/commons-cli-1.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/rabbitmq-java-client-bin-3.1.1/commons-io-1.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/rabbitmq-java-client-bin-3.1.1/rabbitmq-client.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib/rabbitmq-java-client-bin-3.1.1" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="http://www.rabbitmq.com/releases/rabbitmq-java-client/v3.1.1/rabbitmq-java-client-javadoc-3.1.1/" />
+    </JAVADOC>
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/rabbitmq-java-client-bin-3.1.1" recursive="false" />
   </library>
 </component>
