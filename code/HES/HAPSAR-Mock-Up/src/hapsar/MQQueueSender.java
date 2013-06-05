@@ -20,7 +20,7 @@ public class MQQueueSender{
     private ConnectionFactory factory;
     private Connection connection;
     private Channel channel;
-    private final String QUEUE_NAME = "HAPSAR_test";
+    private final String QUEUE_NAME = "HAPSAR";
 
     MQQueueSender() throws IOException {
         factory = new ConnectionFactory();

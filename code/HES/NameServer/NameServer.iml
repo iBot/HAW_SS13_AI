@@ -10,6 +10,7 @@
     <orderEntry type="module" module-name="HES" />
     <orderEntry type="module" module-name="ClientInstanz" />
     <orderEntry type="module" module-name="ServerInstanz" />
+    <orderEntry type="library" name="RabbitMQ" level="project" />
   </component>
 </module>
 

@@ -23,6 +23,7 @@
     <orderEntry type="module" module-name="NameServer" />
     <orderEntry type="module" module-name="ServerInstanz" />
     <orderEntry type="module" module-name="ClientInstanz" />
+    <orderEntry type="library" name="RabbitMQ" level="project" />
   </component>
 </module>
 

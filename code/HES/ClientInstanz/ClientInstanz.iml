@@ -11,6 +11,7 @@
     <orderEntry type="module" module-name="NameServer" />
     <orderEntry type="module" module-name="ServerInstanz" />
     <orderEntry type="library" name="guava-14.0.1" level="project" />
+    <orderEntry type="library" name="RabbitMQ" level="project" />
   </component>
 </module>
 
