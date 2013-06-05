@@ -25,6 +25,13 @@
     <option name="effort" value="default" />
     <option name="priority" value="Medium" />
   </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/TransportdienstleisterAdapter/pom.xml" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectResources">
     <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
   </component>

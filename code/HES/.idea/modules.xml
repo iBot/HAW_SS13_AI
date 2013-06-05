@@ -7,6 +7,10 @@
       <module fileurl="file://$PROJECT_DIR$/HES.iml" filepath="$PROJECT_DIR$/HES.iml" />
       <module fileurl="file://$PROJECT_DIR$/NameServer/NameServer.iml" filepath="$PROJECT_DIR$/NameServer/NameServer.iml" />
       <module fileurl="file://$PROJECT_DIR$/ServerInstanz/ServerInstanz.iml" filepath="$PROJECT_DIR$/ServerInstanz/ServerInstanz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TransportdienstleisterAdapter/TransportdienstleisterAdapter.iml" filepath="$PROJECT_DIR$/TransportdienstleisterAdapter/TransportdienstleisterAdapter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TransportdienstleisterAdapter/TransportdienstleisterAdapter-client/TransportdienstleisterAdapter-client.iml" filepath="$PROJECT_DIR$/TransportdienstleisterAdapter/TransportdienstleisterAdapter-client/TransportdienstleisterAdapter-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TransportdienstleisterAdapter/TransportdienstleisterAdapter-common/TransportdienstleisterAdapter-common.iml" filepath="$PROJECT_DIR$/TransportdienstleisterAdapter/TransportdienstleisterAdapter-common/TransportdienstleisterAdapter-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TransportdienstleisterAdapter/TransportdienstleisterAdapter-server/TransportdienstleisterAdapter-server.iml" filepath="$PROJECT_DIR$/TransportdienstleisterAdapter/TransportdienstleisterAdapter-server/TransportdienstleisterAdapter-server.iml" />
     </modules>
   </component>
 </project>
