@@ -27,4 +27,13 @@ public class ZahlungseingangMessage implements IZahlungseingangMessage {
     public double getBetrag() {
         return betrag;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("ZahlungseingangMessage{");
+        sb.append("rechnungsnummer='").append(rechnungsnummer).append('\'');
+        sb.append(", betrag=").append(betrag);
+        sb.append('}');
+        return sb.toString();
+    }
 }

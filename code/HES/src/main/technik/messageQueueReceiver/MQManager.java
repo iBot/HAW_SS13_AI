@@ -23,7 +23,7 @@ public class MQManager implements IMQManager {
     private ConnectionFactory factory;
     private Connection connection;
     private Channel channel;
-    private QueueingConsumer consumer;
+    private final QueueingConsumer consumer;
     private boolean receive;
     private Runnable receiverThread;
     private List<INewMessageListener> messageListener = new ArrayList<>();
@@ -37,10 +37,13 @@ public class MQManager implements IMQManager {
             channel = connection.createChannel();
             channel.queueDeclare(QUEUE_NAME, true, false, false, null);
             receive = false;
+
+
         } catch (IOException e) {
 //            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             System.out.println("MessageQueueReader konnte nicht erstellt werden. " + e);
         }
+        consumer = new QueueingConsumer(channel);
     }
 
     private boolean isReceive() {
@@ -50,8 +53,6 @@ public class MQManager implements IMQManager {
     @Override
     public void start() {
         receive = true;
-        consumer = new QueueingConsumer(channel);
-        final QueueingConsumer c = consumer;
         try {
             channel.basicConsume(QUEUE_NAME, true, consumer);
         } catch (IOException e) {
@@ -63,17 +64,19 @@ public class MQManager implements IMQManager {
                 while (isReceive()) {
                     QueueingConsumer.Delivery delivery = null;
                     try {
-                        delivery = c.nextDelivery();
+                        delivery = consumer.nextDelivery();
                     } catch (InterruptedException e) {
                         e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                     }
                     String message = new String(delivery.getBody());
                     messages.add(new ZahlungseingangMessage(message));
-                    System.out.printf(" Received '%s'%n", message);
+                    for (INewMessageListener listener : messageListener){
+                        listener.getNextMessage();
+                    }
                 }
             }
         };
-        receiverThread.run();
+        new Thread(receiverThread).start();
     }
 
     @Override
@@ -88,7 +91,7 @@ public class MQManager implements IMQManager {
 
     @Override
     public IZahlungseingangMessage getNextMessage() {
-        return messages.peek();
+        return messages.poll();
     }
 
     @Override
