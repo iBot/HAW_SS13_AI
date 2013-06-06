@@ -3,6 +3,10 @@ package main.komponenten.buchhaltung;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 import main.komponenten.verkauf.BuchhaltungListener;
+import main.technik.messageQueueReceiver.IMQManager;
+import main.technik.messageQueueReceiver.INewMessageListener;
+import main.technik.messageQueueReceiver.IZahlungseingangMessage;
+import main.technik.messageQueueReceiver.MQManager;
 import main.technik.persistenzManager.PersistenzManager;
 
 import java.util.HashMap;
@@ -18,13 +22,23 @@ class BuchhaltungLogik {
     private static BuchhaltungLogik instanz;
     RechnungRepository rechnungRepository;
     ZahlungseingangRepository zahlungseingangRepository;
+    IMQManager hapsar;
 //    Map<String, IBuchhaltungListener> buchhaltungListenerMap;
 
     private BuchhaltungLogik() {
 //        this.buchhaltungListenerMap = new HashMap<>();
         this.rechnungRepository = new RechnungRepository();
         this.zahlungseingangRepository = new ZahlungseingangRepository();
-
+        this.hapsar = new MQManager();
+        hapsar.subscribeForMessages(new INewMessageListener() {
+            @Override
+            public void getNextMessage() {
+                IZahlungseingangMessage message = hapsar.getNextMessage();
+                if (message!= null){
+                    zahlungseingangBuchen(message.getBetrag(),message.getRechnungsNummer());
+                }
+            }
+        });
 
     }
 
