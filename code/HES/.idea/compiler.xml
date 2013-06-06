@@ -22,9 +22,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="TransportdienstleisterAdapter-client" />
-        <module name="TransportdienstleisterAdapter-common" />
-        <module name="TransportdienstleisterAdapter-server" />
       </profile>
     </annotationProcessing>
   </component>
