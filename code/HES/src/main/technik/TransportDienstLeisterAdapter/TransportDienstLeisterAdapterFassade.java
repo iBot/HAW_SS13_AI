@@ -1,5 +1,7 @@
 package main.technik.TransportDienstLeisterAdapter;
 
+import main.allgemeineTypen.transportTypen.TransportauftragTyp;
+
 /**
  * Created with IntelliJ IDEA.
  * User: TwiG
@@ -7,5 +9,10 @@ package main.technik.TransportDienstLeisterAdapter;
  * Time: 15:43
  * To change this template use File | Settings | File Templates.
  */
-public class TransportDienstLeisterAdapterFassade {
+public class TransportDienstLeisterAdapterFassade implements ITransportDienstLeisterAdapterManager{
+
+    @Override
+    public void sendeAuftrag(TransportauftragTyp transportauftrag) {
+        TransportDienstLeisterAdapterLogik.sendeAuftrag(transportauftrag);
+    }
 }
