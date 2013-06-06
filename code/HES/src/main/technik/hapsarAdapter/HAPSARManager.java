@@ -1,4 +1,4 @@
-package main.technik.messageQueueReceiver;
+package main.technik.hapsarAdapter;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * Time: 14:38
  * To change this template use File | Settings | File Templates.
  */
-public class MQManager implements IMQManager {
+public class HAPSARManager implements IHAPSARManager {
     private final static String QUEUE_NAME = "HAPSAR";
     private final ConcurrentLinkedQueue<IZahlungseingangMessage> messages;
     private ConnectionFactory factory;
@@ -28,7 +28,7 @@ public class MQManager implements IMQManager {
     private Runnable receiverThread;
     private List<INewMessageListener> messageListener = new ArrayList<>();
 
-    public MQManager() {
+    public HAPSARManager() {
         this.messages = new ConcurrentLinkedQueue<>();
         try {
             factory = new ConnectionFactory();

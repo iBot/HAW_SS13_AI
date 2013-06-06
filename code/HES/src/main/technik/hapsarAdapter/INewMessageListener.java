@@ -1,4 +1,4 @@
-package main.technik.messageQueueReceiver;
+package main.technik.hapsarAdapter;
 
 /**
  * Created with IntelliJ IDEA.

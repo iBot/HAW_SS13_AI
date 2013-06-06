@@ -3,14 +3,11 @@ package main.komponenten.buchhaltung;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.RechnungTyp;
 import main.komponenten.verkauf.BuchhaltungListener;
-import main.technik.messageQueueReceiver.IMQManager;
-import main.technik.messageQueueReceiver.INewMessageListener;
-import main.technik.messageQueueReceiver.IZahlungseingangMessage;
-import main.technik.messageQueueReceiver.MQManager;
+import main.technik.hapsarAdapter.HAPSARManager;
+import main.technik.hapsarAdapter.IHAPSARManager;
+import main.technik.hapsarAdapter.INewMessageListener;
+import main.technik.hapsarAdapter.IZahlungseingangMessage;
 import main.technik.persistenzManager.PersistenzManager;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * User: Tobi
@@ -22,14 +19,14 @@ class BuchhaltungLogik {
     private static BuchhaltungLogik instanz;
     RechnungRepository rechnungRepository;
     ZahlungseingangRepository zahlungseingangRepository;
-    IMQManager hapsar;
+    IHAPSARManager hapsar;
 //    Map<String, IBuchhaltungListener> buchhaltungListenerMap;
 
     private BuchhaltungLogik() {
 //        this.buchhaltungListenerMap = new HashMap<>();
         this.rechnungRepository = new RechnungRepository();
         this.zahlungseingangRepository = new ZahlungseingangRepository();
-        this.hapsar = new MQManager();
+        this.hapsar = new HAPSARManager();
         hapsar.subscribeForMessages(new INewMessageListener() {
             @Override
             public void getNextMessage() {

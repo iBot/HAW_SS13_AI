@@ -1,4 +1,4 @@
-package main.technik.messageQueueReceiver;
+package main.technik.hapsarAdapter;
 
 /**
  * Created with IntelliJ IDEA.
@@ -7,7 +7,7 @@ package main.technik.messageQueueReceiver;
  * Time: 14:26
  * To change this template use File | Settings | File Templates.
  */
-public interface IMQManager {
+public interface IHAPSARManager {
     void start();
 
     void stop();

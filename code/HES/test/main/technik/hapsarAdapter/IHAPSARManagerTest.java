@@ -1,4 +1,4 @@
-package main.technik.messageQueueReceiver;
+package main.technik.hapsarAdapter;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,9 +11,9 @@ import org.junit.Test;
  * Time: 15:33
  * To change this template use File | Settings | File Templates.
  */
-public class IMQManagerTest {
+public class IHAPSARManagerTest {
 
-    IMQManager mqManager;
+    IHAPSARManager mqManager;
 
     @Before
     public void setUp() throws Exception {
@@ -27,8 +27,8 @@ public class IMQManagerTest {
 
     @Test
     public void testComplete() throws Exception {
-        mqManager = new MQManager();
-        System.out.println("MQManager erstellt");
+        mqManager = new HAPSARManager();
+        System.out.println("HAPSARManager erstellt");
 
 
         System.out.println("Testen des MessageQueue Receivers");
@@ -44,7 +44,7 @@ public class IMQManagerTest {
 
             }
         });
-        System.out.println("MQManager gestartet.");
+        System.out.println("HAPSARManager gestartet.");
         mqManager.start();
 
         while (true){}
