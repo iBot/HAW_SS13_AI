@@ -4,10 +4,12 @@ import main.allgemeineTypen.transportTypen.AuftragTyp;
 import main.allgemeineTypen.transportTypen.KundenTyp;
 import main.allgemeineTypen.transportTypen.LieferungTyp;
 import main.allgemeineTypen.transportTypen.TransportauftragTyp;
+import main.technik.transportDienstlAdapter.ITransportAuftragListener;
 import main.technik.transportDienstlAdapter.ITransportDienstleisterManager;
 import main.technik.transportDienstlAdapter.TransportDienstleister;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,6 +27,14 @@ class VersandLogik {
         this.lieferungRepository = new LieferungRepository();
         this.transportauftragRepository = new TransportauftragRepository();
         this.transportDienstleisterManager = new TransportDienstleister(portExtention);
+        transportDienstleisterManager.abboniereTransportauftragsBestaetigungen(new ITransportAuftragListener() {
+            @Override
+            public void bestaetigeTransportauftrag(String transportAuftragsNummer, Date datum) {
+                Transportauftrag transportauftrag =transportauftragRepository.holeTransportauftrag(transportAuftragsNummer);
+                transportauftrag.setLieferDatum(datum);
+                transportauftragRepository.speicherTransportauftrag(transportauftrag);
+            }
+        });
     }
 
     LieferungTyp erstelleLieferung(AuftragTyp auftrag, KundenTyp kunde) {

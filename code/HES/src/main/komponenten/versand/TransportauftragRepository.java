@@ -17,4 +17,13 @@ class TransportauftragRepository {
         persistenzManager.create(transportauftrag);
         return transportauftrag;
     }
+
+    public Transportauftrag holeTransportauftrag(String transportAuftragsNummer){
+        return persistenzManager.access(Transportauftrag.class, transportAuftragsNummer);
+    }
+
+    public void speicherTransportauftrag(Transportauftrag transportauftrag){
+        persistenzManager.update(transportauftrag);
+    }
+
 }
