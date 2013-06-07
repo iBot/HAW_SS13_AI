@@ -40,7 +40,7 @@ public class TeilSzenarioAufgabe4 {
         derKunde = kundenManager.erstelleKunde(new KundenTyp("Batman", "Gotham City"));
         buchhaltung = new BuchhaltungFassade();
         lager = new LagerFassade();
-        versand = new VersandFassade(0);
+        versand = new VersandFassade(1);
         verkauf = new VerkaufFassade(buchhaltung, lager, versand);
         produktListe = new ArrayList<>();
         produktListe.add(lager.erstelleProdukt("Batmobil"));

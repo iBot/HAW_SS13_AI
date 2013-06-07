@@ -12,7 +12,7 @@ import java.io.IOException;
  * Time: 15:12
  * To change this template use File | Settings | File Templates.
  */
-public class Starter {
+public class DHLStarter {
 
 
     static final String BASE_URI = "http://localhost:9990/dhl/";

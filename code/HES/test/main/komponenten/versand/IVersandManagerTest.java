@@ -22,7 +22,7 @@ public class IVersandManagerTest {
     VersandFassade versandManager;
     @Before
     public void setUp() throws Exception {
-           versandManager = new VersandFassade(0);
+           versandManager = new VersandFassade(1);
     }
 
     @After

@@ -16,14 +16,14 @@ import java.io.IOException;
  */
 public class TransportDienstleister  implements  ITransportDienstleisterManager{
 
-    private String HES_BASE_URI = "http://localhost:9991/order";
+    private String HES_BASE_URI;
     private Client restClient;
     private HttpServer server;
     private Server restServer;
 
     public TransportDienstleister(int portExtention) {
         this.restClient = new Client();
-        this.HES_BASE_URI = String.format("http://localhost:999%d/order", portExtention);
+        this.HES_BASE_URI = String.format("http://localhost:999%d/hes", portExtention);
         try {
             HttpServer server = HttpServerFactory.create(HES_BASE_URI);
             server.start();

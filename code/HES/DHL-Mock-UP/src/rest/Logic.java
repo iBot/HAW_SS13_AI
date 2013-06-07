@@ -10,12 +10,13 @@ import org.codehaus.jettison.json.JSONObject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Path("/order")
 public class Logic {
 
-    static final String HES_REST_URI = "http://localhost:9991/order";
+    static final String HES_REST_URI = "http://localhost:9991/hes";
     static final String HES_ORDERACK_PATH = "order/ack";
 
     @POST

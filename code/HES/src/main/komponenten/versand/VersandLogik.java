@@ -30,7 +30,7 @@ class VersandLogik {
         transportDienstleisterManager.abboniereTransportauftragsBestaetigungen(new ITransportAuftragListener() {
             @Override
             public void bestaetigeTransportauftrag(String transportAuftragsNummer, Date datum) {
-                Transportauftrag transportauftrag =transportauftragRepository.holeTransportauftrag(transportAuftragsNummer);
+                Transportauftrag transportauftrag = transportauftragRepository.holeTransportauftrag(transportAuftragsNummer);
                 transportauftrag.setLieferDatum(datum);
                 transportauftragRepository.speicherTransportauftrag(transportauftrag);
             }
@@ -39,11 +39,11 @@ class VersandLogik {
 
     LieferungTyp erstelleLieferung(AuftragTyp auftrag, KundenTyp kunde) {
         Transportauftrag transportauftrag = transportauftragRepository.erstelleTransportauftrag();
-        this.transportDienstleisterManager.sendeTransportauftrag(transportauftrag.holeTransportauftragTyp(),kunde);
+        this.transportDienstleisterManager.sendeTransportauftrag(transportauftrag.holeTransportauftragTyp(), kunde);
         return lieferungRepository.erstelleLieferung(auftrag, transportauftrag).holeLieferungTyp();
     }
 
-    TransportauftragTyp erstelleTransportauftrag(KundenTyp kunde){
+    TransportauftragTyp erstelleTransportauftrag(KundenTyp kunde) {
         return this.transportauftragRepository.erstelleTransportauftrag().holeTransportauftragTyp();
     }
 
@@ -54,7 +54,7 @@ class VersandLogik {
     public List<LieferungTyp> holeAlleLieferungenZuAuftrag(AuftragTyp auftrag) {
         List<Lieferung> lieferungen = this.lieferungRepository.holeAlleLieferungenZuAuftrag(auftrag);
         List<LieferungTyp> result = new ArrayList<>();
-        for (Lieferung lieferung :lieferungen ){
+        for (Lieferung lieferung : lieferungen) {
             result.add(lieferung.holeLieferungTyp());
         }
         return result;
