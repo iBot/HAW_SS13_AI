@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ClientInstanz/ClientInstanz.iml" filepath="$PROJECT_DIR$/ClientInstanz/ClientInstanz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DHL-Mock-UP/DHL-Mock-UP.iml" filepath="$PROJECT_DIR$/DHL-Mock-UP/DHL-Mock-UP.iml" />
       <module fileurl="file://$PROJECT_DIR$/HAPSAR-Mock-Up/HAPSAR-Mock-Up.iml" filepath="$PROJECT_DIR$/HAPSAR-Mock-Up/HAPSAR-Mock-Up.iml" />
       <module fileurl="file://$PROJECT_DIR$/HES.iml" filepath="$PROJECT_DIR$/HES.iml" />
       <module fileurl="file://$PROJECT_DIR$/NameServer/NameServer.iml" filepath="$PROJECT_DIR$/NameServer/NameServer.iml" />
