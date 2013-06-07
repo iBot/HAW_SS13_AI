@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 public class Client {
     static final String REST_URI = "http://localhost:9990/dhl/";
-    static final String PLACE_PATH = "order/place";
+    static final String PLACE_PATH = "dhlorder/place";
     ClientConfig config;
     WebResource service;
     WebResource subService;

@@ -14,7 +14,7 @@ public class Server {
 
     private List<ITransportAuftragListener> listenerMap;
 
-    Server(){
+    public Server(){
         listenerMap = new ArrayList<>();
 
     }
@@ -22,10 +22,11 @@ public class Server {
     @GET
     @Path("/ack/{transportauftragsNummer}/{dateInMillis}")
     @Produces(MediaType.TEXT_PLAIN)
-    public void ack(@PathParam("transportauftragsNummer") String transportauftragsNummer, @PathParam("dateInMillis") long dateInMillis) {
+    public String ack(@PathParam("transportauftragsNummer") String transportauftragsNummer, @PathParam("dateInMillis") long dateInMillis) {
         for (ITransportAuftragListener listener :listenerMap){
             listener.bestaetigeTransportauftrag(transportauftragsNummer, new Date(dateInMillis));
         }
+        return "ok";
     }
 
     void subScribeForTransferOrderAck(ITransportAuftragListener listener){

@@ -21,9 +21,20 @@ public class TransportDienstleister  implements  ITransportDienstleisterManager{
     private HttpServer server;
     private Server restServer;
 
-    public TransportDienstleister(int portExtention) {
+    private static TransportDienstleister instance;
+
+    public static TransportDienstleister getInstance(int portExtention){
+        if (instance==null){
+            instance = new TransportDienstleister(portExtention);
+        }
+        return instance;
+    }
+
+    private TransportDienstleister(int portExtention) {
         this.restClient = new Client();
+        restServer = new Server();
         this.HES_BASE_URI = String.format("http://localhost:999%d/hes", portExtention);
+        System.out.println(HES_BASE_URI);
         try {
             HttpServer server = HttpServerFactory.create(HES_BASE_URI);
             server.start();

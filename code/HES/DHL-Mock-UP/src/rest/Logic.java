@@ -13,7 +13,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/order")
+import static java.lang.Thread.sleep;
+
+@Path("/dhlorder")
 public class Logic {
 
     static final String HES_REST_URI = "http://localhost:9991/hes";
@@ -42,7 +44,7 @@ public class Logic {
             @Override
             public void run() {
                 try {
-                    wait(2000);
+                    sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }

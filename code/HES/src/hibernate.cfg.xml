@@ -26,7 +26,7 @@
 
 
         <!--Die folgende Zeile einkommentieren, wenn die Datenbank angelegt werden soll. Falls auf der vorhandenen weitergearbeitet werden soll, auskommentieren, sonst werden alle Tabellen neu erstellt!!!-->
-        <!--<property name="hibernate.hbm2ddl.auto">create</property>-->
+        <property name="hibernate.hbm2ddl.auto">create</property>
 
         <!-- Nachfolgend die zu Mappenden Klassen eintragen, dabei Vollen Namen der klasse, inklusive package eingeben: -->
         <mapping class="main.komponenten.buchhaltung.Rechnung"/>

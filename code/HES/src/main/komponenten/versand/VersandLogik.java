@@ -26,7 +26,7 @@ class VersandLogik {
     VersandLogik(int portExtention) {
         this.lieferungRepository = new LieferungRepository();
         this.transportauftragRepository = new TransportauftragRepository();
-        this.transportDienstleisterManager = new TransportDienstleister(portExtention);
+        this.transportDienstleisterManager = TransportDienstleister.getInstance(portExtention);
         transportDienstleisterManager.abboniereTransportauftragsBestaetigungen(new ITransportAuftragListener() {
             @Override
             public void bestaetigeTransportauftrag(String transportAuftragsNummer, Date datum) {
