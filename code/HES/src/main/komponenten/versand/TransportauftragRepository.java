@@ -1,5 +1,6 @@
 package main.komponenten.versand;
 
+import main.allgemeineTypen.transportTypen.KundenTyp;
 import main.technik.persistenzManager.PersistenzManager;
 
 /**

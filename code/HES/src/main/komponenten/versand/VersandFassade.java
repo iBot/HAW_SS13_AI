@@ -1,6 +1,7 @@
 package main.komponenten.versand;
 
 import main.allgemeineTypen.transportTypen.AuftragTyp;
+import main.allgemeineTypen.transportTypen.KundenTyp;
 import main.allgemeineTypen.transportTypen.LieferungTyp;
 
 import java.util.List;
@@ -14,13 +15,13 @@ public class VersandFassade implements IVersandManager {
 
     VersandLogik versandLogik;
 
-    public VersandFassade() {
-        this.versandLogik = new VersandLogik();
+    public VersandFassade(int portExtention) {
+        this.versandLogik = new VersandLogik(portExtention);
     }
 
     @Override
-    public LieferungTyp erstelleLieferung(AuftragTyp auftrag) {
-        return this.versandLogik.erstelleLieferung(auftrag);
+    public LieferungTyp erstelleLieferung(AuftragTyp auftrag, KundenTyp kunde) {
+        return this.versandLogik.erstelleLieferung(auftrag, kunde);
     }
 
     @Override

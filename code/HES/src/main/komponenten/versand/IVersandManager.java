@@ -1,6 +1,7 @@
 package main.komponenten.versand;
 
 import main.allgemeineTypen.transportTypen.AuftragTyp;
+import main.allgemeineTypen.transportTypen.KundenTyp;
 import main.allgemeineTypen.transportTypen.LieferungTyp;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * Time: 13:17
  */
 public interface IVersandManager {
-    public LieferungTyp erstelleLieferung(AuftragTyp auftrag);
+    public LieferungTyp erstelleLieferung(AuftragTyp auftrag, KundenTyp kunde);
 
     public LieferungTyp getLieferungZuID(String lieferungNr);
 

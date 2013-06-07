@@ -1,8 +1,11 @@
 package main.komponenten.versand;
 
 import main.allgemeineTypen.transportTypen.AuftragTyp;
+import main.allgemeineTypen.transportTypen.KundenTyp;
 import main.allgemeineTypen.transportTypen.LieferungTyp;
 import main.allgemeineTypen.transportTypen.TransportauftragTyp;
+import main.technik.transportDienstlAdapter.ITransportDienstleisterManager;
+import main.technik.transportDienstlAdapter.TransportDienstleister;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,17 +19,21 @@ class VersandLogik {
 
     LieferungRepository lieferungRepository;
     TransportauftragRepository transportauftragRepository;
+    ITransportDienstleisterManager transportDienstleisterManager;
 
-    VersandLogik() {
+    VersandLogik(int portExtention) {
         this.lieferungRepository = new LieferungRepository();
         this.transportauftragRepository = new TransportauftragRepository();
+        this.transportDienstleisterManager = new TransportDienstleister(portExtention);
     }
 
-    LieferungTyp erstelleLieferung(AuftragTyp auftrag) {
-        return lieferungRepository.erstelleLieferung(auftrag, transportauftragRepository.erstelleTransportauftrag()).holeLieferungTyp();
+    LieferungTyp erstelleLieferung(AuftragTyp auftrag, KundenTyp kunde) {
+        Transportauftrag transportauftrag = transportauftragRepository.erstelleTransportauftrag();
+        this.transportDienstleisterManager.sendeTransportauftrag(transportauftrag.holeTransportauftragTyp(),kunde);
+        return lieferungRepository.erstelleLieferung(auftrag, transportauftrag).holeLieferungTyp();
     }
 
-    TransportauftragTyp erstelleTransportauftrag(){
+    TransportauftragTyp erstelleTransportauftrag(KundenTyp kunde){
         return this.transportauftragRepository.erstelleTransportauftrag().holeTransportauftragTyp();
     }
 

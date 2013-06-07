@@ -59,7 +59,7 @@ public class HESServerStarter {
         kundenManager = new KundenFassade();
         lager = new LagerFassade();
 
-        versand = new VersandFassade();
+        versand = new VersandFassade(serverInstanceID);
         verkauf = new VerkaufFassade(buchhaltung, lager, versand);
 
         rmiServerAdapterFassade = new RMIServerAdapterFassade(kundenManager,lager,verkauf,serverInstanceID);

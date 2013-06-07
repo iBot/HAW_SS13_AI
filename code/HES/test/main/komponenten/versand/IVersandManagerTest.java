@@ -2,6 +2,7 @@ package main.komponenten.versand;
 
 import junit.framework.Assert;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
+import main.allgemeineTypen.transportTypen.KundenTyp;
 import main.allgemeineTypen.transportTypen.LieferungTyp;
 import org.junit.After;
 import org.junit.Before;
@@ -21,7 +22,7 @@ public class IVersandManagerTest {
     VersandFassade versandManager;
     @Before
     public void setUp() throws Exception {
-           versandManager = new VersandFassade();
+           versandManager = new VersandFassade(0);
     }
 
     @After
@@ -31,8 +32,8 @@ public class IVersandManagerTest {
 
     @Test
     public void testErstelleLieferung() throws Exception {
-        LieferungTyp lieferung = versandManager.erstelleLieferung(new AuftragTyp("ANG-1", false, new Date()));
-        LieferungTyp restoredLieferung = versandManager.getLieferungZuID(lieferung.getLieferungNr());
+        LieferungTyp lieferung = versandManager.erstelleLieferung(new AuftragTyp("ANG-1", false, new Date()), new KundenTyp("Otto","Irgendwo"));
+                LieferungTyp restoredLieferung = versandManager.getLieferungZuID(lieferung.getLieferungNr());
         Assert.assertNotNull("Lieferung wurde erstellt", restoredLieferung);
 
     }
@@ -41,8 +42,8 @@ public class IVersandManagerTest {
     public void testHoleAlleLieferungenZuAuftrag() throws Exception {
        AuftragTyp auftragTyp =  new AuftragTyp("AUF-1","ANG-XY", false, new Date());
         System.out.print(">>>>>>>>>>>>"+auftragTyp.getAuftragsNr());
-        LieferungTyp lieferung1 = versandManager.erstelleLieferung(auftragTyp);
-        LieferungTyp lieferung2 = versandManager.erstelleLieferung(auftragTyp);
+        LieferungTyp lieferung1 = versandManager.erstelleLieferung(auftragTyp, new KundenTyp("Manfred","Kleine Straße 123"));
+        LieferungTyp lieferung2 = versandManager.erstelleLieferung(auftragTyp, new KundenTyp("Manfred","Kleine Straße 123"));
         List<LieferungTyp> lieferungen = versandManager.holeAlleLieferungenZuAuftrag(auftragTyp);
         System.out.print(">>>>>>>>>>>>"+lieferungen);
         assertTrue(lieferungen.size()==2);
