@@ -15,6 +15,6 @@ public class NameServer {
     public static void main(String[] args) throws MalformedURLException, RemoteException, NotBoundException {
         LocateRegistry.createRegistry(1099);
         Naming.rebind("keepAlive",new Dummy());
-        System.out.println("Server started...");
+        System.out.println("Nameserver started...");
     }
 }

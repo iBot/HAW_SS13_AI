@@ -51,7 +51,7 @@ class ListenerRepository {
     }
 
     public void addStatusMonitorListener1(IStatusMonitorListener statusMonitorListener1) {
-        System.out.println("setStatusMonitorListerner1 wurde aufgerufen");
+//        System.out.println("setStatusMonitorListerner1 wurde aufgerufen");
         this.statusMonitorListener1List.add(statusMonitorListener1);
     }
 
@@ -60,7 +60,7 @@ class ListenerRepository {
     }
 
     public void addStatusMonitorListener2(IStatusMonitorListener statusMonitorListener2) {
-        System.out.println("setStatusMonitorListerner2 wurde aufgerufen");
+//        System.out.println("setStatusMonitorListerner2 wurde aufgerufen");
         this.statusMonitorListener2List.add(statusMonitorListener2);
     }
 }

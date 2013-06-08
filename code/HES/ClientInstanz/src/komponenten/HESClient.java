@@ -6,11 +6,9 @@ import komponenten.AktiveRedundanz.monitor.MonitorFassade;
 import komponenten.RMIClientAdapter.IRMIClientAdapterManager;
 import komponenten.RMIClientAdapter.RMIClientAdapterFassade;
 import komponenten.RMIClientAdapter.RMIClientAdapterLogik;
-import main.allgemeineTypen.transportTypen.KundenTyp;
-import main.allgemeineTypen.transportTypen.ProduktTyp;
+import main.allgemeineTypen.transportTypen.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -20,37 +18,30 @@ import java.util.List;
  * Time: 20:27
  * To change this template use File | Settings | File Templates.
  */
-public class Client {
+public class HESClient {
     private IRMIClientAdapterManager clientAdapterManager;
     private IDispatcherManager dispatcherManager;
     private List<ProduktTyp> produktListe;
     private int i;
 
 
-    public Client(IDispatcherManager dispatcherManager) {
+    public HESClient(IDispatcherManager dispatcherManager) {
         dispatcherManager = dispatcherManager;
 
         clientAdapterManager = new RMIClientAdapterFassade(dispatcherManager);
 
-//        produktListe = new ArrayList<>();
-//        produktListe.add(clientAdapterManager.erstelleProdukt("Batmobil"));
-//        produktListe.add(clientAdapterManager.erstelleProdukt("BatutilityBag"));
+
         i = 0;
     }
 
 
-    public void szenario() {
+    public void szenario1() {
 
-        while (true) {
-            KundenTyp kunde = new KundenTyp("Kunde" + i, "Köln");
+
+            KundenTyp kunde = new KundenTyp("Kunde" + i, "Hamburg");
             kunde = clientAdapterManager.erstelleKunde(kunde);
             i++;
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                break;
-            }
-        }
+
 //            Map<String, Integer> produkte = new HashMap<>();
 //            for (ProduktTyp produkt : produktListe) {
 //                produkte.put(produkt.getProduktNr(), 10);
@@ -63,6 +54,21 @@ public class Client {
 //            Thread.sleep(1000);
 //
 //            clientAdapterManager.erstelleAuftrag(angebot, new Date());
+
+    }
+
+    public void szenario2() {
+        produktListe = new ArrayList<>();
+        produktListe.add(clientAdapterManager.erstelleProdukt("Batmobil"));
+        produktListe.add(clientAdapterManager.erstelleProdukt("BatutilityBag"));
+         KundenTyp derKunde = clientAdapterManager.erstelleKunde(new KundenTyp("Batman", "Gotham City"));
+        Map<String, Integer> produkte = new HashMap<>();
+        for (ProduktTyp produkt : produktListe) {
+            produkte.put(produkt.getProduktNr(), 10);
+        }
+        AngebotTyp angebot = clientAdapterManager.erstelleAngebot(derKunde.getKundenNr(), new Date(new Date().getTime() + 24l * 60 * 60 * 1000 * 7), new Date(), produkte);
+        AuftragTyp auftragTyp = clientAdapterManager.erstelleAuftrag(angebot, new Date());
+
 
     }
 

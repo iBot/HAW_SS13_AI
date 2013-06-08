@@ -12,6 +12,9 @@
     <orderEntry type="module" module-name="ServerInstanz" />
     <orderEntry type="library" name="guava-14.0.1" level="project" />
     <orderEntry type="library" name="RabbitMQ" level="project" />
+    <orderEntry type="library" name="Jersey" level="project" />
+    <orderEntry type="module" module-name="DHL-Mock-UP" />
+    <orderEntry type="module" module-name="HAPSAR-Mock-Up" />
   </component>
 </module>
 

@@ -120,7 +120,7 @@ public class MonitorLogik {
 
     //called by Serverinstanz
     public void iAmAlive(int systemInstanzID) {
-        System.out.println("I'm alive! " + systemInstanzID);
+//        System.out.println("I'm alive! " + systemInstanzID);
         if (systemInstanzID == 1) {
             alive1 = true;
             if (instanzStatus1 == StatusEnum.DEAD) {

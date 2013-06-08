@@ -1,0 +1,15 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="NameServer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/NameServer_jar</output-path>
+    <root id="archive" name="NameServer.jar">
+      <element id="module-output" name="NameServer" />
+      <element id="module-output" name="HES" />
+      <element id="module-output" name="ClientInstanz" />
+      <element id="module-output" name="ServerInstanz" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/rabbitmq-java-client-bin-3.1.1/commons-cli-1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/rabbitmq-java-client-bin-3.1.1/commons-io-1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/rabbitmq-java-client-bin-3.1.1/rabbitmq-client-tests.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/rabbitmq-java-client-bin-3.1.1/rabbitmq-client.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

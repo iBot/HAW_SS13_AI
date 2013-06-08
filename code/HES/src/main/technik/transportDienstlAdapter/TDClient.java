@@ -1,6 +1,7 @@
 package main.technik.transportDienstlAdapter;
 
 
+import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
@@ -11,7 +12,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 import javax.ws.rs.core.MediaType;
 
-public class Client {
+public class TDClient {
     static final String REST_URI = "http://localhost:9990/dhl/";
     static final String PLACE_PATH = "dhlorder/place";
     ClientConfig config;
@@ -20,9 +21,9 @@ public class Client {
     com.sun.jersey.api.client.Client client;
 
 
-    public Client() {
+    public TDClient() {
         this.config = new DefaultClientConfig();
-        this.client = com.sun.jersey.api.client.Client.create(config);
+        this.client = Client.create(config);
         this.service = client.resource(REST_URI);
         this.subService = service.path(PLACE_PATH);
     }

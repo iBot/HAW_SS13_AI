@@ -1,12 +1,24 @@
 <component name="libraryTable">
   <library name="Jersey">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/asm-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jackson-lgpl-0.9.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jersey-client-1.0.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jersey-core-1.0.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jersey-json-1.0.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jersey-server-1.0.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jettison-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jsr311-api-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/contribs/jersey-apache-client-1.0.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/contribs/jersey-atom-abdera-1.0.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/contribs/jersey-guice-1.0.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/contribs/jersey-multipart-1.0.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/contribs/jersey-simple-server-1.0.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/contribs/jersey-spring-1.0.3.1.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/apidocs/jersey" />
     </JAVADOC>
     <SOURCES />
-    <jarDirectory url="file://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib" recursive="false" />
   </library>
 </component>

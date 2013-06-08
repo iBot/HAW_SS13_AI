@@ -31,7 +31,7 @@ public class DispatcherLogik {
             @Override
             public void fuehreAktionAus(StatusEnum status) {
                 statusInstanz1 = status;
-                System.out.println("Instanz1 -> "+status);
+//                System.out.println("Instanz1 -> "+status);
             }
         }, 1);
 
@@ -40,7 +40,7 @@ public class DispatcherLogik {
             @Override
             public void fuehreAktionAus(StatusEnum status) {
                 statusInstanz2 = status;
-                System.out.println("Instanz2 -> "+status);
+//                System.out.println("Instanz2 -> "+status);
             }
         }, 2);
 
@@ -100,7 +100,7 @@ public class DispatcherLogik {
                 aktuelleInstanz = 2;
             }
         }
-        System.out.println("Instanz " + aktuelleInstanz + " ist verfügbar!");
+//        System.out.println("Instanz " + aktuelleInstanz + " ist verfügbar!");
         return aktuelleInstanz;
     }
 

@@ -18,13 +18,13 @@ public class VerkaufFassade implements IVerkaufManager {
     private AngebotLogik angebotLogik;
     private AuftragLogik auftragLogik;
     private IBuchhaltungManager buchhaltungManager;
-    private ILagerManager lagerManager;
-    private IVersandManager versandManager;
+//    private ILagerManager lagerManager;
+//    private IVersandManager versandManager;
 
     public VerkaufFassade(IBuchhaltungManager buchhaltungManager, ILagerManager lagerManager, IVersandManager versandManager) {
 
         this.buchhaltungManager = buchhaltungManager;
-        this.lagerManager = lagerManager;
+//        this.lagerManager = lagerManager;
         this.angebotLogik = AngebotLogik.getInstance(lagerManager);
         this.auftragLogik = AuftragLogik.getInstance(buchhaltungManager,lagerManager, versandManager);
     }

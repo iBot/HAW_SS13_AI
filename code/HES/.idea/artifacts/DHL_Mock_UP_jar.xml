@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="DHL-Mock-UP:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DHL_Mock_UP_jar</output-path>
+    <root id="archive" name="DHL-Mock-UP.jar">
+      <element id="module-output" name="DHL-Mock-UP" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/asm-3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jettison-1.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jsr311-api-1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jackson-lgpl-0.9.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jersey-core-1.0.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jersey-json-1.0.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jersey-client-1.0.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jersey-server-1.0.3.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

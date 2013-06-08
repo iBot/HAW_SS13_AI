@@ -1,7 +1,7 @@
 import komponenten.AktiveRedundanz.GUI.DashboardGUI;
 import komponenten.AktiveRedundanz.dispatcher.DispatcherFassade;
 import komponenten.AktiveRedundanz.monitor.MonitorFassade;
-import komponenten.Client;
+import komponenten.HESClient;
 import komponenten.RMIClientAdapter.IRMIClientAdapterManager;
 import komponenten.RMIClientAdapter.RMIClientAdapterFassade;
 
@@ -30,11 +30,27 @@ public class ClientStarter {
         frame.pack();
         frame.setVisible(true);
 
-        Client client = new Client(dispatcher);
+        HESClient client = new HESClient(dispatcher);
         Scanner sc = new Scanner(System.in);
-        int eingabe = sc.nextInt();
-        if (eingabe == 1) {
-            client.szenario();
+
+
+        boolean exit = false;
+        while (!exit) {
+
+            System.out.println("Bitte wählen sie eine der folgenden Funktionen aus:");
+            System.out.println("\t1) Szenario 1 starten");
+            System.out.println("\t2) Szenario 2 starten");
+            System.out.println("\t3) Beenden");
+            int eingabe = sc.nextInt();
+            if (eingabe == 1) {
+                client.szenario1();
+            } else if (eingabe == 2) {
+                client.szenario2();
+            } else if (eingabe == 3) {
+                exit = true;
+            } else {
+                System.out.println("Fehlerhafte Eingabe! Bitte wiederholen.");
+            }
         }
     }
 }

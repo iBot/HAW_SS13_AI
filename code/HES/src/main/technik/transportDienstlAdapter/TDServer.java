@@ -10,11 +10,11 @@ import java.util.Date;
 import java.util.List;
 
 @Path("/order")
-public class Server {
+public class TDServer {
 
     private List<ITransportAuftragListener> listenerMap;
 
-    public Server(){
+    public TDServer(){
         listenerMap = new ArrayList<>();
 
     }

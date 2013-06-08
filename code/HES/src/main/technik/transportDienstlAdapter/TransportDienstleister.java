@@ -17,9 +17,9 @@ import java.io.IOException;
 public class TransportDienstleister  implements  ITransportDienstleisterManager{
 
     private String HES_BASE_URI;
-    private Client restClient;
+    private TDClient restClient;
     private HttpServer server;
-    private Server restServer;
+    private TDServer restServer;
 
     private static TransportDienstleister instance;
 
@@ -30,9 +30,9 @@ public class TransportDienstleister  implements  ITransportDienstleisterManager{
         return instance;
     }
 
-    private TransportDienstleister(int portExtention) {
-        this.restClient = new Client();
-        restServer = new Server();
+    public TransportDienstleister(int portExtention) {
+        this.restClient = new TDClient();
+        restServer = new TDServer();
         this.HES_BASE_URI = String.format("http://localhost:999%d/hes", portExtention);
         System.out.println(HES_BASE_URI);
         try {
