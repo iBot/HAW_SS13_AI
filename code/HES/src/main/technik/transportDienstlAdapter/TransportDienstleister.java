@@ -1,5 +1,6 @@
 package main.technik.transportDienstlAdapter;
 
+import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
 import main.allgemeineTypen.transportTypen.KundenTyp;
@@ -32,13 +33,14 @@ public class TransportDienstleister  implements  ITransportDienstleisterManager{
 
     public TransportDienstleister(int portExtention) {
         this.restClient = new TDClient();
-        restServer = new TDServer();
+        restServer = TDServer.getInstance();
         this.HES_BASE_URI = String.format("http://localhost:999%d/hes", portExtention);
         System.out.println(HES_BASE_URI);
         try {
             server = HttpServerFactory.create(HES_BASE_URI);
             server.start();
             System.out.println("HES Transportdiensleister-REST-Server started.");
+
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         } catch (IOException e) {

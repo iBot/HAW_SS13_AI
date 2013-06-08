@@ -23,8 +23,14 @@ public class Logic {
 
     @POST
     @Path("/place")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void newOrder(JSONObject order) {
+    @Consumes(MediaType.TEXT_PLAIN)
+    public void newOrder(String orderString) {
+        JSONObject order = null;
+        try {
+            order = new JSONObject(orderString);
+        } catch (JSONException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
         String transportauftragsNummer = null;
         String name = null;
         String adresse = null;
@@ -53,6 +59,8 @@ public class Logic {
                 Client client = Client.create(config);
                 WebResource service = client.resource(HES_REST_URI);
                 WebResource orderAckService = service.path(HES_ORDERACK_PATH).path(transportauftragsNummerX + "/" + System.currentTimeMillis());
+                System.out.println(orderAckService.toString());
+                orderAckService.type(MediaType.TEXT_PLAIN).get(String.class);
             }
         };
         new Thread(runnable).start();

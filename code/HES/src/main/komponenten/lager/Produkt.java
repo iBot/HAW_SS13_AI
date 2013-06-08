@@ -32,6 +32,7 @@ class Produkt implements IPersistierbar {
         this.produktNr = "PROD-"+ UUID.randomUUID();
         this.name = name;
         this.lagerbestand = 1000000;
+        this.preis = 100.0;
     }
 
 

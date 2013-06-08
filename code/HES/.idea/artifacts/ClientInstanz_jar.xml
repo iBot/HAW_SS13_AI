@@ -6,6 +6,22 @@
       <element id="module-output" name="HES" />
       <element id="module-output" name="NameServer" />
       <element id="module-output" name="ServerInstanz" />
+      <element id="module-output" name="DHL-Mock-UP" />
+      <element id="module-output" name="HAPSAR-Mock-Up" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/asm-3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jackson-lgpl-0.9.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jersey-client-1.0.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jersey-core-1.0.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jersey-json-1.0.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jersey-server-1.0.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jettison-1.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jsr311-api-1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/contribs/jersey-apache-client-1.0.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/contribs/jersey-atom-abdera-1.0.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/contribs/jersey-guice-1.0.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/contribs/jersey-multipart-1.0.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/contribs/jersey-simple-server-1.0.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/contribs/jersey-spring-1.0.3.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/rabbitmq-java-client-bin-3.1.1/commons-cli-1.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/rabbitmq-java-client-bin-3.1.1/commons-io-1.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/rabbitmq-java-client-bin-3.1.1/rabbitmq-client-tests.jar" path-in-jar="/" />

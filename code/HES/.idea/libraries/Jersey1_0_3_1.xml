@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Jersey1.0.3">
+  <library name="Jersey1.0.3.1">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/asm-3.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.0.3.1/lib/jackson-lgpl-0.9.4.jar!/" />

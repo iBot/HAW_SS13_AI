@@ -27,6 +27,8 @@ class VersandLogik {
         this.lieferungRepository = new LieferungRepository();
         this.transportauftragRepository = new TransportauftragRepository();
         this.transportDienstleisterManager = TransportDienstleister.getInstance(portExtention);
+        System.out.println("########Abbonieren für Transportbestätigung");
+
         transportDienstleisterManager.abboniereTransportauftragsBestaetigungen(new ITransportAuftragListener() {
             @Override
             public void bestaetigeTransportauftrag(String transportAuftragsNummer, Date datum) {

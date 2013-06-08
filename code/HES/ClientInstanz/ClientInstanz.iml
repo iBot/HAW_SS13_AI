@@ -14,7 +14,7 @@
     <orderEntry type="library" name="RabbitMQ" level="project" />
     <orderEntry type="module" module-name="DHL-Mock-UP" />
     <orderEntry type="module" module-name="HAPSAR-Mock-Up" />
-    <orderEntry type="library" name="Jersey1.0.3" level="project" />
+    <orderEntry type="library" name="Jersey1.0.3.1" level="project" />
   </component>
 </module>
 

@@ -23,13 +23,17 @@ public class TDClient {
 
     public TDClient() {
         this.config = new DefaultClientConfig();
+        config.getClasses().add(JSONObject.class);
         this.client = Client.create(config);
         this.service = client.resource(REST_URI);
         this.subService = service.path(PLACE_PATH);
     }
 
     public void sendeTransportauftrag(TransportauftragTyp transportauftrag, KundenTyp kunde) {
-        subService.type(MediaType.APPLICATION_JSON).post(transportTypenZuJSON(transportauftrag,kunde));
+        System.out.println("BLAAAAAAAAAAA");
+        JSONObject json = transportTypenZuJSON(transportauftrag, kunde);
+        System.err.println(">>>>>>>>>>>>>>>>>"+json.toString());
+        subService.type(MediaType.TEXT_PLAIN).post(json.toString());
     }
 
     private JSONObject transportTypenZuJSON(TransportauftragTyp transportauftrag, KundenTyp kunde) {

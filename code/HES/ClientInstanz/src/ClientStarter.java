@@ -1,3 +1,5 @@
+import com.sun.jersey.api.client.ClientHandler;
+import com.sun.jersey.api.client.ClientHandlerException;
 import komponenten.AktiveRedundanz.GUI.DashboardGUI;
 import komponenten.AktiveRedundanz.dispatcher.DispatcherFassade;
 import komponenten.AktiveRedundanz.monitor.MonitorFassade;
@@ -35,6 +37,7 @@ public class ClientStarter {
         HESClient client = new HESClient(dispatcher);
         Scanner sc = new Scanner(System.in);
 
+        ClientHandlerException ch = new ClientHandlerException();
 
         boolean exit = false;
         while (!exit) {
