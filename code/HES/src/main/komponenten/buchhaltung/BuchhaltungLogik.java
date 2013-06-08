@@ -36,6 +36,7 @@ class BuchhaltungLogik {
                 }
             }
         });
+        hapsar.start();
 
     }
 

@@ -36,7 +36,7 @@ public class HESServerStarter {
     private static KundenTyp derKunde;
     private static List<ProduktTyp> produktListe;
     private static boolean bezahlt;
-    private static int serverInstanceID = -100;
+    public static int serverInstanceID = -100;
 
     public static void main(String[] args)  {
         startServer(args);

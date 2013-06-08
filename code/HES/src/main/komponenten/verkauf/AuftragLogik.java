@@ -2,12 +2,16 @@ package main.komponenten.verkauf;
 
 import main.allgemeineTypen.transportTypen.AngebotTyp;
 import main.allgemeineTypen.transportTypen.AuftragTyp;
+import main.hesStarter.HESServerStarter;
+import main.komponenten.buchhaltung.BuchhaltungFassade;
 import main.komponenten.buchhaltung.IBuchhaltungManager;
 import main.komponenten.kunden.IKundenManager;
 import main.komponenten.kunden.KundenFassade;
 import main.komponenten.lager.ILagerManager;
 import main.komponenten.lager.IReserviertListener;
+import main.komponenten.lager.LagerFassade;
 import main.komponenten.versand.IVersandManager;
+import main.komponenten.versand.VersandFassade;
 import main.technik.persistenzManager.PersistenzManager;
 
 import java.util.Date;
@@ -35,7 +39,7 @@ class AuftragLogik {
     }
 
     public static AuftragLogik getInstance(){
-        return instance;
+        return getInstance(new BuchhaltungFassade(), new LagerFassade(), new VersandFassade(HESServerStarter.serverInstanceID));
     }
 
     public static boolean existsInstance(){
