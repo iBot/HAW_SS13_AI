@@ -36,7 +36,7 @@ public class TransportDienstleister  implements  ITransportDienstleisterManager{
         this.HES_BASE_URI = String.format("http://localhost:999%d/hes", portExtention);
         System.out.println(HES_BASE_URI);
         try {
-            HttpServer server = HttpServerFactory.create(HES_BASE_URI);
+            server = HttpServerFactory.create(HES_BASE_URI);
             server.start();
             System.out.println("HES Transportdiensleister-REST-Server started.");
         } catch (IllegalArgumentException e) {

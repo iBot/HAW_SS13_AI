@@ -1,0 +1,41 @@
+<component name="libraryTable">
+  <library name="Jersey1.17">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/lib/asm-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/lib/jackson-core-asl-1.9.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/lib/jackson-jaxrs-1.9.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/lib/jackson-mapper-asl-1.9.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/lib/jackson-xc-1.9.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/lib/jersey-client-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/lib/jersey-core-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/lib/jersey-json-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/lib/jersey-server-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/lib/jersey-servlet-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/lib/jettison-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/lib/jsr311-api-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/contribs/jersey-apache-client-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/contribs/jersey-atom-abdera-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/contribs/jersey-guice-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/contribs/jersey-multipart-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/contribs/jersey-simple-server-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/contribs/jersey-spring-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/contribs/oauth-client-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/contribs/oauth-server-1.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jersey-archive-1.17/contribs/oauth-signature-1.17.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.17/apidocs/jersey" />
+      <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.17/apidocs/jsr311" />
+      <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.17/apidocs/contribs/oauth/client" />
+      <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.17/apidocs/contribs/oauth/server" />
+      <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.17/apidocs/contribs/oauth/signature" />
+      <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.17/apidocs/contribs/jersey-guice" />
+      <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.17/apidocs/contribs/jersey-spring" />
+      <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.17/apidocs/contribs/jersey-multipart" />
+      <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.17/apidocs/contribs/jersey-atom-abdera" />
+      <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.17/apidocs/contribs/jersey-apache-client" />
+      <root url="file://$PROJECT_DIR$/lib/jersey-archive-1.17/apidocs/contribs/jersey-simple-server" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

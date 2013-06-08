@@ -69,6 +69,7 @@ public class HAPSARManager implements IHAPSARManager {
                         e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                     }
                     String message = new String(delivery.getBody());
+                    System.out.println("Received: "+message);
                     messages.add(new ZahlungseingangMessage(message));
                     for (INewMessageListener listener : messageListener){
                         listener.getNextMessage();

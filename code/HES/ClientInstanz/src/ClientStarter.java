@@ -6,6 +6,7 @@ import komponenten.RMIClientAdapter.IRMIClientAdapterManager;
 import komponenten.RMIClientAdapter.RMIClientAdapterFassade;
 
 import javax.swing.*;
+import java.rmi.RMISecurityManager;
 import java.util.Scanner;
 
 /**
@@ -19,6 +20,7 @@ public class ClientStarter {
 
 
     public static void main(String[] args) {
+
         MonitorFassade monitor = new MonitorFassade(2000);
         DispatcherFassade dispatcher = new DispatcherFassade(monitor);
         IRMIClientAdapterManager manager = new RMIClientAdapterFassade(dispatcher);
