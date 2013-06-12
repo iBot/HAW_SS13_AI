@@ -1,10 +1,10 @@
 <component name="libraryTable">
   <library name="RabbitMQ">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../../../../../../Development/rabbitmq-java-client-bin-3.1.1" />
+      <root url="file:///Development/rabbitmq-java-client-bin-3.1.1" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://$PROJECT_DIR$/../../../../../../Development/rabbitmq-java-client-bin-3.1.1" recursive="false" />
+    <jarDirectory url="file:///Development/rabbitmq-java-client-bin-3.1.1" recursive="false" />
   </library>
 </component>
